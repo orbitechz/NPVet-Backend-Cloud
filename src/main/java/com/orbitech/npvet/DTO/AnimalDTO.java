@@ -1,6 +1,6 @@
 package com.orbitech.npvet.DTO;
 
-import com.orbitech.npvet.entity.Sexo;
+import com.orbitech.npvet.Entity.Sexo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
