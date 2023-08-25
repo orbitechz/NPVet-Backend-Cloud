@@ -4,12 +4,16 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TutorDTO extends AbstractEntityDTO {
     @NotNull(message = "O nome do tutor deve ser informado!")
     @Length(min = 3, max = 50, message = "O nome do tutor deve ter entre 3 e 50 caracteres")
