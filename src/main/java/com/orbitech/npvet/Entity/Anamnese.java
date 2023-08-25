@@ -1,10 +1,7 @@
 package com.orbitech.npvet.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "anamneses",schema = "public")
+@Table(name = "anamneses", schema = "public")
 @Getter @Setter
-public class Anamnese extends AbstractEntity{
+public class Anamnese extends AbstractEntity {
 
-    @Column(name = "queixa-principal",nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_animal",nullable = false)
+    private Animal animal;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tutor",nullable = false)
+    private Tutor tutor;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario",nullable = false)
+    private Usuario usuario;
+
+    @Column(name = "queixa-principal")
     private String queixaPrincipal;
 
     @Column(name = "progresso-medico")
