@@ -2,7 +2,7 @@ package com.orbitech.npvet.Entity;
 
 public enum Status {
     EM_ANDAMENTO,
-    CONCLUÍDA,
+    CONCLUIDA,
     CANCELADA,
     AGENDADA
 }
