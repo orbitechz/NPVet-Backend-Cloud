@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "consulta", schema = "public")
-public class Consulta {
+public class Consulta extends AbstractEntity {
     @OneToOne @NotNull(message = "Você precisa selecionar um paciente.")
     @Column(nullable = false)
     private Animal animal;

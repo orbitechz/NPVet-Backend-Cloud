@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class UsuarioDTO {
+public class UsuarioDTO extends AbstractEntityDTO {
 
     @NotNull(message = "Você precisa preencher um nome.")
     @Size(max = 100, message = "Quantidade de caracteres excedida.")

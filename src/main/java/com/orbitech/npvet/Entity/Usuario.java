@@ -13,11 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "usuario", schema = "public")
-public class Usuario {
-
-    @Id @Column(unique = true, name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Usuario extends  AbstractEntity{
 
     @NotNull(message = "Você precisa preencher um nome.")
     @Column(nullable = false, length = 100, name = "nome")

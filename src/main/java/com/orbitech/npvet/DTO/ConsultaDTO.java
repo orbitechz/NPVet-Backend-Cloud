@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ConsultaDTO {
+public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Você precisa selecionar um paciente.")
     private Animal animal;
     @NotNull(message = "Você precisa selecionar um tutor.") //TODO: Decidir se deixamos o id do tutor na consulta, ou apenas na anamnese.
