@@ -34,5 +34,4 @@ public class Consulta {
     @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
     @Column(nullable = false)
     private Usuario veterinario;
-
 }
