@@ -1,6 +1,6 @@
 package com.orbitech.npvet.DTO;
 
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.Entity.TipoUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
