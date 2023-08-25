@@ -20,7 +20,7 @@ public class Tutor extends AbstractEntity {
     @Column(unique = true, nullable = false, length = 11)
     private String cpf;
 
-    @Column(unique = true, nullable = false, length = 20)
+    @Column(unique = true, length = 20)
     private String rg;
 
     @Column(length = 100)
