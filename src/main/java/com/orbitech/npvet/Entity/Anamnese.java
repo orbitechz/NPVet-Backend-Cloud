@@ -1,4 +1,4 @@
-package com.orbitech.npvet.entity;
+package com.orbitech.npvet.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
