@@ -1,7 +1,9 @@
 package com.orbitech.npvet.DTO;
 
-import com.orbitech.npvet.entity.Anamnese;
-import com.orbitech.npvet.entity.Usuario;
+import com.orbitech.npvet.Entity.Anamnese;
+import com.orbitech.npvet.Entity.Animal;
+import com.orbitech.npvet.Entity.Tutor;
+import com.orbitech.npvet.Entity.Usuario;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

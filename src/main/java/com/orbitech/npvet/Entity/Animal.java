@@ -1,4 +1,4 @@
-package com.orbitech.npvet.entity;
+package com.orbitech.npvet.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "animal", schema = "public")
-public class Animal{
+public class Animal extends AbstractEntity{
 
     @Column(nullable = false)
     private String nome;

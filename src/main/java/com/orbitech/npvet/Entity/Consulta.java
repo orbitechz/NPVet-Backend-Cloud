@@ -1,4 +1,4 @@
-package com.orbitech.npvet.entity;
+package com.orbitech.npvet.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -29,8 +29,8 @@ public class Consulta {
     @Column(nullable = false, name = "data")
     private LocalDateTime data;
     @NotNull (message = "Você precisar informar o status.")
-    @Column(name="status", nullable = false, length = 15) //TODO: Verificar se isso não é um Enum.
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
     @Column(nullable = false)
     private Usuario veterinario;

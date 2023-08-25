@@ -1,4 +1,4 @@
-package com.orbitech.npvet.entity;
+package com.orbitech.npvet.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Table(name = "exame_fisico", schema = "public")
-public class ExameFisico {
+public class ExameFisico extends AbstractEntity{
 
     @Column(nullable = true)
     private String postura;
