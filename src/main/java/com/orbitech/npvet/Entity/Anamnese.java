@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "anamneses",schema = "public")
 @Getter @Setter
-public class Anamnese {
+public class Anamnese extends AbstractEntity{
 
     @Column(name = "queixa-principal",nullable = false)
     private String queixaPrincipal;
