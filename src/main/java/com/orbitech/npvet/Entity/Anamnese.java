@@ -2,7 +2,9 @@ package com.orbitech.npvet.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "anamneses", schema = "public")
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Anamnese extends AbstractEntity {
 
     @ManyToOne
