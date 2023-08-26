@@ -11,12 +11,12 @@ import lombok.Setter;
 @Setter
 public class AnamnesePergunta extends AbstractEntity {
     @ManyToOne
-    @JoinColumn(name = "id_anamnese")
+    @JoinColumn(name = "id_anamnese",nullable = false)
     @JsonIgnoreProperties("anamnesePerguntas")
     private Anamnese anamnese;
 
     @ManyToOne
-    @JoinColumn(name = "id_pergunta")
+    @JoinColumn(name = "id_pergunta",nullable = false)
     private Pergunta pergunta;
 
     @Column(nullable = false)
