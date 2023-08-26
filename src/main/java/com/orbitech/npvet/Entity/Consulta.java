@@ -33,5 +33,5 @@ public class Consulta extends AbstractEntity {
     private Status status;
     @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
     @Column(nullable = false)
-    private Usuario veterinario;
+    private List<Usuario> veterinario;
 }
