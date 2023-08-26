@@ -1,9 +1,9 @@
 package com.orbitech.npvet.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -12,6 +12,8 @@ import java.time.LocalTime;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "exame_fisico", schema = "public")
 public class ExameFisico extends AbstractEntity{
 
@@ -63,7 +65,8 @@ public class ExameFisico extends AbstractEntity{
     @Column(name = "mucosa_anal", nullable = true, length = 255)
     private String mucosaAnal;
 
-    @Column()
-    private Integer animal;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Animal animal;
 
 }

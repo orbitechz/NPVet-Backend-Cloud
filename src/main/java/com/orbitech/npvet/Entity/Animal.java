@@ -39,7 +39,8 @@ public class Animal extends AbstractEntity{
     @Column(nullable = false, length = 255)
     private String procedencia;
 
+    @ManyToOne
     @Column(nullable = false)
-    private Integer tutor_id;
+    private Tutor tutor_id;
 
 }
