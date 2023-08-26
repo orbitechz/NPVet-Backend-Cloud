@@ -9,5 +9,5 @@ import lombok.Setter;
 @Table(name = "anamnese-pergunta",schema = "public")
 @Getter
 @Setter
-public class AnamnesePergunta {
+public class AnamnesePergunta extends AbstractEntity {
 }
