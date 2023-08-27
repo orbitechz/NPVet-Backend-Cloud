@@ -34,4 +34,7 @@ public class TutorDTO extends AbstractEntityDTO {
     @NotNull(message = "No mínimo um número de contato deve ser informado!")
     @NotEmpty(message = "No mínimo um número de contato deve ser informado!")
     private List<ContatoDTO> telefones;
+    @NotNull(message = "No mínimo um endereço deve ser informado!")
+    @NotEmpty(message = "No mínimo um endereço deve ser informado!")
+    private List<EnderecoDTO> enderecos;
 }
