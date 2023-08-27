@@ -3,6 +3,7 @@ package com.orbitech.npvet.DTO;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
+
+import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -31,4 +34,11 @@ public class TutorDTO extends AbstractEntityDTO {
     @Email(message = "O e-mail informado é inválido!")
     @Length(max = 100, message = "O e-mail deve ter apenas até 100 caracteres")
     private String email;
+
+    @NotNull(message = "No mínimo um número de contato deve ser informado!")
+    @NotEmpty(message = "No mínimo um número de contato deve ser informado!")
+    private List<ContatoDTO> telefones;
+    @NotNull(message = "No mínimo um endereço deve ser informado!")
+    @NotEmpty(message = "No mínimo um endereço deve ser informado!")
+    private List<EnderecoDTO> enderecos;
 }

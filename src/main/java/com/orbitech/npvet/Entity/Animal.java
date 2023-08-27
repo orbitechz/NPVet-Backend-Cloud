@@ -1,5 +1,6 @@
 package com.orbitech.npvet.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -8,6 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter @Setter
 @AllArgsConstructor
@@ -15,11 +19,14 @@ import lombok.Setter;
 @Table(name = "animal", schema = "public")
 public class Animal extends AbstractEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String especie;
+
+    @Column(nullable = false, length = 100)
+    private String raca;
 
     @Column(nullable = false)
     private Sexo sexo;
@@ -30,13 +37,18 @@ public class Animal extends AbstractEntity{
     @Column(nullable = false)
     private Double peso;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String pelagem;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String procedencia;
 
+    @ManyToOne
     @Column(nullable = false)
-    private Integer tutor_id;
+    private Tutor tutor_id;
+
+    @OneToMany(mappedBy = "animal")
+    @JsonIgnoreProperties("animal")
+    private List<Anamnese> anamneses = new ArrayList<>();
 
 }

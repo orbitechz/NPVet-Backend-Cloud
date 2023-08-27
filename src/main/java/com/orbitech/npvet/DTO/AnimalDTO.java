@@ -1,6 +1,7 @@
 package com.orbitech.npvet.DTO;
 
-import com.orbitech.npvet.entity.Sexo;
+import com.orbitech.npvet.Entity.Sexo;
+import com.orbitech.npvet.Entity.Tutor;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -37,5 +38,5 @@ public class AnimalDTO {
     private String procedencia;
 
     @NotNull(message = "É obrigatorio informar o id do tutor")
-    private Integer tutor_id;
+    private TutorDTO tutor_id;
 }

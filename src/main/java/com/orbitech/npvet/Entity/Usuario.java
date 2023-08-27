@@ -1,11 +1,15 @@
 package com.orbitech.npvet.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,4 +39,8 @@ public class Usuario extends  AbstractEntity{
     @NotNull(message = "Você precisa definir uma senha.")
     @Column(name = "senha", nullable = false, length = 20)
     private String senha;
+
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnoreProperties("usuario")
+    private List<Anamnese> anamneses = new ArrayList<>();
 }
