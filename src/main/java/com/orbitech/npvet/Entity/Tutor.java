@@ -38,5 +38,14 @@ public class Tutor extends AbstractEntity {
             name = "tutor_contato",
             joinColumns = @JoinColumn(name = "tutor_id"),
             inverseJoinColumns = @JoinColumn(name = "contato_id"))
-    private  List <Contato> telefones;
+    private List <Contato> telefones;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "tutor_endereco",
+            joinColumns = @JoinColumn(name = "tutor_id"),
+            inverseJoinColumns = @JoinColumn(name = "endereco_id")
+    )
+    private List<Endereco> enderecos;
 }

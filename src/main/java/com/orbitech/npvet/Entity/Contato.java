@@ -1,5 +1,6 @@
 package com.orbitech.npvet.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -21,5 +22,6 @@ public class Contato extends AbstractEntity{
     private String telefone;
 
     @ManyToMany(mappedBy = "telefones")
+    @JsonIgnore // Para evitar a auto-referencia e um JSON infinito
     private List<Tutor> tutores;
 }
