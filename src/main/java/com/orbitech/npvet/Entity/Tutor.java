@@ -40,6 +40,7 @@ public class Tutor extends AbstractEntity {
             inverseJoinColumns = @JoinColumn(name = "contato_id"))
     private List <Contato> telefones;
 
+
     @ManyToMany
     @JoinTable(
             name = "tutor_endereco",
