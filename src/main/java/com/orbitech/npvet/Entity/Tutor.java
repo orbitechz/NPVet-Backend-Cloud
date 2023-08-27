@@ -1,5 +1,6 @@
 package com.orbitech.npvet.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,4 +32,11 @@ public class Tutor extends AbstractEntity {
     @OneToMany(mappedBy = "tutor")
     @JsonIgnoreProperties("tutor")
     private List<Anamnese> anamneses = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "tutor_contato",
+            joinColumns = @JoinColumn(name = "tutor_id"),
+            inverseJoinColumns = @JoinColumn(name = "contato_id"))
+    private  List <Contato> telefones;
 }
