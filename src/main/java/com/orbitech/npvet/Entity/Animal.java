@@ -44,7 +44,7 @@ public class Animal extends AbstractEntity{
     private String procedencia;
 
     @ManyToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private Tutor tutor_id;
 
     @OneToMany(mappedBy = "animal")
