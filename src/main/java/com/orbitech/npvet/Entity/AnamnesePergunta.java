@@ -24,6 +24,6 @@ public class AnamnesePergunta extends AbstractEntity {
     private Pergunta pergunta;
 
     @Column(nullable = false)
-    private String repsposta;
+    private String resposta;
 
 }
