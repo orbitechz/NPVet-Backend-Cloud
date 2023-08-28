@@ -17,21 +17,24 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "consulta", schema = "public")
 public class Consulta extends AbstractEntity {
-    @OneToOne @NotNull(message = "Você precisa selecionar um paciente.")
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private Animal animal;
-    @OneToOne @NotNull(message = "Você precisa selecionar um tutor.") //TODO: Decidir se deixamos o id do tutor na consulta, ou apenas na anamnese.
-    @Column(nullable = false)
+    @ManyToOne @NotNull(message = "Você precisa selecionar um tutor.")
+    @JoinColumn(nullable = false)
     private Tutor tutor;
+    @OneToOne
+    private Anamnese anamnese;
     @OneToMany
-    private List<Anamnese>anamnese;
-    @NotNull(message = "Informe a data.")
+    @JoinColumn(nullable = false) //TODO: Após a aprovação do Cléber, revisar essa regra de negócio.
+    private List<ExameFisico>examesFisicos;
+
     @Column(nullable = false, name = "data")
     private LocalDateTime data;
     @NotNull (message = "Você precisar informar o status.")
     @Enumerated(EnumType.STRING)
     private Status status;
     @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private List<Usuario> veterinario;
 }

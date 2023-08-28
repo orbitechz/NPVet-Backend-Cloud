@@ -44,11 +44,14 @@ public class Animal extends AbstractEntity{
     private String procedencia;
 
     @ManyToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private Tutor tutor_id;
 
     @OneToMany(mappedBy = "animal")
     @JsonIgnoreProperties("animal")
     private List<Anamnese> anamneses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "animal")
+    private List<Consulta> consulta;
 
 }

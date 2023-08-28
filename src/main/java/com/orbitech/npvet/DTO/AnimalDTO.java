@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Controller;
-
 @AllArgsConstructor
 @NoArgsConstructor
 public class AnimalDTO {

@@ -33,7 +33,7 @@ public class Usuario extends  AbstractEntity{
     private TipoUsuario tipoUsuario;
 
     @NotNull(message = "Você precisa definir um nome de usuário.")
-    @Column(unique = true, nullable = false, length = 30, name = "username") //TODO: Consultar Giovani sobre username/password authentication
+    @Column(unique = true, nullable = false, length = 30, name = "username")
     private String username;
 
     @NotNull(message = "Você precisa definir uma senha.")

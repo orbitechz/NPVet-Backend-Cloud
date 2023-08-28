@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -69,4 +70,6 @@ public class ExameFisico extends AbstractEntity{
     @JoinColumn(nullable = false)
     private Animal animal;
 
+    @ManyToOne
+    private Consulta consulta;
 }
