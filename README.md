@@ -2,6 +2,14 @@
 
 Bem-vindo ao repositório do projeto NPVet! Este projeto consiste em uma API Spring Boot integrada com um banco de dados PostgreSQL, desenvolvida para um sistema de gestão de hospital veterinário. Aqui estão as instruções para configurar o ambiente de desenvolvimento e implantação em produção.
 
+## Tecnologias Utilizadas 🛠️
+
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
 ## Configuração do Ambiente de Desenvolvimento 🚀
 
 Para configurar o ambiente de desenvolvimento, siga os passos abaixo:
