@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface AnamneseRepository extends JpaRepository<Anamnese,Long> {
     List<Anamnese> findByTutorCpf();
-    List<Anamnese> findByTutorCpfAndAnimal();
+
+    List<Anamnese> findByTutorCpfAndAnimal(String cpf, String nome);
 }
