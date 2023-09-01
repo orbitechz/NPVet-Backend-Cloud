@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.List;
 @RestControllerAdvice
 public class GlobalErrorHandler {
-
+    /**
+     * Erros de Service
+     * */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
         return e.getMessage();
     }
+
+    /**
+     * Erros do Hibernate Validator
+     * */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public String  handleValidationException(
@@ -26,9 +32,14 @@ public class GlobalErrorHandler {
         FieldError firstError = (FieldError) errors.get(0);
         return firstError.getDefaultMessage();
     }
+
+    /**
+     * Erros de sintaxe no body
+     * */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public String handleJsonException(){
         return "Existem erros na sua solicitação!";
     }
+
 }
