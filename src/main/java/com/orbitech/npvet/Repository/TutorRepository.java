@@ -37,4 +37,16 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
      * */
     @Query("from Tutor where email = email")
     public List<Tutor> findAllByEmailLike(@Param("email") String email);
+
+    /**
+     * Retorna Lista de Tutor ativos no banco
+     * */
+    @Query("from Tutor where deletedAt is null")
+    public List<Tutor> getAllAtivados();
+
+    /**
+     * Retorna Lista de Tutor que sofreram soft delete no banco
+     * */
+    @Query("from Tutor where deletedAt is not null")
+    public List<Tutor> getAllDesativados();
 }
