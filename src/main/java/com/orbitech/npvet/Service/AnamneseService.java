@@ -56,8 +56,8 @@ public class AnamneseService {
         return anamneseDTOs;
     }
 
-    public List<AnamneseDTO> getByTutorCpfAndAnimal(String cpf) {
-        List<AnamneseDTO> anamneseDTOs = anamneseRepository.findByTutorCpfAndAnimal()
+    public List<AnamneseDTO> getByTutorCpfAndAnimal(String cpf,String nome) {
+        List<AnamneseDTO> anamneseDTOs = anamneseRepository.findByTutorCpfAndAnimal(cpf,nome)
                 .stream()
                 .map(this::toAnamneseDTO)
                 .toList();
