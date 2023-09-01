@@ -36,5 +36,5 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
      * Retorna Lista de Tutor com que têm e-mail informado
      * */
     @Query("from Tutor where email = email")
-    public Tutor findAllByEmailLike(@Param("email") String email);
+    public List<Tutor> findAllByEmailLike(@Param("email") String email);
 }
