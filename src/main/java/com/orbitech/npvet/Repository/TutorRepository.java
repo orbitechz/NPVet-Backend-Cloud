@@ -23,13 +23,13 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
     /**
     * Retorna Tutor com o CPF informado
     * */
-    @Query("from Tutor where cpf = cpf limit 1")
+    @Query("from Tutor where cpf = cpf")
     public Tutor findByCpf(@Param("cpf") String cpf);
 
     /**
     * Retorna Tutor com o RG informado
     * */
-    @Query("from Tutor where rg = rg limit 1")
+    @Query("from Tutor where rg = rg")
     public Tutor findByRg(@Param("rg") String rg);
 
     /**
