@@ -1,6 +1,8 @@
 package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.AnamneseDTO;
+import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.Anamnese;
+import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.AnamneseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +47,13 @@ public class AnamneseService {
 
     public boolean delete(Long id) {
         return false;
+    }
+
+    public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
+        return modelMapper.map(anamnese, AnamneseDTO.class);
+    }
+
+    public Anamnese toAnamnese(AnamneseDTO anamneseDTO){
+        return modelMapper.map(anamneseDTO, Anamnese.class);
     }
 }
