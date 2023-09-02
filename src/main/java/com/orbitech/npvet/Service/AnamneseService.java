@@ -2,13 +2,17 @@ package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.Anamnese;
+import com.orbitech.npvet.Entity.Animal;
 import com.orbitech.npvet.Entity.Tutor;
+import com.orbitech.npvet.Entity.Usuario;
 import com.orbitech.npvet.Repository.AnamneseRepository;
+import com.orbitech.npvet.Repository.TutorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +20,7 @@ import java.util.Optional;
 @Service
 public class AnamneseService {
 
-    private AnamneseRepository anamneseRepository;
+    private final AnamneseRepository anamneseRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
@@ -45,7 +49,7 @@ public class AnamneseService {
     }
 
     public List<AnamneseDTO> getByTutorCpf(String cpf) {
-        List<AnamneseDTO> anamneseDTOs = anamneseRepository.findByTutorCpf()
+        List<AnamneseDTO> anamneseDTOs = anamneseRepository.findByTutorCpf(cpf)
                 .stream()
                 .map(this::toAnamneseDTO)
                 .toList();
@@ -69,15 +73,17 @@ public class AnamneseService {
     }
 
     public Anamnese create(AnamneseDTO anamneseDTO) {
-        return null;
+        return anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
     public Anamnese update(Long id, AnamneseDTO anamneseDTO) {
-        return null;
+        return anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
-    public boolean delete(Long id) {
-        return false;
+    public void delete(Long id) {
+        AnamneseDTO anamneseDTO = getById(id);
+        anamneseDTO.setDeletedAt(LocalDateTime.now());
+        anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
     public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
