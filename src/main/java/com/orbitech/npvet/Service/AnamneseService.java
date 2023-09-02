@@ -1,10 +1,7 @@
 package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
-import com.orbitech.npvet.Entity.Anamnese;
-import com.orbitech.npvet.Entity.Animal;
-import com.orbitech.npvet.Entity.Tutor;
-import com.orbitech.npvet.Entity.Usuario;
+import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.AnamneseRepository;
 import com.orbitech.npvet.Repository.TutorRepository;
 import org.modelmapper.ModelMapper;
@@ -77,6 +74,12 @@ public class AnamneseService {
     }
 
     public Anamnese update(Long id, AnamneseDTO anamneseDTO) {
+        Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
+        Assert.notNull(existingAnamnese, String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
+
+        if (!id.equals(existingAnamnese.getId())) {
+            throw new IllegalArgumentException("O ID na URL não corresponde ao ID no corpo da requisição.");
+        }
         return anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
