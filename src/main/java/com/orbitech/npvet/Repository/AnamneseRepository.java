@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 
 public interface AnamneseRepository extends JpaRepository<Anamnese,Long> {
-
     @Query("SELECT a FROM Anamnese a JOIN a.tutor t WHERE t.cpf = :cpf")
     List<Anamnese> findByTutorCpf(@Param("cpf") String cpf);
 

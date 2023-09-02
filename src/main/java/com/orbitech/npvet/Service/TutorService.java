@@ -16,7 +16,7 @@ import java.util.List;
 public class TutorService {
     @Autowired
     private TutorRepository repository;
-    private ModelMapper mapper;
+    private final ModelMapper mapper = new ModelMapper();
 
     public TutorDTO toTutorDTO(Tutor tutor){
         return mapper.map(tutor, TutorDTO.class);

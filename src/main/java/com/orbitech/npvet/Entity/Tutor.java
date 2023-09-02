@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class Tutor extends AbstractEntity {
     @Column(nullable = false, length = 50)
     private String nome;
 
-    @Column(unique = true, nullable = false, length = 11)
+    @Column(unique = true, nullable = false, length = 14)
     private String cpf;
 
     @Column(unique = true, length = 20)
@@ -34,6 +36,7 @@ public class Tutor extends AbstractEntity {
     private List<Anamnese> anamneses = new ArrayList<>();
 
     @ManyToMany
+    @Cascade(CascadeType.ALL)
     @JoinTable(
             name = "tutor_contato",
             joinColumns = @JoinColumn(name = "tutor_id"),
@@ -42,6 +45,7 @@ public class Tutor extends AbstractEntity {
 
 
     @ManyToMany
+    @Cascade(CascadeType.ALL)
     @JoinTable(
             name = "tutor_endereco",
             joinColumns = @JoinColumn(name = "tutor_id"),
