@@ -44,7 +44,7 @@ public class AnamneseController {
     @GetMapping("/tutor/{cpf}/animal/{nome}")
     public ResponseEntity<?> getByTutorCpfAndAnimal(@PathVariable("cpf") String cpf,
                                                     @PathVariable("nome") String nome) {
-        List<AnamneseDTO> anamneseDTO = anamneseService.getByTutorCpfAndAnimal(cpf);
+        List<AnamneseDTO> anamneseDTO = anamneseService.getByTutorCpfAndAnimal(cpf,nome);
         return anamneseDTO.isEmpty() ?
                 ResponseEntity.badRequest().body("Nenhum registro foi encontrado no banco de dados.")
                 : ResponseEntity.ok(anamneseDTO);
@@ -75,17 +75,8 @@ public class AnamneseController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
-        try {
-            boolean deleted = anamneseService.delete(id);
-            if (deleted) {
-                return ResponseEntity.ok("O registro da anamnese foi marcado como excluído com sucesso.");
-            } else {
-                return ResponseEntity.badRequest().body("O ID solicitado não foi encontrado no banco de dados.");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante a exclusão: " + e.getMessage());
-        }
+        this.anamneseService.delete(id);
+        return ResponseEntity.ok().body("Anamnese excluída com sucesso!");
     }
 
 
