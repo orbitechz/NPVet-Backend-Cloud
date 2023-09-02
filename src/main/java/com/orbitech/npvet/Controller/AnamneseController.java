@@ -63,17 +63,8 @@ public class AnamneseController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
-        try {
-            boolean deleted = anamneseService.delete(id);
-            if (deleted) {
-                return ResponseEntity.ok("O registro da anamnese foi marcado como excluído com sucesso.");
-            } else {
-                return ResponseEntity.badRequest().body("O ID solicitado não foi encontrado no banco de dados.");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante a exclusão: " + e.getMessage());
-        }
+        this.anamneseService.delete(id);
+        return ResponseEntity.ok().body("Anamnese excluída com sucesso!");
     }
 
 
