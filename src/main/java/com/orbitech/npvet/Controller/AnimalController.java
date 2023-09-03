@@ -18,7 +18,7 @@ public class AnimalController {
     @Autowired
     private AnimalService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<AnimalDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
