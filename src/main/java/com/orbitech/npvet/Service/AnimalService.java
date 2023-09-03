@@ -8,6 +8,7 @@ import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.AnimalRepository;
 import com.orbitech.npvet.Repository.TutorRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -22,6 +23,7 @@ public class AnimalService {
 
     private final ModelMapper mapper = new ModelMapper();
 
+    @Autowired
     private AnimalRepository repository;
 
     public AnimalDTO toAnimalDTO(Animal animal){
@@ -52,14 +54,16 @@ public class AnimalService {
         return repository.findAllByRacaLike(especie).stream().map(this::toAnimalDTO).toList();
     }
 
+    @Transactional
     public AnimalDTO create(AnimalDTO animalDTO){
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
+    @Transactional
     public AnimalDTO update(Long id, AnimalDTO animalDTO){
         Animal animalById = repository.findById(id).orElse(null);
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
-        Assert.isTrue(!Objects.equals(animalById.getId(), animalDTO.getId()), "O ID da URL não é igual ao ID do body");
+        Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
