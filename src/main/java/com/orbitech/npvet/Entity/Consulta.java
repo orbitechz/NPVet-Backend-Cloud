@@ -34,7 +34,7 @@ public class Consulta extends AbstractEntity {
     @NotNull (message = "Você precisar informar o status.")
     @Enumerated(EnumType.STRING)
     private Status status;
-    @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
+    @ManyToOne @NotNull(message = "Você precisa informar o Médico Veterinário!")
     @JoinColumn(nullable = false)
-    private List<Usuario> veterinario;
+    private Usuario veterinario;
 }
