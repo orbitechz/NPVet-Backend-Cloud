@@ -5,11 +5,14 @@ import com.orbitech.npvet.Entity.Tutor;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Controller;
 @AllArgsConstructor
 @NoArgsConstructor
-public class AnimalDTO {
+@Getter @Setter
+public class AnimalDTO extends AbstractEntityDTO{
 
     @NotNull(message = "É obrigatorio informar um nome")
     @NotBlank(message = "É obrigatorio informar o nome")
