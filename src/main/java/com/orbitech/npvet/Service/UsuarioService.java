@@ -6,6 +6,7 @@ import com.orbitech.npvet.Repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,20 +17,24 @@ public class UsuarioService {
 
     private final ModelMapper mapper = new ModelMapper();
 
-    public UsuarioDTO ToUsuarioDTO(Usuario usuarioEntidade){
+    public UsuarioDTO toUsuarioDTO(Usuario usuarioEntidade){
         return mapper.map(usuarioEntidade, UsuarioDTO.class);
     }
 
-    public Usuario ToUsuarioEntidade(UsuarioDTO usuarioDTO){
+    public Usuario toUsuarioEntidade(UsuarioDTO usuarioDTO){
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO GetByID(long id) throws Exception{
-        return ToUsuarioDTO(repository.findById(id).orElseThrow(() -> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
+   public UsuarioDTO getByID(long id) throws Exception{
+        return toUsuarioDTO(repository.findById(id).orElseThrow(() -> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
    }
 
 
-    public List<UsuarioDTO> GetAll() {
-        return repository.findAll().stream().map(this::ToUsuarioDTO).toList();
+    public List<UsuarioDTO> getAll() {
+        return repository.findAll().stream().map(this::toUsuarioDTO).toList();
+    }
+    @Transactional
+    public UsuarioDTO create(UsuarioDTO usuarioDTO) {
+       return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
     }
 }
