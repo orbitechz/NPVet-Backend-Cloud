@@ -30,7 +30,10 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO>update(@PathVariable("id") final long id, UsuarioDTO usuarioDTO){
         return ResponseEntity.ok(service.update(id,usuarioDTO));
     }
-
-
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String>delete(@PathVariable("id") final long id) throws Exception {
+        service.delete(id);
+        return ResponseEntity.ok(String.format("Usuário com id [%s] deletado.",id));
+    }
 
 }

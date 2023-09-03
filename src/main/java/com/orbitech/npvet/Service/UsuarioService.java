@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -39,5 +40,11 @@ public class UsuarioService {
     @Transactional
     public UsuarioDTO update(long id, UsuarioDTO usuarioDTO) {
         return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+    }
+
+    @Transactional
+    public void delete(long id){ //TODO: Adicionar uma lista de usuários com agendamento ativo. Se estiver ativo, não deletar.
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado."));
+        repository.deleteById(id);
     }
 }
