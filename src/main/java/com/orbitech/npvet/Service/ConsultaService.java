@@ -30,4 +30,8 @@ public class ConsultaService {
     public List<ConsultaDTO> getAll(){
         return repository.findAll().stream().map(this::toConsultaDTO).toList();
     }
+
+    public ConsultaDTO create(ConsultaDTO consultaDTO) {
+        return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
+    }
 }
