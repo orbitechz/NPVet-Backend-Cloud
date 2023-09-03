@@ -18,7 +18,7 @@ public class AnimalController {
     @Autowired
     private AnimalService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<AnimalDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
@@ -49,13 +49,13 @@ public class AnimalController {
         return ResponseEntity.ok(service.create(AnimalDTO));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<AnimalDTO> update(@PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
         return ResponseEntity.ok(service.update(id, animalDTO));
     }
 
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long id){
         service.delete(id);
         return ResponseEntity.ok(String.format("Animal %s desativado com sucesso!", id));

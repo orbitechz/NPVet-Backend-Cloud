@@ -34,7 +34,7 @@ public class TutorController {
     public ResponseEntity<TutorDTO> create(@RequestBody @Validated TutorDTO tutorDTO){
         return ResponseEntity.ok(service.create(tutorDTO));
     }
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<TutorDTO> update(@PathVariable("id") Long id, @RequestBody @Validated TutorDTO tutorDTO){
         return ResponseEntity.ok(service.update(id, tutorDTO));
     }
