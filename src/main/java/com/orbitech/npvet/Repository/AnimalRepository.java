@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface AnimalRepository extends JpaRepository<Animal,Long> {
 
-    @Query("from Animal where nome like: nome")
+    @Query("from Animal where nome like:nome")
     public List<Animal> findAllByNomeLike(@Param("nome") String nome);
 
-    @Query("from Animal where raca like: raca")
+    @Query("from Animal where raca like:raca")
     public List<Animal> findAllByRacaLike(@Param("raca") String raca);
 
-    @Query("from Animal where especie like: especie")
+    @Query("from Animal where especie like:especie")
     public List<Animal> findAllByEspecieLike(@Param("especie") String especie);
 
 }
