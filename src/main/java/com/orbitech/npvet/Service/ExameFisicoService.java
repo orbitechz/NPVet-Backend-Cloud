@@ -42,6 +42,15 @@ public class ExameFisicoService {
         return repository.findAll().stream().map(this::toExameDTO).toList();
     }
 
+    public List<ExameFisicoDTO> getByNomeAnimal(String nome){
+        return repository.findAllByNomeLike(nome).stream().map(this::toExameDTO).toList();
+    }
+
+    public List<ExameFisicoDTO> getByIdAnimal(Long id){
+        return repository.findAllById(id).stream().map(this::toExameDTO).toList();
+    }
+
+
     @Transactional
     public ExameFisicoDTO create(ExameFisicoDTO exameFisicoDTO){
 

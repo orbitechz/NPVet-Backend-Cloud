@@ -17,9 +17,19 @@ public class ExameFisicoController {
     @Autowired
     private ExameFisicoService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<ExameFisicoDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
+    }
+
+    @GetMapping("/animal/nome/{nome}")
+    public ResponseEntity<List<ExameFisicoDTO>> getByAnimalNome(@PathVariable("nome") String nome) {
+        return ResponseEntity.ok(service.getByNomeAnimal(nome));
+    }
+
+    @GetMapping("/animal/id/{id}")
+    public ResponseEntity<List<ExameFisicoDTO>> getByAnimalId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.getByIdAnimal(id));
     }
 
     @GetMapping("/all")
