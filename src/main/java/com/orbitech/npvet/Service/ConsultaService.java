@@ -5,6 +5,7 @@ import com.orbitech.npvet.Repository.ConsultaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -32,6 +33,11 @@ public class ConsultaService {
     }
 
     public ConsultaDTO create(ConsultaDTO consultaDTO) {
+        return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
+    }
+
+    public ConsultaDTO update(long id, ConsultaDTO consultaDTO) {
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
         return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
     }
 }

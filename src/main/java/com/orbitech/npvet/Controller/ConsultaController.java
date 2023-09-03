@@ -23,8 +23,11 @@ public class ConsultaController {
         return ResponseEntity.ok(service.getAll());
     }
     @PostMapping("/post")
-    private ResponseEntity<ConsultaDTO>create(@RequestBody ConsultaDTO consultaDTO){
+    public ResponseEntity<ConsultaDTO>create(@RequestBody ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.create(consultaDTO));
     }
-
+    @PutMapping("/update{id}")
+    public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id, ConsultaDTO consultaDTO){
+        return ResponseEntity.ok(service.update(id, consultaDTO));
+    }
 }
