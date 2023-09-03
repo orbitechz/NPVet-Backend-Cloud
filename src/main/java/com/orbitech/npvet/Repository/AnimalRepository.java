@@ -16,4 +16,7 @@ public interface AnimalRepository extends JpaRepository<Animal,Long> {
     @Query("from Animal where raca like: raca")
     public List<Animal> findAllByRacaLike(@Param("raca") String raca);
 
+    @Query("from Animal where especie like: especie")
+    public List<Animal> findAllByEspecieLike(@Param("especie") String especie);
+
 }

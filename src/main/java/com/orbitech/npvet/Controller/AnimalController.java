@@ -6,10 +6,8 @@ import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +23,12 @@ public class AnimalController {
         return ResponseEntity.ok(service.getById(id));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<AnimalDTO>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+
     @GetMapping("/nome/{nome}")
     public ResponseEntity<List<AnimalDTO>> getByNome(@PathVariable("nome") String nome) {
         return ResponseEntity.ok(service.getAllByNome(nome));
@@ -35,5 +39,26 @@ public class AnimalController {
         return ResponseEntity.ok(service.getAllByRaca(raca));
     }
 
+    @GetMapping("/especie/{especie}")
+    public ResponseEntity<List<AnimalDTO>> getByEspecie(@PathVariable("especie") String especie) {
+        return ResponseEntity.ok(service.getAllByEspecie(especie));
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO AnimalDTO){
+        return ResponseEntity.ok(service.create(AnimalDTO));
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<AnimalDTO> update(@PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
+        return ResponseEntity.ok(service.update(id, animalDTO));
+    }
+
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return ResponseEntity.ok(String.format("Animal %s desativado com sucesso!", id));
+    }
 
 }
