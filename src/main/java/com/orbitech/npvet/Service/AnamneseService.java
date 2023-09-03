@@ -1,10 +1,8 @@
 package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.AnamneseDTO;
+import com.orbitech.npvet.DTO.AnamnesePerguntaDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
-import com.orbitech.npvet.Entity.Anamnese;
-import com.orbitech.npvet.Entity.Animal;
-import com.orbitech.npvet.Entity.Tutor;
-import com.orbitech.npvet.Entity.Usuario;
+import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.AnamneseRepository;
 import com.orbitech.npvet.Repository.TutorRepository;
 import org.modelmapper.ModelMapper;
@@ -92,5 +90,20 @@ public class AnamneseService {
 
     public Anamnese toAnamnese(AnamneseDTO anamneseDTO){
         return modelMapper.map(anamneseDTO, Anamnese.class);
+    }
+
+
+    public Anamnese addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePergunta request) {
+        Anamnese anamnese = anamneseRepository.findById(anamneseId)
+                .orElseThrow(() -> new IllegalArgumentException("Anamnese not found with id " + anamneseId));
+
+        AnamnesePergunta anamnesePergunta = new AnamnesePergunta();
+        anamnesePergunta.setAnamnese(anamnese);
+        anamnesePergunta.setPergunta(request.getPergunta());
+        anamnesePergunta.setResposta(request.getResposta());
+
+        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
+
+        return anamneseRepository.save(anamnese);
     }
 }
