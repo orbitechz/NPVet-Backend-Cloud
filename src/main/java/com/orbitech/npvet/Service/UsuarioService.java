@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
     @Autowired
@@ -27,7 +29,7 @@ public class UsuarioService {
    }
 
 
-
-
-
+    public List<UsuarioDTO> GetAll() {
+        return repository.findAll().stream().map(this::ToUsuarioDTO).toList();
+    }
 }
