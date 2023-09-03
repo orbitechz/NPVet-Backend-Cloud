@@ -6,6 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ConsultaService {
     @Autowired
@@ -25,4 +27,7 @@ public class ConsultaService {
         return toConsultaDTO(repository.findById(id).orElseThrow(()-> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
     }
 
+    public List<ConsultaDTO> getAll(){
+        return repository.findAll().stream().map(this::toConsultaDTO).toList();
+    }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
@@ -19,7 +21,10 @@ public class ConsultaController {
     public ResponseEntity<ConsultaDTO>getById(@PathVariable("id")final long id) throws Exception {
         return ResponseEntity.ok(service.getById(id));
     }
-
+    @GetMapping("/all")
+    public ResponseEntity<List<ConsultaDTO>>getAll(){
+        return ResponseEntity.ok(service.getAll());
+    }
 
 
 }
