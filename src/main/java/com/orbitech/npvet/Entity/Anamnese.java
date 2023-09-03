@@ -69,8 +69,6 @@ public class Anamnese extends AbstractEntity {
 
     private String ouvidos;
 
-
-
     @OneToMany(mappedBy = "anamnese")
     @JsonIgnoreProperties("anamnese")
     private List<AnamnesePergunta> anamnesePerguntas = new ArrayList<>();
