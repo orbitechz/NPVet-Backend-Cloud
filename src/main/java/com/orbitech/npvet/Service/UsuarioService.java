@@ -29,12 +29,15 @@ public class UsuarioService {
         return toUsuarioDTO(repository.findById(id).orElseThrow(() -> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
    }
 
-
     public List<UsuarioDTO> getAll() {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
     }
     @Transactional
     public UsuarioDTO create(UsuarioDTO usuarioDTO) {
        return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+    }
+    @Transactional
+    public UsuarioDTO update(long id, UsuarioDTO usuarioDTO) {
+        return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
     }
 }
