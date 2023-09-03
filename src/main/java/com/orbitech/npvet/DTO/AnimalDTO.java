@@ -22,6 +22,10 @@ public class AnimalDTO extends AbstractEntityDTO{
     @NotBlank(message = "É obrigatorio informar a especie")
     private String especie;
 
+    @NotNull(message = "É obrigatorio informar a raca")
+    @NotBlank(message = "É obrigatorio informar a raca")
+    private String raca;
+
     @NotNull(message = "É obrigatorio informar o sexo")
     private Sexo sexo;
 
