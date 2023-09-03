@@ -30,5 +30,16 @@ public class ExameFisicoController {
         return ResponseEntity.ok(service.create(exameFisicoDTO));
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ExameFisicoDTO> update(@PathVariable("id") Long id, @RequestBody @Validated ExameFisicoDTO exameFisicoDTO){
+        return ResponseEntity.ok(service.update(id, exameFisicoDTO));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return ResponseEntity.ok(String.format("Exame %s desativado com sucesso!", id));
+    }
+
 
 }

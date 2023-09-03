@@ -8,6 +8,7 @@ import com.orbitech.npvet.Entity.ExameFisico;
 import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.ExameFisicoRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -21,9 +22,11 @@ public class ExameFisicoService {
 
     private final ModelMapper mapper = new ModelMapper();
 
+    @Autowired
     private ExameFisicoRepository repository;
 
-    private TutorService tutorService;
+    @Autowired
+    private AnimalService animalService;
 
     public ExameFisicoDTO toExameDTO(ExameFisico exameFisico){return mapper.map(exameFisico, ExameFisicoDTO.class);}
 
@@ -41,14 +44,18 @@ public class ExameFisicoService {
 
     @Transactional
     public ExameFisicoDTO create(ExameFisicoDTO exameFisicoDTO){
-    return toExameDTO(repository.save(toExame(exameFisicoDTO)));
+
+        AnimalDTO animalBanco =  animalService.getById(exameFisicoDTO.getAnimal().getId());
+        Assert.notNull(animalBanco, String.format("Animal inexistente"));
+
+        return toExameDTO(repository.save(toExame(exameFisicoDTO)));
     }
 
     @Transactional
     public ExameFisicoDTO update(Long id, ExameFisicoDTO exameFisicoDTO){
         ExameFisicoDTO exameFisicoBanco = getById(id);
         Assert.notNull(exameFisicoBanco, String.format("Exame com ID %s não existe!", id));
-        Assert.isTrue(!Objects.equals(exameFisicoBanco.getId(), exameFisicoDTO.getId()), "O Exame informado não é o mesmo a ser atualizado!");
+        Assert.isTrue(id.equals(exameFisicoDTO.getId()), "O Exame informado não é o mesmo a ser atualizado!");
         return toExameDTO(repository.save(toExame(exameFisicoDTO)));
     }
 
