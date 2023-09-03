@@ -5,10 +5,8 @@ import com.orbitech.npvet.DTO.ExameFisicoDTO;
 import com.orbitech.npvet.Service.ExameFisicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,14 @@ public class ExameFisicoController {
     public ResponseEntity<ExameFisicoDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ExameFisicoDTO>> getAll() {return ResponseEntity.ok(service.getAll());}
+
+    @PostMapping("/post")
+    public ResponseEntity<ExameFisicoDTO> create(@RequestBody @Validated ExameFisicoDTO exameFisicoDTO) {
+        return ResponseEntity.ok(service.create(exameFisicoDTO));
+    }
+
 
 }
