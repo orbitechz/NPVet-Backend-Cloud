@@ -30,4 +30,9 @@ public class ConsultaController {
     public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id, ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.update(id, consultaDTO));
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String>delete(@PathVariable("id") final long id){
+        service.delete(id);
+        return ResponseEntity.ok(String.format("Consulta com id [%s] deletada com sucesso.",id));
+    }
 }

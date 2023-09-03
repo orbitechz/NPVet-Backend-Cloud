@@ -40,4 +40,9 @@ public class ConsultaService {
         Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
         return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
     }
+
+    public void delete(long id) {
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
+        repository.deleteById(id);
+    }
 }
