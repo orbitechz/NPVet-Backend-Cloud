@@ -51,7 +51,7 @@ public class AnimalService {
     }
 
     public List<AnimalDTO> getAllByEspecie(String especie){
-        return repository.findAllByRacaLike(especie).stream().map(this::toAnimalDTO).toList();
+        return repository.findAllByEspecieLike(especie).stream().map(this::toAnimalDTO).toList();
     }
 
     @Transactional
