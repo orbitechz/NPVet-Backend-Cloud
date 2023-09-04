@@ -15,6 +15,6 @@ public class AnamnesePerguntaDTO extends AbstractEntityDTO{
     private PerguntaDTO perguntaDTO;
 
     @NotNull(message = "A resposta deve ser informada!")
-    private String repsposta;
+    private String resposta;
 
 }

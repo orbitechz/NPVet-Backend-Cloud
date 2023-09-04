@@ -1,7 +1,9 @@
 package com.orbitech.npvet.Controller;
 
 import com.orbitech.npvet.DTO.AnamneseDTO;
+import com.orbitech.npvet.DTO.AnamnesePerguntaDTO;
 import com.orbitech.npvet.Entity.Anamnese;
+import com.orbitech.npvet.Entity.AnamnesePergunta;
 import com.orbitech.npvet.Service.AnamneseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,15 @@ public class AnamneseController {
             return ResponseEntity.badRequest()
                     .body("Ocorreu um erro durante o cadastro: " + e.getMessage());
         }
+    }
+
+    @PostMapping("adicionar/pergunta/{anamneseId}")
+    public ResponseEntity<AnamnesePergunta> addQuestionAnswerToAnamnese(
+            @PathVariable Long anamneseId,
+            @RequestBody AnamnesePerguntaDTO request
+    ) {
+            AnamnesePergunta anamnesePergunta = anamneseService.addQuestionAnswerToAnamnese(anamneseId,request);
+            return ResponseEntity.ok(anamnesePergunta);
     }
 
     @PutMapping("/update/{id}")

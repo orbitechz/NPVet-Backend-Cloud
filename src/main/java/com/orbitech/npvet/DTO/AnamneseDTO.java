@@ -1,8 +1,12 @@
 package com.orbitech.npvet.DTO;
 
+import com.orbitech.npvet.Entity.AnamnesePergunta;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 public class AnamneseDTO extends AbstractEntityDTO {
@@ -47,6 +51,8 @@ public class AnamneseDTO extends AbstractEntityDTO {
     private String olhos;
 
     private String ouvidos;
+
+    private List<AnamnesePerguntaDTO> anamnesePerguntas = new ArrayList<>();
 
 
 }

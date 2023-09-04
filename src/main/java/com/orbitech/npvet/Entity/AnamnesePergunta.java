@@ -1,6 +1,6 @@
 package com.orbitech.npvet.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,11 +16,14 @@ import lombok.Setter;
 public class AnamnesePergunta extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "id_anamnese",nullable = false)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true) // Serialize as the ID, not the full object
     @JsonIgnoreProperties("anamnesePerguntas")
     private Anamnese anamnese;
 
     @ManyToOne
     @JoinColumn(name = "id_pergunta",nullable = false)
+    @JsonIgnoreProperties("anamnesePerguntas")
     private Pergunta pergunta;
 
     @Column(nullable = false)
