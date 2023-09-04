@@ -60,6 +60,10 @@ public class TutorService {
     public TutorDTO create(TutorDTO tutorDTO){
         Assert.isTrue(!cpfExiste(tutorDTO.getCpf()), String.format("O CPF %s já existe!", tutorDTO.getCpf()));
         Assert.isTrue(!rgExiste(tutorDTO.getRg()), String.format("O RG %s já existe!", tutorDTO.getRg()));
+        Assert.notNull(tutorDTO.getEnderecos(), "Pelo menos um endereço deve ser informado!");
+        Assert.notEmpty(tutorDTO.getEnderecos(), "Pelo menos um endereço deve ser informado!");
+        Assert.notNull(tutorDTO.getTelefones(), "Pelo menos um telefone deve ser informado!");
+        Assert.notEmpty(tutorDTO.getEnderecos(), "Pelo menos um telefone deve ser informado!");
         return toTutorDTO(repository.save(toTutor(tutorDTO)));
     }
 
