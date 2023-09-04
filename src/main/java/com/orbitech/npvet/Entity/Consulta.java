@@ -26,7 +26,7 @@ public class Consulta extends AbstractEntity {
     @OneToOne
     private Anamnese anamnese;
     @OneToMany
-    @JoinColumn(nullable = false) //TODO: Após a aprovação do Cléber, revisar essa regra de negócio.
+    @JoinColumn(nullable = true) //TODO: Após a aprovação do Cléber, revisar essa regra de negócio.
     private List<ExameFisico>examesFisicos;
 
     @Column(nullable = false, name = "data")
@@ -34,7 +34,7 @@ public class Consulta extends AbstractEntity {
     @NotNull (message = "Você precisar informar o status.")
     @Enumerated(EnumType.STRING)
     private Status status;
-    @OneToMany @NotNull(message = "Você precisa informar o Médico Veterinário!")
+    @ManyToOne @NotNull(message = "Você precisa informar o Médico Veterinário!")
     @JoinColumn(nullable = false)
-    private List<Usuario> veterinario;
+    private Usuario veterinario;
 }
