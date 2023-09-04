@@ -27,7 +27,7 @@ public class ConsultaController {
     public ResponseEntity<ConsultaDTO>create(@RequestBody @Validated ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.create(consultaDTO));
     }
-    @PutMapping("/update{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id,@RequestBody @Validated ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.update(id, consultaDTO));
     }
