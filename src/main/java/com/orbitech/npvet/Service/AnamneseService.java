@@ -1,8 +1,10 @@
 package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.AnamneseDTO;
+import com.orbitech.npvet.DTO.AnamnesePerguntaDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.AnamneseRepository;
+import com.orbitech.npvet.Repository.PerguntaRepository;
 import com.orbitech.npvet.Repository.TutorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,15 @@ import java.util.Optional;
 public class AnamneseService {
 
     private final AnamneseRepository anamneseRepository;
+    private final PerguntaRepository perguntaRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public AnamneseService(AnamneseRepository anamneseRepository, ModelMapper modelMapper) {
+    public AnamneseService(AnamneseRepository anamneseRepository,
+                           PerguntaRepository perguntaRepository,
+                           ModelMapper modelMapper) {
         this.anamneseRepository = anamneseRepository;
+        this.perguntaRepository = perguntaRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -95,5 +101,30 @@ public class AnamneseService {
 
     public Anamnese toAnamnese(AnamneseDTO anamneseDTO){
         return modelMapper.map(anamneseDTO, Anamnese.class);
+    }
+
+
+    public Anamnese addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePergunta request) {
+
+        // Tentar encontrar a Anamnese pelo seu ID
+        Anamnese anamnese = anamneseRepository.findById(anamneseId)
+                .orElseThrow(() -> new IllegalArgumentException("Nenhuma anamnese encontrada com o ID: " + anamneseId));
+
+        AnamnesePergunta anamnesePergunta = new AnamnesePergunta();
+        anamnesePergunta.setAnamnese(anamnese);
+
+        Pergunta pergunta = perguntaRepository.findById(anamneseId)
+                .orElseThrow(() -> new IllegalArgumentException("Nenhuma pergunta encontrada com o ID: " +
+                        request.getPergunta().getId()));
+
+
+        anamnesePergunta.setPergunta(request.getPergunta());
+        anamnesePergunta.setResposta(request.getResposta());
+
+        // Adicionar a nova AnamnesePergunta à lista da Anamnese
+        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
+
+        // Salvar a Anamnese atualizada no repositório
+        return anamneseRepository.save(anamnese);
     }
 }
