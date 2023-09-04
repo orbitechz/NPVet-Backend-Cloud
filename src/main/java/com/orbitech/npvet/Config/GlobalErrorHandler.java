@@ -38,8 +38,8 @@ public class GlobalErrorHandler {
      * */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public String handleJsonException(){
-        return "Existem erros na sua solicitação!";
+    public String handleJsonException(HttpMessageNotReadableException erro){
+        return String.format("Corpo da solicitação contém erros: %s", erro.getMessage());
     }
 
 }
