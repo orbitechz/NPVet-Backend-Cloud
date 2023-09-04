@@ -2,20 +2,22 @@ package com.orbitech.npvet.Service;
 import com.orbitech.npvet.DTO.*;
 import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.*;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AnamneseService {
 
     private final AnamneseRepository anamneseRepository;
+    private final AnamnesePerguntaRepository anamnesePerguntaRepository ;
     private final PerguntaRepository perguntaRepository;
     private final AnimalRepository animalRepository;
     private final TutorRepository tutorRepository;
@@ -24,18 +26,22 @@ public class AnamneseService {
 
     @Autowired
     public AnamneseService(AnamneseRepository anamneseRepository,
+                           AnamnesePerguntaRepository anamnesePerguntaRepository,
                            PerguntaRepository perguntaRepository,
                            AnimalRepository animalRepository,
                            TutorRepository tutorRepository,
                            UsuarioRepository usuarioRepository,
                            ModelMapper modelMapper) {
         this.anamneseRepository = anamneseRepository;
+        this.anamnesePerguntaRepository = anamnesePerguntaRepository;
         this.perguntaRepository = perguntaRepository;
         this.animalRepository = animalRepository;
         this.tutorRepository = tutorRepository;
         this.usuarioRepository = usuarioRepository;
         this.modelMapper = modelMapper;
+
     }
+
 
 
     public AnamneseDTO getById(Long id) {
@@ -101,28 +107,52 @@ public class AnamneseService {
         anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
-    public Anamnese addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePergunta request) {
 
-        // Tentar encontrar a Anamnese pelo seu ID
-        Anamnese anamnese = anamneseRepository.findById(anamneseId)
-                .orElseThrow(() -> new IllegalArgumentException("Nenhuma anamnese encontrada com o ID: " + anamneseId));
+    @Transactional
+    public AnamnesePergunta addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePerguntaDTO request) {
 
-        AnamnesePergunta anamnesePergunta = new AnamnesePergunta();
-        anamnesePergunta.setAnamnese(anamnese);
+        Anamnese anamnese = anamneseRepository.findById(anamneseId).orElse(null);
 
-        Pergunta pergunta = perguntaRepository.findById(anamneseId)
-                .orElseThrow(() -> new IllegalArgumentException("Nenhuma pergunta encontrada com o ID: " +
-                        request.getPergunta().getId()));
+        if (anamnese == null) {
+            throw new IllegalArgumentException("Nenhuma anamnese encontrada com o ID: " + anamneseId);
+        }
 
 
-        anamnesePergunta.setPergunta(request.getPergunta());
+        AnamnesePergunta anamnesePergunta = toAnamnesePergunta(request);
+
+            anamnesePergunta.setAnamnese(anamnese);
         anamnesePergunta.setResposta(request.getResposta());
 
-        // Adicionar a nova AnamnesePergunta à lista da Anamnese
-        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
 
-        // Salvar a Anamnese atualizada no repositório
-        return anamneseRepository.save(anamnese);
+        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
+          anamneseRepository.save(anamnese);
+
+        return anamnesePerguntaRepository.save(anamnesePergunta);
+
+    }
+
+
+
+    private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
+
+        AnamnesePergunta anamnesePergunta = modelMapper.map(request, AnamnesePergunta.class);
+
+        Anamnese anamnese = anamneseRepository.findById(request.getAnamneseDTO().getId()).orElse(null);
+        if (anamnese == null) {
+            throw new IllegalArgumentException("Anamnese não encontrada com o ID: "
+                    + request.getAnamneseDTO().getId());
+        }
+
+        Pergunta pergunta = perguntaRepository.findById(request.getPerguntaDTO().getId()).orElse(null);
+        if (pergunta == null) {
+            throw new IllegalArgumentException("Pergunta não encontrada com o ID: "
+                    + request.getPerguntaDTO().getId());
+        }
+
+        anamnesePergunta.setAnamnese(anamnese);
+        anamnesePergunta.setPergunta(pergunta);
+
+        return anamnesePergunta;
     }
 
 
@@ -143,6 +173,25 @@ public class AnamneseService {
             UsuarioDTO usuarioDTO = modelMapper.map(anamnese.getUsuario(), UsuarioDTO.class);
             anamneseDTO.setUsuarioDTO(usuarioDTO);
         }
+
+        List<AnamnesePerguntaDTO> anamnesePerguntaDTOs = new ArrayList<>();
+        for (AnamnesePergunta anamnesePergunta : anamnese.getAnamnesePerguntas()) {
+            AnamnesePerguntaDTO perguntaDTO = modelMapper.map(anamnesePergunta, AnamnesePerguntaDTO.class);
+
+            // Now, set the related DTOs if they exist
+            if (anamnesePergunta.getAnamnese() != null) {
+                AnamneseDTO anamnesePerguntaDTO = modelMapper.map(anamnesePergunta.getAnamnese(), AnamneseDTO.class);
+                perguntaDTO.setAnamneseDTO(anamnesePerguntaDTO);
+            }
+
+            if (anamnesePergunta.getPergunta() != null) {
+                PerguntaDTO perguntaPerguntaDTO = modelMapper.map(anamnesePergunta.getPergunta(), PerguntaDTO.class);
+                perguntaDTO.setPerguntaDTO(perguntaPerguntaDTO);
+            }
+
+            anamnesePerguntaDTOs.add(perguntaDTO);
+        }
+        anamneseDTO.setAnamnesePerguntas(anamnesePerguntaDTOs);
 
         return anamneseDTO;
     }
@@ -172,7 +221,27 @@ public class AnamneseService {
             anamnese.setUsuario(usuario);
         }
 
+        List<AnamnesePergunta> anamnesePergunta = new ArrayList<>();
+        for (AnamnesePerguntaDTO anamnesePerguntadto : anamneseDTO.getAnamnesePerguntas()) {
+            AnamnesePergunta pergunta = modelMapper.map(anamnesePerguntadto, AnamnesePergunta.class);
+
+
+            if (anamnesePerguntadto.getAnamneseDTO() != null) {
+                Anamnese anamnese1 = modelMapper.map(anamnesePerguntadto.getAnamneseDTO(), Anamnese.class);
+                pergunta.setAnamnese(anamnese1);
+            }
+
+            if (anamnesePerguntadto.getPerguntaDTO() != null) {
+                Pergunta pergunta1 = modelMapper.map(anamnesePerguntadto.getPerguntaDTO(), Pergunta.class);
+                pergunta.setPergunta(pergunta1);
+            }
+
+            anamnesePergunta.add(pergunta);
+        }
+        anamnese.setAnamnesePerguntas(anamnesePergunta);
+
         return anamnese;
     }
+
 
 }
