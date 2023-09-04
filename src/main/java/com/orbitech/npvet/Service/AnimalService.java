@@ -25,6 +25,8 @@ public class AnimalService {
 
     @Autowired
     private AnimalRepository repository;
+    @Autowired
+    private TutorRepository tutorRepository;
 
     public AnimalDTO toAnimalDTO(Animal animal){
         return mapper.map(animal, AnimalDTO.class);
@@ -56,6 +58,9 @@ public class AnimalService {
 
     @Transactional
     public AnimalDTO create(AnimalDTO animalDTO){
+        Tutor tutorBanco = tutorRepository.findById(animalDTO.getTutor_id().getId()).orElse(null);
+        Assert.notNull(tutorBanco, "O tutor informado não existe!");
+
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
