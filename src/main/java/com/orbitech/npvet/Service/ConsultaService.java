@@ -25,7 +25,7 @@ public class ConsultaService {
     }
 
     public ConsultaDTO getById (long id) throws Exception{
-        return toConsultaDTO(repository.findById(id).orElseThrow(()-> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
+        return toConsultaDTO(repository.findById(id).orElseThrow(()-> new Exception(String.format("Consulta com o id [%s] não localizado.",id))));
     }
 
     public List<ConsultaDTO> getAll(){
