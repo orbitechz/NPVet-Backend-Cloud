@@ -20,7 +20,7 @@ public class Consulta extends AbstractEntity {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Animal animal;
-    @ManyToOne @NotNull(message = "Você precisa selecionar um tutor.")
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Tutor tutor;
     @OneToOne
@@ -31,10 +31,11 @@ public class Consulta extends AbstractEntity {
 
     @Column(nullable = false, name = "data")
     private LocalDateTime data;
-    @NotNull (message = "Você precisar informar o status.")
+
     @Enumerated(EnumType.STRING)
     private Status status;
-    @ManyToOne @NotNull(message = "Você precisa informar o Médico Veterinário!")
+
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario veterinario;
 }
