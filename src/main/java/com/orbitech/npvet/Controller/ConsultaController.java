@@ -4,6 +4,7 @@ import com.orbitech.npvet.DTO.ConsultaDTO;
 import com.orbitech.npvet.Service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,11 +24,11 @@ public class ConsultaController {
         return ResponseEntity.ok(service.getAll());
     }
     @PostMapping("/post")
-    public ResponseEntity<ConsultaDTO>create(@RequestBody ConsultaDTO consultaDTO){
+    public ResponseEntity<ConsultaDTO>create(@RequestBody @Validated ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.create(consultaDTO));
     }
     @PutMapping("/update{id}")
-    public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id, ConsultaDTO consultaDTO){
+    public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id,@RequestBody @Validated ConsultaDTO consultaDTO){
         return ResponseEntity.ok(service.update(id, consultaDTO));
     }
     @DeleteMapping("/delete/{id}")
