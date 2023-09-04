@@ -52,11 +52,12 @@ public class AnamneseController {
     }
 
     @PostMapping("adicionar/pergunta/{anamneseId}")
-    public Anamnese addQuestionAnswerToAnamnese(
+    public ResponseEntity<AnamnesePergunta> addQuestionAnswerToAnamnese(
             @PathVariable Long anamneseId,
-            @RequestBody AnamnesePergunta request
+            @RequestBody AnamnesePerguntaDTO request
     ) {
-        return anamneseService.addQuestionAnswerToAnamnese(anamneseId, request);
+            AnamnesePergunta anamnesePergunta = anamneseService.addQuestionAnswerToAnamnese(anamneseId,request);
+            return ResponseEntity.ok(anamnesePergunta);
     }
 
     @PutMapping("/update/{id}")
