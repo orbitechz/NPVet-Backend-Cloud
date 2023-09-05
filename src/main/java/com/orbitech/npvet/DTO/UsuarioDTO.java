@@ -4,7 +4,15 @@ import com.orbitech.npvet.Entity.TipoUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UsuarioDTO extends AbstractEntityDTO {
 
     @NotNull(message = "Você precisa preencher um nome.")

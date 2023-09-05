@@ -7,10 +7,17 @@ import com.orbitech.npvet.Entity.Usuario;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Você precisa selecionar um paciente.")
     private AnimalDTO animal;
