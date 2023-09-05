@@ -22,12 +22,12 @@ Para configurar o ambiente de desenvolvimento, siga os passos abaixo:
 2. Crie um arquivo .env na raiz do projeto e configure-o com informações semelhantes a estas:
    ```
    API_PORTA=8080     # Porta da API em Java
-    DB_HOST=localhost  # Host do banco de dados
-    DB_PORTA=5432       # Porta do banco de dados
-    DB_NOME=npvet      # Nome do banco de dados
-    DB_USER=postgres   # Usuário do banco de dados
-    DB_PWD=postgres    # Senha do banco de dados
-    DDL=create-drop    # Tipo de interação com o banco de dados (create, create-drop, validate, update)
+   DB_HOST=localhost  # Host do banco de dados
+   DB_PORT=5432       # Porta do banco de dados
+   DB_NOME=npvet      # Nome do banco de dados
+   DB_USER=postgres   # Usuário do banco de dados
+   DB_PWD=postgres    # Senha do banco de dados
+   DDL=create-drop    # Tipo de interação com o banco de dados (create, create-drop, validate, update)
    ```
 3. Use sua IDE de preferência e faça o RUN da main.
 4. Acesse a API em http://localhost:8080.
