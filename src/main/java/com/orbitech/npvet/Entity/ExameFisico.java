@@ -71,6 +71,6 @@ public class ExameFisico extends AbstractEntity{
     private Animal animal;
 
     @ManyToOne
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = true) //Oie
     private Consulta consulta;
 }
