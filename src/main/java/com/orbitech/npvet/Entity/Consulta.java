@@ -25,8 +25,7 @@ public class Consulta extends AbstractEntity {
     private Tutor tutor;
     @OneToOne
     private Anamnese anamnese;
-    @OneToMany
-    @JoinColumn(nullable = true) //TODO: Após a aprovação do Cléber, revisar essa regra de negócio.
+    @OneToMany(mappedBy = "consulta")
     private List<ExameFisico>examesFisicos;
 
     @Column(nullable = false, name = "data")
