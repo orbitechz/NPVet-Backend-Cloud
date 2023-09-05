@@ -23,7 +23,7 @@ Para configurar o ambiente de desenvolvimento, siga os passos abaixo:
    ```
    API_PORTA=8080     # Porta da API em Java
     DB_HOST=localhost  # Host do banco de dados
-    DB_PORT=5432       # Porta do banco de dados
+    DB_PORTA=5432       # Porta do banco de dados
     DB_NOME=npvet      # Nome do banco de dados
     DB_USER=postgres   # Usuário do banco de dados
     DB_PWD=postgres    # Senha do banco de dados

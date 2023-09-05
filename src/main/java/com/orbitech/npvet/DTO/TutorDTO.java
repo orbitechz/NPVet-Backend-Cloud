@@ -34,11 +34,6 @@ public class TutorDTO extends AbstractEntityDTO {
     @Email(message = "O e-mail informado é inválido!")
     @Length(max = 100, message = "O e-mail deve ter apenas até 100 caracteres")
     private String email;
-
-    @NotNull(message = "No mínimo um número de contato deve ser informado!")
-    @NotEmpty(message = "No mínimo um número de contato deve ser informado!")
     private List<ContatoDTO> telefones;
-    @NotNull(message = "No mínimo um endereço deve ser informado!")
-    @NotEmpty(message = "No mínimo um endereço deve ser informado!")
     private List<EnderecoDTO> enderecos;
 }
