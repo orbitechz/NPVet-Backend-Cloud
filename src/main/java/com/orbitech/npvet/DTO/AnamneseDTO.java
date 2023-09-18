@@ -1,6 +1,7 @@
 package com.orbitech.npvet.DTO;
 
 import com.orbitech.npvet.Entity.AnamnesePergunta;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +23,8 @@ public class AnamneseDTO extends AbstractEntityDTO {
 
     private String queixaPrincipal;
 
-    private String progressoMedico;
+    @Valid
+    private List<AnamneseHistoricoDTO> historicoProgressoMedico;
 
     private String alimentacao;
 
