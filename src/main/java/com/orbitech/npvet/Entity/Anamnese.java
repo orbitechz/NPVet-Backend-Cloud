@@ -26,8 +26,8 @@ public class Anamnese extends AbstractEntity {
     private Tutor tutor;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "id_veterinario",nullable = false)
+    private Usuario veterinario;
 
     @Column(name = "queixa-principal")
     private String queixaPrincipal;
