@@ -15,7 +15,7 @@ public class AbstractEntity {
     private Long id;
 
     @Getter @Setter
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at",nullable = true)
     private LocalDateTime createdAt;
 
     @Getter @Setter
