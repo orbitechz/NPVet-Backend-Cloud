@@ -1,9 +1,8 @@
 package com.orbitech.npvet.Controller;
 
 import com.orbitech.npvet.DTO.AnamneseDTO;
+import com.orbitech.npvet.DTO.AnamneseHistoricoDTO;
 import com.orbitech.npvet.DTO.AnamnesePerguntaDTO;
-import com.orbitech.npvet.Entity.Anamnese;
-import com.orbitech.npvet.Entity.AnamnesePergunta;
 import com.orbitech.npvet.Service.AnamneseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,36 +40,33 @@ public class AnamneseController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> create(@RequestBody @Validated AnamneseDTO anamneseDTO) {
-        try {
-            Anamnese anamnese = anamneseService.create(anamneseDTO);
-            return ResponseEntity.ok("O registro da anamnese foi realizado com sucesso.");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante o cadastro: " + e.getMessage());
-        }
+    public ResponseEntity<AnamneseDTO> create(@RequestBody @Validated AnamneseDTO anamneseDTO) {
+            return ResponseEntity.ok(anamneseService.create(anamneseDTO));
     }
 
     @PostMapping("adicionar/pergunta/{anamneseId}")
-    public ResponseEntity<AnamnesePergunta> addQuestionAnswerToAnamnese(
+    public ResponseEntity<AnamnesePerguntaDTO> addQuestionAnswerToAnamnese(
             @PathVariable Long anamneseId,
             @RequestBody AnamnesePerguntaDTO request
     ) {
-            AnamnesePergunta anamnesePergunta = anamneseService.addQuestionAnswerToAnamnese(anamneseId,request);
-            return ResponseEntity.ok(anamnesePergunta);
+            return ResponseEntity.ok(anamneseService.addQuestionAnswerToAnamnese(anamneseId,request));
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id,
-                                         @RequestBody @Validated AnamneseDTO anamneseDTO) {
-        try {
-            Anamnese anamnese = anamneseService.update(id, anamneseDTO);
-            return ResponseEntity.ok("O registro da anamnese foi atualizado com sucesso.");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante a atualização: " + e.getMessage());
+
+    @PostMapping("/atualizar/progresso-medico/{id}")
+    public ResponseEntity<?> updateProgressoMedico(
+            @PathVariable Long id,
+            @RequestBody AnamneseHistoricoDTO progressoMedico
+    ) {
+            return ResponseEntity.ok(anamneseService.updateProgressoMedico(id, progressoMedico));
         }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id,
+                                         @RequestBody @Validated AnamneseDTO anamneseDTO) {
+            return ResponseEntity.ok(anamneseService.update(id, anamneseDTO));
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
