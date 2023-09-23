@@ -1,6 +1,6 @@
 package com.orbitech.npvet.DTO;
 
-import com.orbitech.npvet.Entity.AnamnesePergunta;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,11 +18,12 @@ public class AnamneseDTO extends AbstractEntityDTO {
     private TutorDTO tutorDTO;
 
     @NotNull(message = "O médico deve ser informado!")
-    private UsuarioDTO usuarioDTO;
+    private UsuarioDTO veterinarioDTO;
 
     private String queixaPrincipal;
 
-    private String progressoMedico;
+    @JsonIgnoreProperties("anamnese")
+    private List<AnamneseHistoricoDTO> historicoProgressoMedico;
 
     private String alimentacao;
 

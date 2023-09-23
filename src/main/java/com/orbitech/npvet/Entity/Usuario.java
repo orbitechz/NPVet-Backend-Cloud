@@ -35,7 +35,7 @@ public class Usuario extends  AbstractEntity{
     @Column(name = "senha", nullable = false, length = 20)
     private String senha;
 
-    @OneToMany(mappedBy = "usuario")
-    @JsonIgnoreProperties("usuario")
+    @OneToMany(mappedBy = "veterinario")
+    @JsonIgnoreProperties("veterinario")
     private List<Anamnese> anamneses = new ArrayList<>();
 }
