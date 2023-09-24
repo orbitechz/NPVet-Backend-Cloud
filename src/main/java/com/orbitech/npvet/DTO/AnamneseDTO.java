@@ -2,13 +2,15 @@ package com.orbitech.npvet.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class AnamneseDTO extends AbstractEntityDTO {
 
     @NotNull(message = "O animal deve ser informado!")
