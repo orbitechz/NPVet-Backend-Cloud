@@ -54,7 +54,7 @@ public class AnamneseController {
 
 
     @PostMapping("/atualizar/progresso-medico/{id}")
-    public ResponseEntity<?> updateProgressoMedico(
+    public ResponseEntity<?> addProgressoMedico(
             @PathVariable Long id,
             @RequestBody AnamneseHistoricoDTO progressoMedico
     ) {
