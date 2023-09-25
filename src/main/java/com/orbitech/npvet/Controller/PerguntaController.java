@@ -1,9 +1,6 @@
 package com.orbitech.npvet.Controller;
 
-import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.PerguntaDTO;
-import com.orbitech.npvet.Entity.Anamnese;
-import com.orbitech.npvet.Entity.Pergunta;
 import com.orbitech.npvet.Service.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,13 +28,12 @@ public class PerguntaController {
 
     @PostMapping("/post")
     public ResponseEntity<PerguntaDTO> create(@RequestBody @Validated PerguntaDTO perguntaDTO) {
-            return ResponseEntity.ok(perguntaService.create(perguntaDTO));
+        return ResponseEntity.ok(perguntaService.create(perguntaDTO));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<PerguntaDTO> update(@PathVariable Long id,
-                                         @RequestBody @Validated PerguntaDTO perguntaDTO) {
-            return ResponseEntity.ok(perguntaService.update(id, perguntaDTO));
+    public ResponseEntity<PerguntaDTO> update(@PathVariable Long id, @RequestBody @Validated PerguntaDTO perguntaDTO) {
+        return ResponseEntity.ok(perguntaService.update(id, perguntaDTO));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -45,6 +41,4 @@ public class PerguntaController {
         this.perguntaService.delete(id);
         return ResponseEntity.ok().body("Pergunta excluída com sucesso!");
     }
-
-
 }
