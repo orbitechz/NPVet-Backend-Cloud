@@ -90,7 +90,9 @@ public class UsuarioServiceTest {
     }
     @Test
     void usuarioPutTest(){
-
+        UsuarioDTO result = service.update(1L,usuarioDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Usuario.class));
     }
     @Test
     void usuarioDeleteTest(){
