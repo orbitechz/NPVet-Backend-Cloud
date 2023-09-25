@@ -17,12 +17,11 @@ import java.util.List;
 public class PerguntaService {
 
     private final PerguntaRepository perguntaRepository;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
-    public PerguntaService(PerguntaRepository perguntaRepository, ModelMapper modelMapper) {
+    public PerguntaService(PerguntaRepository perguntaRepository) {
         this.perguntaRepository = perguntaRepository;
-        this.modelMapper = modelMapper;
     }
 
     public PerguntaDTO getById(Long id) {
@@ -44,15 +43,15 @@ public class PerguntaService {
         return perguntaDTOS;
     }
 
-    public Pergunta create(PerguntaDTO perguntaDTO) {
+    public PerguntaDTO create(PerguntaDTO perguntaDTO) {
 
         if (perguntaRepository.existsByEnunciado(perguntaDTO.getEnunciado())) {
             throw new DataIntegrityViolationException("O enunciado deve ser único.");
         }
-        return perguntaRepository.save(toPergunta(perguntaDTO));
+        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
     }
 
-    public Pergunta update(Long id, PerguntaDTO perguntaDTO) {
+    public PerguntaDTO update(Long id, PerguntaDTO perguntaDTO) {
 
         Pergunta existingPergunta = perguntaRepository.findById(id).orElse(null);
         Assert.notNull(existingPergunta, String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
@@ -66,8 +65,7 @@ public class PerguntaService {
         if (existenteComMesmoEnunciado != null && !existenteComMesmoEnunciado.getId().equals(id)) {
             throw new IllegalArgumentException("O enunciado deve ser único, e o enunciado fornecido já existe.");
         }
-
-        return perguntaRepository.save(toPergunta(perguntaDTO));
+        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
     }
 
     public void delete(Long id) {
