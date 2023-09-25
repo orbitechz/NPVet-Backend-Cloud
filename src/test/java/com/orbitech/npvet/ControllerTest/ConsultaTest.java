@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -49,6 +50,9 @@ import static org.mockito.Mockito.when;
     //private Anamnese anamnese = new Anamnese();
     private List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
+    @Autowired
+    private ModelMapper modelMapper;
+
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
@@ -99,5 +103,12 @@ import static org.mockito.Mockito.when;
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTOList);
     }
 
+    @Test
+    void consultaPostTest(){
+        ResponseEntity<ConsultaDTO>response = controller.create(consultaDTO);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
+
+    }
 
 }
