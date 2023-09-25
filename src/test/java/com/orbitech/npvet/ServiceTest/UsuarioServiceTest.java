@@ -78,7 +78,9 @@ public class UsuarioServiceTest {
     }
     @Test
     void getAll(){
-
+        List<UsuarioDTO> result = service.getAll();
+        assertNotNull(result);
+        verify(repository,times(1)).findAll();
     }
     @Test
     void usuarioPostTest(){
