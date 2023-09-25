@@ -30,26 +30,14 @@ public class PerguntaController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> create(@RequestBody @Validated PerguntaDTO perguntaDTO) {
-        try {
-            Pergunta pergunta = perguntaService.create(perguntaDTO);
-            return ResponseEntity.ok("O registro da pergunta foi realizado com sucesso.");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante o cadastro: " + e.getMessage());
-        }
+    public ResponseEntity<PerguntaDTO> create(@RequestBody @Validated PerguntaDTO perguntaDTO) {
+            return ResponseEntity.ok(perguntaService.create(perguntaDTO));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id,
+    public ResponseEntity<PerguntaDTO> update(@PathVariable Long id,
                                          @RequestBody @Validated PerguntaDTO perguntaDTO) {
-        try {
-            Pergunta pergunta = perguntaService.update(id, perguntaDTO);
-            return ResponseEntity.ok("O registro da pergunta foi atualizado com sucesso.");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                    .body("Ocorreu um erro durante a atualização: " + e.getMessage());
-        }
+            return ResponseEntity.ok(perguntaService.update(id, perguntaDTO));
     }
 
     @DeleteMapping("/delete/{id}")
