@@ -9,6 +9,7 @@ import com.orbitech.npvet.Entity.Animal;
 import com.orbitech.npvet.Entity.Sexo;
 import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.AnimalRepository;
+import com.orbitech.npvet.Repository.TutorRepository;
 import com.orbitech.npvet.Service.AnimalService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,8 +39,8 @@ class AnimalControllerTest {
     @MockBean
     private AnimalRepository repository;
 
-    @Autowired
-    private AnimalService service;
+    @Mock
+    private TutorRepository tutorRepository;
 
     @Autowired
     private AnimalController controller;
@@ -50,8 +51,20 @@ class AnimalControllerTest {
     private AnimalDTO animalDTO = new AnimalDTO();
     private Animal animal = new Animal();
 
+    private TutorDTO tutorDTO = new TutorDTO();
+
+    private Tutor tutor = new Tutor();
+
+
     @BeforeEach
     void SetUP(){
+        tutorDTO.setId(2L);
+        tutorDTO.setNome("Alice");
+        tutorDTO.setCpf("123");
+
+        tutor.setId(2L);
+        tutor.setNome("Alice");
+        tutor.setCpf("123");
 
         animal.setNome("toto");
         animal.setRaca("Cachorro");
@@ -60,6 +73,7 @@ class AnimalControllerTest {
         animal.setPelagem("baixa");
         animal.setProcedencia("Duvidosa");
         animal.setPeso(10.50);
+        animal.setTutor_id(tutor);
 
         animalDTO.setNome("toto");
         animalDTO.setRaca("Cachorro");
@@ -68,9 +82,14 @@ class AnimalControllerTest {
         animalDTO.setPelagem("baixa");
         animalDTO.setProcedencia("Duvidosa");
         animalDTO.setPeso(10.50);
+        animalDTO.setTutor_id(tutorDTO);
+
 
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);
+
+        when(tutorRepository.findById(animalDTO.getTutor_id().getId())).thenReturn(Optional.of(tutor));
+
 
         when(repository.findById(1L)).thenReturn(Optional.of(animal));
         when(repository.findAll()).thenReturn(animalList);
@@ -78,10 +97,8 @@ class AnimalControllerTest {
         when(repository.findAllByRacaLike("Cachorro")).thenReturn(animalList);
         when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
 
-        System.out.println(animalList.size());
+        when(repository.save(animal)).thenReturn(animal);
 
-        when(service.toAnimalDTO(animal)).thenReturn(animalDTO);
-        when(service.toAnimal(animalDTO)).thenReturn(animal);
 
         when(modelMapper.map(animal, AnimalDTO.class)).thenReturn(animalDTO);
         when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
@@ -130,6 +147,14 @@ class AnimalControllerTest {
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         List<AnimalDTO> responseBody = response.getBody();
         assertEquals(1, responseBody.size());
+    }
+
+    @Test
+    void create(){
+
+        ResponseEntity<AnimalDTO> response = controller.create(animalDTO);
+        assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
 
