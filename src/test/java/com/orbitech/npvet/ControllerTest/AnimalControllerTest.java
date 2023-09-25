@@ -32,13 +32,13 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class AnimalControllerTest {
 
-    @MockBean
+    @Mock
     AnimalRepository repository;
 
-    @Autowired
+    @Mock
     AnimalService service;
 
-    @Autowired
+    @InjectMocks
     AnimalController controller;
 
     private static final AnimalDTO animalDTO = new AnimalDTO("toto", "Cachorro", "Cachorro", Sexo.MACHO, 10, 10.50, "baixa", "duvidosa", new TutorDTO());
