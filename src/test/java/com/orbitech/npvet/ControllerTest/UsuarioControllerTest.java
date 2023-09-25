@@ -22,7 +22,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class UsuarioControllerTest {
@@ -86,11 +86,17 @@ class UsuarioControllerTest {
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
     @Test
-    void UsuarioPutTest(){
+    void usuarioPutTest(){
         ResponseEntity<UsuarioDTO>response = controller.update(1L,usuarioDTO);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
+    @Test
+    void usuarioDeleteTest(){
+        ResponseEntity<String>response = controller.delete(1L);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        verify(repository,times(1)).deleteById(1L);
 
+    }
 
 }
