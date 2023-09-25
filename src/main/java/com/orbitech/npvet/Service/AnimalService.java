@@ -1,8 +1,6 @@
 package com.orbitech.npvet.Service;
 
-import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.AnimalDTO;
-import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.Animal;
 import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.AnimalRepository;
@@ -12,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AnimalService {

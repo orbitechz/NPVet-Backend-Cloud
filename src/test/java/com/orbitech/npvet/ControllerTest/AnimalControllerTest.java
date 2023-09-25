@@ -2,11 +2,9 @@ package com.orbitech.npvet.ControllerTest;
 
 
 import com.orbitech.npvet.Controller.AnimalController;
-import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.AnimalDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.Animal;
-import com.orbitech.npvet.Entity.Sexo;
 import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Repository.AnimalRepository;
 import com.orbitech.npvet.Repository.TutorRepository;
@@ -16,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +27,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -42,7 +38,10 @@ class AnimalControllerTest {
     @Mock
     private TutorRepository tutorRepository;
 
-    @Autowired
+    @Mock
+    private AnimalService service;
+
+    @InjectMocks
     private AnimalController controller;
 
     @Mock
@@ -88,7 +87,7 @@ class AnimalControllerTest {
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);
 
-        when(tutorRepository.findById(animalDTO.getTutor_id().getId())).thenReturn(Optional.of(tutor));
+        when(tutorRepository.findById(2L)).thenReturn(Optional.of(tutor));
 
 
         when(repository.findById(1L)).thenReturn(Optional.of(animal));
@@ -151,8 +150,14 @@ class AnimalControllerTest {
 
     @Test
     void create(){
-
         ResponseEntity<AnimalDTO> response = controller.create(animalDTO);
+        assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    void update(){
+        ResponseEntity<AnimalDTO> response = controller.update(1L, animalDTO);
         assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
