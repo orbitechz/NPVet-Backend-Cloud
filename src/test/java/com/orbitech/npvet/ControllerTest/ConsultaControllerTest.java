@@ -5,7 +5,6 @@ import com.orbitech.npvet.DTO.*;
 import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.ConsultaRepository;
 import com.orbitech.npvet.Service.ConsultaService;
-import org.assertj.core.api.RecursiveComparisonAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -28,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-    class ConsultaTest {
+    class ConsultaControllerTest {
 
     @MockBean
     private ConsultaRepository repository;
