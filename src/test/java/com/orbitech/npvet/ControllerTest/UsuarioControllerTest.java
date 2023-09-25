@@ -85,7 +85,12 @@ class UsuarioControllerTest {
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
-
+    @Test
+    void UsuarioPutTest(){
+        ResponseEntity<UsuarioDTO>response = controller.update(1L,usuarioDTO);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
+    }
 
 
 }
