@@ -114,11 +114,8 @@ public class ConsultaServiceTest {
     }
     @Test
     void consultaDeleteTest(){
-
+        service.delete(1L);
+        assertNotNull(repository);
+        verify(repository,times(1)).deleteById(1L);
     }
-
-
-
-
-
 }
