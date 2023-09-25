@@ -54,4 +54,7 @@ public class Animal extends AbstractEntity{
     @OneToMany(mappedBy = "animal")
     private List<Consulta> consulta;
 
+    public Animal(String nome, String raca, String especie, Sexo sexo, int idade, double peso, String pelagem, String procedencia, Tutor tutor_id) {
+        super();
+    }
 }
