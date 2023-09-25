@@ -99,10 +99,4 @@ public class UsuarioServiceTest {
        service.delete(1L);
         verify(repository,times(1)).deleteById(1L);
     }
-
-
-
-
-
-
 }
