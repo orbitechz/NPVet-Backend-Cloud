@@ -84,7 +84,9 @@ public class UsuarioServiceTest {
     }
     @Test
     void usuarioPostTest(){
-
+        UsuarioDTO result = service.create(usuarioDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Usuario.class));
     }
     @Test
     void usuarioPutTest(){
