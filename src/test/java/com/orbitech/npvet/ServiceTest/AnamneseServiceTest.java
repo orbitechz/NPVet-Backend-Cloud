@@ -1,6 +1,5 @@
-package com.orbitech.npvet.ControllerTest;
+package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.Controller.AnamneseController;
 import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.AnimalDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
@@ -11,42 +10,35 @@ import com.orbitech.npvet.Entity.Tutor;
 import com.orbitech.npvet.Entity.Usuario;
 import com.orbitech.npvet.Repository.AnamneseRepository;
 import com.orbitech.npvet.Service.AnamneseService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class AnamneseControllerTest {
+class AnamneseServiceTest {
 
-    @Autowired
-    private AnamneseController anamneseController;
-
-    @Autowired
+    @InjectMocks
     private AnamneseService anamneseService;
 
     @Mock
-    private ModelMapper modelMapper;
-
-    @MockBean
     private AnamneseRepository anamneseRepository;
+
+    @Mock
+    private ModelMapper modelMapper;
 
     AnamneseDTO anamneseDTO = new AnamneseDTO();
     Anamnese anamnese = new Anamnese();
@@ -54,7 +46,8 @@ class AnamneseControllerTest {
     List<Anamnese> anamneseList = new ArrayList<>();
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
+
         AnimalDTO animalDTO = new AnimalDTO();
         animalDTO.setId(1L);
         animalDTO.setNome("Buddy");
@@ -103,69 +96,60 @@ class AnamneseControllerTest {
             when(modelMapper.map(anamnese, AnamneseDTO.class)).thenReturn(anamneseDTO);
             anamneseDTOList.add(anamneseDTO);
         }
-    }
-
-    @Test
-    void getByIdTest(){
-        ResponseEntity<AnamneseDTO> response = anamneseController.getById(1L);
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
-
-    @Test
-    void getAllTest(){
-        ResponseEntity<List<AnamneseDTO>> response = anamneseController.getAll();
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
-
-    @Test
-    void getByTutorCpfTest() {
-        ResponseEntity<List<AnamneseDTO>> response = anamneseController.getByTutorCpf("123");
-        assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        List<AnamneseDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
-    }
-
-
-    @Test
-    void getByTutorCpfAndAnimal(){
-        ResponseEntity<List<AnamneseDTO>> response =
-                anamneseController.getByTutorCpfAndAnimal("123", "Buddy");
-
-        assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-
-        List<AnamneseDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
-    }
-
-    @Test
-    void createTest(){
 
     }
 
     @Test
-    @DisplayName("Teste de adição de Perguntas e Respostas à Anamnese")
-    void addQuestionAnswerToAnamneseTest(){
-
+    void testGetById() {
+        AnamneseDTO result = anamneseService.getById(1L);
+        assertEquals(anamnese.getId(), result.getId());
+        Mockito.verify(anamneseRepository, times(1)).findById(1L);
     }
 
     @Test
-    @DisplayName("Teste de adição de Progresso Médico")
-    void addProgressoMedicoTest(){
-
+    void testGetAll() {
+        List<AnamneseDTO> result = anamneseService.getAll();
+        assertEquals(1, result.size());
     }
 
     @Test
-    void updateTest(){
-
+    void testGetAllWithoutAnamneses() {
+        when(anamneseRepository.findAll()).thenReturn(Collections.emptyList());
+        List<AnamneseDTO> result = anamneseService.getAll();
+        assertEquals(Collections.emptyList(), result);
     }
 
     @Test
-    void deleteTest(){
-
+    void testGetByTutorCpfWithAnamneses() {
+        List<AnamneseDTO> result = anamneseService.getByTutorCpfAndAnimal("123","Buddy");
+        assertEquals(1, result.size());
     }
+
+    @Test
+    void testGetByTutorCpfWithoutTutor() {
+        when(anamneseRepository.findByTutorCpf("123")).thenReturn(Collections.emptyList());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.getByTutorCpf("123");
+        });
+        assertEquals("Nenhuma anamnese encontrada para o tutor com CPF: 123", exception.getMessage());
+    }
+
+    @Test
+    void testGetByTutorCpfAndAnimalWithTutor() {
+        List<AnamneseDTO> result = anamneseService.getByTutorCpfAndAnimal("123","Buddy");
+        assertEquals(1, result.size());
+    }
+
+    @Test
+    void testGetByTutorCpfAndAnimalWithoutTutor() {
+        when(anamneseRepository.findByTutorCpfAndAnimal("123","Buddy")).thenReturn(Collections.emptyList());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.getByTutorCpfAndAnimal("123","Buddy");
+        });
+        assertEquals("Nenhuma anamnese encontrada para o animal do tutor com CPF: 123", exception.getMessage());
+    }
+
+
+
 
 }
