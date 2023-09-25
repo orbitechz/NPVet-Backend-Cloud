@@ -2,7 +2,6 @@ package com.orbitech.npvet.ControllerTest;
 
 
 import com.orbitech.npvet.Controller.AnimalController;
-import com.orbitech.npvet.DTO.AnamneseDTO;
 import com.orbitech.npvet.DTO.AnimalDTO;
 import com.orbitech.npvet.DTO.TutorDTO;
 import com.orbitech.npvet.Entity.Animal;
@@ -15,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -32,13 +32,13 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class AnimalControllerTest {
 
-    @Mock
+    @Autowired
     AnimalRepository repository;
 
-    @Mock
+    @Autowired
     AnimalService service;
 
-    @InjectMocks
+    @MockBean
     AnimalController controller;
 
     private static final AnimalDTO animalDTO = new AnimalDTO("toto", "Cachorro", "Cachorro", Sexo.MACHO, 10, 10.50, "baixa", "duvidosa", new TutorDTO());
@@ -50,14 +50,14 @@ class AnimalControllerTest {
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);
 
-        when(repository.findById(1L)).thenReturn(Optional.of(animal));
-        when(repository.findAll()).thenReturn(animalList);
-        when(repository.findAllByEspecieLike("Cachorro")).thenReturn(animalList);
-        when(repository.findAllByRacaLike("Cachorro")).thenReturn(animalList);
-        when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
+        Mockito.when(repository.findById(1L)).thenReturn(Optional.of(animal));
+        Mockito.when(repository.findAll()).thenReturn(animalList);
+        Mockito.when(repository.findAllByEspecieLike("Cachorro")).thenReturn(animalList);
+        Mockito.when(repository.findAllByRacaLike("Cachorro")).thenReturn(animalList);
+        Mockito.when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
 
-        when(service.toAnimalDTO(animal)).thenReturn(animalDTO);
-        when(service.toAnimal(animalDTO)).thenReturn(animal);
+        Mockito.when(service.toAnimalDTO(animal)).thenReturn(animalDTO);
+        Mockito.when(service.toAnimal(animalDTO)).thenReturn(animal);
 
 
     }
