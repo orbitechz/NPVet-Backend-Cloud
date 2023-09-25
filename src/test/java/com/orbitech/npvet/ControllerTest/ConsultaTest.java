@@ -5,6 +5,7 @@ import com.orbitech.npvet.DTO.*;
 import com.orbitech.npvet.Entity.*;
 import com.orbitech.npvet.Repository.ConsultaRepository;
 import com.orbitech.npvet.Service.ConsultaService;
+import org.assertj.core.api.RecursiveComparisonAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -24,7 +25,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
     class ConsultaTest {
@@ -115,7 +116,12 @@ import static org.mockito.Mockito.when;
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
     }
-
+    @Test
+    void consultaDeleteTest(){
+        ResponseEntity<String>response = controller.delete(1L);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        verify(repository,times(1)).deleteById(1L);
+    }
 
 
 }
