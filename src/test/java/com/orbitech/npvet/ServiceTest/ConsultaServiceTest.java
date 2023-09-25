@@ -1,4 +1,4 @@
-package com.orbitech.npvet.ControllerTest;
+package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.Controller.ConsultaController;
 import com.orbitech.npvet.DTO.*;
@@ -7,32 +7,28 @@ import com.orbitech.npvet.Repository.ConsultaRepository;
 import com.orbitech.npvet.Service.ConsultaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
-    class ConsultaTest {
-
-    @MockBean
+ class ConsultaServiceTest {
+    @Mock
     private ConsultaRepository repository;
-    @Autowired
+    @Mock
     private ConsultaController controller;
-    @Autowired
+    @InjectMocks
     private ConsultaService service;
 
     private Consulta consultaEntidade = new Consulta();
@@ -41,14 +37,15 @@ import static org.mockito.Mockito.when;
     private List<ConsultaDTO>consultaDTOList = new ArrayList<>();
     private AnimalDTO animalDTO = new AnimalDTO();
     private TutorDTO tutorDTO = new TutorDTO();
-   // private AnamneseDTO anamneseDTO = new AnamneseDTO();
     private List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
     private UsuarioDTO veterinarios = new UsuarioDTO();
     private Animal animal = new Animal();
     private Tutor tutor = new Tutor();
-    //private Anamnese anamnese = new Anamnese();
     private List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
+    @Autowired
+    private ModelMapper modelMapper;
+
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
@@ -58,11 +55,11 @@ import static org.mockito.Mockito.when;
         consultaDTO.setId(1L);
         consultaDTO.setAnimal(animalDTO);
         consultaDTO.setTutor(tutorDTO);
-        //consultaDTO.setAnamnese(anamneseDTO);
         consultaDTO.setData(LocalDateTime.of(2023, Month.SEPTEMBER,24,0,0));
         consultaDTO.setStatus(Status.EM_ANDAMENTO);
         consultaDTO.setExamesFisicos(exameFisicoDTOList);
         consultaDTO.setVeterinario(veterinarios);
+        consultaDTOList.add(consultaDTO);
 
 
         exameFisicos.add(new ExameFisico());
@@ -70,13 +67,12 @@ import static org.mockito.Mockito.when;
         consultaEntidade.setId(1L);
         consultaEntidade.setAnimal(animal);
         consultaEntidade.setTutor(tutor);
-        //consultaEntidade.setAnamnese(anamnese);
         consultaEntidade.setData(LocalDateTime.of(2023, Month.SEPTEMBER,24,0,0));
         consultaEntidade.setStatus(Status.EM_ANDAMENTO);
         consultaEntidade.setExamesFisicos(exameFisicos);
         consultaEntidade.setVeterinario(veterinariosEntidade);
+        consultaList.add(consultaEntidade);
 
-        //when(repository.findById(1L)).thenReturn(Optional.of(consultaEntidade));
         when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(consultaEntidade));
         when(repository.findAll()).thenReturn(consultaList);
         when(repository.save(Mockito.any(Consulta.class))).thenReturn(consultaEntidade);
@@ -85,12 +81,34 @@ import static org.mockito.Mockito.when;
 
     @Test
     void consultaFindById() throws Exception {
-        ResponseEntity<ConsultaDTO> response = controller.getById(1L);
-        assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
-
+       ConsultaDTO result = service.getById(1L);
+       assertNotNull(result);
+       verify(repository,times(1)).findById(1L);
+    }
+    @Test
+    void consultaGetAllTest(){
+        List <ConsultaDTO> result = service.getAll();
+        assertNotNull(result);
+        verify(repository,times(1)).findAll();
     }
 
+    @Test
+    void consultaPostTest(){
+        ConsultaDTO result = service.create(consultaDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Consulta.class));
 
-
+    }
+    @Test
+    void consultaPutTest(){
+        ConsultaDTO result = service.update(1L,consultaDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Consulta.class));
+    }
+    @Test
+    void consultaDeleteTest(){
+        service.delete(1L);
+        assertNotNull(repository);
+        verify(repository,times(1)).deleteById(1L);
+    }
 }

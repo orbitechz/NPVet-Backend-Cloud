@@ -44,7 +44,7 @@ public class UsuarioService {
 
     @Transactional
     public void delete(long id){ //TODO: Adicionar uma lista de usuários com agendamento ativo. Se estiver ativo, não deletar.
-        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado."));
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
         repository.deleteById(id);
     }
 }

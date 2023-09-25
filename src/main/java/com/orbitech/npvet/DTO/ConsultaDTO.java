@@ -19,7 +19,7 @@ public class ConsultaDTO extends AbstractEntityDTO {
     private AnimalDTO animal;
     @NotNull(message = "Você precisa selecionar um tutor.") //TODO: Decidir se deixamos o id do tutor na consulta, ou apenas na anamnese.
     private TutorDTO tutor;
-    private List<AnamneseDTO> anamnese;
+    private AnamneseDTO anamnese;
     private List<ExameFisicoDTO>examesFisicos;
     @NotNull(message = "Informe a data.")
     private LocalDateTime data;
