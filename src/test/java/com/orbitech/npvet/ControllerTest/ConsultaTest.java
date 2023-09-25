@@ -108,7 +108,14 @@ import static org.mockito.Mockito.when;
         ResponseEntity<ConsultaDTO>response = controller.create(consultaDTO);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
-
     }
+    @Test
+    void consultaPutTest(){
+        ResponseEntity<ConsultaDTO>response = controller.update(1L,consultaDTO);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
+    }
+
+
 
 }
