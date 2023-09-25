@@ -108,7 +108,9 @@ public class ConsultaServiceTest {
     }
     @Test
     void consultaPutTest(){
-
+        ConsultaDTO result = service.update(1L,consultaDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Consulta.class));
     }
     @Test
     void consultaDeleteTest(){
