@@ -94,7 +94,9 @@ public class ConsultaServiceTest {
     }
     @Test
     void consultaGetAllTest(){
-
+        List <ConsultaDTO> result = service.getAll();
+        assertNotNull(result);
+        verify(repository,times(1)).findAll();
     }
 
     @Test
