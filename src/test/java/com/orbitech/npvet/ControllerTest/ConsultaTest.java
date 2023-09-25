@@ -63,6 +63,7 @@ import static org.mockito.Mockito.when;
         consultaDTO.setStatus(Status.EM_ANDAMENTO);
         consultaDTO.setExamesFisicos(exameFisicoDTOList);
         consultaDTO.setVeterinario(veterinarios);
+        consultaDTOList.add(consultaDTO);
 
 
         exameFisicos.add(new ExameFisico());
@@ -75,6 +76,7 @@ import static org.mockito.Mockito.when;
         consultaEntidade.setStatus(Status.EM_ANDAMENTO);
         consultaEntidade.setExamesFisicos(exameFisicos);
         consultaEntidade.setVeterinario(veterinariosEntidade);
+        consultaList.add(consultaEntidade);
 
         //when(repository.findById(1L)).thenReturn(Optional.of(consultaEntidade));
         when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(consultaEntidade));
@@ -90,7 +92,12 @@ import static org.mockito.Mockito.when;
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTO);
 
     }
-
+    @Test
+    void consultaGetAllTest(){
+        ResponseEntity<List<ConsultaDTO>>response = controller.getAll();
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(consultaDTOList);
+    }
 
 
 }
