@@ -1,7 +1,10 @@
 package com.orbitech.npvet.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.orbitech.npvet.Entity.Sexo;
 import com.orbitech.npvet.Entity.Tutor;
+import com.orbitech.npvet.Entity.Vacina;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -9,6 +12,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
@@ -45,4 +51,7 @@ public class AnimalDTO extends AbstractEntityDTO{
 
     @NotNull(message = "É obrigatorio informar o id do tutor")
     private TutorDTO tutor_id;
+
+    @JsonIgnoreProperties("animal")
+    private List<Vacina> vacinas;
 }
