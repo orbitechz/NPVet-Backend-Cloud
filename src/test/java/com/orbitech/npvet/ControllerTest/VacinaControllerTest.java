@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class VacinaControllerTests {
+public class VacinaControllerTest {
     @Autowired
     private VacinaController controller;
     @Autowired
