@@ -23,5 +23,5 @@ public class VacinaDTO extends AbstractEntityDTO {
     private LocalDate dataAplicacao;
     private LocalDate dataRetorno;
     private String descricao;
-    private Animal animal;
+    private AnimalDTO animal;
 }
