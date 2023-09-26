@@ -1,12 +1,12 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.DTO.AnimalDTO;
-import com.orbitech.npvet.DTO.VacinaDTO;
-import com.orbitech.npvet.Entity.Animal;
-import com.orbitech.npvet.Entity.Vacina;
-import com.orbitech.npvet.Repository.AnimalRepository;
-import com.orbitech.npvet.Repository.VacinaRepository;
-import com.orbitech.npvet.Service.VacinaService;
+import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.VacinaDTO;
+import com.orbitech.npvet.entity.Animal;
+import com.orbitech.npvet.entity.Vacina;
+import com.orbitech.npvet.repository.AnimalRepository;
+import com.orbitech.npvet.repository.VacinaRepository;
+import com.orbitech.npvet.service.VacinaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

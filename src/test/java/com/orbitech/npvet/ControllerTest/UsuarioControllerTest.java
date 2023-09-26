@@ -1,11 +1,11 @@
 package com.orbitech.npvet.ControllerTest;
 
-import com.orbitech.npvet.Controller.UsuarioController;
-import com.orbitech.npvet.DTO.UsuarioDTO;
-import com.orbitech.npvet.Entity.TipoUsuario;
-import com.orbitech.npvet.Entity.Usuario;
-import com.orbitech.npvet.Repository.UsuarioRepository;
-import com.orbitech.npvet.Service.UsuarioService;
+import com.orbitech.npvet.controller.UsuarioController;
+import com.orbitech.npvet.dto.UsuarioDTO;
+import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Usuario;
+import com.orbitech.npvet.repository.UsuarioRepository;
+import com.orbitech.npvet.service.UsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
