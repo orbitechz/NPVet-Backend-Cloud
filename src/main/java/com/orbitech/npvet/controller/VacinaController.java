@@ -23,8 +23,8 @@ public class VacinaController {
         return ResponseEntity.ok(service.getAllByNome(nome));
     }
     @GetMapping("/animal/{animalId}")
-    public ResponseEntity<List<VacinaDTO>> getByAnimal(@PathVariable("animalId") Long animal_id) {
-        return ResponseEntity.ok(service.getByAnimal(animal_id));
+    public ResponseEntity<List<VacinaDTO>> getByAnimal(@PathVariable("animalId") Long animalId) {
+        return ResponseEntity.ok(service.getByAnimal(animalId));
     }
     @PostMapping("/post")
     public ResponseEntity<VacinaDTO> create(@RequestBody @Validated VacinaDTO vacinaDTO){
