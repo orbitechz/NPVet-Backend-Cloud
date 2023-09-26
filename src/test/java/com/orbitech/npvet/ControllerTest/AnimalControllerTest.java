@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,10 +24,12 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -35,16 +38,16 @@ class AnimalControllerTest {
     @MockBean
     private AnimalRepository repository;
 
-    @Mock
+    @MockBean
     private TutorRepository tutorRepository;
 
-    @Mock
+    @Autowired
     private AnimalService service;
 
-    @InjectMocks
+    @Autowired
     private AnimalController controller;
 
-    @Mock
+    @MockBean
     private ModelMapper modelMapper;
 
     private AnimalDTO animalDTO = new AnimalDTO();
@@ -96,8 +99,7 @@ class AnimalControllerTest {
         when(repository.findAllByRacaLike("Cachorro")).thenReturn(animalList);
         when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
 
-        when(repository.save(animal)).thenReturn(animal);
-
+        when(repository.save(Mockito.any(Animal.class))).thenReturn(animal);
 
         when(modelMapper.map(animal, AnimalDTO.class)).thenReturn(animalDTO);
         when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
@@ -153,19 +155,18 @@ class AnimalControllerTest {
         ResponseEntity<AnimalDTO> response = controller.create(animalDTO);
         assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
     }
 
     @Test
     void update(){
+        animalDTO.setId(1L);
+        animal.setId(1L);
         ResponseEntity<AnimalDTO> response = controller.update(1L, animalDTO);
         assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
     }
-
-
-
-
-
 
 
 }
