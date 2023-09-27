@@ -51,7 +51,7 @@ import static org.mockito.Mockito.*;
     private List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @BeforeEach
     void setUp(){

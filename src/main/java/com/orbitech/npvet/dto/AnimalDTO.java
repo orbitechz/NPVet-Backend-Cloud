@@ -1,16 +1,12 @@
 package com.orbitech.npvet.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.orbitech.npvet.entity.Sexo;
-import com.orbitech.npvet.entity.Vacina;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,7 +44,4 @@ public class AnimalDTO extends AbstractEntityDTO{
 
     @NotNull(message = "É obrigatorio informar o id do tutor")
     private TutorDTO tutor_id;
-
-    @JsonIgnoreProperties("animal")
-    private List<Vacina> vacinas;
 }
