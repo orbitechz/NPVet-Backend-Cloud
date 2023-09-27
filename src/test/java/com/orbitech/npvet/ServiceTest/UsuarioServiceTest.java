@@ -1,23 +1,18 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.Controller.UsuarioController;
-import com.orbitech.npvet.DTO.UsuarioDTO;
-import com.orbitech.npvet.Entity.TipoUsuario;
-import com.orbitech.npvet.Entity.Usuario;
-import com.orbitech.npvet.Repository.UsuarioRepository;
-import com.orbitech.npvet.Service.UsuarioService;
-import org.junit.jupiter.api.Assertions;
+import com.orbitech.npvet.controller.UsuarioController;
+import com.orbitech.npvet.dto.UsuarioDTO;
+import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Usuario;
+import com.orbitech.npvet.repository.UsuarioRepository;
+import com.orbitech.npvet.service.UsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;

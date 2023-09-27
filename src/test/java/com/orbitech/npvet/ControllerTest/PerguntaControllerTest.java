@@ -1,10 +1,10 @@
 package com.orbitech.npvet.ControllerTest;
 
-import com.orbitech.npvet.Controller.PerguntaController;
-import com.orbitech.npvet.DTO.*;
-import com.orbitech.npvet.Entity.*;
-import com.orbitech.npvet.Repository.PerguntaRepository;
-import com.orbitech.npvet.Service.PerguntaService;
+import com.orbitech.npvet.controller.PerguntaController;
+import com.orbitech.npvet.dto.*;
+import com.orbitech.npvet.entity.*;
+import com.orbitech.npvet.repository.PerguntaRepository;
+import com.orbitech.npvet.service.PerguntaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
