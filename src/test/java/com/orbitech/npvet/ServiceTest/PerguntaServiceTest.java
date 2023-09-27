@@ -1,16 +1,16 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.Controller.ConsultaController;
-import com.orbitech.npvet.Controller.PerguntaController;
-import com.orbitech.npvet.DTO.AnamneseDTO;
-import com.orbitech.npvet.DTO.ConsultaDTO;
-import com.orbitech.npvet.DTO.PerguntaDTO;
-import com.orbitech.npvet.Entity.Anamnese;
-import com.orbitech.npvet.Entity.Pergunta;
-import com.orbitech.npvet.Repository.ConsultaRepository;
-import com.orbitech.npvet.Repository.PerguntaRepository;
-import com.orbitech.npvet.Service.ConsultaService;
-import com.orbitech.npvet.Service.PerguntaService;
+import com.orbitech.npvet.controller.ConsultaController;
+import com.orbitech.npvet.controller.PerguntaController;
+import com.orbitech.npvet.dto.AnamneseDTO;
+import com.orbitech.npvet.dto.ConsultaDTO;
+import com.orbitech.npvet.dto.PerguntaDTO;
+import com.orbitech.npvet.entity.Anamnese;
+import com.orbitech.npvet.entity.Pergunta;
+import com.orbitech.npvet.repository.ConsultaRepository;
+import com.orbitech.npvet.repository.PerguntaRepository;
+import com.orbitech.npvet.service.ConsultaService;
+import com.orbitech.npvet.service.PerguntaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

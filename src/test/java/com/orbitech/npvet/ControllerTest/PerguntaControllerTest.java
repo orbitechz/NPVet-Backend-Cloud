@@ -1,10 +1,10 @@
 package com.orbitech.npvet.ControllerTest;
 
-import com.orbitech.npvet.Controller.PerguntaController;
-import com.orbitech.npvet.DTO.*;
-import com.orbitech.npvet.Entity.*;
-import com.orbitech.npvet.Repository.PerguntaRepository;
-import com.orbitech.npvet.Service.PerguntaService;
+import com.orbitech.npvet.controller.PerguntaController;
+import com.orbitech.npvet.dto.*;
+import com.orbitech.npvet.entity.*;
+import com.orbitech.npvet.repository.PerguntaRepository;
+import com.orbitech.npvet.service.PerguntaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,7 +22,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -65,14 +64,12 @@ public class PerguntaControllerTest {
     @Test
     void getByIdTest() {
         ResponseEntity<PerguntaDTO> response = perguntaController.getById(1L);
-        assertNotNull(response);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(perguntaDTO);
     }
     @Test
     void getAllTest(){
         ResponseEntity<List<PerguntaDTO>>response = perguntaController.getAll();
-        assertNotNull(response);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(perguntaDTOList);
     }
@@ -80,7 +77,6 @@ public class PerguntaControllerTest {
     @Test
     void createTest(){
         ResponseEntity<PerguntaDTO> response = perguntaController.create(perguntaDTO);
-        assertNotNull(response);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(perguntaDTO);
     }
@@ -88,7 +84,6 @@ public class PerguntaControllerTest {
     @Test
     void updateTest(){
         ResponseEntity<PerguntaDTO> response = perguntaController.update(1L, perguntaDTO);
-        assertNotNull(response);
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(perguntaDTO);
     }
@@ -96,6 +91,7 @@ public class PerguntaControllerTest {
     @Test
     void deleteTest(){
         ResponseEntity<String> response = perguntaController.delete(1L);
-        assertEquals(HttpStatus.OK,response.getStatusCode());}
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+    }
 
 }
