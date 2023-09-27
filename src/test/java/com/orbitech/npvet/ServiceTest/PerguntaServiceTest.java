@@ -1,6 +1,5 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.controller.ConsultaController;
 import com.orbitech.npvet.controller.PerguntaController;
 import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.ConsultaDTO;
