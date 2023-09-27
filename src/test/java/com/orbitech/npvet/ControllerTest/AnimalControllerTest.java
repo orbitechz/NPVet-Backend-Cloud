@@ -1,22 +1,17 @@
 package com.orbitech.npvet.ControllerTest;
 
 
-import com.orbitech.npvet.Controller.AnimalController;
-import com.orbitech.npvet.DTO.AnamneseDTO;
-import com.orbitech.npvet.DTO.AnimalDTO;
-import com.orbitech.npvet.DTO.TutorDTO;
-import com.orbitech.npvet.Entity.Animal;
-import com.orbitech.npvet.Entity.Sexo;
-import com.orbitech.npvet.Entity.Tutor;
-import com.orbitech.npvet.Repository.AnimalRepository;
-import com.orbitech.npvet.Repository.TutorRepository;
-import com.orbitech.npvet.Service.AnimalService;
+import com.orbitech.npvet.controller.AnimalController;
+import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.entity.Animal;
+import com.orbitech.npvet.entity.Tutor;
+import com.orbitech.npvet.repository.AnimalRepository;
+import com.orbitech.npvet.repository.TutorRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +25,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest

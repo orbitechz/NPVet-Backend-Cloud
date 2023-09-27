@@ -1,10 +1,10 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.Controller.ConsultaController;
-import com.orbitech.npvet.DTO.*;
-import com.orbitech.npvet.Entity.*;
-import com.orbitech.npvet.Repository.ConsultaRepository;
-import com.orbitech.npvet.Service.ConsultaService;
+import com.orbitech.npvet.controller.ConsultaController;
+import com.orbitech.npvet.dto.*;
+import com.orbitech.npvet.entity.*;
+import com.orbitech.npvet.repository.ConsultaRepository;
+import com.orbitech.npvet.service.ConsultaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
