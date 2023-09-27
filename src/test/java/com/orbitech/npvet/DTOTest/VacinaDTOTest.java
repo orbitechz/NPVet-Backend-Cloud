@@ -3,7 +3,6 @@ package com.orbitech.npvet.DTOTest;
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Animal;
-import com.orbitech.npvet.entity.Vacina;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

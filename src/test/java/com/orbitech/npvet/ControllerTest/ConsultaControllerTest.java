@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-    class ConsultaControllerTest {
+class ConsultaControllerTest {
 
     @MockBean
     private ConsultaRepository repository;
@@ -42,7 +42,7 @@ import static org.mockito.Mockito.*;
     private List<ConsultaDTO>consultaDTOList = new ArrayList<>();
     private AnimalDTO animalDTO = new AnimalDTO();
     private TutorDTO tutorDTO = new TutorDTO();
-   // private AnamneseDTO anamneseDTO = new AnamneseDTO();
+    // private AnamneseDTO anamneseDTO = new AnamneseDTO();
     private List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
     private UsuarioDTO veterinarios = new UsuarioDTO();
     private Animal animal = new Animal();
