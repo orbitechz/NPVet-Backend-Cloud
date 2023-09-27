@@ -32,4 +32,10 @@ public class AnamneseHistorico extends AbstractEntity{
 
     @Column(name = "data_atualizacao")
     private LocalDate dataAtualizacao;
+
+    @PrePersist
+    private void prePersist() {
+        this.dataAtualizacao = LocalDate.now();
+    }
+
 }

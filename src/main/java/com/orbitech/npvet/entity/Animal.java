@@ -52,9 +52,6 @@ public class Animal extends AbstractEntity{
     @OneToMany(mappedBy = "animal")
     private List<Consulta> consulta;
 
-    @OneToMany(mappedBy = "animal")
-    @JsonIgnoreProperties("animal")
-    private List<Vacina> vacinas;
     public Animal(String nome, String raca, String especie, Sexo sexo, int idade, double peso, String pelagem, String procedencia, Tutor tutor_id) {
         super();
     }
