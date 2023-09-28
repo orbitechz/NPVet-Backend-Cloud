@@ -2,31 +2,29 @@ package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.controller.PerguntaController;
 import com.orbitech.npvet.dto.PerguntaDTO;
-import com.orbitech.npvet.entity.Anamnese;
 import com.orbitech.npvet.entity.Pergunta;
-import com.orbitech.npvet.repository.ConsultaRepository;
 import com.orbitech.npvet.repository.PerguntaRepository;
-import com.orbitech.npvet.service.ConsultaService;
 import com.orbitech.npvet.service.PerguntaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class PerguntaServiceTest {
+class PerguntaServiceTest {
     @Mock
     private PerguntaRepository perguntaRepository;
     @Mock
@@ -61,5 +59,81 @@ public class PerguntaServiceTest {
         assertNotNull(result);
         verify(perguntaRepository,times(1)).findById(1L);
     }
+
+    @Test
+    void testGetAll() {
+        List<PerguntaDTO> result = perguntaService.getAll();
+        assertEquals(1, result.size());
+    }
+
+    @Test
+    void testGetAllWithoutAnamneses() {
+        when(perguntaRepository.findAll()).thenReturn(Collections.emptyList());
+        List<PerguntaDTO> result = perguntaService.getAll();
+        assertEquals(Collections.emptyList(), result);
+    }
+
+    @Test
+    void createTest(){
+        PerguntaDTO result = perguntaService.create(perguntaDTO);
+        assertNotNull(result);
+        verify(perguntaRepository,times(1)).save(Mockito.any(Pergunta.class));
+    }
+
+    @Test
+    void testNonUniqueEnunciadoCreate() {
+        when(perguntaRepository.existsByEnunciado("Enunciado")).thenReturn(true);
+
+        PerguntaDTO duplicatePerguntaDTO = new PerguntaDTO();
+        duplicatePerguntaDTO.setEnunciado("DuplicateEnunciado");
+
+        DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> {
+            perguntaService.create(duplicatePerguntaDTO);
+        });
+
+        assertEquals("O enunciado deve ser único.", exception.getMessage());
+    }
+
+    @Test
+    void updateTest(){
+        PerguntaDTO result = perguntaService.update(1L,perguntaDTO);
+        assertNotNull(result);
+        verify(perguntaRepository,times(1)).save(Mockito.any(Pergunta.class));
+    }
+
+    @Test
+    void testInvalidIdPerguntaUpdate() {
+        Pergunta perguntaDiffId = new Pergunta();
+        perguntaDiffId.setId(2L);
+        when(perguntaRepository.findById(1L)).thenReturn(Optional.of(perguntaDiffId));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            perguntaService.update(1L, perguntaDTO);
+        });
+
+        assertEquals("O ID na URL não corresponde ao ID no corpo da requisição.", exception.getMessage());
+    }
+
+    @Test
+    void testNonUniqueEnunciadoUpdate() {
+        when(perguntaRepository.findByEnunciado("Enunciado")).thenReturn(new Pergunta());
+
+        PerguntaDTO duplicatePerguntaDTO = new PerguntaDTO();
+        duplicatePerguntaDTO.setEnunciado("DuplicateEnunciado");
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            perguntaService.update(1L, duplicatePerguntaDTO);
+        });
+
+        assertEquals("O enunciado deve ser único, e o enunciado fornecido já existe.", exception.getMessage());
+    }
+
+
+    @Test
+    void deleteTest(){
+        perguntaService.delete(1L);
+        assertNotNull(perguntaRepository);
+    }
+
 
 }
