@@ -27,4 +27,7 @@ public class Pergunta extends AbstractEntity{
     @Column(nullable = false,unique = true)
     private String enunciado;
 
+    public Pergunta(String enunciado) {
+        this.enunciado = enunciado;
+    }
 }
