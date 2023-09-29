@@ -103,20 +103,20 @@ public class AnamneseService {
 
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
-        anamneseRepository.save(anamnese);
-        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste =
-                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
+        Anamnese savedAnamnese = anamneseRepository.save(anamnese);
+        if (!savedAnamnese.getHistoricoProgressoMedico().isEmpty()) {
+            for (AnamneseHistorico historico : savedAnamnese.getHistoricoProgressoMedico()) {
+                boolean historicoExiste = anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
                 if (!historicoExiste) {
-                    historico.setAnamnese(anamnese);
+                    historico.setAnamnese(savedAnamnese);
                     historico.setDataAtualizacao(LocalDate.now());
                     anamneseHistoricoRepository.save(historico);
                 }
             }
         }
-        return anamneseDTO;
+        return toAnamneseDTO(savedAnamnese);
     }
+
 
 
     @Transactional
