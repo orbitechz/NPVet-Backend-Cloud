@@ -120,10 +120,6 @@ public class AnamneseService {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
 
-        if (!id.equals(anamnese.getId())) {
-            throw new IllegalArgumentException("O ID na URL não corresponde ao ID no corpo da requisição.");
-        }
-
         if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
             for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
                 boolean historicoExiste =
