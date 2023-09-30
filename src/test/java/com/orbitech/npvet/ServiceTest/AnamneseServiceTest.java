@@ -185,7 +185,6 @@ class AnamneseServiceTest {
 
     @Test
     void testCreateWithNonEmptyHistoricoProgressoMedico() {
-
         anamnese.setHistoricoProgressoMedico(anamneseHistoricos);
 
         when(anamneseHistoricoRepository.existsByProgressoMedico(anyString())).thenReturn(false);
@@ -193,5 +192,53 @@ class AnamneseServiceTest {
         AnamneseDTO result = anamneseService.create(anamneseDTO);
         verify(anamneseHistoricoRepository, times(1)).save(any(AnamneseHistorico.class));
         assertNotNull(result);
+    }
+
+    @Test
+    void testUpdateAnamnese() {
+        AnamneseDTO updatedAnamneseDTO = anamneseService.update(1L, anamneseDTO);
+
+        assertNotNull(updatedAnamneseDTO);
+        assertEquals(anamneseDTO, updatedAnamneseDTO);
+        verify(anamneseRepository, times(1)).save(any(Anamnese.class));
+        verify(anamneseHistoricoRepository, times(1)).save(any(AnamneseHistorico.class));
+    }
+
+    @Test
+    void testUpdateAnamneseWithMismatchedId() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.update(1L + 1, anamneseDTO);
+        });
+        assertEquals("O ID = 2 solicitado não foi encontrado no banco de dados.", exception.getMessage());
+    }
+
+    @Test
+    void testUpdateAnamneseWithEmptyHistoricalProgress() {
+
+        anamneseDTO.setHistoricoProgressoMedico(new ArrayList<>());
+        AnamneseDTO updatedAnamneseDTO = anamneseService.update(1L, anamneseDTO);
+
+        assertNotNull(updatedAnamneseDTO);
+        assertEquals(anamneseDTO, updatedAnamneseDTO);
+        verify(anamneseRepository, times(1)).save(any(Anamnese.class));
+        verify(anamneseHistoricoRepository, never()).save(any(AnamneseHistorico.class));
+    }
+
+    @Test
+    void testUpdateProgressoMedico() {
+
+        when(anamneseHistoricoRepository.save(any(AnamneseHistorico.class))).thenAnswer(invocation -> {
+            AnamneseHistorico savedHistorico = invocation.getArgument(0);
+            savedHistorico.setId(1L);
+            return savedHistorico;
+        });
+
+        AnamneseHistoricoDTO result = anamneseService.updateProgressoMedico(1L, anamneseHistoricoDTO);
+        verify(anamneseRepository, times(1)).save(anamnese);
+        verify(anamneseHistoricoRepository, times(1)).save(any(AnamneseHistorico.class));
+
+        assertNotNull(result);
+        assertEquals(1L, result.getId());
+        assertEquals(anamneseHistoricoDTO.getProgressoMedico(), result.getProgressoMedico());
     }
 }
