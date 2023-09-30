@@ -56,5 +56,13 @@ class PerguntaTest {
         assertEquals("Test Enunciado", perguntaWithArgs.getEnunciado());
     }
 
+    @Test
+    void testPerguntaConstructor() {
+        String enunciado = "Test Enunciado";
+        Pergunta pergunta = new Pergunta(enunciado);
+        assertNotNull(pergunta);
+        assertEquals(enunciado, pergunta.getEnunciado());
+    }
+
 
 }

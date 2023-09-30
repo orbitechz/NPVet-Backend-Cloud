@@ -34,7 +34,7 @@ public class AnamneseHistorico extends AbstractEntity{
     private LocalDate dataAtualizacao;
 
     @PrePersist
-    private void prePersistDataAtualizacao() {
+    public void prePersistDataAtualizacao() {
         this.dataAtualizacao = LocalDate.now();
     }
 
