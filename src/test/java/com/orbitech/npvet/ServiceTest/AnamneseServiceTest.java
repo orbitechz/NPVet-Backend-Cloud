@@ -286,4 +286,10 @@ class AnamneseServiceTest {
         verify(anamnesePerguntaRepository, never()).save(any(AnamnesePergunta.class));
     }
 
+    @Test
+    void deleteTest(){
+        anamneseService.delete(1L);
+        assertNotNull(anamneseRepository);
+    }
+
 }
