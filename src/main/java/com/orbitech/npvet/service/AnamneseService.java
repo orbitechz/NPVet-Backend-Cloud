@@ -10,7 +10,6 @@ import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +22,8 @@ public class AnamneseService {
     private final PerguntaRepository perguntaRepository;
     private final AnimalRepository animalRepository;
     private final TutorRepository tutorRepository;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper = new ModelMapper();
+
 
     @Autowired
     public AnamneseService(AnamneseRepository anamneseRepository,
@@ -31,18 +31,31 @@ public class AnamneseService {
                            AnamneseHistoricoRepository anamneseHistoricoRepository,
                            PerguntaRepository perguntaRepository,
                            AnimalRepository animalRepository,
-                           TutorRepository tutorRepository,
-                           ModelMapper modelMapper) {
+                           TutorRepository tutorRepository) {
         this.anamneseRepository = anamneseRepository;
         this.anamnesePerguntaRepository = anamnesePerguntaRepository;
         this.anamneseHistoricoRepository = anamneseHistoricoRepository;
         this.perguntaRepository = perguntaRepository;
         this.animalRepository = animalRepository;
         this.tutorRepository = tutorRepository;
-        this.modelMapper = modelMapper;
-
     }
 
+    private AnamneseHistorico toAnamneseHistorico(AnamneseHistoricoDTO progressoMedico) {
+        return modelMapper.map(progressoMedico, AnamneseHistorico.class);
+    }
+
+    private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
+        return modelMapper.map(request, AnamnesePergunta.class);
+    }
+
+
+    public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
+        return modelMapper.map(anamnese, AnamneseDTO.class);
+    }
+
+    public Anamnese toAnamnese(AnamneseDTO anamneseDTO) {
+        return modelMapper.map(anamneseDTO, Anamnese.class);
+    }
 
 
     public AnamneseDTO getById(Long id) {
@@ -90,20 +103,20 @@ public class AnamneseService {
 
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
-        anamneseRepository.save(anamnese);
-        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste =
-                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
+        Anamnese savedAnamnese = anamneseRepository.save(anamnese);
+        if (!savedAnamnese.getHistoricoProgressoMedico().isEmpty()) {
+            for (AnamneseHistorico historico : savedAnamnese.getHistoricoProgressoMedico()) {
+                boolean historicoExiste = anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
                 if (!historicoExiste) {
-                    historico.setAnamnese(anamnese);
+                    historico.setAnamnese(savedAnamnese);
                     historico.setDataAtualizacao(LocalDate.now());
                     anamneseHistoricoRepository.save(historico);
                 }
             }
         }
-        return anamneseDTO;
+        return toAnamneseDTO(savedAnamnese);
     }
+
 
 
     @Transactional
@@ -167,10 +180,10 @@ public class AnamneseService {
         anamnesePergunta.setResposta(request.getResposta());
 
         anamnese.getAnamnesePerguntas().add(anamnesePergunta);
-          anamneseRepository.save(anamnese);
+        anamneseRepository.save(anamnese);
 
-       anamnesePerguntaRepository.save(anamnesePergunta);
-       return request;
+        anamnesePerguntaRepository.save(anamnesePergunta);
+        return request;
 
     }
 
@@ -179,131 +192,6 @@ public class AnamneseService {
         AnamneseDTO anamneseDTO = getById(id);
         anamneseDTO.setDeletedAt(LocalDateTime.now());
         anamneseRepository.save(toAnamnese(anamneseDTO));
-    }
-
-
-    private AnamneseHistorico toAnamneseHistorico(AnamneseHistoricoDTO progressoMedico) {
-        AnamneseHistorico anamneseHistorico = modelMapper.map(progressoMedico, AnamneseHistorico.class);
-
-        Anamnese anamnese = anamneseRepository.findById(progressoMedico.getAnamnese().getId()).orElse(null);
-        if (anamnese == null) {
-            throw new IllegalArgumentException("Anamnese não encontrada com o ID: "
-                    + progressoMedico.getAnamnese().getId());
-        }
-
-        anamneseHistorico.setAnamnese(anamnese);
-
-        return anamneseHistorico;
-    }
-
-    private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
-
-        AnamnesePergunta anamnesePergunta = modelMapper.map(request, AnamnesePergunta.class);
-
-        Anamnese anamnese = anamneseRepository.findById(request.getAnamneseDTO().getId()).orElse(null);
-        if (anamnese == null) {
-            throw new IllegalArgumentException("Anamnese não encontrada com o ID: "
-                    + request.getAnamneseDTO().getId());
-        }
-
-        Pergunta pergunta = perguntaRepository.findById(request.getPerguntaDTO().getId()).orElse(null);
-        if (pergunta == null) {
-            throw new IllegalArgumentException("Pergunta não encontrada com o ID: "
-                    + request.getPerguntaDTO().getId());
-        }
-
-        anamnesePergunta.setAnamnese(anamnese);
-        anamnesePergunta.setPergunta(pergunta);
-
-        return anamnesePergunta;
-    }
-
-
-    public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
-        AnamneseDTO anamneseDTO = modelMapper.map(anamnese, AnamneseDTO.class);
-
-        if (anamnese.getAnimal() != null) {
-            AnimalDTO animalDTO = modelMapper.map(anamnese.getAnimal(), AnimalDTO.class);
-            anamneseDTO.setAnimalDTO(animalDTO);
-        }
-
-        if (anamnese.getTutor() != null) {
-            TutorDTO tutorDTO = modelMapper.map(anamnese.getTutor(), TutorDTO.class);
-            anamneseDTO.setTutorDTO(tutorDTO);
-        }
-
-        if (anamnese.getVeterinario() != null) {
-            UsuarioDTO usuarioDTO = modelMapper.map(anamnese.getVeterinario(), UsuarioDTO.class);
-            anamneseDTO.setVeterinarioDTO(usuarioDTO);
-        }
-
-        List<AnamnesePerguntaDTO> anamnesePerguntaDTOs = new ArrayList<>();
-        for (AnamnesePergunta anamnesePergunta : anamnese.getAnamnesePerguntas()) {
-            AnamnesePerguntaDTO perguntaDTO = modelMapper.map(anamnesePergunta, AnamnesePerguntaDTO.class);
-
-            if (anamnesePergunta.getAnamnese() != null) {
-                AnamneseDTO anamnesePerguntaDTO = modelMapper.map(anamnesePergunta.getAnamnese(), AnamneseDTO.class);
-                perguntaDTO.setAnamneseDTO(anamnesePerguntaDTO);
-            }
-
-            if (anamnesePergunta.getPergunta() != null) {
-                PerguntaDTO perguntaPerguntaDTO = modelMapper.map(anamnesePergunta.getPergunta(), PerguntaDTO.class);
-                perguntaDTO.setPerguntaDTO(perguntaPerguntaDTO);
-            }
-
-            anamnesePerguntaDTOs.add(perguntaDTO);
-        }
-        anamneseDTO.setAnamnesePerguntas(anamnesePerguntaDTOs);
-
-        // Mapear o histórico de progresso médico
-        List<AnamneseHistoricoDTO> historicoDTOs = new ArrayList<>();
-        for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-            AnamneseHistoricoDTO historicoDTO = modelMapper.map(historico, AnamneseHistoricoDTO.class);
-            historicoDTOs.add(historicoDTO);
-        }
-        anamneseDTO.setHistoricoProgressoMedico(historicoDTOs);
-
-        return anamneseDTO;
-    }
-
-    public Anamnese toAnamnese(AnamneseDTO anamneseDTO) {
-        Anamnese anamnese = modelMapper.map(anamneseDTO, Anamnese.class);
-
-        // Mapear entidades associadas de DTOs para entidades
-        if (anamneseDTO.getAnimalDTO() != null) {
-            Animal animal = animalRepository.findById(anamneseDTO.getAnimalDTO().getId())
-                    .orElseThrow(() -> new IllegalArgumentException("Animal não encontrado com o ID: " +
-                            anamneseDTO.getAnimalDTO().getId()));
-            anamnese.setAnimal(animal);
-        }
-
-        if (anamneseDTO.getTutorDTO() != null) {
-            Tutor tutor = tutorRepository.findById(anamneseDTO.getTutorDTO().getId())
-                    .orElseThrow(() -> new IllegalArgumentException("Tutor não encontrado com o ID: " +
-                            anamneseDTO.getTutorDTO().getId()));
-            anamnese.setTutor(tutor);
-        }
-
-        List<AnamnesePergunta> anamnesePergunta = new ArrayList<>();
-        for (AnamnesePerguntaDTO anamnesePerguntadto : anamneseDTO.getAnamnesePerguntas()) {
-            AnamnesePergunta pergunta = modelMapper.map(anamnesePerguntadto, AnamnesePergunta.class);
-
-
-            if (anamnesePerguntadto.getAnamneseDTO() != null) {
-                Anamnese anamnese1 = modelMapper.map(anamnesePerguntadto.getAnamneseDTO(), Anamnese.class);
-                pergunta.setAnamnese(anamnese1);
-            }
-
-            if (anamnesePerguntadto.getPerguntaDTO() != null) {
-                Pergunta pergunta1 = modelMapper.map(anamnesePerguntadto.getPerguntaDTO(), Pergunta.class);
-                pergunta.setPergunta(pergunta1);
-            }
-
-            anamnesePergunta.add(pergunta);
-        }
-        anamnese.setAnamnesePerguntas(anamnesePergunta);
-
-        return anamnese;
     }
 
 }
