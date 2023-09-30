@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class PerguntaControllerTest {
+class PerguntaControllerTest {
 
     @MockBean
     private PerguntaRepository perguntaRepository;

@@ -19,26 +19,19 @@ public class AnamneseService {
     private final AnamneseRepository anamneseRepository;
     private final AnamnesePerguntaRepository anamnesePerguntaRepository ;
     private final AnamneseHistoricoRepository anamneseHistoricoRepository;
-    private final PerguntaRepository perguntaRepository;
-    private final AnimalRepository animalRepository;
-    private final TutorRepository tutorRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
 
     @Autowired
     public AnamneseService(AnamneseRepository anamneseRepository,
                            AnamnesePerguntaRepository anamnesePerguntaRepository,
-                           AnamneseHistoricoRepository anamneseHistoricoRepository,
-                           PerguntaRepository perguntaRepository,
-                           AnimalRepository animalRepository,
-                           TutorRepository tutorRepository) {
+                           AnamneseHistoricoRepository anamneseHistoricoRepository) {
         this.anamneseRepository = anamneseRepository;
         this.anamnesePerguntaRepository = anamnesePerguntaRepository;
         this.anamneseHistoricoRepository = anamneseHistoricoRepository;
-        this.perguntaRepository = perguntaRepository;
-        this.animalRepository = animalRepository;
-        this.tutorRepository = tutorRepository;
     }
+
+    public static final String NOT_FOUND_MESSAGE = "O ID = %s solicitado não foi encontrado no banco de dados.";
 
     private AnamneseHistorico toAnamneseHistorico(AnamneseHistoricoDTO progressoMedico) {
         return modelMapper.map(progressoMedico, AnamneseHistorico.class);
@@ -60,7 +53,7 @@ public class AnamneseService {
 
     public AnamneseDTO getById(Long id) {
         Anamnese anamnese = anamneseRepository.findById(id).orElse(null);
-        Assert.notNull(anamnese, String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
+        Assert.notNull(anamnese, String.format(NOT_FOUND_MESSAGE, id));
         return toAnamneseDTO(anamnese);
     }
 
@@ -125,11 +118,7 @@ public class AnamneseService {
         Anamnese anamnese = toAnamnese(anamneseDTO);
 
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
-        Assert.notNull(existingAnamnese, String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
-
-        if (!id.equals(anamnese.getId())) {
-            throw new IllegalArgumentException("O ID na URL não corresponde ao ID no corpo da requisição.");
-        }
+        Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
 
         if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
             for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
@@ -151,7 +140,7 @@ public class AnamneseService {
     public AnamneseHistoricoDTO updateProgressoMedico(Long id, AnamneseHistoricoDTO progressoMedico) {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese,
-                String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
+                String.format(NOT_FOUND_MESSAGE, id));
 
         AnamneseHistorico anamneseHistorico = toAnamneseHistorico(progressoMedico);
         anamneseHistorico.setAnamnese(existingAnamnese);
