@@ -116,7 +116,7 @@ class PerguntaServiceTest {
     }
 
     @Test
-    void deleteTest(){
+    void testDelete(){
         perguntaService.delete(1L);
         assertNotNull(perguntaRepository);
     }
