@@ -241,4 +241,5 @@ class AnamneseServiceTest {
         assertEquals(1L, result.getId());
         assertEquals(anamneseHistoricoDTO.getProgressoMedico(), result.getProgressoMedico());
     }
+
 }
