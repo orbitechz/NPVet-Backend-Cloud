@@ -242,4 +242,48 @@ class AnamneseServiceTest {
         assertEquals(anamneseHistoricoDTO.getProgressoMedico(), result.getProgressoMedico());
     }
 
+    @Test
+    void testAddQuestionAnswerToAnamnese() {
+
+        anamnese.setAnamnesePerguntas(new ArrayList<>());
+
+        AnamnesePerguntaDTO request = new AnamnesePerguntaDTO();
+        request.setId(1L);
+        request.setAnamneseDTO(anamneseDTO);
+        request.setPerguntaDTO(new PerguntaDTO());
+        request.setResposta("Answer");
+
+        when(anamnesePerguntaRepository.save(any(AnamnesePergunta.class))).thenAnswer(invocation -> {
+            AnamnesePergunta savedPergunta = invocation.getArgument(0);
+            savedPergunta.setId(1L);
+            return savedPergunta;
+        });
+
+        AnamnesePerguntaDTO result = anamneseService.addQuestionAnswerToAnamnese(1L, request);
+
+        verify(anamneseRepository, times(1)).save(anamnese);
+        verify(anamnesePerguntaRepository, times(1)).save(any(AnamnesePergunta.class));
+
+        assertNotNull(result);
+        assertEquals(1L, result.getId());
+        assertEquals(request.getResposta(), result.getResposta());
+    }
+
+    @Test
+    void testAddQuestionAnswerToNullAnamnese() {
+        Long anamneseId = 1L;
+        AnamnesePerguntaDTO request = new AnamnesePerguntaDTO();
+
+        when(anamneseRepository.findById(anamneseId)).thenReturn(Optional.empty());
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.addQuestionAnswerToAnamnese(anamneseId, request);
+        });
+
+        assertEquals("Nenhuma anamnese encontrada com o ID: " + anamneseId, exception.getMessage());
+
+        verify(anamneseRepository, never()).save(any(Anamnese.class));
+        verify(anamnesePerguntaRepository, never()).save(any(AnamnesePergunta.class));
+    }
+
 }
