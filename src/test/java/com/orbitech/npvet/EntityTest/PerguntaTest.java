@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PerguntaTest {
+class PerguntaTest {
 
     private Pergunta pergunta;
 
@@ -18,7 +18,7 @@ public class PerguntaTest {
 
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         pergunta = new Pergunta();
         pergunta.setEnunciado("Test Enunciado");
 
@@ -32,25 +32,25 @@ public class PerguntaTest {
     }
 
     @Test
-    public void testSetAndGetEnunciado() {
+    void testSetAndGetEnunciado() {
         String enunciado = "Test Enunciado";
         pergunta.setEnunciado(enunciado);
         assertEquals(enunciado, pergunta.getEnunciado());
     }
 
     @Test
-    public void testAnamnesePerguntas() {
+    void testAnamnesePerguntas() {
         pergunta.setAnamnesePerguntas(anamnesePerguntas);
         assertEquals(anamnesePerguntas, pergunta.getAnamnesePerguntas());
     }
 
     @Test
-    public void testNoArgsConstructor() {
+    void testNoArgsConstructor() {
         assertNotNull(pergunta);
     }
 
     @Test
-    public void testAllArgsConstructor() {
+    void testAllArgsConstructor() {
         Pergunta perguntaWithArgs = new Pergunta(anamnesePerguntas,"Test Enunciado");
         assertNotNull(perguntaWithArgs);
         assertEquals("Test Enunciado", perguntaWithArgs.getEnunciado());
