@@ -165,4 +165,33 @@ class AnamneseServiceTest {
         });
         assertEquals("Nenhuma anamnese encontrada para o animal do tutor com CPF: 123", exception.getMessage());
     }
+
+    @Test
+    void testCreateAnamneseWithExistingHistorico() {
+        when(anamneseHistoricoRepository.existsByProgressoMedico(anyString())).thenReturn(true);
+        AnamneseDTO result = anamneseService.create(anamneseDTO);
+        verify(anamneseHistoricoRepository, never()).save(any(AnamneseHistorico.class));
+        verify(anamneseRepository, times(1)).save(any(Anamnese.class));
+        assertNotNull(result);
+    }
+
+    @Test
+    void testCreateAnamneseWithNonExistingHistorico() {
+        AnamneseDTO result = anamneseService.create(anamneseDTO);
+        verify(anamneseHistoricoRepository, times(1)).save(any(AnamneseHistorico.class));
+        verify(anamneseRepository, times(1)).save(any(Anamnese.class));
+        assertNotNull(result);
+    }
+
+    @Test
+    void testCreateWithNonEmptyHistoricoProgressoMedico() {
+
+        anamnese.setHistoricoProgressoMedico(anamneseHistoricos);
+
+        when(anamneseHistoricoRepository.existsByProgressoMedico(anyString())).thenReturn(false);
+
+        AnamneseDTO result = anamneseService.create(anamneseDTO);
+        verify(anamneseHistoricoRepository, times(1)).save(any(AnamneseHistorico.class));
+        assertNotNull(result);
+    }
 }
