@@ -1,13 +1,9 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.dto.AnamneseDTO;
-import com.orbitech.npvet.dto.AnimalDTO;
-import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.dto.UsuarioDTO;
-import com.orbitech.npvet.entity.Anamnese;
-import com.orbitech.npvet.entity.Animal;
-import com.orbitech.npvet.entity.Tutor;
-import com.orbitech.npvet.entity.Usuario;
+import com.orbitech.npvet.dto.*;
+import com.orbitech.npvet.entity.*;
+import com.orbitech.npvet.repository.AnamneseHistoricoRepository;
+import com.orbitech.npvet.repository.AnamnesePerguntaRepository;
 import com.orbitech.npvet.repository.AnamneseRepository;
 import com.orbitech.npvet.service.AnamneseService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,15 +14,11 @@ import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class AnamneseServiceTest {
@@ -38,65 +30,90 @@ class AnamneseServiceTest {
     private AnamneseRepository anamneseRepository;
 
     @Mock
-    private ModelMapper modelMapper;
+    private AnamneseHistoricoRepository anamneseHistoricoRepository;
 
+    @Mock
+    private AnamnesePerguntaRepository anamnesePerguntaRepository;
+
+    @Mock
+    private ModelMapper modelMapper;
+    AnimalDTO animalDTO = new AnimalDTO();
+    Animal animal = new Animal();
+    TutorDTO tutorDTO = new TutorDTO();
+    Tutor tutor = new Tutor();
+    UsuarioDTO veterinarioDTO = new UsuarioDTO();
+    Usuario veterinario = new Usuario();
+    AnamneseHistoricoDTO anamneseHistoricoDTO = new AnamneseHistoricoDTO();
+    AnamneseHistorico anamneseHistorico = new AnamneseHistorico();
     AnamneseDTO anamneseDTO = new AnamneseDTO();
     Anamnese anamnese = new Anamnese();
+    AnamnesePergunta anamnesePergunta = new AnamnesePergunta();
+    AnamnesePerguntaDTO anamnesePerguntaDTO = new AnamnesePerguntaDTO();
     List<AnamneseDTO> anamneseDTOList = new ArrayList<>();
     List<Anamnese> anamneseList = new ArrayList<>();
+    List<AnamneseHistoricoDTO> anamneseHistoricoDTOs = new ArrayList<>();
+    List<AnamneseHistorico> anamneseHistoricos = new ArrayList<>();
 
     @BeforeEach
-    void setUp() {
+    void setUp(){
 
-        AnimalDTO animalDTO = new AnimalDTO();
+        // Animal DTO e Entity
         animalDTO.setId(1L);
         animalDTO.setNome("Buddy");
-        anamneseDTO.setAnimalDTO(animalDTO);
 
-        TutorDTO tutorDTO = new TutorDTO();
-        tutorDTO.setId(2L);
-        tutorDTO.setNome("Alice");
-        tutorDTO.setCpf("123");
-        anamneseDTO.setTutorDTO(tutorDTO);
-
-        UsuarioDTO veterinarioDTO = new UsuarioDTO();
-        veterinarioDTO.setId(3L);
-        veterinarioDTO.setNome("Dr. Smith");
-        anamneseDTO.setVeterinarioDTO(veterinarioDTO);
-
-        anamneseDTO.setQueixaPrincipal("Sample queixaPrincipal");
-        anamneseDTOList.add(anamneseDTO);
-
-        Animal animal = new Animal();
         animal.setId(1L);
         animal.setNome("Buddy");
-        anamnese.setAnimal(animal);
 
-        Tutor tutor = new Tutor();
-        tutor.setId(2L);
-        tutor.setNome("Alice");
+        // Tutor DTO e Entity
+        tutorDTO.setId(1L);
+        tutorDTO.setCpf("123");
+
+        tutor.setId(1L);
         tutor.setCpf("123");
-        anamnese.setTutor(tutor);
 
-        Usuario veterinario = new Usuario();
-        veterinario.setId(3L);
+        // Veterinario DTO e Entity
+        veterinarioDTO.setId(1L);
+        veterinarioDTO.setNome("Dr. Smith");
+
+        veterinario.setId(1L);
         veterinario.setNome("Dr. Smith");
-        anamnese.setVeterinario(veterinario);
 
-        anamnese.setQueixaPrincipal("Sample queixaPrincipal");
+        // AnamneseHistorico DTO e Entity
+        anamneseHistoricoDTO.setId(1L);
+        anamneseHistoricoDTO.setAnamnese(anamneseDTO);
+        anamneseHistoricoDTO.setProgressoMedico("Medical Progress Sample One.");
+
+        anamneseHistorico.setId(1L);
+        anamneseHistorico.setAnamnese(anamnese);
+        anamneseHistorico.setProgressoMedico("Medical Progress Sample One.");
+
+        // Setting AnamneseHistorico Lists
+        anamneseHistoricoDTOs.add(anamneseHistoricoDTO);
+        anamneseHistoricos.add(anamneseHistorico);
+
+        // Creating the anamneses
+        anamneseDTO.setId(1L);
+        anamneseDTO.setAnimalDTO(animalDTO);
+        anamneseDTO.setTutorDTO(tutorDTO);
+        anamneseDTO.setVeterinarioDTO(veterinarioDTO);
+        anamneseDTO.setHistoricoProgressoMedico(anamneseHistoricoDTOs);
+
+        anamnese.setId(1L);
+        anamnese.setAnimal(animal);
+        anamnese.setTutor(tutor);
+        anamnese.setVeterinario(veterinario);
+        anamnese.setHistoricoProgressoMedico(anamneseHistoricos);
+
+        // Setting Values of Anamnese List
+        anamneseDTOList.add(anamneseDTO);
         anamneseList.add(anamnese);
 
         when(anamneseRepository.findById(1L)).thenReturn(Optional.of(anamnese));
         when(anamneseRepository.findAll()).thenReturn(anamneseList);
         when(anamneseRepository.findByTutorCpf("123")).thenReturn(anamneseList);
         when(anamneseRepository.findByTutorCpfAndAnimal("123","Buddy")).thenReturn(anamneseList);
-        when(modelMapper.map(anamnese, AnamneseDTO.class)).thenReturn(anamneseDTO);
-        for (Anamnese anamnese : anamneseList) {
-            AnamneseDTO anamneseDTO = new AnamneseDTO();
-            when(modelMapper.map(anamnese, AnamneseDTO.class)).thenReturn(anamneseDTO);
-            anamneseDTOList.add(anamneseDTO);
-        }
-
+        when(anamneseRepository.save(Mockito.any(Anamnese.class))).thenReturn(anamnese);
+        when(anamneseHistoricoRepository.existsByProgressoMedico(anyString())).thenReturn(false);
     }
 
     @Test
@@ -148,8 +165,4 @@ class AnamneseServiceTest {
         });
         assertEquals("Nenhuma anamnese encontrada para o animal do tutor com CPF: 123", exception.getMessage());
     }
-
-
-
-
 }
