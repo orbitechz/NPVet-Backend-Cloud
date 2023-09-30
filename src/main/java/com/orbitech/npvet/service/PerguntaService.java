@@ -60,11 +60,10 @@ public class PerguntaService {
             throw new IllegalArgumentException("O ID na URL não corresponde ao ID no corpo da requisição.");
         }
 
-        String enunciadoAtualizado = perguntaDTO.getEnunciado();
-        Pergunta existenteComMesmoEnunciado = perguntaRepository.findByEnunciado(enunciadoAtualizado);
-        if (existenteComMesmoEnunciado != null && !existenteComMesmoEnunciado.getId().equals(id)) {
-            throw new IllegalArgumentException("O enunciado deve ser único, e o enunciado fornecido já existe.");
+        if (perguntaRepository.existsByEnunciado(perguntaDTO.getEnunciado())) {
+            throw new DataIntegrityViolationException("O enunciado deve ser único.");
         }
+
         return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
     }
 

@@ -86,21 +86,34 @@ class PerguntaServiceTest {
         assertNotNull(result);
         verify(perguntaRepository,times(1)).save(Mockito.any(Pergunta.class));
     }
+    @Test
+    void testNonUniqueEnunciadoCreation() {
+        when(perguntaRepository.existsByEnunciado("Enunciado")).thenReturn(true);
+        DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> {
+            perguntaService.create(perguntaDTO);
+        });
+        assertEquals("O enunciado deve ser único.", exception.getMessage());
+    }
 
     @Test
     void testNonUniqueEnunciadoUpdate() {
-        when(perguntaRepository.findByEnunciado("Enunciado")).thenReturn(new Pergunta());
-
-        PerguntaDTO duplicatePerguntaDTO = new PerguntaDTO();
-        duplicatePerguntaDTO.setEnunciado("DuplicateEnunciado");
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            perguntaService.update(1L, duplicatePerguntaDTO);
+        when(perguntaRepository.existsByEnunciado("Enunciado")).thenReturn(true);
+        perguntaDTO.setEnunciado("Enunciado");
+        DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> {
+            perguntaService.update(1L, perguntaDTO);
         });
-
-        assertEquals("O ID na URL não corresponde ao ID no corpo da requisição.", exception.getMessage());
+        assertEquals("O enunciado deve ser único.", exception.getMessage());
     }
 
+    @Test
+    void testMismatchedIdsUpdate() {
+        PerguntaDTO perguntaDTO = new PerguntaDTO();
+        perguntaDTO.setId(2L);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            perguntaService.update(1L, perguntaDTO);
+        });
+        assertEquals("O ID na URL não corresponde ao ID no corpo da requisição.", exception.getMessage());
+    }
 
     @Test
     void deleteTest(){
