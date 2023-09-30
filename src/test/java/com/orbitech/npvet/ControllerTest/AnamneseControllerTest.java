@@ -4,6 +4,7 @@ import com.orbitech.npvet.controller.AnamneseController;
 import com.orbitech.npvet.dto.*;
 import com.orbitech.npvet.entity.*;
 import com.orbitech.npvet.repository.AnamneseHistoricoRepository;
+import com.orbitech.npvet.repository.AnamnesePerguntaRepository;
 import com.orbitech.npvet.repository.AnamneseRepository;
 import com.orbitech.npvet.service.AnamneseService;
 import org.junit.jupiter.api.Assertions;
@@ -38,6 +39,9 @@ class AnamneseControllerTest {
     @MockBean
     private AnamneseHistoricoRepository anamneseHistoricoRepository;
 
+    @MockBean
+    private AnamnesePerguntaRepository anamnesePerguntaRepository;
+
     @Autowired
     private AnamneseService anamneseService;
 
@@ -57,6 +61,8 @@ class AnamneseControllerTest {
     AnamneseHistorico anamneseHistorico = new AnamneseHistorico();
     AnamneseDTO anamneseDTO = new AnamneseDTO();
     Anamnese anamnese = new Anamnese();
+    AnamnesePergunta anamnesePergunta = new AnamnesePergunta();
+    AnamnesePerguntaDTO anamnesePerguntaDTO = new AnamnesePerguntaDTO();
     List<AnamneseDTO> anamneseDTOList = new ArrayList<>();
     List<Anamnese> anamneseList = new ArrayList<>();
     List<AnamneseHistoricoDTO> anamneseHistoricoDTOs = new ArrayList<>();
@@ -169,13 +175,26 @@ class AnamneseControllerTest {
     @Test
     @DisplayName("Teste de adição de Perguntas e Respostas à Anamnese")
     void addQuestionAnswerToAnamneseTest(){
+        anamnesePerguntaDTO.setAnamneseDTO(anamneseDTO);
+        anamnesePerguntaDTO.setPerguntaDTO(new PerguntaDTO());
+        anamnesePerguntaDTO.setResposta("resposta sample");
+
+        ResponseEntity<AnamnesePerguntaDTO> response =
+                anamneseController.addQuestionAnswerToAnamnese(1L,anamnesePerguntaDTO);
+
+        assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 
     }
 
     @Test
     @DisplayName("Teste de adição de Progresso Médico")
     void addProgressoMedicoTest(){
+        ResponseEntity<AnamneseHistoricoDTO> response =
+                anamneseController.addProgressoMedico(1L,anamneseHistoricoDTO);
 
+        assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
