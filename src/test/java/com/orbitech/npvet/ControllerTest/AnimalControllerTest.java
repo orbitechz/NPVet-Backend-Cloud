@@ -171,5 +171,4 @@ class AnimalControllerTest {
         assertEquals(HttpStatus.OK,response.getStatusCode());
     }
 
-
 }
