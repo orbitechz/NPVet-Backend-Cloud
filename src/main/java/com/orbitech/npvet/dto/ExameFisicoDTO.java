@@ -22,9 +22,9 @@ public class ExameFisicoDTO extends AbstractEntity {
 
     private Double temperaturaRetal;
 
-    private String frequenciaRespiratoria;
+    private Double frequenciaRespiratoria;
 
-    private String frequenciaCardiaca;
+    private Double frequenciaCardiaca;
 
     private LocalTime tempoPreenchimentoCapilar;
 

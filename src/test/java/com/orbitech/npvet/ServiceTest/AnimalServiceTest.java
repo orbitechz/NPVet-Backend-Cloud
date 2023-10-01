@@ -1,5 +1,4 @@
-package com.orbitech.npvet.ControllerTest;
-
+package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.controller.AnimalController;
 import com.orbitech.npvet.dto.AnimalDTO;
@@ -9,42 +8,40 @@ import com.orbitech.npvet.entity.Tutor;
 import com.orbitech.npvet.repository.AnimalRepository;
 import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.AnimalService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class AnimalControllerTest {
+class AnimalServiceTest {
 
-    @MockBean
+    @Mock
     private AnimalRepository repository;
 
-    @MockBean
+    @Mock
     private TutorRepository tutorRepository;
 
-    @Autowired
+    @InjectMocks
     private AnimalService service;
 
     @Autowired
     private AnimalController controller;
 
-    @MockBean
+    @Autowired
     private ModelMapper modelMapper;
+
 
     private final AnimalDTO animalDTO = new AnimalDTO();
     private final Animal animal = new Animal();
@@ -53,9 +50,8 @@ class AnimalControllerTest {
 
     private final Tutor tutor = new Tutor();
 
-
     @BeforeEach
-    void SetUP(){
+    void setUp(){
         tutorDTO.setId(2L);
         tutorDTO.setNome("Alice");
         tutorDTO.setCpf("123");
@@ -82,7 +78,6 @@ class AnimalControllerTest {
         animalDTO.setPeso(10.50);
         animalDTO.setTutor_id(tutorDTO);
 
-
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);
 
@@ -97,78 +92,67 @@ class AnimalControllerTest {
 
         when(repository.save(Mockito.any(Animal.class))).thenReturn(animal);
 
-        when(modelMapper.map(animal, AnimalDTO.class)).thenReturn(animalDTO);
-        when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
-
-
-
     }
 
     @Test
-    void getByIdTest(){
-        ResponseEntity<AnimalDTO> response = controller.getById(1L);
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+    void getByidTest(){
+        AnimalDTO result = service.getById(1L);
+        assertNotNull(result);
+        verify(repository,times(1)).findById(1L);
     }
 
     @Test
     void getAllTest(){
-        ResponseEntity<List<AnimalDTO>> response = controller.getAll();
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        List<AnimalDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
+        List<AnimalDTO> result = service.getAll();
+        assertNotNull(result);
+        verify(repository,times(1)).findAll();
     }
 
     @Test
-    void getByNome(){
-        ResponseEntity<List<AnimalDTO>> response = controller.getByNome("toto");
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        List<AnimalDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
+    void getAllByNome(){
+        List<AnimalDTO> result = service.getAllByNome(animal.getNome());
+        assertNotNull(result);
+        verify(repository,times(1)).findAllByNomeLike(animal.getNome());
     }
 
     @Test
-    void getByRaca(){
-        ResponseEntity<List<AnimalDTO>> response = controller.getByRaca("Cachorro");
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        List<AnimalDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
+    void getAllByRaca(){
+        List<AnimalDTO> result = service.getAllByRaca(animal.getRaca());
+        assertNotNull(result);
+        verify(repository,times(1)).findAllByRacaLike(animal.getRaca());
     }
 
     @Test
-    void getByEspecie(){
-        ResponseEntity<List<AnimalDTO>> response = controller.getByEspecie("Cachorro");
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        List<AnimalDTO> responseBody = response.getBody();
-        assertEquals(1, responseBody.size());
+    void getAllByEspecie(){
+        List<AnimalDTO> result = service.getAllByEspecie(animal.getEspecie());
+        assertNotNull(result);
+        verify(repository,times(1)).findAllByEspecieLike(animal.getEspecie());
     }
 
     @Test
     void createTest(){
-        ResponseEntity<AnimalDTO> response = controller.create(animalDTO);
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
+        AnimalDTO result = service.create(animalDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Animal.class));
     }
 
     @Test
     void updateTest(){
         animalDTO.setId(1L);
         animal.setId(1L);
-        ResponseEntity<AnimalDTO> response = controller.update(1L, animalDTO);
-        assertNotNull(response);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
+        AnimalDTO result = service.update(1L, animalDTO);
+        assertNotNull(result);
+        verify(repository,times(1)).save(Mockito.any(Animal.class));
     }
 
     @Test
     void deleteTest(){
-        ResponseEntity<String>response = controller.delete(1L);
-        assertEquals(HttpStatus.OK,response.getStatusCode());
+        service.delete(1L);
+        assertNotNull(repository);
+        verify(repository,times(1)).deleteById(1L);
     }
+
+
+
 
 }

@@ -27,7 +27,7 @@ public class AnimalService {
         return mapper.map(animal, AnimalDTO.class);
     }
 
-    public Animal toAnimal(AnimalDTO animalDTO){ return mapper.map(animalDTO, Animal.class); }
+    public Animal toAnimal(AnimalDTO animalDTO){return mapper.map(animalDTO, Animal.class); }
 
     public AnimalDTO getById(Long id){
         Animal animalById = repository.findById(id).orElse(null);
@@ -62,6 +62,7 @@ public class AnimalService {
     @Transactional
     public AnimalDTO update(Long id, AnimalDTO animalDTO){
         Animal animalById = repository.findById(id).orElse(null);
+        System.out.println(animalById.getId());
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
@@ -71,7 +72,7 @@ public class AnimalService {
     public void delete(Long id){
         AnimalDTO animalById = getById(id);
         animalById.setDeletedAt(LocalDateTime.now());
-        repository.save(toAnimal(animalById));
+        repository.deleteById(id);
     }
 
 
