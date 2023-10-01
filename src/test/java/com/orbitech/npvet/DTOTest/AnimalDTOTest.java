@@ -11,8 +11,8 @@ import static org.testng.Assert.assertEquals;
 @SpringBootTest
 class AnimalDTOTest {
 
-    private AnimalDTO animalDTO = new AnimalDTO();
-    private TutorDTO tutorDTO = new TutorDTO();
+    private final AnimalDTO animalDTO = new AnimalDTO();
+    private final TutorDTO tutorDTO = new TutorDTO();
 
 
     @BeforeEach

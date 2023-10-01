@@ -46,12 +46,12 @@ class AnimalControllerTest {
     @MockBean
     private ModelMapper modelMapper;
 
-    private AnimalDTO animalDTO = new AnimalDTO();
-    private Animal animal = new Animal();
+    private final AnimalDTO animalDTO = new AnimalDTO();
+    private final Animal animal = new Animal();
 
-    private TutorDTO tutorDTO = new TutorDTO();
+    private final TutorDTO tutorDTO = new TutorDTO();
 
-    private Tutor tutor = new Tutor();
+    private final Tutor tutor = new Tutor();
 
 
     @BeforeEach
