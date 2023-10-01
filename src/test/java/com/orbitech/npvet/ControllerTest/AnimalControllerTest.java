@@ -26,7 +26,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class AnimalControllerTest {
@@ -101,6 +101,7 @@ class AnimalControllerTest {
         when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
 
 
+
     }
 
     @Test
@@ -147,7 +148,7 @@ class AnimalControllerTest {
     }
 
     @Test
-    void create(){
+    void createTest(){
         ResponseEntity<AnimalDTO> response = controller.create(animalDTO);
         assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -155,13 +156,19 @@ class AnimalControllerTest {
     }
 
     @Test
-    void update(){
+    void updateTest(){
         animalDTO.setId(1L);
         animal.setId(1L);
         ResponseEntity<AnimalDTO> response = controller.update(1L, animalDTO);
         assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
+    }
+
+    @Test
+    void deleteTest(){
+        ResponseEntity<String>response = controller.delete(1L);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
     }
 
 
