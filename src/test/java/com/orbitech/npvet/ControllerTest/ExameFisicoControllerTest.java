@@ -1,19 +1,16 @@
 package com.orbitech.npvet.ControllerTest;
 
-import com.orbitech.npvet.controller.AnimalController;
 import com.orbitech.npvet.controller.ExameFisicoController;
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.ExameFisicoDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.ExameFisico;
-import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.AnimalRepository;
 import com.orbitech.npvet.repository.ExameFisicoRepository;
 import com.orbitech.npvet.service.ExameFisicoService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +46,10 @@ class ExameFisicoControllerTest {
     @MockBean
     private ModelMapper modelMapper;
 
-    private ExameFisico exameFisico = new ExameFisico();
-    private ExameFisicoDTO exameFisicoDTO = new ExameFisicoDTO();
-    private Animal animal = new Animal();
-    private AnimalDTO animalDTO = new AnimalDTO();
+    private final ExameFisico exameFisico = new ExameFisico();
+    private final ExameFisicoDTO exameFisicoDTO = new ExameFisicoDTO();
+    private final Animal animal = new Animal();
+    private final AnimalDTO animalDTO = new AnimalDTO();
 
     @BeforeEach
     void setUp(){

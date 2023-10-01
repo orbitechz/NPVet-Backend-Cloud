@@ -66,9 +66,8 @@ public class ExameFisicoService {
 
     @Transactional
     public void delete(Long id){
-        ExameFisicoDTO exameFisicoDTO = getById(id);
-        exameFisicoDTO.setDeletedAt(LocalDateTime.now());
-        repository.save(toExame(exameFisicoDTO));
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
+        repository.deleteById(id);
     }
 
 
