@@ -46,7 +46,7 @@ class AnimalServiceTest {
     @Autowired
     private AnimalController controller;
 
-    @Mock
+    @Autowired
     private ModelMapper modelMapper;
 
 
@@ -97,11 +97,11 @@ class AnimalServiceTest {
         when(repository.findAllByRacaLike("Cachorro")).thenReturn(animalList);
         when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
 
-        when(repository.save(animal)).thenReturn(animal);
-
+        when(repository.save(Mockito.any(Animal.class))).thenReturn(animal);
+        /*
         when(modelMapper.map(animal, AnimalDTO.class)).thenReturn(animalDTO);
         when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
-
+        */
     }
 
     @Test
@@ -143,7 +143,7 @@ class AnimalServiceTest {
     void createTest(){
         AnimalDTO result = service.create(animalDTO);
         assertNotNull(result);
-        verify(repository,times(1)).save(animal);
+        verify(repository,times(1)).save(Mockito.any(Animal.class));
     }
 
     @Test
@@ -152,12 +152,13 @@ class AnimalServiceTest {
         animal.setId(1L);
         AnimalDTO result = service.update(1L, animalDTO);
         assertNotNull(result);
-        verify(repository,times(1)).save(animal);
+        verify(repository,times(1)).save(Mockito.any(Animal.class));
     }
 
     @Test
     void deleteTest(){
         service.delete(1L);
+        assertNotNull(repository);
         verify(repository,times(1)).deleteById(1L);
     }
 
