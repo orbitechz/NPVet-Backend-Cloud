@@ -72,7 +72,7 @@ public class AnimalService {
     public void delete(Long id){
         AnimalDTO animalById = getById(id);
         animalById.setDeletedAt(LocalDateTime.now());
-        repository.save(toAnimal(animalById));
+        repository.deleteById(id);
     }
 
 
