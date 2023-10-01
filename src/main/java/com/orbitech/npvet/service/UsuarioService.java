@@ -85,15 +85,6 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getUsuarioById(Long id){
-        List<UsuarioDTO>retorno = repository.findUsuarioById(id)
-                .stream()
-                .map(this::toUsuarioDTO)
-                .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Nenhum usuário encontrado com o id: {%s}",id));
-        return retorno;
-    }
-
     public List<UsuarioDTO>getUsername(String username){
         List<UsuarioDTO>retorno = repository.findUsuarioByUsername(username)
                 .stream()
