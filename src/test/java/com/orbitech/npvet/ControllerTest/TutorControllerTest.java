@@ -118,7 +118,7 @@ class TutorControllerTest {
     void tutorDeleteTest() {
         ResponseEntity<String> controllerResponse = controller.delete(1L);
         assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertEquals("Tutor 1 desativado com sucesso!", controllerResponse.getBody());
+        assertEquals(controllerResponse.getBody(), "Tutor 1 desativado com sucesso!");
     }
 
 }
