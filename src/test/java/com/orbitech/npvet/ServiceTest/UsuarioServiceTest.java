@@ -92,6 +92,6 @@ public class UsuarioServiceTest {
     @Test
     void usuarioDeleteTest(){
        service.delete(1L);
-        verify(repository,times(1)).deleteById(1L);
+       verify(repository,times(1)).findById(1L);
     }
 }
