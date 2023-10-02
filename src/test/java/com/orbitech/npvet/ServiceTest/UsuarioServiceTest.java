@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 @SpringBootTest
-public class UsuarioServiceTest {
+class UsuarioServiceTest {
 
     @Mock
     private UsuarioRepository repository;
