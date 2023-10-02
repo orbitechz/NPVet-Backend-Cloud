@@ -180,7 +180,7 @@ public class AnamneseService {
     public void delete(Long id) {
         AnamneseDTO anamneseDTO = getById(id);
         anamneseDTO.setDeletedAt(LocalDateTime.now());
-        anamneseRepository.save(toAnamnese(anamneseDTO));
+//        anamneseRepository.save(toAnamnese(anamneseDTO));
     }
 
 }

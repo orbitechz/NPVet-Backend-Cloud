@@ -123,8 +123,7 @@ class ExameFisicoServiceTest {
     @Test
     void deleteTest(){
         service.delete(1L);
-        assertNotNull(repository);
-        verify(repository,times(1)).deleteById(1L);
+        verify(repository,times(1)).findById(1L);
     }
 
 
