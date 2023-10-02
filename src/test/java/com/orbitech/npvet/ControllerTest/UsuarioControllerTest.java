@@ -69,6 +69,11 @@ class UsuarioControllerTest {
 
         when(repository.findAllUsuariosByNome("nome")).thenReturn(usuarioList);
         when(repository.findByTipoUsuario(TipoUsuario.SECRETARIA)).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(TipoUsuario.ADMINISTRADOR)).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(TipoUsuario.MEDICO)).thenReturn(usuarioList);
+
+        when(repository.findUsuarioByUsername("username")).thenReturn(usuarioList);
+        when(repository.findUsuarioByCpf("cpf")).thenReturn(usuarioList);
 
 
     }
@@ -122,5 +127,35 @@ class UsuarioControllerTest {
        assertThat(response.getBody().get(0)).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
 
+    @Test
+    void getTipoAdm(){
+        ResponseEntity<List<UsuarioDTO>>response = controller.getAdm();
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody().get(0)).usingRecursiveComparison().isEqualTo(usuarioDTO);
+    }
 
+    @Test
+    void getTipoMedico(){
+        ResponseEntity<List<UsuarioDTO>>response = controller.getVeterinarios();
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody().get(0)).usingRecursiveComparison().isEqualTo(usuarioDTO);
+    }
+
+    @Test
+    void getByUsername(){
+        ResponseEntity<List<UsuarioDTO>>response = controller.getUsername("username");
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTOList);
+    }
+
+    @Test
+    void getByCpf(){
+        ResponseEntity<List<UsuarioDTO>>response = controller.getUsuarioCpf("cpf");
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTOList);
+    }
 }
