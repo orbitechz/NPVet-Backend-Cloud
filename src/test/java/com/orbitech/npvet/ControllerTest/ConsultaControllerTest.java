@@ -38,21 +38,18 @@ class ConsultaControllerTest {
 
     private Consulta consultaEntidade = new Consulta();
     private ConsultaDTO consultaDTO = new ConsultaDTO();
-    private List<Consulta> consultaList = new ArrayList<>();
-    private List<ConsultaDTO>consultaDTOList = new ArrayList<>();
+    List<Consulta> consultaList = new ArrayList<>();
+    List<ConsultaDTO>consultaDTOList = new ArrayList<>();
     private AnimalDTO animalDTO = new AnimalDTO();
     private TutorDTO tutorDTO = new TutorDTO();
     // private AnamneseDTO anamneseDTO = new AnamneseDTO();
-    private List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
+    List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
     private UsuarioDTO veterinarios = new UsuarioDTO();
     private Animal animal = new Animal();
     private Tutor tutor = new Tutor();
     //private Anamnese anamnese = new Anamnese();
-    private List<ExameFisico>exameFisicos = new ArrayList<>();
+    List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
-    @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
-
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
