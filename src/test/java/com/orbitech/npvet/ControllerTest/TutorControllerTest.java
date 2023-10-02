@@ -11,7 +11,6 @@ import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.TutorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,7 +144,7 @@ class TutorControllerTest {
     void tutorDeleteTest() {
         ResponseEntity<String> controllerResponse = controller.delete(1L);
         assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertEquals(controllerResponse.getBody(), "Tutor 1 desativado com sucesso!");
+        assertEquals("Tutor 1 desativado com sucesso!", controllerResponse.getBody());
     }
 
 }

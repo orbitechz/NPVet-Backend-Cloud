@@ -2,8 +2,6 @@ package com.orbitech.npvet.DTOTest;
 
 import com.orbitech.npvet.dto.ContatoDTO;
 import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.entity.Contato;
-import com.orbitech.npvet.entity.Tutor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,5 @@
 package com.orbitech.npvet.repository;
 
-import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Consulta;
 import com.orbitech.npvet.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,8 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-import static com.orbitech.npvet.entity.Status.EM_ANDAMENTO;
 
 @Repository
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {

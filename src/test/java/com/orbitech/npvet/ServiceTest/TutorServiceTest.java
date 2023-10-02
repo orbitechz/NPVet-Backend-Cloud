@@ -1,14 +1,11 @@
 package com.orbitech.npvet.ServiceTest;
 
-import com.orbitech.npvet.controller.TutorController;
 import com.orbitech.npvet.dto.ContatoDTO;
 import com.orbitech.npvet.dto.EnderecoDTO;
 import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Contato;
 import com.orbitech.npvet.entity.Endereco;
 import com.orbitech.npvet.entity.Tutor;
-import com.orbitech.npvet.entity.Vacina;
 import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.TutorService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +15,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;

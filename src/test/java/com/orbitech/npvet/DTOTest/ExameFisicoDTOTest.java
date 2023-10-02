@@ -1,16 +1,13 @@
 package com.orbitech.npvet.DTOTest;
 
-
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.ConsultaDTO;
 import com.orbitech.npvet.dto.ExameFisicoDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalTime;
-
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class ExameFisicoDTOTest {

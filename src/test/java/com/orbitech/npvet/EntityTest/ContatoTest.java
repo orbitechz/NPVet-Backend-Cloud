@@ -1,16 +1,11 @@
 package com.orbitech.npvet.EntityTest;
-
-import com.orbitech.npvet.entity.Anamnese;
 import com.orbitech.npvet.entity.Contato;
-import com.orbitech.npvet.entity.Endereco;
 import com.orbitech.npvet.entity.Tutor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

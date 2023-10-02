@@ -90,39 +90,39 @@ public class ConsultaService {
         return retorno;
     }
 
-    public List<ConsultaDTO>getConsultasEmAndamento(Status status){
-        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.EM_ANDAMENTO)
+    public List<ConsultaDTO>getConsultasEmAndamento(){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(Status.EM_ANDAMENTO)
                 .stream()
                 .map(this::toConsultaDTO)
                 .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta em andamento."));
+        Assert.isTrue(!retorno.isEmpty(),"Não encontramos nenhuma consulta em andamento.");
         return retorno;
     }
 
-    public List<ConsultaDTO>getConsultasConcluida(Status status){
-        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.CONCLUIDA)
+    public List<ConsultaDTO>getConsultasConcluida(){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(Status.CONCLUIDA)
                 .stream()
                 .map(this::toConsultaDTO)
                 .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Nenhuma consulta foi concluída ainda."));
+        Assert.isTrue(!retorno.isEmpty(),"Nenhuma consulta foi concluída ainda.");
         return retorno;
     }
 
-    public List<ConsultaDTO>getConsultasCancelada(Status status){
-        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.CANCELADA)
+    public List<ConsultaDTO>getConsultasCancelada(){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(Status.CANCELADA)
                 .stream()
                 .map(this::toConsultaDTO)
                 .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta cancelada!"));
+        Assert.isTrue(!retorno.isEmpty(),"Não encontramos nenhuma consulta cancelada!");
         return retorno;
     }
 
-    public List<ConsultaDTO>getConsultaAgendada(Status status){
-        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.AGENDADA)
+    public List<ConsultaDTO>getConsultaAgendada(){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(Status.AGENDADA)
                 .stream()
                 .map(this::toConsultaDTO)
                 .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta agendada!"));
+        Assert.isTrue(!retorno.isEmpty(), "Não encontramos nenhuma consulta agendada!");
         return retorno;
     }
 

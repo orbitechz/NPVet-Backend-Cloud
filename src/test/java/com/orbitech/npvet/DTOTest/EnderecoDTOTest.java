@@ -1,6 +1,5 @@
 package com.orbitech.npvet.DTOTest;
 
-import com.orbitech.npvet.dto.ContatoDTO;
 import com.orbitech.npvet.dto.EnderecoDTO;
 import com.orbitech.npvet.dto.TutorDTO;
 import org.junit.jupiter.api.BeforeEach;

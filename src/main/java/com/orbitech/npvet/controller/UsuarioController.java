@@ -1,7 +1,6 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.UsuarioDTO;
-import com.orbitech.npvet.entity.TipoUsuario;
 import com.orbitech.npvet.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,13 +51,13 @@ public class UsuarioController {
 
     @GetMapping("/adm")
     public ResponseEntity<List<UsuarioDTO>>getAdm(){
-        List<UsuarioDTO>response = service.getTipoAdm(TipoUsuario.ADMINISTRADOR);
+        List<UsuarioDTO>response = service.getTipoAdm();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/veterinarios")
     public ResponseEntity<List<UsuarioDTO>>getVeterinarios(){
-        List<UsuarioDTO>response = service.getTipoMedico(TipoUsuario.MEDICO);
+        List<UsuarioDTO>response = service.getTipoMedico();
         return ResponseEntity.ok(response);
     }
 

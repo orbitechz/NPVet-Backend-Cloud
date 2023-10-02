@@ -11,8 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -43,14 +41,31 @@ class ConsultaServiceTest {
     private Tutor tutor = new Tutor();
     List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
+    private final ExameFisico exameFisico = new ExameFisico();
+    private final ExameFisicoDTO exameFisicoDTO = new ExameFisicoDTO();
+
 
 
 
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
+        animal.setId(1L);
+        animal.setNome("toto");
+        animal.setRaca("Cachorro");
+        animal.setEspecie("Cachorro");
 
-        exameFisicoDTOList.add(new ExameFisicoDTO());
+        animalDTO.setId(1L);
+        animalDTO.setNome("toto");
+        animalDTO.setRaca("Cachorro");
+        animalDTO.setEspecie("Cachorro");
+
+        exameFisico.setAnimal(animal);
+        exameFisico.setNivelConsciencia("Acordado");
+        exameFisicoDTO.setAnimal(animalDTO);
+        exameFisicoDTO.setNivelConsciencia("Acordado");
+
+        exameFisicoDTOList.add(exameFisicoDTO);
 
         consultaDTO.setId(1L);
         consultaDTO.setAnimal(animalDTO);
@@ -62,7 +77,7 @@ class ConsultaServiceTest {
         consultaDTOList.add(consultaDTO);
 
 
-        exameFisicos.add(new ExameFisico());
+        exameFisicos.add(exameFisico);
 
         consultaEntidade.setId(1L);
         consultaEntidade.setAnimal(animal);

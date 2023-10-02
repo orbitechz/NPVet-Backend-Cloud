@@ -1,8 +1,5 @@
 package com.orbitech.npvet.EntityTest;
 
-import com.orbitech.npvet.dto.ContatoDTO;
-import com.orbitech.npvet.dto.EnderecoDTO;
-import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Anamnese;
 import com.orbitech.npvet.entity.Contato;
 import com.orbitech.npvet.entity.Endereco;

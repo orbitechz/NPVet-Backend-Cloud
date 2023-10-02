@@ -1,16 +1,13 @@
 package com.orbitech.npvet.EntityTest;
 
-
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Consulta;
 import com.orbitech.npvet.entity.ExameFisico;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalTime;
-
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class ExameFisicoTest {

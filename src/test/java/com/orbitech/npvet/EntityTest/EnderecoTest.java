@@ -1,7 +1,5 @@
 package com.orbitech.npvet.EntityTest;
 
-import com.orbitech.npvet.dto.EnderecoDTO;
-import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Endereco;
 import com.orbitech.npvet.entity.Tutor;
 import org.junit.jupiter.api.BeforeEach;

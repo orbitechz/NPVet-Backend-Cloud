@@ -45,7 +45,7 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void delete(long id){ //TODO: Adicionar uma lista de usuários com agendamento ativo. Se estiver ativo, não deletar.
+    public void delete(long id){
         UsuarioDTO usuarioDTO = getByID(id);
         usuarioDTO.setDeletedAt(LocalDateTime.now());
         repository.save(toUsuarioEntidade(usuarioDTO));
@@ -61,7 +61,6 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoSecretaria(){
-        TipoUsuario tipoUsuario = null;
         List<UsuarioDTO> retorno = repository.findByTipoUsuario(TipoUsuario.SECRETARIA)
                 .stream()
                 .map(this::toUsuarioDTO)
@@ -70,7 +69,7 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getTipoAdm(TipoUsuario tipoUsuario){
+    public List<UsuarioDTO>getTipoAdm(){
         List<UsuarioDTO>retorno = repository.findByTipoUsuario(TipoUsuario.ADMINISTRADOR)
                 .stream()
                 .map(this::toUsuarioDTO)
@@ -79,7 +78,7 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getTipoMedico(TipoUsuario tipoUsuario){
+    public List<UsuarioDTO>getTipoMedico(){
         List<UsuarioDTO>retorno = repository.findByTipoUsuario(TipoUsuario.MEDICO)
                 .stream()
                 .map(this::toUsuarioDTO)

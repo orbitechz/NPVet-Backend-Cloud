@@ -65,25 +65,25 @@ public class ConsultaController {
     }
     @GetMapping("/em-andamento")
     public ResponseEntity<List<ConsultaDTO>>getConsultasEmAndamento(){
-        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.EM_ANDAMENTO);
+        List<ConsultaDTO>response = service.getConsultasEmAndamento();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/concluida")
     public ResponseEntity<List<ConsultaDTO>>getConsultasConcluida(){
-        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.CONCLUIDA);
+        List<ConsultaDTO>response = service.getConsultasConcluida();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/cancelada")
     public ResponseEntity<List<ConsultaDTO>>getConsultasCancelada(){
-        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.CANCELADA);
+        List<ConsultaDTO>response = service.getConsultasCancelada();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/agendada")
     public ResponseEntity<List<ConsultaDTO>>getConsultasAgendadas(){
-        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.AGENDADA);
+        List<ConsultaDTO>response = service.getConsultaAgendada();
         return ResponseEntity.ok(response);
     }
 }
