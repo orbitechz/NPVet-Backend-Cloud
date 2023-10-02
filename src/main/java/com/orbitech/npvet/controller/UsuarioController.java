@@ -1,6 +1,7 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.UsuarioDTO;
+import com.orbitech.npvet.entity.TipoUsuario;
 import com.orbitech.npvet.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,40 @@ public class UsuarioController {
     public ResponseEntity<String>delete(@PathVariable("id") final long id){
         service.delete(id);
         return ResponseEntity.ok(String.format("Usuário com id [%s] deletado.",id));
+    }
+
+    @GetMapping("/{nome}")
+    public ResponseEntity<List<UsuarioDTO>>getUsuarioByName(@PathVariable("nome") String nome){
+        return ResponseEntity.ok(service.getUsuarioByName(nome));
+
+    }
+
+    @GetMapping("/secretaria")
+    public ResponseEntity<List<UsuarioDTO>>getSecretaria(){
+        List<UsuarioDTO>response = service.getTipoSecretaria();
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/adm")
+    public ResponseEntity<List<UsuarioDTO>>getAdm(){
+        List<UsuarioDTO>response = service.getTipoAdm(TipoUsuario.ADMINISTRADOR);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/veterinarios")
+    public ResponseEntity<List<UsuarioDTO>>getVeterinarios(){
+        List<UsuarioDTO>response = service.getTipoMedico(TipoUsuario.MEDICO);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<List<UsuarioDTO>>getUsername(@PathVariable("username")String username){
+        return ResponseEntity.ok(service.getUsername(username));
+    }
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity<List<UsuarioDTO>>getUsuarioCpf(@PathVariable("cpf")String cpf){
+        return ResponseEntity.ok(service.getUsuarioByCpf(cpf));
     }
 
 }

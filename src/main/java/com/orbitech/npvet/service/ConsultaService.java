@@ -1,6 +1,7 @@
 package com.orbitech.npvet.service;
 import com.orbitech.npvet.dto.ConsultaDTO;
 import com.orbitech.npvet.entity.Consulta;
+import com.orbitech.npvet.entity.Status;
 import com.orbitech.npvet.repository.ConsultaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,84 @@ public class ConsultaService {
         Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
         repository.deleteById(id);
     }
+    public List<ConsultaDTO>getAnimalByName(String nome){
+        List<ConsultaDTO> retorno = repository.findConsultaByAnimalName(nome)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhum animal com o nome: {%s}",nome.toUpperCase()));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getAnimalById(Long id){
+        List<ConsultaDTO>retorno = repository.findConsultaByAnimalId(id)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhum animal com o Id: {%s}",id));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getVeterinarioByName(String nome){
+        List<ConsultaDTO>retorno = repository.findConsultaByVeterinarioNome(nome)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhum veterinário com o nome: {%s}",nome.toUpperCase()));
+        return retorno;
+    }
+    public List<ConsultaDTO>getVeterinarioById(Long id){
+        List<ConsultaDTO>retorno = repository.findConsultaByVeterinarioId(id)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhum veterinário com o nome: {%s}", id));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getAnamneseId(Long id){
+        List<ConsultaDTO>retorno = repository.findConsultaByAnamneseId(id)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma anamnese com o Id: {%s}",id));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getConsultasEmAndamento(Status status){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.EM_ANDAMENTO)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta em andamento."));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getConsultasConcluida(Status status){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.CONCLUIDA)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Nenhuma consulta foi concluída ainda."));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getConsultasCancelada(Status status){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.CANCELADA)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta cancelada!"));
+        return retorno;
+    }
+
+    public List<ConsultaDTO>getConsultaAgendada(Status status){
+        List<ConsultaDTO>retorno = repository.findConsultasByStatus(status.AGENDADA)
+                .stream()
+                .map(this::toConsultaDTO)
+                .toList();
+        Assert.isTrue(!retorno.isEmpty(),String.format("Não encontramos nenhuma consulta agendada!"));
+        return retorno;
+    }
+
 }

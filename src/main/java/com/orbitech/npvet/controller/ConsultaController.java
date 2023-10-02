@@ -1,6 +1,7 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.ConsultaDTO;
+import com.orbitech.npvet.entity.Status;
 import com.orbitech.npvet.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +36,54 @@ public class ConsultaController {
     public ResponseEntity<String>delete(@PathVariable("id") final long id){
         service.delete(id);
         return ResponseEntity.ok(String.format("Consulta com id [%s] deletada com sucesso.",id));
+    }
+
+    @GetMapping("/animal/{nome}")
+    public ResponseEntity<List<ConsultaDTO>>getAnimalByName(@PathVariable("nome")String nome){
+        return ResponseEntity.ok(service.getAnimalByName(nome));
+    }
+
+    @GetMapping("/animal/{id}")
+    public ResponseEntity<List<ConsultaDTO>>getAnimalById(@PathVariable("id")Long id){
+        return ResponseEntity.ok(service.getAnimalById(id));
+    }
+
+    @GetMapping("/veterinario/{nome}")
+    public ResponseEntity<List<ConsultaDTO>>getVeterinarioByNome(@PathVariable("nome")String nome){
+        return ResponseEntity.ok(service.getVeterinarioByName(nome));
+
+    }
+
+    @GetMapping("/veterinario/{id}")
+    public ResponseEntity<List<ConsultaDTO>>getVeterinarioById(@PathVariable("id")Long id){
+        return ResponseEntity.ok(service.getVeterinarioById(id));
+    }
+
+    @GetMapping("/anamnese/{id}")
+    public ResponseEntity<List<ConsultaDTO>>getAnamneseById(@PathVariable("id")Long id){
+        return ResponseEntity.ok(service.getAnamneseId(id));
+    }
+    @GetMapping("/em-andamento")
+    public ResponseEntity<List<ConsultaDTO>>getConsultasEmAndamento(){
+        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.EM_ANDAMENTO);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/concluida")
+    public ResponseEntity<List<ConsultaDTO>>getConsultasConcluida(){
+        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.CONCLUIDA);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/cancelada")
+    public ResponseEntity<List<ConsultaDTO>>getConsultasCancelada(){
+        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.CANCELADA);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/agendada")
+    public ResponseEntity<List<ConsultaDTO>>getConsultasAgendadas(){
+        List<ConsultaDTO>response = service.getConsultasEmAndamento(Status.AGENDADA);
+        return ResponseEntity.ok(response);
     }
 }
