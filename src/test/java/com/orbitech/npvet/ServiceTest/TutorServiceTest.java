@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class TutorServiceTest {
+class TutorServiceTest {
     @Autowired
     private TutorService service;
     @MockBean

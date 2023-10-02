@@ -1,7 +1,6 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.ConsultaDTO;
-import com.orbitech.npvet.entity.Status;
 import com.orbitech.npvet.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

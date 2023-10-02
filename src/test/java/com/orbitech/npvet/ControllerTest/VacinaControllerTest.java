@@ -107,6 +107,6 @@ class VacinaControllerTest {
     void vacinaDeleteTest() {
         ResponseEntity<String> controllerResponse = controller.delete(1L);
         assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertEquals(controllerResponse.getBody(), "Vacina 1 deletada com sucesso!");
+        assertEquals("Vacina 1 deletada com sucesso!", controllerResponse.getBody());
     }
 }
