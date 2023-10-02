@@ -66,8 +66,10 @@ public class ExameFisicoService {
 
     @Transactional
     public void delete(Long id){
-        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
-        repository.deleteById(id);
+        ExameFisico exameFisico = repository.findById(id).orElse(null);
+        Assert.notNull(exameFisico,String.format("ID [%s] não localizado.",id));
+        exameFisico.setDeletedAt(LocalDateTime.now());
+        repository.save(exameFisico);
     }
 
 
