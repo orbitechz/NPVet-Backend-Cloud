@@ -44,12 +44,9 @@ class ConsultaServiceTest {
     private final ExameFisico exameFisico = new ExameFisico();
     private final ExameFisicoDTO exameFisicoDTO = new ExameFisicoDTO();
 
-
-
-
     @BeforeEach
     void setUp(){
-        MockitoAnnotations.openMocks(this);
+//        MockitoAnnotations.openMocks(this);
         animal.setId(1L);
         animal.setNome("toto");
         animal.setRaca("Cachorro");
