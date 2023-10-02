@@ -1,12 +1,14 @@
-package com.orbitech.npvet.ControllerTest;
+package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.controller.TutorController;
 import com.orbitech.npvet.dto.ContatoDTO;
 import com.orbitech.npvet.dto.EnderecoDTO;
 import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Contato;
 import com.orbitech.npvet.entity.Endereco;
 import com.orbitech.npvet.entity.Tutor;
+import com.orbitech.npvet.entity.Vacina;
 import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.TutorService;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,33 +18,26 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class TutorControllerTest {
-    @Autowired
-    private TutorController controller;
+public class TutorServiceTest {
     @Autowired
     private TutorService service;
-//    @MockBean
-//    private TutorService mockService;
     @MockBean
     private TutorRepository repository;
     Tutor tutorEntity = new Tutor();
     TutorDTO tutorDTO = new TutorDTO();
     List<Tutor> tutorEntityList = new ArrayList<>();
     List<TutorDTO> tutorDTOList = new ArrayList<>();
-
     @BeforeEach
     void setupMocks() {
         MockitoAnnotations.openMocks(this);
@@ -78,68 +73,74 @@ class TutorControllerTest {
         when(repository.getAllDesativados()).thenReturn(tutorEntityList);
         when(repository.save(Mockito.any(Tutor.class))).thenReturn(tutorEntity);
     }
-
     @Test
-    void tutorGetByIdTest() {
-        ResponseEntity<TutorDTO> controllerResponse = controller.getById(1L);
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
-    }
-    @Test
-    void tutorGetByNomeTest() {
-        ResponseEntity<List<TutorDTO>> controllerResponse = controller.getByNome("Nome");
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTOList);
-    }
-    @Test
-    void tutorGetAllTest() {
-        ResponseEntity<List<TutorDTO>> controllerResponse = controller.getAll();
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTOList);
-    }
-    @Test
-    void tutorGetAllAtivadosTest() {
-        ResponseEntity<List<TutorDTO>> controllerResponse = controller.getAllAtivados();
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTOList);
-    }
-    @Test
-    void tutorGetAllDesativadosTest() {
-        ResponseEntity<List<TutorDTO>> controllerResponse = controller.getAllDesativados();
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTOList);
-    }
-    @Test
-    void tutorGetByCpfTest() {
-        ResponseEntity<TutorDTO> controllerResponse = controller.getByCpf("077.029.049-33");
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
+    void tutorDtoToTamanhoEntityTest(){
+        Tutor tutor = service.toTutor(tutorDTO);
+        assertThat(tutor).usingRecursiveComparison().isEqualTo(tutorEntity);
     }
 
     @Test
-    void tutorGetByRgTest() {
-        ResponseEntity<TutorDTO> controllerResponse = controller.getByRg("11.011.455-9");
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
+    void tutorToTamanhoDTOTest(){
+        TutorDTO tutor = service.toTutorDTO(tutorEntity);
+        assertThat(tutor).usingRecursiveComparison().isEqualTo(tutorDTO);
     }
     @Test
-    void tutorCreateExceptionTest() {
+    void tutorFindByIdTest(){
+        TutorDTO retornoService = service.getById(1L);
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorDTO);
+    }
+    @Test
+    void tutorGetAllTest(){
+        List<TutorDTO> retornoService = service.getAll();
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorEntityList);
+    }
+    @Test
+    void tutorGetAllAtivadosTest(){
+        List<TutorDTO> retornoService = service.getAllAtivados();
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorEntityList);
+    }
+    @Test
+    void tutorGetAllDesativadosTest(){
+        List<TutorDTO> retornoService = service.getAllAtivados();
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorEntityList);
+    }
+    @Test
+    void tutorGetAllByNomeTest(){
+        List<TutorDTO> retornoService = service.getAllByNome("Nome");
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorEntityList);
+    }
+
+    @Test
+    void tutorCadastrarTest(){
         assertThrows(IllegalArgumentException.class, () -> {
-            controller.create(tutorDTO);
+            service.create(tutorDTO);
         });
     }
     @Test
-    void tutorPutTest() {
-        ResponseEntity<TutorDTO> controllerResponse = controller.update(1L, tutorDTO);
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
+    void tutorEditarTest(){
+        TutorDTO retornoService = service.update(1L, tutorDTO);
+        assertNotNull(retornoService);
+        assertThat(retornoService).usingRecursiveComparison().isEqualTo(tutorDTO);
     }
 
     @Test
-    void tutorDeleteTest() {
-        ResponseEntity<String> controllerResponse = controller.delete(1L);
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertEquals(controllerResponse.getBody(), "Tutor 1 desativado com sucesso!");
+    void tutorDeletarTest() {
+        service.delete(1L);
+        verify(repository,times(1)).findById(1L);
     }
-
 }

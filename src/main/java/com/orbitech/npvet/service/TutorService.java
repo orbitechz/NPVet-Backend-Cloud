@@ -45,6 +45,15 @@ public class TutorService {
     public List<TutorDTO> getAllByNome(String nome){
         return repository.findAllByNomeLike(nome).stream().map(this::toTutorDTO).toList();
     }
+    public List<TutorDTO> getAll(){
+        return repository.findAll().stream().map(this::toTutorDTO).toList();
+    }
+    public List<TutorDTO> getAllAtivados(){
+        return repository.getAllAtivados().stream().map(this::toTutorDTO).toList();
+    }
+    public List<TutorDTO> getAllDesativados(){
+        return repository.getAllDesativados().stream().map(this::toTutorDTO).toList();
+    }
     public List<TutorDTO> getAllByEmail(String email){
         return repository.findAllByEmailLike(email).stream().map(this::toTutorDTO).toList();
     }

@@ -22,6 +22,18 @@ public class TutorController {
     public ResponseEntity<List<TutorDTO>> getByNome(@PathVariable("nome") String nome) {
         return ResponseEntity.ok(service.getAllByNome(nome));
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<TutorDTO>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+    @GetMapping("/all/ativos")
+    public ResponseEntity<List<TutorDTO>> getAllAtivados() {
+        return ResponseEntity.ok(service.getAllAtivados());
+    }
+    @GetMapping("/all/desativados")
+    public ResponseEntity<List<TutorDTO>> getAllDesativados() {
+        return ResponseEntity.ok(service.getAllDesativados());
+    }
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<TutorDTO> getByCpf(@PathVariable("cpf") String cpf) {
         return ResponseEntity.ok(service.getByCpf(cpf));
