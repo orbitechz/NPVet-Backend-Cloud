@@ -14,7 +14,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class VacinaDTOTest {
+class VacinaDTOTest {
     private VacinaDTO vacinaDTO = new VacinaDTO();
     private LocalDate aplicacao = LocalDate.of(2023, Month.SEPTEMBER, 26);
 

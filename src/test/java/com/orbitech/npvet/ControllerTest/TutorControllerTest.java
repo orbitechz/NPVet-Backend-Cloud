@@ -4,12 +4,9 @@ import com.orbitech.npvet.controller.TutorController;
 import com.orbitech.npvet.dto.ContatoDTO;
 import com.orbitech.npvet.dto.EnderecoDTO;
 import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Contato;
 import com.orbitech.npvet.entity.Endereco;
 import com.orbitech.npvet.entity.Tutor;
-import com.orbitech.npvet.entity.Vacina;
-import com.orbitech.npvet.repository.AnimalRepository;
 import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.TutorService;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class TutorControllerTest {
+class TutorControllerTest {
     @Autowired
     private TutorController controller;
     @Autowired

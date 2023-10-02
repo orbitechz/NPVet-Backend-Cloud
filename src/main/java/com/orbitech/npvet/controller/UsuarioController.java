@@ -16,7 +16,7 @@ public class UsuarioController {
     private UsuarioService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final Long id) throws Exception {
+    public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final Long id){
         return ResponseEntity.ok(service.getByID(id));
     }
     @GetMapping("/all")

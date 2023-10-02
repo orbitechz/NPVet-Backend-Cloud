@@ -15,7 +15,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class TutorDTOTest {
+class TutorDTOTest {
     private TutorDTO tutor = new TutorDTO();
     private List<AnamneseDTO> anamneseDTO = new ArrayList<>();
     private List<EnderecoDTO> enderecosDTO = new ArrayList<>();
