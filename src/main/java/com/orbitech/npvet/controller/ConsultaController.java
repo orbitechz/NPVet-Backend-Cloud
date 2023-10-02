@@ -37,17 +37,17 @@ public class ConsultaController {
         return ResponseEntity.ok(String.format("Consulta com id [%s] deletada com sucesso.",id));
     }
 
-    @GetMapping("/animal/{nome}")
+    @GetMapping("/animal/nome/{nome}")
     public ResponseEntity<List<ConsultaDTO>>getAnimalByName(@PathVariable("nome")String nome){
         return ResponseEntity.ok(service.getAnimalByName(nome));
     }
 
-    @GetMapping("/animal/{id}")
+    @GetMapping("/animal/id/{id}")
     public ResponseEntity<List<ConsultaDTO>>getAnimalById(@PathVariable("id")Long id){
         return ResponseEntity.ok(service.getAnimalById(id));
     }
 
-    @GetMapping("/veterinario/{nome}")
+    @GetMapping("/veterinario/nome/{nome}")
     public ResponseEntity<List<ConsultaDTO>>getVeterinarioByNome(@PathVariable("nome")String nome){
         return ResponseEntity.ok(service.getVeterinarioByName(nome));
 

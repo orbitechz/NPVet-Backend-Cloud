@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Você precisa selecionar um tutor.") 
     private TutorDTO tutor;
     private AnamneseDTO anamnese;
-    private List<ExameFisicoDTO>examesFisicos;
+    private List<ExameFisicoDTO>examesFisicos = new ArrayList<>();
     @NotNull(message = "Informe a data.")
     private LocalDateTime data;
     @NotNull (message = "Você precisar informar o status.")

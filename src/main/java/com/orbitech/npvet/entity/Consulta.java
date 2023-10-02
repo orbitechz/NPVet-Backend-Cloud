@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,7 @@ public class Consulta extends AbstractEntity {
     @OneToOne
     private Anamnese anamnese;
     @OneToMany(mappedBy = "consulta")
-    private List<ExameFisico>examesFisicos;
+    private List<ExameFisico>examesFisicos = new ArrayList<>();
 
     @Column(nullable = false, name = "data")
     private LocalDateTime data;
