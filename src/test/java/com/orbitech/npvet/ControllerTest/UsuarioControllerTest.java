@@ -8,6 +8,7 @@ import com.orbitech.npvet.repository.UsuarioRepository;
 import com.orbitech.npvet.service.UsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,10 @@ class UsuarioControllerTest {
         when(repository.findAll()).thenReturn(usuarioList);
         when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuarioEntidade);
 
+        when(repository.findAllUsuariosByNome("nome")).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(TipoUsuario.SECRETARIA)).thenReturn(usuarioList);
+
+
     }
 
     @Test
@@ -110,10 +115,11 @@ class UsuarioControllerTest {
 
     @Test
     void getTipoSecretaria(){
+
        ResponseEntity<List<UsuarioDTO>>response = controller.getSecretaria();
        assertNotNull(response);
        assertEquals(HttpStatus.OK,response.getStatusCode());
-       assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
+       assertThat(response.getBody().get(0)).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
 
 
