@@ -24,7 +24,6 @@ public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Informe a data.")
     private LocalDateTime data;
     @NotNull (message = "Você precisar informar o status.")
-    @Size(max = 15)
     private Status status;
     @NotNull(message = "Você precisa informar o Médico Veterinário!")
     private UsuarioDTO veterinario;
