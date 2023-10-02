@@ -22,6 +22,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -98,5 +99,22 @@ class UsuarioControllerTest {
         verify(repository,times(1)).deleteById(1L);
 
     }
+
+    @Test
+    void getUserByNameTest(){
+        ResponseEntity<List<UsuarioDTO>>response = controller.getUsuarioByName("nome");
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTOList);
+    }
+
+    @Test
+    void getTipoSecretaria(){
+       ResponseEntity<List<UsuarioDTO>>response = controller.getSecretaria();
+       assertNotNull(response);
+       assertEquals(HttpStatus.OK,response.getStatusCode());
+       assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
+    }
+
 
 }

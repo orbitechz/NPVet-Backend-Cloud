@@ -58,7 +58,8 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getTipoSecretaria(TipoUsuario tipoUsuario){
+    public List<UsuarioDTO>getTipoSecretaria(){
+        TipoUsuario tipoUsuario = null;
         List<UsuarioDTO> retorno = repository.findByTipoUsuario(tipoUsuario.SECRETARIA)
                 .stream()
                 .map(this::toUsuarioDTO)

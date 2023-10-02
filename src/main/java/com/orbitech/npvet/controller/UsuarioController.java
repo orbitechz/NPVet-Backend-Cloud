@@ -38,7 +38,7 @@ public class UsuarioController {
         return ResponseEntity.ok(String.format("Usuário com id [%s] deletado.",id));
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{nome}")
     public ResponseEntity<List<UsuarioDTO>>getUsuarioByName(@PathVariable("nome") String nome){
         return ResponseEntity.ok(service.getUsuarioByName(nome));
 
@@ -46,7 +46,7 @@ public class UsuarioController {
 
     @GetMapping("/secretaria")
     public ResponseEntity<List<UsuarioDTO>>getSecretaria(){
-        List<UsuarioDTO>response = service.getTipoAdm(TipoUsuario.SECRETARIA);
+        List<UsuarioDTO>response = service.getTipoSecretaria();
         return ResponseEntity.ok(response);
     }
 
@@ -58,7 +58,7 @@ public class UsuarioController {
 
     @GetMapping("/veterinarios")
     public ResponseEntity<List<UsuarioDTO>>getVeterinarios(){
-        List<UsuarioDTO>response = service.getTipoAdm(TipoUsuario.MEDICO);
+        List<UsuarioDTO>response = service.getTipoMedico(TipoUsuario.MEDICO);
         return ResponseEntity.ok(response);
     }
 
