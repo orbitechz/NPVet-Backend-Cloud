@@ -62,7 +62,7 @@ public class UsuarioService {
 
     public List<UsuarioDTO>getTipoSecretaria(){
         TipoUsuario tipoUsuario = null;
-        List<UsuarioDTO> retorno = repository.findByTipoUsuario(tipoUsuario.SECRETARIA)
+        List<UsuarioDTO> retorno = repository.findByTipoUsuario(TipoUsuario.SECRETARIA)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();
@@ -71,7 +71,7 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoAdm(TipoUsuario tipoUsuario){
-        List<UsuarioDTO>retorno = repository.findByTipoUsuario(tipoUsuario.ADMINISTRADOR)
+        List<UsuarioDTO>retorno = repository.findByTipoUsuario(TipoUsuario.ADMINISTRADOR)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();
@@ -80,7 +80,7 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoMedico(TipoUsuario tipoUsuario){
-        List<UsuarioDTO>retorno = repository.findByTipoUsuario(tipoUsuario.MEDICO)
+        List<UsuarioDTO>retorno = repository.findByTipoUsuario(TipoUsuario.MEDICO)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();

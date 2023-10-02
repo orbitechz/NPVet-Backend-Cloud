@@ -11,6 +11,7 @@ import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.TutorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -48,6 +48,8 @@ class TutorControllerTest {
         MockitoAnnotations.openMocks(this);
         List<EnderecoDTO> enderecosDTO = new ArrayList<>();
         List<ContatoDTO> contatosDTO = new ArrayList<>();
+        enderecosDTO.add(new EnderecoDTO());
+        contatosDTO.add(new ContatoDTO());
         tutorDTO.setId(1L);
         tutorDTO.setNome("Nome");
         tutorDTO.setCpf("446.460.100-62");
@@ -60,6 +62,8 @@ class TutorControllerTest {
 
         List<Endereco> enderecos = new ArrayList<>();
         List<Contato> contatos = new ArrayList<>();
+        enderecos.add(new Endereco());
+        contatos.add(new Contato());
         tutorEntity.setId(1L);
         tutorEntity.setNome("Nome");
         tutorEntity.setCpf("446.460.100-62");
@@ -70,8 +74,8 @@ class TutorControllerTest {
         tutorEntityList.add(tutorEntity);
 
         when(repository.findById(1L)).thenReturn(Optional.of(tutorEntity));
-        when(repository.findByCpf(Mockito.any(String.class))).thenReturn(tutorEntity);
-        when(repository.findByRg(Mockito.any(String.class))).thenReturn(tutorEntity);
+        when(repository.findByCpf("446.460.100-62")).thenReturn(tutorEntity);
+        when(repository.findByRg("11.011.455-9")).thenReturn(tutorEntity);
         when(repository.findAllByNomeLike(Mockito.any(String.class))).thenReturn(tutorEntityList);
         when(repository.findAll()).thenReturn(tutorEntityList);
         when(repository.getAllAtivados()).thenReturn(tutorEntityList);
@@ -111,7 +115,7 @@ class TutorControllerTest {
     }
     @Test
     void tutorGetByCpfTest() {
-        ResponseEntity<TutorDTO> controllerResponse = controller.getByCpf("077.029.049-33");
+        ResponseEntity<TutorDTO> controllerResponse = controller.getByCpf("446.460.100-62");
         assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
         assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
     }
@@ -123,10 +127,12 @@ class TutorControllerTest {
         assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
     }
     @Test
-    void tutorCreateExceptionTest() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            controller.create(tutorDTO);
-        });
+    void tutorCreateTest() {
+        tutorDTO.setCpf("844.187.910-94");
+        tutorDTO.setRg("32.471.360-5");
+        ResponseEntity<TutorDTO> controllerResponse = controller.create(tutorDTO);
+        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
+        assertThat(controllerResponse.getBody()).usingRecursiveComparison().ignoringFields("cpf").ignoringFields("rg").isEqualTo(tutorDTO);
     }
     @Test
     void tutorPutTest() {

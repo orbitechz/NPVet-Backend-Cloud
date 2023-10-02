@@ -18,14 +18,15 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -43,6 +44,8 @@ public class TutorServiceTest {
         MockitoAnnotations.openMocks(this);
         List<EnderecoDTO> enderecosDTO = new ArrayList<>();
         List<ContatoDTO> contatosDTO = new ArrayList<>();
+        contatosDTO.add(new ContatoDTO());
+        enderecosDTO.add(new EnderecoDTO());
         tutorDTO.setId(1L);
         tutorDTO.setNome("Nome");
         tutorDTO.setCpf("446.460.100-62");
@@ -55,6 +58,8 @@ public class TutorServiceTest {
 
         List<Endereco> enderecos = new ArrayList<>();
         List<Contato> contatos = new ArrayList<>();
+        contatos.add(new Contato());
+        enderecos.add(new Endereco());
         tutorEntity.setId(1L);
         tutorEntity.setNome("Nome");
         tutorEntity.setCpf("446.460.100-62");
@@ -65,8 +70,8 @@ public class TutorServiceTest {
         tutorEntityList.add(tutorEntity);
 
         when(repository.findById(1L)).thenReturn(Optional.of(tutorEntity));
-        when(repository.findByCpf(Mockito.any(String.class))).thenReturn(tutorEntity);
-        when(repository.findByRg(Mockito.any(String.class))).thenReturn(tutorEntity);
+        when(repository.findByCpf("446.460.100-62")).thenReturn(tutorEntity);
+        when(repository.findByRg("11.011.455-9")).thenReturn(tutorEntity);
         when(repository.findAllByNomeLike(Mockito.any(String.class))).thenReturn(tutorEntityList);
         when(repository.findAll()).thenReturn(tutorEntityList);
         when(repository.getAllAtivados()).thenReturn(tutorEntityList);
@@ -127,9 +132,12 @@ public class TutorServiceTest {
 
     @Test
     void tutorCadastrarTest(){
-        assertThrows(IllegalArgumentException.class, () -> {
-            service.create(tutorDTO);
-        });
+        tutorDTO.setCpf("844.187.910-94");
+        tutorDTO.setRg("32.471.360-5");
+        TutorDTO retornoService = service.create(tutorDTO);
+        assertNotNull(retornoService);
+        assertThat(retornoService).usingRecursiveComparison().ignoringFields("cpf").ignoringFields("rg").isEqualTo(tutorDTO);
+
     }
     @Test
     void tutorEditarTest(){
