@@ -1,19 +1,13 @@
 package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.controller.AnimalController;
-import com.orbitech.npvet.controller.PerguntaController;
 import com.orbitech.npvet.dto.AnimalDTO;
-import com.orbitech.npvet.dto.PerguntaDTO;
 import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
-import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.AnimalRepository;
-import com.orbitech.npvet.repository.PerguntaRepository;
 import com.orbitech.npvet.repository.TutorRepository;
 import com.orbitech.npvet.service.AnimalService;
-import com.orbitech.npvet.service.PerguntaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,7 +16,6 @@ import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +43,12 @@ class AnimalServiceTest {
     private ModelMapper modelMapper;
 
 
-    private AnimalDTO animalDTO = new AnimalDTO();
-    private Animal animal = new Animal();
+    private final AnimalDTO animalDTO = new AnimalDTO();
+    private final Animal animal = new Animal();
 
-    private TutorDTO tutorDTO = new TutorDTO();
+    private final TutorDTO tutorDTO = new TutorDTO();
 
-    private Tutor tutor = new Tutor();
+    private final Tutor tutor = new Tutor();
 
     @BeforeEach
     void setUp(){
@@ -74,7 +67,7 @@ class AnimalServiceTest {
         animal.setPelagem("baixa");
         animal.setProcedencia("Duvidosa");
         animal.setPeso(10.50);
-        animal.setTutor_id(tutor);
+        animal.setTutorId(tutor);
 
         animalDTO.setNome("toto");
         animalDTO.setRaca("Cachorro");
@@ -83,7 +76,7 @@ class AnimalServiceTest {
         animalDTO.setPelagem("baixa");
         animalDTO.setProcedencia("Duvidosa");
         animalDTO.setPeso(10.50);
-        animalDTO.setTutor_id(tutorDTO);
+        animalDTO.setTutorId(tutorDTO);
 
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);
@@ -98,10 +91,7 @@ class AnimalServiceTest {
         when(repository.findAllByNomeLike("toto")).thenReturn(animalList);
 
         when(repository.save(Mockito.any(Animal.class))).thenReturn(animal);
-        /*
-        when(modelMapper.map(animal, AnimalDTO.class)).thenReturn(animalDTO);
-        when(modelMapper.map(animalDTO, Animal.class)).thenReturn(animal);
-        */
+
     }
 
     @Test

@@ -17,7 +17,7 @@ import java.util.List;
 public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Você precisa selecionar um paciente.")
     private AnimalDTO animal;
-    @NotNull(message = "Você precisa selecionar um tutor.") //TODO: Decidir se deixamos o id do tutor na consulta, ou apenas na anamnese.
+    @NotNull(message = "Você precisa selecionar um tutor.") 
     private TutorDTO tutor;
     private AnamneseDTO anamnese;
     private List<ExameFisicoDTO>examesFisicos;

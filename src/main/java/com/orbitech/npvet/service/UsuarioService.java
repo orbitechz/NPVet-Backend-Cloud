@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,8 +28,8 @@ public class UsuarioService {
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO getByID(long id) throws Exception{
-        return toUsuarioDTO(repository.findById(id).orElseThrow(() -> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
+   public UsuarioDTO getByID(long id){
+        return toUsuarioDTO(repository.findById(id).orElse(null));
    }
 
     public List<UsuarioDTO> getAll() {
@@ -45,8 +46,9 @@ public class UsuarioService {
 
     @Transactional
     public void delete(long id){ //TODO: Adicionar uma lista de usuários com agendamento ativo. Se estiver ativo, não deletar.
-        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
-        repository.deleteById(id);
+        UsuarioDTO usuarioDTO = getByID(id);
+        usuarioDTO.setDeletedAt(LocalDateTime.now());
+        repository.save(toUsuarioEntidade(usuarioDTO));
     }
 
     public List<UsuarioDTO>getUsuarioByName(String nome){

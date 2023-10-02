@@ -47,7 +47,7 @@ public class AnimalDTO extends AbstractEntityDTO{
     private String procedencia;
 
     @NotNull(message = "É obrigatorio informar o id do tutor")
-    private TutorDTO tutor_id;
+    private TutorDTO tutorId;
 
     @JsonIgnoreProperties("animal")
     private List<Vacina> vacinas;

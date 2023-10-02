@@ -26,7 +26,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class VacinaServiceTest {
+class VacinaServiceTest {
     @Autowired
     private VacinaService service;
     @MockBean

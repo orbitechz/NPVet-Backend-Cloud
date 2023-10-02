@@ -53,7 +53,7 @@ public class AnimalService {
 
     @Transactional
     public AnimalDTO create(AnimalDTO animalDTO){
-        Tutor tutorBanco = tutorRepository.findById(animalDTO.getTutor_id().getId()).orElse(null);
+        Tutor tutorBanco = tutorRepository.findById(animalDTO.getTutorId().getId()).orElse(null);
         Assert.notNull(tutorBanco, "O tutor informado não existe!");
 
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
@@ -62,7 +62,6 @@ public class AnimalService {
     @Transactional
     public AnimalDTO update(Long id, AnimalDTO animalDTO){
         Animal animalById = repository.findById(id).orElse(null);
-        System.out.println(animalById.getId());
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));

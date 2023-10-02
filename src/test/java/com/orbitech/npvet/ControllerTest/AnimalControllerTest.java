@@ -46,12 +46,12 @@ class AnimalControllerTest {
     @MockBean
     private ModelMapper modelMapper;
 
-    private AnimalDTO animalDTO = new AnimalDTO();
-    private Animal animal = new Animal();
+    private final AnimalDTO animalDTO = new AnimalDTO();
+    private final Animal animal = new Animal();
 
-    private TutorDTO tutorDTO = new TutorDTO();
+    private final TutorDTO tutorDTO = new TutorDTO();
 
-    private Tutor tutor = new Tutor();
+    private final Tutor tutor = new Tutor();
 
 
     @BeforeEach
@@ -71,7 +71,7 @@ class AnimalControllerTest {
         animal.setPelagem("baixa");
         animal.setProcedencia("Duvidosa");
         animal.setPeso(10.50);
-        animal.setTutor_id(tutor);
+        animal.setTutorId(tutor);
 
         animalDTO.setNome("toto");
         animalDTO.setRaca("Cachorro");
@@ -80,7 +80,7 @@ class AnimalControllerTest {
         animalDTO.setPelagem("baixa");
         animalDTO.setProcedencia("Duvidosa");
         animalDTO.setPeso(10.50);
-        animalDTO.setTutor_id(tutorDTO);
+        animalDTO.setTutorId(tutorDTO);
 
 
         List<Animal> animalList = new ArrayList<>();
@@ -170,6 +170,5 @@ class AnimalControllerTest {
         ResponseEntity<String>response = controller.delete(1L);
         assertEquals(HttpStatus.OK,response.getStatusCode());
     }
-
 
 }

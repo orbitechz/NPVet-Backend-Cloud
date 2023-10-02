@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 @SpringBootTest
-public class UsuarioServiceTest {
+class UsuarioServiceTest {
 
     @Mock
     private UsuarioRepository repository;
@@ -92,6 +92,6 @@ public class UsuarioServiceTest {
     @Test
     void usuarioDeleteTest(){
        service.delete(1L);
-        verify(repository,times(1)).deleteById(1L);
+       verify(repository,times(1)).findById(1L);
     }
 }

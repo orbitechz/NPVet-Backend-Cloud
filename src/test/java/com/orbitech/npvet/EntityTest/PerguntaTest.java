@@ -4,12 +4,13 @@ import com.orbitech.npvet.entity.AnamnesePergunta;
 import com.orbitech.npvet.entity.Pergunta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class PerguntaTest {
 
     private Pergunta pergunta;

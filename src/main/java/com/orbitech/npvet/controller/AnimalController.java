@@ -43,8 +43,8 @@ public class AnimalController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO AnimalDTO){
-        return ResponseEntity.ok(service.create(AnimalDTO));
+    public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO animalDTO){
+        return ResponseEntity.ok(service.create(animalDTO));
     }
 
     @PutMapping("/update/{id}")

@@ -11,8 +11,8 @@ import static org.testng.Assert.assertEquals;
 @SpringBootTest
 class AnimalDTOTest {
 
-    private AnimalDTO animalDTO = new AnimalDTO();
-    private TutorDTO tutorDTO = new TutorDTO();
+    private final AnimalDTO animalDTO = new AnimalDTO();
+    private final TutorDTO tutorDTO = new TutorDTO();
 
 
     @BeforeEach
@@ -30,7 +30,7 @@ class AnimalDTOTest {
         animalDTO.setPelagem("baixa");
         animalDTO.setProcedencia("Duvidosa");
         animalDTO.setPeso(10.50);
-        animalDTO.setTutor_id(tutorDTO);
+        animalDTO.setTutorId(tutorDTO);
 
     }
 
@@ -59,7 +59,7 @@ class AnimalDTOTest {
     void animalPesoTest(){assertEquals(10.50, animalDTO.getPeso());}
 
     @Test
-    void animalTutorTest(){assertEquals(tutorDTO, animalDTO.getTutor_id());}
+    void animalTutorTest(){assertEquals(tutorDTO, animalDTO.getTutorId());}
 
 
 }

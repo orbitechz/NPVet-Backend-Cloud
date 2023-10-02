@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Getter
 @Setter
@@ -20,7 +21,8 @@ public class UsuarioDTO extends AbstractEntityDTO {
     private String nome;
 
     @NotNull(message = "Você precisa preencher um CPF.")
-    @Size(max = 11, message = "Quantidade de caracteres excedida.") //TODO: Adicionar a Annotation @CPF futuramente.
+    @Size(max = 11, message = "Quantidade de caracteres excedida.")
+    @CPF(message = "CPF inválido.")
     private String cpf;
 
     @Enumerated(EnumType.STRING)

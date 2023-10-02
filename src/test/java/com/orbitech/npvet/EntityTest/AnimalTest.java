@@ -1,7 +1,5 @@
 package com.orbitech.npvet.EntityTest;
 
-import com.orbitech.npvet.dto.AnimalDTO;
-import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +38,7 @@ class AnimalTest {
         animal.setPelagem("pelagem");
         animal.setProcedencia("procedencia");
         animal.setPeso(10.50);
-        animal.setTutor_id(tutor);
+        animal.setTutorId(tutor);
         animal.setVacinas(vacina);
         animal.setConsulta(consulta);
         animal.setAnamneses(anamnese);
@@ -73,7 +71,7 @@ class AnimalTest {
     void animalPesoTest(){assertEquals(10.50, animal.getPeso());}
 
     @Test
-    void animalTutorTest(){assertEquals(tutor, animal.getTutor_id());}
+    void animalTutorTest(){assertEquals(tutor, animal.getTutorId());}
 
     @Test
     void animalAllArgsConstructor(){

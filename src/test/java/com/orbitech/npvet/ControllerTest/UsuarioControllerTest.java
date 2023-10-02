@@ -106,8 +106,7 @@ class UsuarioControllerTest {
     void usuarioDeleteTest(){
         ResponseEntity<String>response = controller.delete(1L);
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        verify(repository,times(1)).deleteById(1L);
-
+        assertEquals("Usuário com id [1] deletado.", response.getBody());
     }
 
     @Test

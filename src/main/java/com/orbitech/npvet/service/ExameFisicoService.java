@@ -51,7 +51,7 @@ public class ExameFisicoService {
     public ExameFisicoDTO create(ExameFisicoDTO exameFisicoDTO){
 
         AnimalDTO animalBanco =  animalService.getById(exameFisicoDTO.getAnimal().getId());
-        Assert.notNull(animalBanco, String.format("Animal inexistente"));
+        Assert.notNull(animalBanco, "Animal inexistente");
 
         return toExameDTO(repository.save(toExame(exameFisicoDTO)));
     }
@@ -66,9 +66,8 @@ public class ExameFisicoService {
 
     @Transactional
     public void delete(Long id){
-        ExameFisicoDTO exameFisicoDTO = getById(id);
-        exameFisicoDTO.setDeletedAt(LocalDateTime.now());
-        repository.save(toExame(exameFisicoDTO));
+        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
+        repository.deleteById(id);
     }
 
 

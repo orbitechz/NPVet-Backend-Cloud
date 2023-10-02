@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
- class ConsultaServiceTest {
+class ConsultaServiceTest {
     @Mock
     private ConsultaRepository repository;
     @Mock
@@ -33,18 +33,18 @@ import static org.mockito.Mockito.*;
 
     private Consulta consultaEntidade = new Consulta();
     private ConsultaDTO consultaDTO = new ConsultaDTO();
-    private List<Consulta> consultaList = new ArrayList<>();
-    private List<ConsultaDTO>consultaDTOList = new ArrayList<>();
+    List<Consulta> consultaList = new ArrayList<>();
+    List<ConsultaDTO>consultaDTOList = new ArrayList<>();
     private AnimalDTO animalDTO = new AnimalDTO();
     private TutorDTO tutorDTO = new TutorDTO();
-    private List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
+    List<ExameFisicoDTO>exameFisicoDTOList = new ArrayList<>();
     private UsuarioDTO veterinarios = new UsuarioDTO();
     private Animal animal = new Animal();
     private Tutor tutor = new Tutor();
-    private List<ExameFisico>exameFisicos = new ArrayList<>();
+    List<ExameFisico>exameFisicos = new ArrayList<>();
     private Usuario veterinariosEntidade = new Usuario();
-    @Autowired
-    private ModelMapper modelMapper;
+
+
 
     @BeforeEach
     void setUp(){
