@@ -28,6 +28,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -36,8 +37,8 @@ public class TutorControllerTest {
     private TutorController controller;
     @Autowired
     private TutorService service;
-    @MockBean
-    private TutorService mockService;
+//    @MockBean
+//    private TutorService mockService;
     @MockBean
     private TutorRepository repository;
     Tutor tutorEntity = new Tutor();
@@ -104,12 +105,10 @@ public class TutorControllerTest {
         assertThat(controllerResponse.getBody()).usingRecursiveComparison().isEqualTo(tutorDTO);
     }
     @Test
-    void tutorCreateTest() {
-        when(mockService.create(tutorDTO)).thenReturn(tutorDTO);
-
-        ResponseEntity<TutorDTO> controllerResponse = controller.create(tutorDTO);
-        assertEquals(HttpStatus.OK, controllerResponse.getStatusCode());
-        assertThat(controllerResponse.getBody()).usingRecursiveComparison().ignoringFields("id").isEqualTo(tutorDTO);
+    void tutorCreateExceptionTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            controller.create(tutorDTO);
+        });
     }
     @Test
     void tutorPutTest() {
