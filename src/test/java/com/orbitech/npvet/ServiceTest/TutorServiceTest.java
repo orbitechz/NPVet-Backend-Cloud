@@ -68,6 +68,7 @@ class TutorServiceTest {
         when(repository.findByCpf("446.460.100-62")).thenReturn(tutorEntity);
         when(repository.findByRg("11.011.455-9")).thenReturn(tutorEntity);
         when(repository.findAllByNomeLike(Mockito.any(String.class))).thenReturn(tutorEntityList);
+        when(repository.findAllByEmailLike(Mockito.any(String.class))).thenReturn(tutorEntityList);
         when(repository.findAll()).thenReturn(tutorEntityList);
         when(repository.getAllAtivados()).thenReturn(tutorEntityList);
         when(repository.getAllDesativados()).thenReturn(tutorEntityList);
@@ -124,7 +125,14 @@ class TutorServiceTest {
                 .usingRecursiveComparison()
                 .isEqualTo(tutorEntityList);
     }
-
+    @Test
+    void tutorGetAllByEmailTest(){
+        List<TutorDTO> retornoService = service.getAllByEmail("email@email.com");
+        assertNotNull(retornoService);
+        assertThat(retornoService)
+                .usingRecursiveComparison()
+                .isEqualTo(tutorEntityList);
+    }
     @Test
     void tutorCadastrarTest(){
         tutorDTO.setCpf("844.187.910-94");
