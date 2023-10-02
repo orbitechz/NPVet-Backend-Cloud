@@ -11,5 +11,5 @@ public interface VacinaRepository extends JpaRepository<Vacina, Long> {
     @Query("from Vacina where nome like :nome")
     List<Vacina> findAllByNomeLike(@Param("nome") String nome);
 
-    @Query("from Vacina where animal.id = :animal_id")
-    List<Vacina> findAllByAnimalId(@Param("animal_id") Long animal_id);}
+    @Query("from Vacina where animal.id = :animalId")
+    List<Vacina> findAllByAnimalId(@Param("animalId") Long animalId);}

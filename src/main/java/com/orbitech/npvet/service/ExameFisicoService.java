@@ -51,7 +51,7 @@ public class ExameFisicoService {
     public ExameFisicoDTO create(ExameFisicoDTO exameFisicoDTO){
 
         AnimalDTO animalBanco =  animalService.getById(exameFisicoDTO.getAnimal().getId());
-        Assert.notNull(animalBanco, String.format("Animal inexistente"));
+        Assert.notNull(animalBanco, "Animal inexistente");
 
         return toExameDTO(repository.save(toExame(exameFisicoDTO)));
     }

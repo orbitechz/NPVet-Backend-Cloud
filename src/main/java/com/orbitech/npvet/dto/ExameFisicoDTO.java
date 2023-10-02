@@ -34,7 +34,7 @@ public class ExameFisicoDTO extends AbstractEntity {
 
     private String linfSubmand;
 
-    private String linf_preEscapulares;
+    private String linfPreEscapulares;
 
     private String linfPopliteos;
 

@@ -43,7 +43,7 @@ public class Animal extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Tutor tutor_id;
+    private Tutor tutorId;
 
     @OneToMany(mappedBy = "animal")
     @JsonIgnoreProperties("animal")

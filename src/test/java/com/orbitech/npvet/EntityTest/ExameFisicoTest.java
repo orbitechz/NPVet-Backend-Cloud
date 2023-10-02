@@ -1,8 +1,6 @@
 package com.orbitech.npvet.EntityTest;
 
 
-import com.orbitech.npvet.dto.AnimalDTO;
-import com.orbitech.npvet.dto.ExameFisicoDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Consulta;
 import com.orbitech.npvet.entity.ExameFisico;
@@ -41,7 +39,7 @@ class ExameFisicoTest {
         exameFisico.setPulso(10.0);
         exameFisico.setHidratacao("hidratacao");
         exameFisico.setLinfSubmand("linfSub");
-        exameFisico.setLinf_preEscapulares("linfPre");
+        exameFisico.setLinfPreEscapulares("linfPre");
         exameFisico.setLinfPopliteos("linfPop");
         exameFisico.setLinfInguinais("linfIng");
         exameFisico.setMucosaOcular("mucosaOcular");
@@ -83,7 +81,7 @@ class ExameFisicoTest {
 
     @Test
     void testLinfPreEscapulares() {
-        assertEquals("linfPre", exameFisico.getLinf_preEscapulares());
+        assertEquals("linfPre", exameFisico.getLinfPreEscapulares());
     }
 
     @Test

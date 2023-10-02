@@ -1,6 +1,7 @@
 package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.UsuarioDTO;
+import com.orbitech.npvet.entity.Tutor;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,9 +28,11 @@ public class UsuarioService {
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO getByID(long id) throws Exception{
-        return toUsuarioDTO(repository.findById(id).orElseThrow(() -> new Exception(String.format("Usuário com o id [%s] não localizado.",id))));
-   }
+    public UsuarioDTO getByID(long id){
+       Usuario usuarioById = repository.findById(id).orElse(null);
+       Assert.notNull(usuarioById, String.format("Usuário com ID %s não existe!", id));
+       return toUsuarioDTO(usuarioById);
+    }
 
     public List<UsuarioDTO> getAll() {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
@@ -43,8 +47,9 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void delete(long id){ //TODO: Adicionar uma lista de usuários com agendamento ativo. Se estiver ativo, não deletar.
-        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado.",id));
-        repository.deleteById(id);
+    public void delete(long id){
+        UsuarioDTO usuarioDTO = getByID(id);
+        usuarioDTO.setDeletedAt(LocalDateTime.now());
+        repository.save(toUsuarioEntidade(usuarioDTO));
     }
 }

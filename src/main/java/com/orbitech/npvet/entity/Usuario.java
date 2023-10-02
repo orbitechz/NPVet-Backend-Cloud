@@ -21,7 +21,7 @@ public class Usuario extends  AbstractEntity{
     @Column(nullable = false, length = 100, name = "nome")
     private String nome;
 
-    @Column(unique = true, nullable = false, length = 11, name = "cpf") //TODO: Adicionar a Annotation @CPF futuramente.
+    @Column(unique = true, nullable = false, length = 11, name = "cpf")
     private String cpf;
 
     @Enumerated(EnumType.STRING)

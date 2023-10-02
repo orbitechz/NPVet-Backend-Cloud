@@ -67,7 +67,7 @@ class AnimalServiceTest {
         animal.setPelagem("baixa");
         animal.setProcedencia("Duvidosa");
         animal.setPeso(10.50);
-        animal.setTutor_id(tutor);
+        animal.setTutorId(tutor);
 
         animalDTO.setNome("toto");
         animalDTO.setRaca("Cachorro");
@@ -76,7 +76,7 @@ class AnimalServiceTest {
         animalDTO.setPelagem("baixa");
         animalDTO.setProcedencia("Duvidosa");
         animalDTO.setPeso(10.50);
-        animalDTO.setTutor_id(tutorDTO);
+        animalDTO.setTutorId(tutorDTO);
 
         List<Animal> animalList = new ArrayList<>();
         animalList.add(animal);

@@ -44,7 +44,7 @@ public class ExameFisico extends AbstractEntity{
     private String linfSubmand;
 
     @Column(name = "linf_preescapulares", nullable = true, length = 255)
-    private String linf_preEscapulares;
+    private String linfPreEscapulares;
 
     @Column(name = "linf_popliteos", nullable = true, length = 255)
     private String linfPopliteos;

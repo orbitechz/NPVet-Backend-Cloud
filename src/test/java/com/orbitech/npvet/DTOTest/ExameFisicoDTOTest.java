@@ -4,9 +4,6 @@ package com.orbitech.npvet.DTOTest;
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.ConsultaDTO;
 import com.orbitech.npvet.dto.ExameFisicoDTO;
-import com.orbitech.npvet.entity.Animal;
-import com.orbitech.npvet.entity.Consulta;
-import com.orbitech.npvet.entity.ExameFisico;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,7 +38,7 @@ class ExameFisicoDTOTest {
         exameFisicoDTO.setPulso(10.0);
         exameFisicoDTO.setHidratacao("hidratacao");
         exameFisicoDTO.setLinfSubmand("linfSub");
-        exameFisicoDTO.setLinf_preEscapulares("linfPre");
+        exameFisicoDTO.setLinfPreEscapulares("linfPre");
         exameFisicoDTO.setLinfPopliteos("linfPop");
         exameFisicoDTO.setLinfInguinais("linfIng");
         exameFisicoDTO.setMucosaOcular("mucosaOcular");
