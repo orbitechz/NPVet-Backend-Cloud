@@ -1,6 +1,8 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -64,9 +66,13 @@ public class AnimalController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
-        return ResponseEntity.ok(String.format("Animal %s desativado com sucesso!", id));
+    public ResponseEntity<AnimalDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id));
+    }
+
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<AnimalDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id));
     }
 
 }

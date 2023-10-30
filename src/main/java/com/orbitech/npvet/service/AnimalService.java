@@ -1,6 +1,7 @@
 package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
 import com.orbitech.npvet.repository.AnimalRepository;
@@ -76,12 +77,18 @@ public class AnimalService {
     }
 
     @Transactional
-    public void delete(Long id){
-        Animal animal = repository.findById(id).orElse(null);
-        Assert.notNull(animal, "Animal não encontrado!");
+    public AnimalDTO delete(Long id){
+        AnimalDTO animalDTO = getById(id);
 
-        repository.delete(animal);
-        repository.save(animal);
+        animalDTO.delete();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+    }
+
+    @Transactional
+    public AnimalDTO activate(Long id){
+        AnimalDTO animalDTO = getById(id);
+        animalDTO.activate();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
 
