@@ -35,6 +35,14 @@ public class AnimalService {
         return toAnimalDTO(animalById);
     }
 
+    public List<AnimalDTO> getAllAtivo(){
+        return repository.getAllAtivados().stream().map(this::toAnimalDTO).toList();
+    }
+
+    public List<AnimalDTO> getAllDesativado(){
+        return repository.getAllDesativados().stream().map(this::toAnimalDTO).toList();
+    }
+
     public List<AnimalDTO> getAll() {
         return repository.findAll().stream().map(this::toAnimalDTO).toList();
     }

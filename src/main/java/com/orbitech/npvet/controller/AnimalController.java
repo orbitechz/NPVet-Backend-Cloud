@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/animal")
+@CrossOrigin("http://localhost:4200")
 public class AnimalController {
 
     @Autowired
@@ -42,6 +43,16 @@ public class AnimalController {
         return ResponseEntity.ok(service.getAllByEspecie(especie));
     }
 
+    @GetMapping("/all/desativados")
+    public ResponseEntity<List<AnimalDTO>> getAllDesativados(){
+        return ResponseEntity.ok(service.getAllDesativado());
+    }
+
+    @GetMapping("/all/ativos")
+    public ResponseEntity<List<AnimalDTO>> getAllAtivos(){
+        return ResponseEntity.ok(service.getAllDesativado());
+    }
+
     @PostMapping("/post")
     public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO animalDTO){
         return ResponseEntity.ok(service.create(animalDTO));
@@ -51,7 +62,6 @@ public class AnimalController {
     public ResponseEntity<AnimalDTO> update(@PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
         return ResponseEntity.ok(service.update(id, animalDTO));
     }
-
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long id){
