@@ -50,7 +50,7 @@ public class AnimalController {
 
     @GetMapping("/all/ativos")
     public ResponseEntity<List<AnimalDTO>> getAllAtivos(){
-        return ResponseEntity.ok(service.getAllDesativado());
+        return ResponseEntity.ok(service.getAllAtivo());
     }
 
     @PostMapping("/post")

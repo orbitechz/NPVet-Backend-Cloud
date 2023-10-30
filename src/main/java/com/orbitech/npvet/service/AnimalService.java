@@ -77,9 +77,11 @@ public class AnimalService {
 
     @Transactional
     public void delete(Long id){
-        AnimalDTO animalById = getById(id);
-        animalById.setDeletedAt(LocalDateTime.now());
-        repository.save(toAnimal(animalById));
+        Animal animal = repository.findById(id).orElse(null);
+        Assert.notNull(animal, "Animal não encontrado!");
+
+        repository.delete(animal);
+        repository.save(animal);
     }
 
 
