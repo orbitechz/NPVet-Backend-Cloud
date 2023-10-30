@@ -26,6 +26,13 @@ public class AbstractEntity {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
+    public void delete(){
+        this.deletedAt = LocalDateTime.now();
+    }
+    public void activate(){
+        this.deletedAt = null;
+    }
+
     @PrePersist
     private void prePersist() {
         this.createdAt = LocalDateTime.now();
