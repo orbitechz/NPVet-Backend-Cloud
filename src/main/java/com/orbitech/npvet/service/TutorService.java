@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -93,10 +92,16 @@ public class TutorService {
     }
 
     @Transactional
-    public void delete(Long id){
+    public TutorDTO delete(Long id){
         TutorDTO tutorById = getById(id);
-        tutorById.setDeletedAt(LocalDateTime.now());
-        repository.save(toTutor(tutorById));
+        tutorById.delete();
+        return toTutorDTO(repository.save(toTutor(tutorById)));
     }
 
+    @Transactional
+    public TutorDTO activate(Long id){
+        TutorDTO tutorById = getById(id);
+        tutorById.activate();
+        return toTutorDTO(repository.save(toTutor(tutorById)));
+    }
 }

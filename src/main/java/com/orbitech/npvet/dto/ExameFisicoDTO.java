@@ -13,7 +13,7 @@ import java.time.LocalTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExameFisicoDTO extends AbstractEntity {
+public class ExameFisicoDTO extends AbstractEntityDTO {
 
     private String postura;
 
