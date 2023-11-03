@@ -63,7 +63,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/cpf/{cpf}")
-    public ResponseEntity<List<UsuarioDTO>>getUsuarioCpf(@PathVariable("cpf")String cpf){
+    public ResponseEntity<UsuarioDTO>getUsuarioCpf(@PathVariable("cpf")String cpf){
         return ResponseEntity.ok(service.getUsuarioByCpf(cpf));
     }
 

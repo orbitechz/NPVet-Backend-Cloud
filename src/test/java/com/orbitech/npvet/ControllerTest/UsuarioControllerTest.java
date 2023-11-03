@@ -72,7 +72,7 @@ class UsuarioControllerTest {
         when(repository.findByTipoUsuario(TipoUsuario.MEDICO)).thenReturn(usuarioList);
 
         when(repository.findUsuarioByUsername("username")).thenReturn(usuarioList);
-        when(repository.findUsuarioByCpf("cpf")).thenReturn(usuarioList);
+        when(repository.findUsuarioByCpf("cpf")).thenReturn(usuarioEntidade);
 
 
     }
@@ -151,9 +151,9 @@ class UsuarioControllerTest {
 
     @Test
     void getByCpf(){
-        ResponseEntity<List<UsuarioDTO>>response = controller.getUsuarioCpf("cpf");
+        ResponseEntity<UsuarioDTO>response = controller.getUsuarioCpf("cpf");
         assertNotNull(response);
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTOList);
+        assertThat(response).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }
 }
