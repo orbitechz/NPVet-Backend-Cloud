@@ -176,11 +176,18 @@ public class AnamneseService {
 
     }
 
+    @Transactional
+    public AnamneseDTO delete(Long id){
+        AnamneseDTO anamneseById = getById(id);
+        anamneseById.delete();
+        return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
+    }
 
-    public void delete(Long id) {
-        AnamneseDTO anamneseDTO = getById(id);
-        anamneseDTO.setDeletedAt(LocalDateTime.now());
-//        anamneseRepository.save(toAnamnese(anamneseDTO));
+    @Transactional
+    public AnamneseDTO activate(Long id){
+        AnamneseDTO anamneseById = getById(id);
+        anamneseById.activate();
+        return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 
 }

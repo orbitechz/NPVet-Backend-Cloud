@@ -3,6 +3,7 @@ package com.orbitech.npvet.controller;
 import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.AnamneseHistoricoDTO;
 import com.orbitech.npvet.dto.AnamnesePerguntaDTO;
+import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.service.AnamneseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -67,11 +68,13 @@ public class AnamneseController {
             return ResponseEntity.ok(anamneseService.update(id, anamneseDTO));
     }
 
-
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
-        this.anamneseService.delete(id);
-        return ResponseEntity.ok().body("Anamnese excluída com sucesso!");
+    public ResponseEntity<AnamneseDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(anamneseService.delete(id));
+    }
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<AnamneseDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(anamneseService.activate(id));
     }
 
 

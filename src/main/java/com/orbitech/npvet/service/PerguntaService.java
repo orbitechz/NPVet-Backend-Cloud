@@ -1,8 +1,10 @@
 package com.orbitech.npvet.service;
 
+import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.PerguntaDTO;
 import com.orbitech.npvet.entity.Pergunta;
 import com.orbitech.npvet.repository.PerguntaRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -67,10 +69,18 @@ public class PerguntaService {
         return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
     }
 
-    public void delete(Long id) {
-        PerguntaDTO perguntaDTO = getById(id);
-        perguntaDTO.setDeletedAt(LocalDateTime.now());
-        perguntaRepository.save(toPergunta(perguntaDTO));
+    @Transactional
+    public PerguntaDTO delete(Long id){
+        PerguntaDTO perguntaById = getById(id);
+        perguntaById.delete();
+        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
+    }
+
+    @Transactional
+    public PerguntaDTO activate(Long id){
+        PerguntaDTO perguntaById = getById(id);
+        perguntaById.activate();
+        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
     }
 
     public PerguntaDTO toPerguntaDTO(Pergunta pergunta) {
