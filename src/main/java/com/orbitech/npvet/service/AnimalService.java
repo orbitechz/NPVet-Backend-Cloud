@@ -1,6 +1,7 @@
 package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
 import com.orbitech.npvet.repository.AnimalRepository;
@@ -33,6 +34,14 @@ public class AnimalService {
         Animal animalById = repository.findById(id).orElse(null);
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         return toAnimalDTO(animalById);
+    }
+
+    public List<AnimalDTO> getAllAtivo(){
+        return repository.getAllAtivados().stream().map(this::toAnimalDTO).toList();
+    }
+
+    public List<AnimalDTO> getAllDesativado(){
+        return repository.getAllDesativados().stream().map(this::toAnimalDTO).toList();
     }
 
     public List<AnimalDTO> getAll() {
@@ -68,10 +77,18 @@ public class AnimalService {
     }
 
     @Transactional
-    public void delete(Long id){
-        AnimalDTO animalById = getById(id);
-        animalById.setDeletedAt(LocalDateTime.now());
-        repository.save(toAnimal(animalById));
+    public AnimalDTO delete(Long id){
+        AnimalDTO animalDTO = getById(id);
+
+        animalDTO.delete();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+    }
+
+    @Transactional
+    public AnimalDTO activate(Long id){
+        AnimalDTO animalDTO = getById(id);
+        animalDTO.activate();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
 
