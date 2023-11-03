@@ -30,6 +30,9 @@ public class Tutor extends AbstractEntity {
     @Column(length = 100)
     private String email;
 
+    @Column(nullable = false)
+    private Genero genero;
+
     @OneToMany(mappedBy = "tutor")
     @JsonIgnoreProperties("tutor")
     private List<Anamnese> anamneses = new ArrayList<>();

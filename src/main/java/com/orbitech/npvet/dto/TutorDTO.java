@@ -1,6 +1,7 @@
 package com.orbitech.npvet.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.orbitech.npvet.entity.Genero;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,8 @@ public class TutorDTO extends AbstractEntityDTO {
     @NotNull(message = "O nome do tutor deve ser informado!")
     @Length(min = 3, max = 50, message = "O nome do tutor deve ter entre 3 e 50 caracteres")
     private String nome;
+    @NotNull(message = "O gênero deve ser informado!")
+    private Genero genero;
     @NotNull(message = "O CPF do tutor deve ser informado!")
     @CPF(message = "O CPF informado é inválido!")
     private String cpf;
