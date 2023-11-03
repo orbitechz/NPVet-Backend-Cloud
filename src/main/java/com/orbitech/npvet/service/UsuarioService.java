@@ -37,6 +37,10 @@ public class UsuarioService {
     }
     @Transactional
     public UsuarioDTO create(UsuarioDTO usuarioDTO) {
+        Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioDTO.getCpf());
+
+        Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioDTO.getCpf()));
+
        return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
     }
     @Transactional
@@ -96,12 +100,9 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getUsuarioByCpf(String cpf){
-        List<UsuarioDTO>retorno = repository.findUsuarioByCpf(cpf)
-                .stream()
-                .map(this::toUsuarioDTO)
-                .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Nenhum usuário com o CPF: {%s} localizado!",cpf));
+    public UsuarioDTO getUsuarioByCpf(String cpf){
+        UsuarioDTO retorno = toUsuarioDTO(repository.findUsuarioByCpf(cpf));
+        Assert.notNull(retorno, String.format("Nenhum usuário com o CPF: {%s} localizado!",cpf));
         return retorno;
     }
 }
