@@ -80,11 +80,9 @@ class AnamneseServiceTest {
 
         // AnamneseHistorico DTO e Entity
         anamneseHistoricoDTO.setId(1L);
-        anamneseHistoricoDTO.setAnamnese(anamneseDTO);
         anamneseHistoricoDTO.setProgressoMedico("Medical Progress Sample One.");
 
         anamneseHistorico.setId(1L);
-        anamneseHistorico.setAnamnese(anamnese);
         anamneseHistorico.setProgressoMedico("Medical Progress Sample One.");
 
         // Setting AnamneseHistorico Lists
