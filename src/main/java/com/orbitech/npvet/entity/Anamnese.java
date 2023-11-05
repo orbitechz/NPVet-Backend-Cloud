@@ -27,7 +27,7 @@ public class Anamnese extends AbstractEntity {
     @JoinColumn(name = "id_veterinario",nullable = false)
     private Usuario veterinario;
 
-    @Column(name = "queixa-principal")
+    @Column(name = "queixa-principal",nullable = true)
     private String queixaPrincipal;
 
     @OneToMany(mappedBy = "anamnese")

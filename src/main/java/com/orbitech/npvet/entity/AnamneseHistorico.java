@@ -21,7 +21,7 @@ import java.time.LocalDate;
 public class AnamneseHistorico extends AbstractEntity{
 
     @ManyToOne
-    @JoinColumn(name = "anamnese_id", nullable = false)
+    @JoinColumn(name = "anamnese_id")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnoreProperties("historicoProgressoMedico")

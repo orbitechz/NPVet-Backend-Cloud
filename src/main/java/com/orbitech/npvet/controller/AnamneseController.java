@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/anamnese")
+@CrossOrigin("http://localhost:4200")
 public class AnamneseController {
 
     @Autowired

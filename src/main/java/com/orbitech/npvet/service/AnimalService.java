@@ -40,6 +40,14 @@ public class AnimalService {
         return repository.getAllAtivados().stream().map(this::toAnimalDTO).toList();
     }
 
+    public List<AnimalDTO> getAllByTutor(Long tutorId) {
+        return repository.getAllByTutor(tutorId).stream().map(this::toAnimalDTO).toList();
+    }
+
+    public AnimalDTO getByTutorAndName(Long tutorId, String nome) {
+        return toAnimalDTO(repository.getByTutorAndName(tutorId,nome));
+    }
+
     public List<AnimalDTO> getAllDesativado(){
         return repository.getAllDesativados().stream().map(this::toAnimalDTO).toList();
     }
@@ -90,7 +98,4 @@ public class AnimalService {
         animalDTO.activate();
         return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
-
-
-
 }

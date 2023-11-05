@@ -35,6 +35,23 @@ public class AnimalController {
         return ResponseEntity.ok(service.getAllByNome(nome));
     }
 
+    @GetMapping("/tutor/{tutorId}/nome/{nome}")
+    public ResponseEntity<AnimalDTO> getAnimalByTutorAndName(
+            @PathVariable("tutorId") Long tutorId,
+            @PathVariable("nome") String nome
+    ) {
+        AnimalDTO animals = service.getByTutorAndName(tutorId, nome);
+        return ResponseEntity.ok(animals);
+    }
+
+
+    @GetMapping("/tutor/{tutorId}")
+    public ResponseEntity<List<AnimalDTO>> getAllAnimalsByTutor(@PathVariable("tutorId") Long tutorId) {
+        List<AnimalDTO> animals = service.getAllByTutor(tutorId);
+        return ResponseEntity.ok(animals);
+    }
+
+
     @GetMapping("/raca/{raca}")
     public ResponseEntity<List<AnimalDTO>> getByRaca(@PathVariable("raca") String raca) {
         return ResponseEntity.ok(service.getAllByRaca(raca));
