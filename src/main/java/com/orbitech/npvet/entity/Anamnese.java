@@ -1,6 +1,5 @@
 package com.orbitech.npvet.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -70,8 +69,7 @@ public class Anamnese extends AbstractEntity {
 
     private String ouvidos;
 
-    @OneToMany(mappedBy = "anamnese")
-    @JsonIgnoreProperties("anamnese")
+    @OneToMany
     private List<AnamnesePergunta> anamnesePerguntas = new ArrayList<>();
 
 }

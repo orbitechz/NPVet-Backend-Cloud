@@ -17,12 +17,7 @@ import java.util.List;
 @Table(name = "perguntas",schema = "public")
 @Getter @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Pergunta extends AbstractEntity{
-
-    @OneToMany(mappedBy = "pergunta")
-    @JsonIgnoreProperties("pergunta")
-    private List<AnamnesePergunta> anamnesePerguntas = new ArrayList<>();
 
     @Column(nullable = false,unique = true)
     private String enunciado;

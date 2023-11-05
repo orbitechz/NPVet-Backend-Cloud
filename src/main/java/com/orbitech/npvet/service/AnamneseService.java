@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -126,6 +124,7 @@ public class AnamneseService {
         Anamnese anamnese = toAnamnese(anamneseDTO);
         Anamnese savedAnamnese = anamneseRepository.save(anamnese);
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
+        anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
         return toAnamneseDTO(savedAnamnese);
     }
 
@@ -139,60 +138,8 @@ public class AnamneseService {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
 
-//        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
-//            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-//                boolean historicoExiste =
-//                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
-//                if (!historicoExiste) {
-//                    historico.setAnamnese(anamnese);
-//                    historico.setDataAtualizacao(LocalDate.now());
-//                    anamneseHistoricoRepository.save(historico);
-//                }
-//            }
-//        }
-
         anamneseRepository.save(anamnese);
         return anamneseDTO;
-    }
-
-
-//    public AnamneseHistoricoDTO updateProgressoMedico(AnamneseHistoricoDTO progressoMedico) {
-//        Anamnese existingAnamnese = anamneseRepository.findById(progressoMedico.getAnamnese().getId()).orElse(null);
-//        Assert.notNull(existingAnamnese,
-//                String.format(NOT_FOUND_MESSAGE, progressoMedico.getAnamnese().getId()));
-//
-//        AnamneseHistorico anamneseHistorico = toAnamneseHistorico(progressoMedico);
-//        anamneseHistorico.setAnamnese(existingAnamnese);
-//        anamneseHistorico.setProgressoMedico(progressoMedico.getProgressoMedico());
-//        anamneseHistorico.setDataAtualizacao(LocalDate.now());
-//
-//        existingAnamnese.getHistoricoProgressoMedico().add(anamneseHistorico);
-//        anamneseRepository.save(existingAnamnese);
-//
-//        anamneseHistoricoRepository.save(anamneseHistorico);
-//        return progressoMedico;
-//    }
-
-
-    @Transactional
-    public AnamnesePerguntaDTO addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePerguntaDTO request) {
-
-        Anamnese anamnese = anamneseRepository.findById(anamneseId).orElse(null);
-
-        if (anamnese == null) {
-            throw new IllegalArgumentException("Nenhuma anamnese encontrada com o ID: " + anamneseId);
-        }
-
-        AnamnesePergunta anamnesePergunta = toAnamnesePergunta(request);
-        anamnesePergunta.setAnamnese(anamnese);
-        anamnesePergunta.setResposta(request.getResposta());
-
-        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
-        anamneseRepository.save(anamnese);
-
-        anamnesePerguntaRepository.save(anamnesePergunta);
-        return request;
-
     }
 
     @Transactional

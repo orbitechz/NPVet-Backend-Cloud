@@ -1,9 +1,6 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnamneseDTO;
-import com.orbitech.npvet.dto.AnamneseHistoricoDTO;
-import com.orbitech.npvet.dto.AnamnesePerguntaDTO;
-import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.service.AnamneseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,22 +42,6 @@ public class AnamneseController {
     public ResponseEntity<AnamneseDTO> create(@RequestBody @Validated AnamneseDTO anamneseDTO) {
             return ResponseEntity.ok(anamneseService.create(anamneseDTO));
     }
-
-    @PostMapping("adicionar/pergunta/{anamneseId}")
-    public ResponseEntity<AnamnesePerguntaDTO> addQuestionAnswerToAnamnese(
-            @PathVariable Long anamneseId,
-            @RequestBody AnamnesePerguntaDTO request
-    ) {
-            return ResponseEntity.ok(anamneseService.addQuestionAnswerToAnamnese(anamneseId,request));
-    }
-
-
-//    @PostMapping("/atualizar/progresso-medico")
-//    public ResponseEntity<AnamneseHistoricoDTO> addProgressoMedico(
-//            @RequestBody AnamneseHistoricoDTO progressoMedico
-//    ) {
-//            return ResponseEntity.ok(anamneseService.updateProgressoMedico(progressoMedico));
-//        }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<AnamneseDTO> update(@PathVariable Long id,
