@@ -15,10 +15,10 @@ import java.time.LocalDate;
 @Setter
 public class AnamneseHistoricoDTO extends AbstractEntityDTO {
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnoreProperties("historicoProgressoMedico")
-    private AnamneseDTO anamnese;
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//    @JsonIdentityReference(alwaysAsId = true)
+//    @JsonIgnoreProperties("historicoProgressoMedico")
+//    private AnamneseDTO anamnese;
     @NotBlank(message = "O progresso médico não pode estar em branco.")
     private String progressoMedico;
     private LocalDate dataAtualizacao;

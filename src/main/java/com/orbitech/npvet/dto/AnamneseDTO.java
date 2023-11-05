@@ -24,7 +24,7 @@ public class AnamneseDTO extends AbstractEntityDTO {
 
     private String queixaPrincipal;
 
-    @JsonIgnoreProperties("anamnese")
+//    @JsonIgnoreProperties("anamnese")
     private List<AnamneseHistoricoDTO> historicoProgressoMedico;
 
     private String alimentacao;

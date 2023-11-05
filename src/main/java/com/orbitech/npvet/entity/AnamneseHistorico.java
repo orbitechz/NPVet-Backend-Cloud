@@ -20,12 +20,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class AnamneseHistorico extends AbstractEntity{
 
-    @ManyToOne
-    @JoinColumn(name = "anamnese_id")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnoreProperties("historicoProgressoMedico")
-    private Anamnese anamnese;
+//    @ManyToOne
+//    @JoinColumn(name = "anamnese_id")
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//    @JsonIdentityReference(alwaysAsId = true)
+//    @JsonIgnoreProperties("historicoProgressoMedico")
+//    private Anamnese anamnese;
 
     @Column(name = "progresso_medico")
     private String progressoMedico;

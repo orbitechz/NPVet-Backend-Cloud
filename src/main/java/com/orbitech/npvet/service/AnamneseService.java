@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,13 +38,26 @@ public class AnamneseService {
         return modelMapper.map(progressoMedico, AnamneseHistorico.class);
     }
 
+    private AnamneseHistoricoDTO toAnamneseHistoricoDto(AnamneseHistorico progressoMedico) {
+        return modelMapper.map(progressoMedico, AnamneseHistoricoDTO.class);
+    }
+
     private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
         return modelMapper.map(request, AnamnesePergunta.class);
     }
 
-
     public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
-        return modelMapper.map(anamnese, AnamneseDTO.class);
+        AnamneseDTO anamneseDTO = modelMapper.map(anamnese, AnamneseDTO.class);
+
+        // Map historicoProgressoMedico
+        List<AnamneseHistoricoDTO> historicoProgressoMedicoDTO = new ArrayList<>();
+        for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
+            AnamneseHistoricoDTO historicoDTO = modelMapper.map(historico, AnamneseHistoricoDTO.class);
+            historicoProgressoMedicoDTO.add(historicoDTO);
+        }
+        anamneseDTO.setHistoricoProgressoMedico(historicoProgressoMedicoDTO);
+
+        return anamneseDTO;
     }
 
     public Anamnese toAnamnese(AnamneseDTO anamneseDTO) {
@@ -94,19 +108,11 @@ public class AnamneseService {
         return anamneseDTOs;
     }
 
+    @Transactional
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
         Anamnese savedAnamnese = anamneseRepository.save(anamnese);
-        if (!savedAnamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : savedAnamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste = anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
-                if (!historicoExiste) {
-                    historico.setAnamnese(savedAnamnese);
-                    historico.setDataAtualizacao(LocalDate.now());
-                    anamneseHistoricoRepository.save(historico);
-                }
-            }
-        }
+        anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         return toAnamneseDTO(savedAnamnese);
     }
 
@@ -120,39 +126,39 @@ public class AnamneseService {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
 
-        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste =
-                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
-                if (!historicoExiste) {
-                    historico.setAnamnese(anamnese);
-                    historico.setDataAtualizacao(LocalDate.now());
-                    anamneseHistoricoRepository.save(historico);
-                }
-            }
-        }
+//        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
+//            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
+//                boolean historicoExiste =
+//                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
+//                if (!historicoExiste) {
+//                    historico.setAnamnese(anamnese);
+//                    historico.setDataAtualizacao(LocalDate.now());
+//                    anamneseHistoricoRepository.save(historico);
+//                }
+//            }
+//        }
 
         anamneseRepository.save(anamnese);
         return anamneseDTO;
     }
 
 
-    public AnamneseHistoricoDTO updateProgressoMedico(Long id, AnamneseHistoricoDTO progressoMedico) {
-        Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
-        Assert.notNull(existingAnamnese,
-                String.format(NOT_FOUND_MESSAGE, id));
-
-        AnamneseHistorico anamneseHistorico = toAnamneseHistorico(progressoMedico);
-        anamneseHistorico.setAnamnese(existingAnamnese);
-        anamneseHistorico.setProgressoMedico(progressoMedico.getProgressoMedico());
-        anamneseHistorico.setDataAtualizacao(LocalDate.now());
-
-        existingAnamnese.getHistoricoProgressoMedico().add(anamneseHistorico);
-        anamneseRepository.save(existingAnamnese);
-
-        anamneseHistoricoRepository.save(anamneseHistorico);
-        return progressoMedico;
-    }
+//    public AnamneseHistoricoDTO updateProgressoMedico(AnamneseHistoricoDTO progressoMedico) {
+//        Anamnese existingAnamnese = anamneseRepository.findById(progressoMedico.getAnamnese().getId()).orElse(null);
+//        Assert.notNull(existingAnamnese,
+//                String.format(NOT_FOUND_MESSAGE, progressoMedico.getAnamnese().getId()));
+//
+//        AnamneseHistorico anamneseHistorico = toAnamneseHistorico(progressoMedico);
+//        anamneseHistorico.setAnamnese(existingAnamnese);
+//        anamneseHistorico.setProgressoMedico(progressoMedico.getProgressoMedico());
+//        anamneseHistorico.setDataAtualizacao(LocalDate.now());
+//
+//        existingAnamnese.getHistoricoProgressoMedico().add(anamneseHistorico);
+//        anamneseRepository.save(existingAnamnese);
+//
+//        anamneseHistoricoRepository.save(anamneseHistorico);
+//        return progressoMedico;
+//    }
 
 
     @Transactional

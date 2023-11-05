@@ -55,13 +55,12 @@ public class AnamneseController {
     }
 
 
-    @PostMapping("/atualizar/progresso-medico/{id}")
-    public ResponseEntity<AnamneseHistoricoDTO> addProgressoMedico(
-            @PathVariable Long id,
-            @RequestBody AnamneseHistoricoDTO progressoMedico
-    ) {
-            return ResponseEntity.ok(anamneseService.updateProgressoMedico(id, progressoMedico));
-        }
+//    @PostMapping("/atualizar/progresso-medico")
+//    public ResponseEntity<AnamneseHistoricoDTO> addProgressoMedico(
+//            @RequestBody AnamneseHistoricoDTO progressoMedico
+//    ) {
+//            return ResponseEntity.ok(anamneseService.updateProgressoMedico(progressoMedico));
+//        }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<AnamneseDTO> update(@PathVariable Long id,

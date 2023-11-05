@@ -30,8 +30,10 @@ public class Anamnese extends AbstractEntity {
     @Column(name = "queixa-principal",nullable = true)
     private String queixaPrincipal;
 
-    @OneToMany(mappedBy = "anamnese")
-    @JsonIgnoreProperties("anamnese")
+//    @OneToMany(mappedBy = "anamnese")
+//    @JsonIgnoreProperties("anamnese")
+
+    @OneToMany
     private List<AnamneseHistorico> historicoProgressoMedico = new ArrayList<>();
     
     private String alimentacao;
