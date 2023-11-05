@@ -57,6 +57,19 @@ public class AnamneseService {
         }
         anamneseDTO.setHistoricoProgressoMedico(historicoProgressoMedicoDTO);
 
+            // Map animalDTO
+            AnimalDTO animalDTO = modelMapper.map(anamnese.getAnimal(), AnimalDTO.class);
+            anamneseDTO.setAnimalDTO(animalDTO);
+
+            // Map tutorDTO
+            TutorDTO tutorDTO = modelMapper.map(anamnese.getTutor(), TutorDTO.class);
+            anamneseDTO.setTutorDTO(tutorDTO);
+
+            // Map veterinarioDTO
+            UsuarioDTO veterinarioDTO = modelMapper.map(anamnese.getVeterinario(), UsuarioDTO.class);
+            anamneseDTO.setVeterinarioDTO(veterinarioDTO);
+
+
         return anamneseDTO;
     }
 
