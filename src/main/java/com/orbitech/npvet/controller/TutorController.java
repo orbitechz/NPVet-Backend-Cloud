@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tutor")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class TutorController {
     @Autowired
     private TutorService service;
@@ -51,12 +51,9 @@ public class TutorController {
     public ResponseEntity<TutorDTO> update(@PathVariable("id") Long id, @RequestBody @Validated TutorDTO tutorDTO){
         return ResponseEntity.ok(service.update(id, tutorDTO));
     }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<TutorDTO> delete(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.delete(id));
-    }
-    @PostMapping("/activate/{id}")
-    public ResponseEntity<TutorDTO> activate(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.activate(id));
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return ResponseEntity.ok(String.format("Tutor %s desativado com sucesso!", id));
     }
 }
