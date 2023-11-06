@@ -1,6 +1,7 @@
 package com.orbitech.npvet.dto;
 
 import com.orbitech.npvet.entity.AbstractEntity;
+import com.orbitech.npvet.entity.Consulta;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,4 +52,5 @@ public class ExameFisicoDTO extends AbstractEntityDTO {
     @NotNull(message = "É obrigatorio informar o animal")
     private AnimalDTO animal;
 
+    private ConsultaDTO consulta;
 }
