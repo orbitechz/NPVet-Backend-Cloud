@@ -44,7 +44,10 @@ public class AnimalController {
     public ResponseEntity<List<AnimalDTO>> getByEspecie(@PathVariable("especie") String especie) {
         return ResponseEntity.ok(service.getAllByEspecie(especie));
     }
-
+    @GetMapping("/tutor/get/{id}")
+    public ResponseEntity<List<AnimalDTO>> getAllByTutorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.getAllByTutorId(id));
+    }
     @GetMapping("/all/desativados")
     public ResponseEntity<List<AnimalDTO>> getAllDesativados(){
         return ResponseEntity.ok(service.getAllDesativado());
