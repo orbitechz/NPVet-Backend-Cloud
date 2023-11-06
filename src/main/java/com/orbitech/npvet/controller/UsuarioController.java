@@ -11,13 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final Long id){
-        return ResponseEntity.ok(service.getByID(id));
+        return ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("/all")
     public ResponseEntity<List<UsuarioDTO>>getAll(){
@@ -30,11 +31,6 @@ public class UsuarioController {
     @PutMapping("/update/{id}")
     public ResponseEntity<UsuarioDTO>update( @PathVariable("id") final long id, @RequestBody @Validated UsuarioDTO usuarioDTO){
         return ResponseEntity.ok(service.update(id,usuarioDTO));
-    }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String>delete(@PathVariable("id") final long id){
-        service.delete(id);
-        return ResponseEntity.ok(String.format("Usuário com id [%s] deletado.",id));
     }
 
     @GetMapping("/nome/{nome}")
@@ -69,6 +65,15 @@ public class UsuarioController {
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<UsuarioDTO>getUsuarioCpf(@PathVariable("cpf")String cpf){
         return ResponseEntity.ok(service.getUsuarioByCpf(cpf));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<UsuarioDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id));
+    }
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<UsuarioDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id));
     }
 
 }

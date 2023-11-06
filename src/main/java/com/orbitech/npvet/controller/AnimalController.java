@@ -1,6 +1,8 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +44,19 @@ public class AnimalController {
     public ResponseEntity<List<AnimalDTO>> getByEspecie(@PathVariable("especie") String especie) {
         return ResponseEntity.ok(service.getAllByEspecie(especie));
     }
+    @GetMapping("/tutor/get/{id}")
+    public ResponseEntity<List<AnimalDTO>> getAllByTutorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.getAllByTutorId(id));
+    }
+    @GetMapping("/all/desativados")
+    public ResponseEntity<List<AnimalDTO>> getAllDesativados(){
+        return ResponseEntity.ok(service.getAllDesativado());
+    }
+
+    @GetMapping("/all/ativos")
+    public ResponseEntity<List<AnimalDTO>> getAllAtivos(){
+        return ResponseEntity.ok(service.getAllAtivo());
+    }
 
     @PostMapping("/post")
     public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO animalDTO){
@@ -53,11 +68,14 @@ public class AnimalController {
         return ResponseEntity.ok(service.update(id, animalDTO));
     }
 
-
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
-        return ResponseEntity.ok(String.format("Animal %s desativado com sucesso!", id));
+    public ResponseEntity<AnimalDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id));
+    }
+
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<AnimalDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id));
     }
 
 }
