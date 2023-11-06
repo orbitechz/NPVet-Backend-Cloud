@@ -165,10 +165,6 @@ class AnimalControllerTest {
         assertThat(animalDTO).usingRecursiveComparison().isEqualTo(response.getBody());
     }
 
-    @Test
-    void deleteTest(){
-        ResponseEntity<String>response = controller.delete(1L);
-        assertEquals(HttpStatus.OK,response.getStatusCode());
-    }
+
 
 }

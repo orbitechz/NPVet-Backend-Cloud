@@ -14,17 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnamnesePergunta extends AbstractEntity {
-    @ManyToOne
-    @JoinColumn(name = "id_anamnese",nullable = false)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true) // Serialize as the ID, not the full object
-    @JsonIgnoreProperties("anamnesePerguntas")
-    private Anamnese anamnese;
-
-    @ManyToOne
-    @JoinColumn(name = "id_pergunta",nullable = false)
-    @JsonIgnoreProperties("anamnesePerguntas")
-    private Pergunta pergunta;
+    private String pergunta;
 
     @Column(nullable = false)
     private String resposta;

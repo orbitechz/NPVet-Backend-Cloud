@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,13 +36,39 @@ public class AnamneseService {
         return modelMapper.map(progressoMedico, AnamneseHistorico.class);
     }
 
+    private AnamneseHistoricoDTO toAnamneseHistoricoDto(AnamneseHistorico progressoMedico) {
+        return modelMapper.map(progressoMedico, AnamneseHistoricoDTO.class);
+    }
+
     private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
         return modelMapper.map(request, AnamnesePergunta.class);
     }
 
-
     public AnamneseDTO toAnamneseDTO(Anamnese anamnese){
-        return modelMapper.map(anamnese, AnamneseDTO.class);
+        AnamneseDTO anamneseDTO = modelMapper.map(anamnese, AnamneseDTO.class);
+
+        // Map historicoProgressoMedico
+        List<AnamneseHistoricoDTO> historicoProgressoMedicoDTO = new ArrayList<>();
+        for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
+            AnamneseHistoricoDTO historicoDTO = modelMapper.map(historico, AnamneseHistoricoDTO.class);
+            historicoProgressoMedicoDTO.add(historicoDTO);
+        }
+        anamneseDTO.setHistoricoProgressoMedico(historicoProgressoMedicoDTO);
+
+            // Map animalDTO
+            AnimalDTO animalDTO = modelMapper.map(anamnese.getAnimal(), AnimalDTO.class);
+            anamneseDTO.setAnimalDTO(animalDTO);
+
+            // Map tutorDTO
+            TutorDTO tutorDTO = modelMapper.map(anamnese.getTutor(), TutorDTO.class);
+            anamneseDTO.setTutorDTO(tutorDTO);
+
+            // Map veterinarioDTO
+            UsuarioDTO veterinarioDTO = modelMapper.map(anamnese.getVeterinario(), UsuarioDTO.class);
+            anamneseDTO.setVeterinarioDTO(veterinarioDTO);
+
+
+        return anamneseDTO;
     }
 
     public Anamnese toAnamnese(AnamneseDTO anamneseDTO) {
@@ -94,19 +119,12 @@ public class AnamneseService {
         return anamneseDTOs;
     }
 
+    @Transactional
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
         Anamnese savedAnamnese = anamneseRepository.save(anamnese);
-        if (!savedAnamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : savedAnamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste = anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
-                if (!historicoExiste) {
-                    historico.setAnamnese(savedAnamnese);
-                    historico.setDataAtualizacao(LocalDate.now());
-                    anamneseHistoricoRepository.save(historico);
-                }
-            }
-        }
+        anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
+        anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
         return toAnamneseDTO(savedAnamnese);
     }
 
@@ -120,67 +138,22 @@ public class AnamneseService {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
 
-        if (!anamnese.getHistoricoProgressoMedico().isEmpty()) {
-            for (AnamneseHistorico historico : anamnese.getHistoricoProgressoMedico()) {
-                boolean historicoExiste =
-                        anamneseHistoricoRepository.existsByProgressoMedico(historico.getProgressoMedico());
-                if (!historicoExiste) {
-                    historico.setAnamnese(anamnese);
-                    historico.setDataAtualizacao(LocalDate.now());
-                    anamneseHistoricoRepository.save(historico);
-                }
-            }
-        }
-
         anamneseRepository.save(anamnese);
         return anamneseDTO;
     }
 
-
-    public AnamneseHistoricoDTO updateProgressoMedico(Long id, AnamneseHistoricoDTO progressoMedico) {
-        Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
-        Assert.notNull(existingAnamnese,
-                String.format(NOT_FOUND_MESSAGE, id));
-
-        AnamneseHistorico anamneseHistorico = toAnamneseHistorico(progressoMedico);
-        anamneseHistorico.setAnamnese(existingAnamnese);
-        anamneseHistorico.setProgressoMedico(progressoMedico.getProgressoMedico());
-        anamneseHistorico.setDataAtualizacao(LocalDate.now());
-
-        existingAnamnese.getHistoricoProgressoMedico().add(anamneseHistorico);
-        anamneseRepository.save(existingAnamnese);
-
-        anamneseHistoricoRepository.save(anamneseHistorico);
-        return progressoMedico;
+    @Transactional
+    public AnamneseDTO delete(Long id){
+        AnamneseDTO anamneseById = getById(id);
+        anamneseById.delete();
+        return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
-
 
     @Transactional
-    public AnamnesePerguntaDTO addQuestionAnswerToAnamnese(Long anamneseId, AnamnesePerguntaDTO request) {
-
-        Anamnese anamnese = anamneseRepository.findById(anamneseId).orElse(null);
-
-        if (anamnese == null) {
-            throw new IllegalArgumentException("Nenhuma anamnese encontrada com o ID: " + anamneseId);
-        }
-
-        AnamnesePergunta anamnesePergunta = toAnamnesePergunta(request);
-        anamnesePergunta.setAnamnese(anamnese);
-        anamnesePergunta.setResposta(request.getResposta());
-
-        anamnese.getAnamnesePerguntas().add(anamnesePergunta);
-        anamneseRepository.save(anamnese);
-
-        anamnesePerguntaRepository.save(anamnesePergunta);
-        return request;
-
-    }
-
-
-    public void delete(Long id) {
-        AnamneseDTO anamneseDTO = getById(id);
-        anamneseDTO.setDeletedAt(LocalDateTime.now());
-//        anamneseRepository.save(toAnamnese(anamneseDTO));
+    public AnamneseDTO activate(Long id){
+        AnamneseDTO anamneseById = getById(id);
+        anamneseById.activate();
+        return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 
 }
