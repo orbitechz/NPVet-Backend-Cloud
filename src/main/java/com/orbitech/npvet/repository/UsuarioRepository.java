@@ -22,6 +22,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     List<Usuario>findUsuarioByUsername(@Param("username")String username);
 
     @Query("SELECT c FROM Usuario c WHERE c.cpf = :cpf")
-    List<Usuario>findUsuarioByCpf(@Param("cpf")String cpf);
+    Usuario findUsuarioByCpf(@Param("cpf")String cpf);
 
 }

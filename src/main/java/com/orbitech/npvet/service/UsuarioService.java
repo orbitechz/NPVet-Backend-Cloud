@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,7 +27,7 @@ public class UsuarioService {
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO getByID(long id){
+   public UsuarioDTO getById(long id){
         return toUsuarioDTO(repository.findById(id).orElse(null));
    }
 
@@ -37,18 +36,15 @@ public class UsuarioService {
     }
     @Transactional
     public UsuarioDTO create(UsuarioDTO usuarioDTO) {
+        Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioDTO.getCpf());
+
+        Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioDTO.getCpf()));
+
        return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
     }
     @Transactional
     public UsuarioDTO update(long id, UsuarioDTO usuarioDTO) {
         return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
-    }
-
-    @Transactional
-    public void delete(long id){
-        UsuarioDTO usuarioDTO = getByID(id);
-        usuarioDTO.setDeletedAt(LocalDateTime.now());
-        repository.save(toUsuarioEntidade(usuarioDTO));
     }
 
     public List<UsuarioDTO>getUsuarioByName(String nome){
@@ -96,12 +92,23 @@ public class UsuarioService {
         return retorno;
     }
 
-    public List<UsuarioDTO>getUsuarioByCpf(String cpf){
-        List<UsuarioDTO>retorno = repository.findUsuarioByCpf(cpf)
-                .stream()
-                .map(this::toUsuarioDTO)
-                .toList();
-        Assert.isTrue(!retorno.isEmpty(),String.format("Nenhum usuário com o CPF: {%s} localizado!",cpf));
+    public UsuarioDTO getUsuarioByCpf(String cpf){
+        UsuarioDTO retorno = toUsuarioDTO(repository.findUsuarioByCpf(cpf));
+        Assert.notNull(retorno, String.format("Nenhum usuário com o CPF: {%s} localizado!",cpf));
         return retorno;
+    }
+
+    @Transactional
+    public UsuarioDTO delete(Long id){
+        UsuarioDTO userById = getById(id);
+        userById.delete();
+        return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
+    }
+
+    @Transactional
+    public UsuarioDTO activate(Long id){
+        UsuarioDTO userById = getById(id);
+        userById.activate();
+        return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
     }
 }

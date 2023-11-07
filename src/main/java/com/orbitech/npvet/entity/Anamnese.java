@@ -1,6 +1,5 @@
 package com.orbitech.npvet.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,11 +26,13 @@ public class Anamnese extends AbstractEntity {
     @JoinColumn(name = "id_veterinario",nullable = false)
     private Usuario veterinario;
 
-    @Column(name = "queixa-principal")
+    @Column(name = "queixa-principal",nullable = true)
     private String queixaPrincipal;
 
-    @OneToMany(mappedBy = "anamnese")
-    @JsonIgnoreProperties("anamnese")
+//    @OneToMany(mappedBy = "anamnese")
+//    @JsonIgnoreProperties("anamnese")
+
+    @OneToMany
     private List<AnamneseHistorico> historicoProgressoMedico = new ArrayList<>();
     
     private String alimentacao;
@@ -68,8 +69,7 @@ public class Anamnese extends AbstractEntity {
 
     private String ouvidos;
 
-    @OneToMany(mappedBy = "anamnese")
-    @JsonIgnoreProperties("anamnese")
+    @OneToMany
     private List<AnamnesePergunta> anamnesePerguntas = new ArrayList<>();
 
 }

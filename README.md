@@ -21,7 +21,7 @@ Para configurar o ambiente de desenvolvimento, siga os passos abaixo:
 
 2. Crie um arquivo .env na raiz do projeto e configure-o com informações semelhantes a estas:
    ```
-   API_PORTA=8080     # Porta da API em Java
+   API_PORT=8080     # Porta da API em Java
    DB_HOST=localhost  # Host do banco de dados
    DB_PORT=5432       # Porta do banco de dados
    DB_NOME=npvet      # Nome do banco de dados

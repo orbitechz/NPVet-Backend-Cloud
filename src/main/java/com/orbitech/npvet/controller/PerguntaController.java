@@ -1,5 +1,6 @@
 package com.orbitech.npvet.controller;
 
+import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.PerguntaDTO;
 import com.orbitech.npvet.service.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,11 @@ public class PerguntaController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
-        this.perguntaService.delete(id);
-        return ResponseEntity.ok().body("Pergunta excluída com sucesso!");
+    public ResponseEntity<PerguntaDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(perguntaService.delete(id));
+    }
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<PerguntaDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(perguntaService.activate(id));
     }
 }

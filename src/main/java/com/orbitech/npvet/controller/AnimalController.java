@@ -1,6 +1,8 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/animal")
+@CrossOrigin("http://localhost:4200")
 public class AnimalController {
 
     @Autowired
@@ -32,6 +35,23 @@ public class AnimalController {
         return ResponseEntity.ok(service.getAllByNome(nome));
     }
 
+    @GetMapping("/tutor/{tutorId}/nome/{nome}")
+    public ResponseEntity<AnimalDTO> getAnimalByTutorAndName(
+            @PathVariable("tutorId") Long tutorId,
+            @PathVariable("nome") String nome
+    ) {
+        AnimalDTO animals = service.getByTutorAndName(tutorId, nome);
+        return ResponseEntity.ok(animals);
+    }
+
+
+    @GetMapping("/tutor/{tutorId}")
+    public ResponseEntity<List<AnimalDTO>> getAllAnimalsByTutor(@PathVariable("tutorId") Long tutorId) {
+        List<AnimalDTO> animals = service.getAllByTutor(tutorId);
+        return ResponseEntity.ok(animals);
+    }
+
+
     @GetMapping("/raca/{raca}")
     public ResponseEntity<List<AnimalDTO>> getByRaca(@PathVariable("raca") String raca) {
         return ResponseEntity.ok(service.getAllByRaca(raca));
@@ -40,6 +60,19 @@ public class AnimalController {
     @GetMapping("/especie/{especie}")
     public ResponseEntity<List<AnimalDTO>> getByEspecie(@PathVariable("especie") String especie) {
         return ResponseEntity.ok(service.getAllByEspecie(especie));
+    }
+    @GetMapping("/tutor/get/{id}")
+    public ResponseEntity<List<AnimalDTO>> getAllByTutorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.getAllByTutorId(id));
+    }
+    @GetMapping("/all/desativados")
+    public ResponseEntity<List<AnimalDTO>> getAllDesativados(){
+        return ResponseEntity.ok(service.getAllDesativado());
+    }
+
+    @GetMapping("/all/ativos")
+    public ResponseEntity<List<AnimalDTO>> getAllAtivos(){
+        return ResponseEntity.ok(service.getAllAtivo());
     }
 
     @PostMapping("/post")
@@ -52,11 +85,14 @@ public class AnimalController {
         return ResponseEntity.ok(service.update(id, animalDTO));
     }
 
-
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
-        return ResponseEntity.ok(String.format("Animal %s desativado com sucesso!", id));
+    public ResponseEntity<AnimalDTO> delete(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id));
+    }
+
+    @PostMapping("/activate/{id}")
+    public ResponseEntity<AnimalDTO> activate(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id));
     }
 
 }

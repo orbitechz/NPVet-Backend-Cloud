@@ -14,4 +14,11 @@ public class AbstractEntityDTO {
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
 
+    public void delete(){
+        this.deletedAt = LocalDateTime.now();
+    }
+    public void activate(){
+        this.deletedAt = null;
+    }
+
 }

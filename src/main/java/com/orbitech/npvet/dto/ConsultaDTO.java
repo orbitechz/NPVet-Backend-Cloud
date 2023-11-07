@@ -1,5 +1,6 @@
 package com.orbitech.npvet.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.orbitech.npvet.entity.Status;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,6 +22,7 @@ public class ConsultaDTO extends AbstractEntityDTO {
     @NotNull(message = "Você precisa selecionar um tutor.") 
     private TutorDTO tutor;
     private AnamneseDTO anamnese;
+    @JsonIgnore
     private List<ExameFisicoDTO>examesFisicos = new ArrayList<>();
     @NotNull(message = "Informe a data.")
     private LocalDateTime data;

@@ -21,7 +21,6 @@ public class UsuarioDTO extends AbstractEntityDTO {
     private String nome;
 
     @NotNull(message = "Você precisa preencher um CPF.")
-    @Size(max = 11, message = "Quantidade de caracteres excedida.")
     @CPF(message = "CPF inválido.")
     private String cpf;
 
@@ -34,6 +33,6 @@ public class UsuarioDTO extends AbstractEntityDTO {
     private String username;
 
     @NotNull(message = "Você precisa definir uma senha.")
-    @Size(max = 20, message = "Quantidade de caracteres excedida.")
+    @Size(max = 259, message = "Quantidade de caracteres excedida.")
     private String senha;
 }

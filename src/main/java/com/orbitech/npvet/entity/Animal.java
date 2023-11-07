@@ -32,13 +32,13 @@ public class Animal extends AbstractEntity{
     @Column(nullable = false)
     private Integer idade;
 
-    @Column(nullable = false)
+    @Column
     private Double peso;
 
     @Column(nullable = false, length = 255)
     private String pelagem;
 
-    @Column(nullable = false, length = 255)
+    @Column(length = 255)
     private String procedencia;
 
     @ManyToOne

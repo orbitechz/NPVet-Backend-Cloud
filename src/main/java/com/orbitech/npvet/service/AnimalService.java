@@ -1,6 +1,7 @@
 package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
 import com.orbitech.npvet.repository.AnimalRepository;
@@ -35,6 +36,22 @@ public class AnimalService {
         return toAnimalDTO(animalById);
     }
 
+    public List<AnimalDTO> getAllAtivo(){
+        return repository.getAllAtivados().stream().map(this::toAnimalDTO).toList();
+    }
+
+    public List<AnimalDTO> getAllByTutor(Long tutorId) {
+        return repository.getAllByTutor(tutorId).stream().map(this::toAnimalDTO).toList();
+    }
+
+    public AnimalDTO getByTutorAndName(Long tutorId, String nome) {
+        return toAnimalDTO(repository.getByTutorAndName(tutorId,nome));
+    }
+
+    public List<AnimalDTO> getAllDesativado(){
+        return repository.getAllDesativados().stream().map(this::toAnimalDTO).toList();
+    }
+
     public List<AnimalDTO> getAll() {
         return repository.findAll().stream().map(this::toAnimalDTO).toList();
     }
@@ -49,6 +66,9 @@ public class AnimalService {
 
     public List<AnimalDTO> getAllByEspecie(String especie){
         return repository.findAllByEspecieLike(especie).stream().map(this::toAnimalDTO).toList();
+    }
+    public List<AnimalDTO> getAllByTutorId(Long id){
+        return repository.findAllByTutorId(id).stream().map(this::toAnimalDTO).toList();
     }
 
     @Transactional
@@ -68,12 +88,17 @@ public class AnimalService {
     }
 
     @Transactional
-    public void delete(Long id){
-        AnimalDTO animalById = getById(id);
-        animalById.setDeletedAt(LocalDateTime.now());
-        repository.save(toAnimal(animalById));
+    public AnimalDTO delete(Long id){
+        AnimalDTO animalDTO = getById(id);
+
+        animalDTO.delete();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
     }
 
-
-
+    @Transactional
+    public AnimalDTO activate(Long id){
+        AnimalDTO animalDTO = getById(id);
+        animalDTO.activate();
+        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+    }
 }
