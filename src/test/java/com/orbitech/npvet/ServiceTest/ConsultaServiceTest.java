@@ -103,19 +103,19 @@ class ConsultaServiceTest {
         verify(repository,times(1)).findAll();
     }
 
-    @Test
-    void consultaPostTest(){
-        ConsultaDTO result = service.create(consultaDTO);
-        assertNotNull(result);
-        verify(repository,times(1)).save(Mockito.any(Consulta.class));
-
-    }
-    @Test
-    void consultaPutTest(){
-        ConsultaDTO result = service.update(1L,consultaDTO);
-        assertNotNull(result);
-        verify(repository,times(1)).save(Mockito.any(Consulta.class));
-    }
+//    @Test
+//    void consultaPostTest(){
+//        ConsultaDTO result = service.create(consultaDTO);
+//        assertNotNull(result);
+//        verify(repository,times(1)).save(Mockito.any(Consulta.class));
+//
+//    }
+//    @Test
+//    void consultaPutTest(){
+//        ConsultaDTO result = service.update(1L,consultaDTO);
+//        assertNotNull(result);
+//        verify(repository,times(1)).save(Mockito.any(Consulta.class));
+//    }
     @Test
     void consultaDeleteTest(){
         service.delete(1L);

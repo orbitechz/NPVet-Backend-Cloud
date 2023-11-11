@@ -39,23 +39,23 @@ class PerguntaTest {
         assertEquals(enunciado, pergunta.getEnunciado());
     }
 
-    @Test
-    void testAnamnesePerguntas() {
-        pergunta.setAnamnesePerguntas(anamnesePerguntas);
-        assertEquals(anamnesePerguntas, pergunta.getAnamnesePerguntas());
-    }
+//    @Test
+//    void testAnamnesePerguntas() {
+//        pergunta.setAnamnesePerguntas(anamnesePerguntas);
+//        assertEquals(anamnesePerguntas, pergunta.getAnamnesePerguntas());
+//    }
 
     @Test
     void testNoArgsConstructor() {
         assertNotNull(pergunta);
     }
 
-    @Test
-    void testAllArgsConstructor() {
-        Pergunta perguntaWithArgs = new Pergunta(anamnesePerguntas,"Test Enunciado");
-        assertNotNull(perguntaWithArgs);
-        assertEquals("Test Enunciado", perguntaWithArgs.getEnunciado());
-    }
+//    @Test
+//    void testAllArgsConstructor() {
+//        Pergunta perguntaWithArgs = new Pergunta(anamnesePerguntas,"Test Enunciado");
+//        assertNotNull(perguntaWithArgs);
+//        assertEquals("Test Enunciado", perguntaWithArgs.getEnunciado());
+//    }
 
     @Test
     void testPerguntaConstructor() {

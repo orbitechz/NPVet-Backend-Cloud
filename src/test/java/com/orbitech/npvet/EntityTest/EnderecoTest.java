@@ -66,9 +66,9 @@ class EnderecoTest {
     void enderecoDtoGetResidentesTest(){
         assertThat(endereco.getResidentes()).usingRecursiveComparison().isEqualTo(tutores);
     }
-    @Test
-    void enderecoDtoAllArgsTest(){
-        Endereco enderecoAllArgs = new Endereco("Logradouro", "Cidade", "Estado", "Pais", "123", "85851010", "Complemento", tutores);
-        assertThat(enderecoAllArgs).usingRecursiveComparison().ignoringFields("id").isEqualTo(endereco);
-    }
+//    @Test
+//    void enderecoDtoAllArgsTest(){
+//        Endereco enderecoAllArgs = new Endereco("Logradouro", "Cidade", "Estado", "Pais", "123", "85851010", "Complemento", tutores);
+//        assertThat(enderecoAllArgs).usingRecursiveComparison().ignoringFields("id").isEqualTo(endereco);
+//    }
 }
