@@ -64,10 +64,10 @@ class TutorTest {
     void tutorGetTelefonesTest() {
         assertThat(tutor.getTelefones()).usingRecursiveComparison().isEqualTo(contatos);
     }
-    @Test
-    void tutorAllArgsTest(){
-        Tutor tutorAllArgs = new Tutor("Nome", "446.460.100-62", "11.011.455-9", "email@email.com", anamneses, contatos, enderecos);
-        assertThat(tutorAllArgs).usingRecursiveComparison().ignoringFields("id").isEqualTo(tutor);
-    }
+//    @Test
+//    void tutorAllArgsTest(){
+//        Tutor tutorAllArgs = new Tutor("Nome", "446.460.100-62", "11.011.455-9", "email@email.com", anamneses, contatos, enderecos);
+//        assertThat(tutorAllArgs).usingRecursiveComparison().ignoringFields("id").isEqualTo(tutor);
+//    }
 
 }

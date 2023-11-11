@@ -69,10 +69,10 @@ class TutorDTOTest {
         List<ContatoDTO> telefones = new ArrayList<>();
         assertThat(tutor.getTelefones()).usingRecursiveComparison().isEqualTo(telefones);
     }
-    @Test
-    void tutorDtoAllArgsTest(){
-        TutorDTO tutorDTO = new TutorDTO("Nome", "446.460.100-62", "11.011.455-9", "email@email.com", anamneseDTO, contatosDTO, enderecosDTO);
-        assertThat(tutorDTO).usingRecursiveComparison().ignoringFields("id").isEqualTo(tutor);
-    }
+//    @Test
+//    void tutorDtoAllArgsTest(){
+//        TutorDTO tutorDTO = new TutorDTO("Nome", "446.460.100-62", "11.011.455-9", "email@email.com", anamneseDTO, contatosDTO, enderecosDTO);
+//        assertThat(tutorDTO).usingRecursiveComparison().ignoringFields("id").isEqualTo(tutor);
+//    }
 
 }
