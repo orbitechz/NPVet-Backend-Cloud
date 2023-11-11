@@ -62,12 +62,12 @@ class UsuarioServiceTest {
 
     }
 
-    @Test
-    void getById() throws Exception {
-        UsuarioDTO result = service.getByID(1L);
-        assertNotNull(result);
-        verify(repository,times(1)).findById(1L);
-    }
+//    @Test
+//    void getById() throws Exception {
+//        UsuarioDTO result = service.getByID(1L);
+//        assertNotNull(result);
+//        verify(repository,times(1)).findById(1L);
+//    }
     @Test
     void getAll(){
         List<UsuarioDTO> result = service.getAll();

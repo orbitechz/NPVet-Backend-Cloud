@@ -35,14 +35,14 @@ class AnamneseTest {
         veterinario.setNome("Dr. Smith");
 
         anamneseHistorico.setId(1L);
-        anamneseHistorico.setAnamnese(anamnese);
+//        anamneseHistorico.setAnamnese(anamnese);
         anamneseHistorico.setProgressoMedico("Medical Progress Sample One.");
 
         anamneseHistoricos.add(anamneseHistorico);
 
         anamnesePergunta.setId(1L);
-        anamnesePergunta.setAnamnese(anamnese);
-        anamnesePergunta.setPergunta(new Pergunta());
+//        anamnesePergunta.setAnamnese(anamnese);
+//        anamnesePergunta.setPergunta(new Pergunta());
 
         anamnesePerguntas.add(anamnesePergunta);
 
