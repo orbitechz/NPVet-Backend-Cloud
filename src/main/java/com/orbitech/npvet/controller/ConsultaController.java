@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/consulta")
-@CrossOrigin(origins = "http://localhost:4200")
 public class ConsultaController {
     @Autowired
     private ConsultaService service;
