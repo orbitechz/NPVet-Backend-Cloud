@@ -2,7 +2,7 @@ package com.orbitech.npvet.ControllerTest;
 
 import com.orbitech.npvet.controller.UsuarioController;
 import com.orbitech.npvet.dto.UsuarioDTO;
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
 import com.orbitech.npvet.service.UsuarioService;
@@ -46,19 +46,19 @@ class UsuarioControllerTest {
     void setUp(){
         MockitoAnnotations.openMocks(this);
 
-        usuarioDTO.setId(1L);
-        usuarioDTO.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+//        usuarioDTO.setId(1L);
+        usuarioDTO.setRole(Role.ADMINISTRADOR);
         usuarioDTO.setNome("nome");
         usuarioDTO.setCpf("cpf");
-        usuarioDTO.setSenha("senha");
+//        usuarioDTO.setSenha("senha");
         usuarioDTO.setUsername("username");
         usuarioDTOList.add(usuarioDTO);
 
-        usuarioEntidade.setId(1L);
-        usuarioEntidade.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+//        usuarioEntidade.setId(1L);
+        usuarioEntidade.setRole(Role.ADMINISTRADOR);
         usuarioEntidade.setNome("nome");
         usuarioEntidade.setCpf("cpf");
-        usuarioEntidade.setSenha("senha");
+//        usuarioEntidade.setSenha("senha");
         usuarioEntidade.setUsername("username");
         usuarioList.add(usuarioEntidade);
 
@@ -67,9 +67,9 @@ class UsuarioControllerTest {
         when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuarioEntidade);
 
         when(repository.findAllUsuariosByNome("nome")).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(TipoUsuario.SECRETARIA)).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(TipoUsuario.ADMINISTRADOR)).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(TipoUsuario.MEDICO)).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(Role.SECRETARIA)).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(Role.ADMINISTRADOR)).thenReturn(usuarioList);
+        when(repository.findByTipoUsuario(Role.MEDICO)).thenReturn(usuarioList);
 
         when(repository.findUsuarioByUsername("username")).thenReturn(usuarioList);
         when(repository.findUsuarioByCpf("cpf")).thenReturn(usuarioEntidade);
