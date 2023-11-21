@@ -4,6 +4,7 @@ import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
+@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class UsuarioController {
     @Autowired
     private UsuarioService service;
