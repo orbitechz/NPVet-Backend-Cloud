@@ -61,12 +61,12 @@ public class TutorController {
     public ResponseEntity<TutorDTO> update(@PathVariable("id") Long id, @RequestBody @Validated TutorDTO tutorDTO){
         return ResponseEntity.ok(service.update(id, tutorDTO));
     }
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<TutorDTO> delete(@PathVariable("id") Long id){
         return ResponseEntity.ok(service.delete(id));
     }
-    @PostMapping("/activate/{id}")
+    @GetMapping("/activate/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<TutorDTO> activate(@PathVariable("id") Long id){
         return ResponseEntity.ok(service.activate(id));
