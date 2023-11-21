@@ -1,6 +1,6 @@
 package com.orbitech.npvet.dto;
 
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioDTO extends AbstractEntityDTO {
-
+public class UsuarioDTO {
+    private String id;
     @NotNull(message = "Você precisa preencher um nome.")
     @Size(max = 100, message = "Quantidade de caracteres excedida.")
     private String nome;
@@ -26,13 +28,21 @@ public class UsuarioDTO extends AbstractEntityDTO {
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Você precisar definir o tipo de Usuário entre: SECRETARIA, ADMINISTRADOR ou MEDICO.")
-    private TipoUsuario tipoUsuario;
+    private Role role;
 
     @NotNull(message = "Você precisa definir um nome de usuário.")
     @Size(max = 30, message = "Quantidade de caracteres excedida.")
     private String username;
 
-    @NotNull(message = "Você precisa definir uma senha.")
-    @Size(max = 259, message = "Quantidade de caracteres excedida.")
-    private String senha;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime deletedAt;
+
+    public void delete(){
+        this.deletedAt = LocalDateTime.now();
+    }
+    public void activate(){
+        this.deletedAt = null;
+    }
 }
