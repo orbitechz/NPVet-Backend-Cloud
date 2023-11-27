@@ -2,6 +2,7 @@ package com.orbitech.npvet.auth;
 
 import com.orbitech.npvet.dto.LoginDTO;
 import com.orbitech.npvet.dto.UsuarioDTO;
+import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
 import com.orbitech.npvet.service.UsuarioService;
@@ -25,9 +26,9 @@ import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class AuthService {
@@ -56,6 +57,10 @@ public class AuthService {
         HttpHeaders headers = new HttpHeaders();
         UsuarioDTO usuarioRetorno;
         Usuario usuarioBanco;
+        List<String> roles = Stream.of(Role.values())
+                .map(Enum::name)
+                .toList();
+        List<String> keyCloakRoles;
         String role = "NONE";
         String token;
         PublicKey publicKey = decodeSecret(key);
@@ -77,16 +82,16 @@ public class AuthService {
                 .parseClaimsJws(retorno.getAccess_token());
 
         Claims body = claimsJws.getBody();
-        List<String> roles = (List<String>) body.get("realm_access", Map.class).get("roles");
+        keyCloakRoles = (List<String>) body.get("realm_access", Map.class).get("roles");
         for (String r:
-                roles) {
-            if(r.equals("ADMIN") || r.equals("FUNCIONARIO")){
+                keyCloakRoles) {
+            if(roles.contains(r)){
                 role = r;
                 break;
             }
         }
         if(role.equals("NONE")){
-            System.out.println(role);
+//            System.out.println(role);
             throw new AccessDeniedException("Usuário sem permissões!");
         }
         String username = (String) body.get("preferred_username");

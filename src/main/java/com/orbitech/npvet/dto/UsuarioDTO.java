@@ -18,11 +18,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class UsuarioDTO {
     private String id;
-    @NotNull(message = "Você precisa preencher um nome.")
+//    @NotNull(message = "Você precisa preencher um nome.")
     @Size(max = 100, message = "Quantidade de caracteres excedida.")
     private String nome;
 
-    @NotNull(message = "Você precisa preencher um CPF.")
+//    @NotNull(message = "Você precisa preencher um CPF.")
     @CPF(message = "CPF inválido.")
     private String cpf;
 

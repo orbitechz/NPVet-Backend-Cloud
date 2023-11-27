@@ -23,10 +23,10 @@ public class Usuario {
     @Setter
     private String id;
 
-    @Column(nullable = false, length = 100, name = "nome")
+    @Column(length = 100, name = "nome")
     private String nome;
 
-    @Column(unique = true, nullable = false, length = 11, name = "cpf")
+    @Column(unique = true, length = 11, name = "cpf")
     private String cpf;
 
     @Enumerated(EnumType.STRING)
@@ -74,7 +74,7 @@ public class Usuario {
         this.createdAt = LocalDateTime.now();
     }
     @PreUpdate
-    private void preUpData(){
+    private void preUpdate(){
         this.updatedAt = LocalDateTime.now();
     }
 }
