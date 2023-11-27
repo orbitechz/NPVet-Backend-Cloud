@@ -44,15 +44,12 @@ public class Usuario {
     private  List<Consulta> consultas = new ArrayList<>();
 
     @Getter @Setter
-    @Column(name = "created_at",nullable = true)
     private LocalDateTime createdAt;
 
     @Getter @Setter
-    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @Getter @Setter
-    @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
     public void roleStringSet(String role){
