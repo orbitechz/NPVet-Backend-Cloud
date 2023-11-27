@@ -18,7 +18,7 @@ public class UsuarioController {
     private UsuarioService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final Long id){
+    public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final String id){
         return ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("/all")
@@ -69,11 +69,11 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<UsuarioDTO> delete(@PathVariable("id") Long id){
+    public ResponseEntity<UsuarioDTO> delete(@PathVariable("id") String id){
         return ResponseEntity.ok(service.delete(id));
     }
     @PostMapping("/activate/{id}")
-    public ResponseEntity<UsuarioDTO> activate(@PathVariable("id") Long id){
+    public ResponseEntity<UsuarioDTO> activate(@PathVariable("id") String id){
         return ResponseEntity.ok(service.activate(id));
     }
 

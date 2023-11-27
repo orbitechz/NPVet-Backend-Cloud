@@ -1,36 +1,24 @@
 package com.orbitech.npvet.auth;
 
-import com.orbitech.npvet.dto.UsuarioAuthDTO;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import com.orbitech.npvet.dto.LoginDTO;
+import com.orbitech.npvet.dto.UsuarioDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.util.MultiValueMap;
+
+import java.nio.file.AccessDeniedException;
+import java.security.InvalidKeyException;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+    @Autowired
+    AuthService service;
     @PostMapping
-    public ResponseEntity<String> token(@RequestBody UsuarioAuthDTO usuarioAuth){
-        RestTemplate rt = new RestTemplate();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
-        formData.add("client_id", usuarioAuth.getClientId());
-        formData.add("username", usuarioAuth.getUsername());
-        formData.add("password", usuarioAuth.getPassword());
-        formData.add("grant_type", usuarioAuth.getGrantType());
-
-        HttpEntity<MultiValueMap<String, String>> entity = new  HttpEntity<MultiValueMap<String, String>>(formData, headers);
-
-        return rt.postForEntity("http://localhost:8080/auth/realms/npvet/protocol/openid-connect/token",entity, String.class);
+    public ResponseEntity<UsuarioDTO> login(@RequestBody LoginDTO login) throws AccessDeniedException, InvalidKeyException {
+        return ResponseEntity.ok(service.login(login));
     }
 }

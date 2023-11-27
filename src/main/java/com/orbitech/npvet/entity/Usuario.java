@@ -55,6 +55,13 @@ public class Usuario {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
+    public void roleStringSet(String role){
+        this.role = Role.valueOf(role);
+    }
+    public String roleStringGet() {
+        return this.role.toString();
+    }
+
     public void delete(){
         this.deletedAt = LocalDateTime.now();
     }

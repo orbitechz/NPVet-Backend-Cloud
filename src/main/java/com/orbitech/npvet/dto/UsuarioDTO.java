@@ -34,10 +34,17 @@ public class UsuarioDTO {
     @Size(max = 30, message = "Quantidade de caracteres excedida.")
     private String username;
 
-
+    private String token;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
+
+    public void roleStringSet(String role){
+        this.role = Role.valueOf(role);
+    }
+    public String roleStringGet() {
+        return this.role.toString();
+    }
 
     public void delete(){
         this.deletedAt = LocalDateTime.now();

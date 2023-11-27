@@ -21,7 +21,12 @@ public class SecurityConfig {
                         .oauth2ResourceServer(
                             oauth2 -> oauth2
                                     .jwt(jwt -> jwt.jwtAuthenticationConverter(new JWTConverter()))
-                        );
+                        )
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/*", "/auth")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated());
 
         http.httpBasic(Customizer.withDefaults());
         return http.build();

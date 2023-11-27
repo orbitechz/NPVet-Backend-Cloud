@@ -62,14 +62,14 @@ class UsuarioControllerTest {
         usuarioEntidade.setUsername("username");
         usuarioList.add(usuarioEntidade);
 
-        when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(usuarioEntidade));
+        when(repository.findById(Mockito.any(String.class))).thenReturn(Optional.of(usuarioEntidade));
         when(repository.findAll()).thenReturn(usuarioList);
         when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuarioEntidade);
 
         when(repository.findAllUsuariosByNome("nome")).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(Role.SECRETARIA)).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(Role.ADMINISTRADOR)).thenReturn(usuarioList);
-        when(repository.findByTipoUsuario(Role.MEDICO)).thenReturn(usuarioList);
+        when(repository.findByRole(Role.SECRETARIA)).thenReturn(usuarioList);
+        when(repository.findByRole(Role.ADMINISTRADOR)).thenReturn(usuarioList);
+        when(repository.findByRole(Role.MEDICO)).thenReturn(usuarioList);
 
         when(repository.findUsuarioByUsername("username")).thenReturn(usuarioList);
         when(repository.findUsuarioByCpf("cpf")).thenReturn(usuarioEntidade);
@@ -79,7 +79,7 @@ class UsuarioControllerTest {
 
     @Test
     void getById() throws Exception{
-        ResponseEntity<UsuarioDTO>response = controller.geById(1L);
+        ResponseEntity<UsuarioDTO>response = controller.geById("1");
         assertEquals(HttpStatus.OK,response.getStatusCode());
         assertThat(response.getBody()).usingRecursiveComparison().isEqualTo(usuarioDTO);
     }

@@ -27,7 +27,7 @@ public class UsuarioService {
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO getById(long id){
+   public UsuarioDTO getById(String id){
         return toUsuarioDTO(repository.findById(id).orElse(null));
    }
 
@@ -57,7 +57,7 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoSecretaria(){
-        List<UsuarioDTO> retorno = repository.findByTipoUsuario(Role.SECRETARIA)
+        List<UsuarioDTO> retorno = repository.findByRole(Role.SECRETARIA)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();
@@ -66,7 +66,7 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoAdm(){
-        List<UsuarioDTO>retorno = repository.findByTipoUsuario(Role.ADMINISTRADOR)
+        List<UsuarioDTO>retorno = repository.findByRole(Role.ADMINISTRADOR)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();
@@ -75,7 +75,7 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO>getTipoMedico(){
-        List<UsuarioDTO>retorno = repository.findByTipoUsuario(Role.MEDICO)
+        List<UsuarioDTO>retorno = repository.findByRole(Role.MEDICO)
                 .stream()
                 .map(this::toUsuarioDTO)
                 .toList();
@@ -99,14 +99,14 @@ public class UsuarioService {
     }
 
     @Transactional
-    public UsuarioDTO delete(Long id){
+    public UsuarioDTO delete(String id){
         UsuarioDTO userById = getById(id);
         userById.delete();
         return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
     }
 
     @Transactional
-    public UsuarioDTO activate(Long id){
+    public UsuarioDTO activate(String id){
         UsuarioDTO userById = getById(id);
         userById.activate();
         return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
