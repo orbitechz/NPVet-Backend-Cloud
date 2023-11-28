@@ -66,7 +66,7 @@ public class TutorController {
     public ResponseEntity<TutorDTO> delete(@PathVariable("id") Long id){
         return ResponseEntity.ok(service.delete(id));
     }
-    @GetMapping("/activate/{id}")
+    @PostMapping("/activate/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<TutorDTO> activate(@PathVariable("id") Long id){
         return ResponseEntity.ok(service.activate(id));
