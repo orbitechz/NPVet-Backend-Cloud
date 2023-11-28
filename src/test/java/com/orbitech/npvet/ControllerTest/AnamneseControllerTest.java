@@ -87,10 +87,10 @@ class AnamneseControllerTest {
         tutor.setCpf("123");
 
         // Veterinario DTO e Entity
-        veterinarioDTO.setId(1L);
+        veterinarioDTO.setId("1L");
         veterinarioDTO.setNome("Dr. Smith");
 
-        veterinario.setId(1L);
+        veterinario.setId("1L");
         veterinario.setNome("Dr. Smith");
 
         // AnamneseHistorico DTO e Entity

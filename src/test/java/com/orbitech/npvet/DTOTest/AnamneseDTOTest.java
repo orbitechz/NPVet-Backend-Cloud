@@ -29,7 +29,7 @@ class AnamneseDTOTest {
         tutor.setId(1L);
         tutor.setCpf("123");
 
-        veterinario.setId(1L);
+        veterinario.setId("1L");
         veterinario.setNome("Dr. Smith");
 
         anamneseHistorico.setId(1L);
