@@ -18,10 +18,12 @@ public class UsuarioController {
     private UsuarioService service;
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<UsuarioDTO>geById(@PathVariable("id") final String id){
         return ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("/all")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getAll(){
         return ResponseEntity.ok(service.getAll());
     }
@@ -35,35 +37,41 @@ public class UsuarioController {
     }
 
     @GetMapping("/nome/{nome}")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getUsuarioByName(@PathVariable("nome") String nome){
         return ResponseEntity.ok(service.getUsuarioByName(nome));
 
     }
 
     @GetMapping("/secretaria")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getSecretaria(){
         List<UsuarioDTO>response = service.getTipoSecretaria();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/adm")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getAdm(){
         List<UsuarioDTO>response = service.getTipoAdm();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/veterinarios")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getVeterinarios(){
         List<UsuarioDTO>response = service.getTipoMedico();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/username/{username}")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<List<UsuarioDTO>>getUsername(@PathVariable("username")String username){
         return ResponseEntity.ok(service.getUsername(username));
     }
 
     @GetMapping("/cpf/{cpf}")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO')")
     public ResponseEntity<UsuarioDTO>getUsuarioCpf(@PathVariable("cpf")String cpf){
         return ResponseEntity.ok(service.getUsuarioByCpf(cpf));
     }
