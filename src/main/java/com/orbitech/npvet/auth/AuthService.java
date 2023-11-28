@@ -40,6 +40,8 @@ public class AuthService {
     private String key;
     @Value("${security.jwt.auth-url}")
     private String authTokenUrl;
+    @Value("${security.client.id}")
+    private String clientId;
 
     private PublicKey decodeSecret(String secret) throws InvalidKeyException {
         try {
@@ -68,7 +70,7 @@ public class AuthService {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
 
-        formData.add("client_id", "npvet-api");
+        formData.add("client_id", clientId);
         formData.add("username", loginDTO.getUsername());
         formData.add("password", loginDTO.getPassword());
         formData.add("grant_type", "password");
