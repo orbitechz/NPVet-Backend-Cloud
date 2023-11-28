@@ -19,35 +19,35 @@ public class ExameFisicoController {
     private ExameFisicoService service;
 
     @GetMapping("/id/{id}")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<ExameFisicoDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     @GetMapping("/animal/nome/{nome}")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<List<ExameFisicoDTO>> getByAnimalNome(@PathVariable("nome") String nome) {
         return ResponseEntity.ok(service.getByNomeAnimal(nome));
     }
 
     @GetMapping("/animal/id/{id}")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<List<ExameFisicoDTO>> getByAnimalId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getByIdAnimal(id));
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<List<ExameFisicoDTO>> getAll() {return ResponseEntity.ok(service.getAll());}
 
     @PostMapping("/post")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<ExameFisicoDTO> create(@RequestBody @Validated ExameFisicoDTO exameFisicoDTO) {
         return ResponseEntity.ok(service.create(exameFisicoDTO));
     }
 
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<ExameFisicoDTO> update(@PathVariable("id") Long id, @RequestBody @Validated ExameFisicoDTO exameFisicoDTO){
         return ResponseEntity.ok(service.update(id, exameFisicoDTO));
     }

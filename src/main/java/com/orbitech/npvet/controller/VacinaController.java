@@ -18,27 +18,27 @@ public class VacinaController {
     @Autowired
     private VacinaService service;
     @GetMapping("/id/{id}")
-    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA', 'ADMINISTRADOR')")
     public ResponseEntity<VacinaDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("/nome/{nome}")
-    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA', 'ADMINISTRADOR')")
     public ResponseEntity<List<VacinaDTO>> getByNome(@PathVariable("nome") String nome) {
         return ResponseEntity.ok(service.getAllByNome(nome));
     }
     @GetMapping("/animal/{animalId}")
-    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA', 'ADMINISTRADOR')")
     public ResponseEntity<List<VacinaDTO>> getByAnimal(@PathVariable("animalId") Long animalId) {
         return ResponseEntity.ok(service.getByAnimal(animalId));
     }
     @PostMapping("/post")
-    @PreAuthorize("hasAnyAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<VacinaDTO> create(@RequestBody @Validated VacinaDTO vacinaDTO){
         return ResponseEntity.ok(service.create(vacinaDTO));
     }
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasAnyAuthority('MEDICO')")
+    @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<VacinaDTO> update(@PathVariable("id") Long id, @RequestBody @Validated VacinaDTO vacinaDTO){
         return ResponseEntity.ok(service.update(id, vacinaDTO));
     }
