@@ -2,7 +2,7 @@ package com.orbitech.npvet.ServiceTest;
 
 import com.orbitech.npvet.controller.UsuarioController;
 import com.orbitech.npvet.dto.UsuarioDTO;
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
 import com.orbitech.npvet.service.UsuarioService;
@@ -40,19 +40,19 @@ class UsuarioServiceTest {
     void setUp(){
         MockitoAnnotations.openMocks(this);
 
-        usuarioDTO.setId(1L);
-        usuarioDTO.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+//        usuarioDTO.setId(1L);
+        usuarioDTO.setRole(Role.ADMINISTRADOR);
         usuarioDTO.setNome("nome");
         usuarioDTO.setCpf("cpf");
-        usuarioDTO.setSenha("senha");
+//        usuarioDTO.setSenha("senha");
         usuarioDTO.setUsername("username");
         usuarioDTOList.add(usuarioDTO);
 
-        usuarioEntidade.setId(1L);
-        usuarioEntidade.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+//        usuarioEntidade.setId(1L);
+        usuarioEntidade.setRole(Role.ADMINISTRADOR);
         usuarioEntidade.setNome("nome");
         usuarioEntidade.setCpf("cpf");
-        usuarioEntidade.setSenha("senha");
+//        usuarioEntidade.setSenha("senha");
         usuarioEntidade.setUsername("username");
         usuarioList.add(usuarioEntidade);
 

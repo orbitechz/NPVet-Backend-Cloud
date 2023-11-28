@@ -1,6 +1,6 @@
 package com.orbitech.npvet.EntityTest;
 
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,10 +15,10 @@ class UsuarioTest {
 
     @BeforeEach
     void setUp(){
-        usuario.setTipoUsuario(TipoUsuario.SECRETARIA);
+        usuario.setRole(Role.SECRETARIA);
         usuario.setNome("nome");
-        usuario.setSenha("senha");
-        usuario.setId(1L);
+//        usuario.setSenha("senha");
+//        usuario.setId(1L);
         usuario.setUsername("username");
         usuario.setCpf("cpf");
     }
@@ -35,13 +35,13 @@ class UsuarioTest {
 
     @Test
     void usuarioTipoTest(){
-        assertEquals(TipoUsuario.SECRETARIA,usuario.getTipoUsuario());
+        assertEquals(Role.SECRETARIA,usuario.getRole());
     }
 
-    @Test
-    void usuarioSenhaTest(){
-        assertEquals("senha",usuario.getSenha());
-    }
+//    @Test
+//    void usuarioSenhaTest(){
+//        assertEquals("senha",usuario.getSenha());
+//    }
 
     @Test
     void usuarioUsernameTest(){
