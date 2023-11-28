@@ -15,6 +15,7 @@ ENV DB_PWD=postgres
 ENV DDL=validate
 ENV ISSUER_URI="http://keycloak:8080/auth/realms/npvet"
 ENV JWT_SECRET="CHAVE_SECRETA_JWT"
+ENV CLIENT_ID="npvet-api"
 EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","/usr/app/npvet-api-1.0.0-SNAPSHOT.jar"]
