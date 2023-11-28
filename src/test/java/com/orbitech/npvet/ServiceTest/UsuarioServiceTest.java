@@ -56,7 +56,7 @@ class UsuarioServiceTest {
         usuarioEntidade.setUsername("username");
         usuarioList.add(usuarioEntidade);
 
-        when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(usuarioEntidade));
+        when(repository.findById(Mockito.any(String.class))).thenReturn(Optional.of(usuarioEntidade));
         when(repository.findAll()).thenReturn(usuarioList);
         when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuarioEntidade);
 
@@ -88,7 +88,7 @@ class UsuarioServiceTest {
     }
     @Test
     void usuarioDeleteTest(){
-       service.delete(1L);
-       verify(repository,times(1)).findById(1L);
+       service.delete("1L");
+       verify(repository,times(1)).findById("1L");
     }
 }
