@@ -1,6 +1,6 @@
 package com.orbitech.npvet.entity;
 
-public enum TipoUsuario {
+public enum Role {
     SECRETARIA,
     ADMINISTRADOR,
     MEDICO;

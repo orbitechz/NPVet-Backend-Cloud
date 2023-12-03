@@ -1,4 +1,5 @@
 package com.orbitech.npvet.config;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -7,8 +8,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
+import java.nio.file.AccessDeniedException;
+import java.security.InvalidKeyException;
 import java.util.List;
+
 @RestControllerAdvice
 public class GlobalErrorHandler {
     /**
@@ -18,6 +23,23 @@ public class GlobalErrorHandler {
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
         return e.getMessage();
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(AccessDeniedException.class)
+    public String handleAccessDenied(AccessDeniedException e) {
+        return e.getMessage();
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(HttpClientErrorException.Unauthorized.class)
+    public String handleUnauthorized() {
+        return "Login inválido!";
+    }
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(InvalidKeyException.class)
+    public String handleInvalidKey() {
+        return "Erro de servidor!";
     }
 
     /**
@@ -38,8 +60,7 @@ public class GlobalErrorHandler {
      * */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public String handleJsonException(HttpMessageNotReadableException erro){
-        return String.format("Corpo da solicitação contém erros: %s", erro.getMessage());
+    public String handleJsonException(){
+        return "Existem erros na sua solicitação!";
     }
-
 }

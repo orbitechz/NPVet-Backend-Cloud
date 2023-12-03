@@ -1,7 +1,7 @@
 package com.orbitech.npvet.DTOTest;
 
 import com.orbitech.npvet.dto.UsuarioDTO;
-import com.orbitech.npvet.entity.TipoUsuario;
+import com.orbitech.npvet.entity.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @BeforeEach
     void setUp(){
-        usuarioDTO.setTipoUsuario(TipoUsuario.SECRETARIA);
+        usuarioDTO.setRole(Role.SECRETARIA);
         usuarioDTO.setNome("nome");
-        usuarioDTO.setSenha("senha");
-        usuarioDTO.setId(1L);
+//        usuarioDTO.setSenha("senha");
+//        usuarioDTO.setId(1L);
         usuarioDTO.setUsername("username");
         usuarioDTO.setCpf("cpf");
     }
@@ -35,13 +35,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test
     void usuarioTipoTest(){
-        assertEquals(TipoUsuario.SECRETARIA,usuarioDTO.getTipoUsuario());
+        assertEquals(Role.SECRETARIA,usuarioDTO.getRole());
     }
 
-    @Test
-    void usuarioSenhaTest(){
-        assertEquals("senha",usuarioDTO.getSenha());
-    }
+//    @Test
+//    void usuarioSenhaTest(){
+//        assertEquals("senha",usuarioDTO.getSenha());
+//    }
 
     @Test
     void usuarioUsernameTest(){

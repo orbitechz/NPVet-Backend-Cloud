@@ -31,7 +31,7 @@ class AnamneseTest {
         tutor.setId(1L);
         tutor.setCpf("123");
 
-        veterinario.setId(1L);
+        veterinario.setId("1L");
         veterinario.setNome("Dr. Smith");
 
         anamneseHistorico.setId(1L);
@@ -82,7 +82,7 @@ class AnamneseTest {
     @Test
     void testVeterinario() {
         Usuario newVeterinario = new Usuario();
-        newVeterinario.setId(2L);
+        newVeterinario.setId("2L");
         newVeterinario.setNome("Dr. Johnson");
         anamnese.setVeterinario(newVeterinario);
         assertEquals(newVeterinario, anamnese.getVeterinario());
