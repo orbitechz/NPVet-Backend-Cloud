@@ -1,5 +1,7 @@
 package com.orbitech.npvet.service;
+
 import com.orbitech.npvet.dto.ConsultaDTO;
+
 import com.orbitech.npvet.entity.Consulta;
 import com.orbitech.npvet.entity.Status;
 import com.orbitech.npvet.repository.ConsultaRepository;
@@ -8,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static com.orbitech.npvet.service.AnamneseService.NOT_FOUND_MESSAGE;
 
 @Service
 public class ConsultaService {
@@ -17,17 +23,38 @@ public class ConsultaService {
 
     private final ModelMapper mapper = new ModelMapper();
 
-    public ConsultaDTO toConsultaDTO(Consulta consultaEntidade){
-        return mapper.map(consultaEntidade, ConsultaDTO.class);
+    public ConsultaDTO toConsultaDTO(Consulta consultaEntidade) {
+        ConsultaDTO consultaDTO = mapper.map(consultaEntidade, ConsultaDTO.class);
+
+        // Map the Anamnese attribute separately if it is not null
+//        Anamnese anamnese = consultaEntidade.getAnamnese();
+//        if (anamnese != null) {
+//            AnamneseDTO anamneseDTO = mapper.map(anamnese, AnamneseDTO.class);
+//            consultaDTO.setAnamnese(anamneseDTO);
+//        }
+
+        return consultaDTO;
     }
+
+
 
     public Consulta toConsultaEntidade(ConsultaDTO consultaDTO){
-        return mapper.map(consultaDTO, Consulta.class);
+        Consulta consulta = mapper.map(consultaDTO, Consulta.class);
+//
+//        AnamneseDTO anamnese = consultaDTO.getAnamnese();
+//        if (anamnese != null) {
+//            Anamnese anamneseDTO = mapper.map(anamnese, Anamnese.class);
+//            consulta.setAnamnese(anamneseDTO);
+//        }
+        return consulta;
     }
 
-    public ConsultaDTO getById (long id) throws Exception{
-        return toConsultaDTO(repository.findById(id).orElseThrow(()-> new Exception(String.format("Consulta com o id [%s] não localizado.",id))));
+    public ConsultaDTO getById(Long id) {
+        Consulta consulta = repository.findById(id).orElse(null);
+        Assert.notNull(consulta, String.format(NOT_FOUND_MESSAGE, id));
+        return toConsultaDTO(consulta);
     }
+
 
     public List<ConsultaDTO> getAll(){
         return repository.findAll().stream().map(this::toConsultaDTO).toList();
@@ -126,4 +153,13 @@ public class ConsultaService {
         return retorno;
     }
 
+    public List<ConsultaDTO> getFilteredConsultas(LocalDateTime startDate,
+                                                  LocalDateTime endDate,
+                                                  Long animalId,
+                                                  Status status) {
+        return repository.findFilteredConsultas(startDate,
+                endDate,
+                animalId,
+                status).stream().map(this::toConsultaDTO).toList();
+    }
 }
