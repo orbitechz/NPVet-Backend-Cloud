@@ -157,13 +157,11 @@ public class ConsultaService {
     public List<ConsultaDTO> getFilteredConsultas(LocalDateTime startDate,
                                                   LocalDateTime endDate,
                                                   Long animalId,
-                                                  Long vetId,
                                                   Status status
                                                   ) {
         return repository.findFilteredConsultas(startDate,
                 endDate,
                 animalId,
-                vetId,
                 status).stream().map(this::toConsultaDTO).toList();
     }
 

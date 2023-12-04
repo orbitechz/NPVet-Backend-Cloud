@@ -25,13 +25,11 @@ public class ConsultaController {
             @RequestParam LocalDateTime startDate,
             @RequestParam LocalDateTime endDate,
             @RequestParam(required = false) Long animalId,
-            @RequestParam(required = false) Long vetId,
             @RequestParam(required = false) Status status
             ){
         return ResponseEntity.ok(service.getFilteredConsultas(startDate,
                 endDate,
                 animalId,
-                vetId,
                 status
                 ));
     }
