@@ -1,6 +1,7 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.ConsultaDTO;
+import com.orbitech.npvet.entity.Status;
 import com.orbitech.npvet.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -17,9 +20,22 @@ public class ConsultaController {
     @Autowired
     private ConsultaService service;
 
+    @GetMapping("/report")
+    public ResponseEntity<List<ConsultaDTO>> getFilteredConsultas(
+            @RequestParam LocalDateTime startDate,
+            @RequestParam LocalDateTime endDate,
+            @RequestParam(required = false) Long animalId,
+            @RequestParam(required = false) Status status
+            ){
+        return ResponseEntity.ok(service.getFilteredConsultas(startDate,
+                endDate,
+                animalId,
+                status));
+    }
+
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<ConsultaDTO>getById(@PathVariable("id")final long id) throws Exception {
+    public ResponseEntity<ConsultaDTO>getById(@PathVariable("id") Long id)  {
         return ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("/all")

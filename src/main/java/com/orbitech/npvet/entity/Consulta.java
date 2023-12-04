@@ -1,6 +1,5 @@
 package com.orbitech.npvet.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,10 +24,10 @@ public class Consulta extends AbstractEntity {
     @JoinColumn(nullable = false)
     private Tutor tutor;
     @OneToOne
+    @JoinColumn
     private Anamnese anamnese;
     @OneToMany(mappedBy = "consulta")
-    @JsonIgnore
-    private List<ExameFisico>examesFisicos = new ArrayList<>();
+    private List<ExameFisico> examesFisicos = new ArrayList<>();
 
     @Column(nullable = false, name = "data")
     private LocalDateTime data;
