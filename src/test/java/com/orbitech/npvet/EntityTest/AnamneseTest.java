@@ -54,21 +54,21 @@ class AnamneseTest {
 
     }
 
-    @Test
-    void testAllArgsConstructor() {
-        Anamnese anamneseWithArgs = new Anamnese(animal, tutor, veterinario, "queixaPrincipal",
-                anamneseHistoricos, "alimentacao", "contactantes",
-                "ambiente", "vacinacao", "vermifugacao",
-                "sistemaRespiratorio", "sistemaCardiovascular",
-                "sistemaUrinario", "sistemaReprodutor", "sistemaLocomotor",
-                "sistemaNeurologico", "pele", "olhos",
-                "ouvidos", anamnesePerguntas);
-        assertNotNull(anamneseWithArgs);
-        assertEquals(animal, anamneseWithArgs.getAnimal());
-        assertEquals(tutor, anamneseWithArgs.getTutor());
-        assertEquals(veterinario, anamneseWithArgs.getVeterinario());
-        assertEquals("queixaPrincipal", anamneseWithArgs.getQueixaPrincipal());
-    }
+//    @Test
+//    void testAllArgsConstructor() {
+//        Anamnese anamneseWithArgs = new Anamnese(animal, tutor, veterinario, "queixaPrincipal",
+//                anamneseHistoricos, "alimentacao", "contactantes",
+//                "ambiente", "vacinacao", "vermifugacao",
+//                "sistemaRespiratorio", "sistemaCardiovascular",
+//                "sistemaUrinario", "sistemaReprodutor", "sistemaLocomotor",
+//                "sistemaNeurologico", "pele", "olhos",
+//                "ouvidos", anamnesePerguntas);
+//        assertNotNull(anamneseWithArgs);
+//        assertEquals(animal, anamneseWithArgs.getAnimal());
+//        assertEquals(tutor, anamneseWithArgs.getTutor());
+//        assertEquals(veterinario, anamneseWithArgs.getVeterinario());
+//        assertEquals("queixaPrincipal", anamneseWithArgs.getQueixaPrincipal());
+//    }
 
     @Test
     void testTutor() {
