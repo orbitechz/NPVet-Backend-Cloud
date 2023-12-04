@@ -23,7 +23,7 @@ public class AnamneseDTO extends AbstractEntityDTO {
     @NotNull(message = "O médico deve ser informado!")
     private UsuarioDTO veterinarioDTO;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "anamnese")
     private ConsultaDTO consulta;
 
     private String queixaPrincipal;

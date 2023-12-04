@@ -22,6 +22,8 @@ public class AnamneseService {
     private  final  ConsultaRepository consultaRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
+    @Autowired
+    private ConsultaService consultaService;
 
     @Autowired
     public AnamneseService(AnamneseRepository anamneseRepository,
@@ -126,12 +128,17 @@ public class AnamneseService {
     @Transactional
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
+        ConsultaDTO consulta = consultaService.getById(anamneseDTO.getConsulta().getId());
+
+        Assert.notNull(consulta, "Consulta não existe!");
 
 
         // Save Anamnese
         Anamnese savedAnamnese = anamneseRepository.save(anamnese);
 
         // Save associated entities
+        consulta.setAnamnese(toAnamneseDTO(savedAnamnese));
+        consultaService.update(consulta.getId(), consulta);
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
 
