@@ -18,16 +18,22 @@ public class AnamneseService {
     private final AnamneseRepository anamneseRepository;
     private final AnamnesePerguntaRepository anamnesePerguntaRepository ;
     private final AnamneseHistoricoRepository anamneseHistoricoRepository;
+
+    private  final  ConsultaRepository consultaRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
+    @Autowired
+    private ConsultaService consultaService;
 
     @Autowired
     public AnamneseService(AnamneseRepository anamneseRepository,
                            AnamnesePerguntaRepository anamnesePerguntaRepository,
-                           AnamneseHistoricoRepository anamneseHistoricoRepository) {
+                           AnamneseHistoricoRepository anamneseHistoricoRepository,
+                           ConsultaRepository consultaRepository) {
         this.anamneseRepository = anamneseRepository;
         this.anamnesePerguntaRepository = anamnesePerguntaRepository;
         this.anamneseHistoricoRepository = anamneseHistoricoRepository;
+        this.consultaRepository =consultaRepository;
     }
 
     public static final String NOT_FOUND_MESSAGE = "O ID = %s solicitado não foi encontrado no banco de dados.";
@@ -122,9 +128,20 @@ public class AnamneseService {
     @Transactional
     public AnamneseDTO create(AnamneseDTO anamneseDTO) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
+        ConsultaDTO consulta = consultaService.getById(anamneseDTO.getConsulta().getId());
+
+        Assert.notNull(consulta, "Consulta não existe!");
+
+
+        // Save Anamnese
         Anamnese savedAnamnese = anamneseRepository.save(anamnese);
+
+        // Save associated entities
+        consulta.setAnamnese(toAnamneseDTO(savedAnamnese));
+        consultaService.update(consulta.getId(), consulta);
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
+
         return toAnamneseDTO(savedAnamnese);
     }
 

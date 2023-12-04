@@ -1,5 +1,6 @@
 package com.orbitech.npvet.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -21,6 +22,9 @@ public class AnamneseDTO extends AbstractEntityDTO {
 
     @NotNull(message = "O médico deve ser informado!")
     private UsuarioDTO veterinarioDTO;
+
+    @JsonIgnoreProperties(value = "anamnese")
+    private ConsultaDTO consulta;
 
     private String queixaPrincipal;
 

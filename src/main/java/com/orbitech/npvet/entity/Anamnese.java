@@ -22,15 +22,15 @@ public class Anamnese extends AbstractEntity {
     @JoinColumn(name = "id_tutor",nullable = false)
     private Tutor tutor;
 
+    @OneToOne(mappedBy = "anamnese")
+    private Consulta consulta;
+
     @ManyToOne
     @JoinColumn(name = "id_veterinario",nullable = false)
     private Usuario veterinario;
 
     @Column(name = "queixa-principal",nullable = true)
     private String queixaPrincipal;
-
-//    @OneToMany(mappedBy = "anamnese")
-//    @JsonIgnoreProperties("anamnese")
 
     @OneToMany
     private List<AnamneseHistorico> historicoProgressoMedico = new ArrayList<>();
