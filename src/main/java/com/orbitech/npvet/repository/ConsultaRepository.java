@@ -36,11 +36,13 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
             "c.createdAt >= :startDate AND " +
             "c.createdAt <= :endDate " +
             "AND (:animalId IS NULL OR c.animal.id = :animalId) " +
+            "AND (:vetId IS NULL OR c.veterinario.id = :vetid) " +
             "AND (:status IS NULL OR c.status = :status)")
     List<Consulta> findFilteredConsultas(
             @Param("startDate") LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate,
             @Param("animalId") Long animalId,
+            @Param("vetId") Long vetId,
             @Param("status") Status status);
 
 
