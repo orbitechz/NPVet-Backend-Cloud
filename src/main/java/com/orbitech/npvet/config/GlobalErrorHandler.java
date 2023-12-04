@@ -60,12 +60,12 @@ public class GlobalErrorHandler {
         return firstError.getDefaultMessage();
     }
 
-    /**
-     * Erros de sintaxe no body
-     * */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public String handleJsonException(){
-        return "Existem erros na sua solicitação!";
-    }
+//    /**
+//     * Erros de sintaxe no body
+//     * */
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(HttpMessageNotReadableException.class)
+//    public String handleJsonException(){
+//        return "Existem erros na sua solicitação!";
+//    }
 }
