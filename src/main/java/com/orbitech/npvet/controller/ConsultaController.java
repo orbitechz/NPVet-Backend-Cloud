@@ -30,7 +30,8 @@ public class ConsultaController {
         return ResponseEntity.ok(service.getFilteredConsultas(startDate,
                 endDate,
                 animalId,
-                status));
+                status
+                ));
     }
 
     @GetMapping("/{id}")
@@ -76,7 +77,6 @@ public class ConsultaController {
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
     public ResponseEntity<List<ConsultaDTO>>getVeterinarioByNome(@PathVariable("nome")String nome){
         return ResponseEntity.ok(service.getVeterinarioByName(nome));
-
     }
 
     @GetMapping("/veterinario/{id}")
@@ -113,8 +113,9 @@ public class ConsultaController {
 
     @GetMapping("/agendada")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<List<ConsultaDTO>>getConsultasAgendadas(){
-        List<ConsultaDTO>response = service.getConsultaAgendada();
+    public ResponseEntity<List<ConsultaDTO>>getConsultasAgendadas() {
+        List<ConsultaDTO> response = service.getConsultaAgendada();
         return ResponseEntity.ok(response);
     }
+
 }

@@ -29,7 +29,7 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
     @Query("SELECT c FROM Consulta c WHERE c.anamnese.id = :id")
     List<Consulta>findConsultaByAnamneseId(@Param("id")Long id);
 
-    @Query("SELECT c FROM Consulta c WHERE c.status =: status")
+    @Query("SELECT c FROM Consulta c WHERE c.status = :status")
     List<Consulta>findConsultasByStatus(@Param("status")Status status);
 
     @Query("SELECT c FROM Consulta c WHERE " +

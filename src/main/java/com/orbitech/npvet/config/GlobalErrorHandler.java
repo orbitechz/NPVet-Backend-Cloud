@@ -30,6 +30,11 @@ public class GlobalErrorHandler {
     public String handleAccessDenied(AccessDeniedException e) {
         return e.getMessage();
     }
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(HttpClientErrorException.NotFound.class)
+    public String handleNotFound() {
+        return "Ocorreu um erro interno!";
+    }
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(HttpClientErrorException.Unauthorized.class)
@@ -39,7 +44,7 @@ public class GlobalErrorHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(InvalidKeyException.class)
     public String handleInvalidKey() {
-        return "Erro de servidor!";
+        return "Ocorreu um erro interno!";
     }
 
     /**
