@@ -14,10 +14,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class AnamneseDTO extends AbstractEntityDTO {
 
-    @NotNull(message = "O animal deve ser informado!")
+//    @NotNull(message = "O animal deve ser informado!")
     private AnimalDTO animalDTO;
 
-    @NotNull(message = "O tutor deve ser informado!")
+//    @NotNull(message = "O tutor deve ser informado!")
     private TutorDTO tutorDTO;
 
 //    @NotNull(message = "O médico deve ser informado!")
