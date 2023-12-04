@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/auth/*", "/auth")
                         .permitAll()
-                        .requestMatchers("/npvet/api/**").permitAll()
+                        .requestMatchers("/npvet/api/**", "/npvet/api").permitAll()
                         .anyRequest().authenticated());
 
         http
