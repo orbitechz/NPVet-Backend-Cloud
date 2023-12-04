@@ -1,5 +1,6 @@
 package com.orbitech.npvet.service;
 
+import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Vacina;
 import com.orbitech.npvet.repository.VacinaRepository;
@@ -24,6 +25,10 @@ public class VacinaService {
 
     public Vacina toVacina(VacinaDTO vacinaDTO){
         return mapper.map(vacinaDTO, Vacina.class);
+    }
+
+    public List<VacinaDTO> getAll() {
+        return repository.findAll().stream().map(this::toVacinaDTO).toList();
     }
 
     public VacinaDTO getById(Long id) {
