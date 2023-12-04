@@ -1,5 +1,6 @@
 package com.orbitech.npvet.controller;
 
+import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.service.VacinaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,13 @@ import java.util.List;
 public class VacinaController {
     @Autowired
     private VacinaService service;
+
+    @GetMapping("/all")
+    @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
+    public ResponseEntity<List<VacinaDTO>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
     @GetMapping("/id/{id}")
     @PreAuthorize("hasAnyAuthority('MEDICO', 'SECRETARIA', 'ADMINISTRADOR')")
     public ResponseEntity<VacinaDTO> getById(@PathVariable("id") Long id) {
