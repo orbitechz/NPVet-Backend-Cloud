@@ -71,7 +71,10 @@ public class TutorService {
         Assert.notNull(tutorDTO.getEnderecos(), "Pelo menos um endereço deve ser informado!");
         Assert.notEmpty(tutorDTO.getEnderecos(), "Pelo menos um endereço deve ser informado!");
         Assert.notNull(tutorDTO.getTelefones(), "Pelo menos um telefone deve ser informado!");
-        Assert.notEmpty(tutorDTO.getEnderecos(), "Pelo menos um telefone deve ser informado!");
+        Assert.notEmpty(tutorDTO.getTelefones(), "Pelo menos um telefone deve ser informado!");
+
+        Assert.isTrue(tutorDTO.getEnderecos().get(0).getCep() != null, "Pelo menos um endereço deve ser informado!");
+        Assert.isTrue(tutorDTO.getTelefones().get(0).getTelefone() != null, "Pelo menos um telefone deve ser informado!");
         return toTutorDTO(repository.save(toTutor(tutorDTO)));
     }
 
