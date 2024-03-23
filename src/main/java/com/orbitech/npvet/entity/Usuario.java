@@ -1,23 +1,26 @@
 package com.orbitech.npvet.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.orbitech.npvet.oauth.model.entity.Token;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "usuario", schema = "public")
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @Getter
     @Setter
@@ -36,6 +39,9 @@ public class Usuario {
     @Column(unique = true, nullable = false, length = 30, name = "username")
     private String username;
 
+    @Column( nullable = false, name = "password")
+    private String password;
+
     @OneToMany(mappedBy = "veterinario")
     @JsonIgnoreProperties("veterinario")
     private List<Anamnese> anamneses = new ArrayList<>();
@@ -52,26 +58,43 @@ public class Usuario {
     @Getter @Setter
     private LocalDateTime deletedAt;
 
-    public void roleStringSet(String role){
-        this.role = Role.valueOf(role);
-    }
-    public String roleStringGet() {
-        return this.role.toString();
+    @OneToMany(mappedBy = "usuario")
+    private List<Token> tokens;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(this.role.name()));
+        return authorities;
     }
 
-    public void delete(){
-        this.deletedAt = LocalDateTime.now();
-    }
-    public void activate(){
-        this.deletedAt = null;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    @PrePersist
-    private void prePersist() {
-        this.createdAt = LocalDateTime.now();
+    @Override
+    public String getUsername() {
+        return username;
     }
-    @PreUpdate
-    private void preUpdate(){
-        this.updatedAt = LocalDateTime.now();
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
