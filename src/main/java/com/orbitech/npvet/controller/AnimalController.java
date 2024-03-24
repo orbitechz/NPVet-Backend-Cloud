@@ -1,10 +1,14 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
+import com.orbitech.npvet.entity.Usuario;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +18,9 @@ import java.util.List;
 @RequestMapping("/animal")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class AnimalController {
+
+    private static Logger log = LoggerFactory.getLogger(AnimalService.class);
+
 
     @Autowired
     private AnimalService service;
@@ -25,7 +32,9 @@ public class AnimalController {
 
     @GetMapping("/all")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<List<AnimalDTO>> getAll() {
+    public ResponseEntity<List<AnimalDTO>> getAll(@AuthenticationPrincipal Usuario usuario) {
+        log.info("Usuário: ID: "+ usuario.getId() + " e username: "+ usuario.getUsername() +" realizou um getAll de animais");
+
         return ResponseEntity.ok(service.getAll());
     }
 
