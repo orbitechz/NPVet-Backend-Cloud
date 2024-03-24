@@ -1,4 +1,4 @@
-package com.orbitech.npvet.security;
+package com.orbitech.npvet.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

@@ -20,11 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "usuario", schema = "public")
-public class Usuario implements UserDetails {
-    @Id
-    @Getter
-    @Setter
-    private String id;
+public class Usuario extends AbstractEntity implements UserDetails {
 
     @Column(length = 100, name = "nome")
     private String nome;
