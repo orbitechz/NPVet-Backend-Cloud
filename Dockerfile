@@ -6,16 +6,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package -DskipTests
 
 FROM openjdk:17-jdk
 COPY --from=build /usr/src/app/target/*.jar /usr/app/npvet-api-1.0.0-SNAPSHOT.jar
-ENV API_PORT=8090
-ENV DB_HOST=localhost
-ENV DB_PORT=5432
-ENV DB_NOME=npvet
-ENV DB_USER=postgres
-ENV DB_PWD=postgres
-ENV DDL=validate
-ENV ISSUER_URI="http://keycloak:8080/auth/realms/npvet"
-ENV JWT_SECRET="CHAVE_SECRETA_JWT"
-ENV CLIENT_ID="npvet-api"
+
 EXPOSE 8090
 
 ENTRYPOINT ["java","-jar","/usr/app/npvet-api-1.0.0-SNAPSHOT.jar"]
