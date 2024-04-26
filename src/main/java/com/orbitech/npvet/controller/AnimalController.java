@@ -2,6 +2,8 @@ package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.entity.Usuario;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,9 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/animal")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+@Slf4j
 public class AnimalController {
 
-    private static Logger log = LoggerFactory.getLogger(AnimalService.class);
 
 
     @Autowired
