@@ -34,27 +34,23 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        return buildToken(userDetails, jwtExpiration);
     }
 
-    public String generateToken(
-            Map<String, Object> extraClaims,
-            UserDetails userDetails
-    ) {
-        return buildToken(extraClaims, userDetails, jwtExpiration);
-    }
 
     public String generateRefreshToken(
             UserDetails userDetails
     ) {
-        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
+        return buildToken(userDetails, refreshExpiration);
     }
 
     private String buildToken(
-            Map<String, Object> extraClaims,
             UserDetails userDetails,
             long expiration
     ) {
+        Map<String, Object> extraClaims = new HashMap<>();
+        String role = userDetails.getAuthorities().stream().toList().get(0).toString();
+        extraClaims.put("role", role);
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
