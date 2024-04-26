@@ -10,7 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +33,7 @@ public class AnimalController {
 
     @GetMapping("/all")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<List<AnimalDTO>> getAll(@AuthenticationPrincipal Usuario usuario) {
-        log.info("Usuário: ID: "+ usuario.getId() + " e username: "+ usuario.getUsername() +" realizou um getAll de animais");
-
+    public ResponseEntity<List<AnimalDTO>> getAll() {
         return ResponseEntity.ok(service.getAll());
     }
 
@@ -95,13 +93,13 @@ public class AnimalController {
 
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'ADMINISTRADOR')")
-    public ResponseEntity<AnimalDTO> create(@RequestBody @Validated AnimalDTO animalDTO){
-        return ResponseEntity.ok(service.create(animalDTO));
+    public ResponseEntity<AnimalDTO> create(@AuthenticationPrincipal Usuario usuario, @RequestBody @Validated AnimalDTO animalDTO){
+        return ResponseEntity.ok(service.create(animalDTO, usuario));
     }
 
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'ADMINISTRADOR')")
-    public ResponseEntity<AnimalDTO> update(@PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
+    public ResponseEntity<AnimalDTO> update(@AuthenticationPrincipal @PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
         return ResponseEntity.ok(service.update(id, animalDTO));
     }
 

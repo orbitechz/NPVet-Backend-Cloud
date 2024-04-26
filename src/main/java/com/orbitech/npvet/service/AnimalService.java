@@ -4,8 +4,10 @@ import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.AnimalRepository;
 import com.orbitech.npvet.repository.TutorRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AnimalService {
 
     private final ModelMapper mapper = new ModelMapper();
@@ -72,11 +75,12 @@ public class AnimalService {
     }
 
     @Transactional
-    public AnimalDTO create(AnimalDTO animalDTO){
+    public AnimalDTO create(AnimalDTO animalDTO, Usuario usuario){
         Tutor tutorBanco = tutorRepository.findById(animalDTO.getTutorId().getId()).orElse(null);
         Assert.notNull(tutorBanco, "O tutor informado não existe!");
-
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        AnimalDTO animal = toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        log.info("ANIMAL: " + animal.getId() + " RAÇA: " + animal.getRaca() + " NOME: " + animal.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return animal;
     }
 
     @Transactional
