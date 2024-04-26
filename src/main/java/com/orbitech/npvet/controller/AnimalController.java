@@ -23,7 +23,6 @@ import java.util.List;
 public class AnimalController {
 
 
-
     @Autowired
     private AnimalService service;
     @GetMapping("/id/{id}")
