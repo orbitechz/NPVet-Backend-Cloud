@@ -65,12 +65,12 @@ public class TutorController {
     }
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id, TutorDTO tutorDTO){
-        return ResponseEntity.ok(service.delete(id, usuarioAutenticado, tutorDTO));
+    public ResponseEntity<TutorDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id, usuarioAutenticado));
     }
     @PostMapping("/activate/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id, TutorDTO tutorDTO){
-        return ResponseEntity.ok(service.activate(id, usuarioAutenticado, tutorDTO));
+    public ResponseEntity<TutorDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id, usuarioAutenticado));
     }
 }

@@ -83,7 +83,7 @@ public class TutorService {
         TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
     log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  CADASTRADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
     + "-" + usuario.getUsername());
-        return tutorDTO;
+        return tutorDT;
     }
 
     @Transactional
@@ -102,27 +102,27 @@ public class TutorService {
         TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
         log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  ATUALIZADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
                 + "-" + usuario.getUsername());
-        return tutorDTO;
+        return tutorDT;
     }
 
     @Transactional
-    public TutorDTO delete(Long id, Usuario usuario, TutorDTO tutorDTO){
+    public TutorDTO delete(Long id, Usuario usuario){
         TutorDTO tutorById = getById(id);
         tutorById.delete();
-        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorById)));
         log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  DELETADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
                 + "-" + usuario.getUsername());
-        return tutorDTO;
+        return tutorDT;
     }
 
     @Transactional
-    public TutorDTO activate(Long id, Usuario usuario, TutorDTO tutorDTO){
+    public TutorDTO activate(Long id, Usuario usuario){
         TutorDTO tutorById = getById(id);
         tutorById.activate();
-        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorById)));
         log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  ATIVADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
                 + "-" + usuario.getUsername());
-        return tutorDTO;
+        return tutorDT;
 
     }
 }
