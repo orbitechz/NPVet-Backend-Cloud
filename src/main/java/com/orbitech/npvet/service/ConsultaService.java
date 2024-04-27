@@ -4,9 +4,12 @@ import com.orbitech.npvet.dto.ConsultaDTO;
 
 import com.orbitech.npvet.entity.Consulta;
 import com.orbitech.npvet.entity.Status;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.ConsultaRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -17,6 +20,7 @@ import java.util.List;
 import static com.orbitech.npvet.service.AnamneseService.NOT_FOUND_MESSAGE;
 
 @Service
+@Slf4j
 public class ConsultaService {
     @Autowired
     private ConsultaRepository repository;
@@ -60,18 +64,24 @@ public class ConsultaService {
         return repository.findAll().stream().map(this::toConsultaDTO).toList();
     }
 
-    public ConsultaDTO create(ConsultaDTO consultaDTO) {
-        return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
+    public ConsultaDTO create(ConsultaDTO consultaDTO, Usuario usuario) {
+        Consulta consultaSaved = repository.save(toConsultaEntidade(consultaDTO));
+        log.info("CONSULTA: " + consultaSaved.getId() + " DO TUTOR: "+ consultaSaved.getTutor() + " COM ANIMAL: " + consultaSaved.getAnimal().getNome() + " CRIADA POR: " + usuario.getNome() + " ID: " + usuario.getId());
+        return toConsultaDTO(consultaSaved);
     }
 
-    public ConsultaDTO update(long id, ConsultaDTO consultaDTO) {
+    public ConsultaDTO update(long id, ConsultaDTO consultaDTO, Usuario usuario) {
         Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
-        return toConsultaDTO(repository.save(toConsultaEntidade(consultaDTO)));
+        Consulta consultaSaved = repository.save(toConsultaEntidade(consultaDTO));
+        log.info("CONSULTA: " + consultaSaved.getId() + " DO TUTOR: "+ consultaSaved.getTutor() + " COM ANIMAL: " + consultaSaved.getAnimal().getNome() + " EDITADA POR: " + usuario.getNome() + " ID: " + usuario.getId());
+        return toConsultaDTO(consultaSaved);
     }
 
-    public void delete(long id) {
-        Assert.notNull(repository.findById(id).orElse(null),String.format("ID [%s] não localizado,",id));
+    public void delete(long id, Usuario usuario) {
+        Consulta consultaDeleted = repository.findById(id).orElse(null);
+        Assert.notNull(consultaDeleted ,String.format("ID [%s] não localizado,",id));
         repository.deleteById(id);
+        log.info("CONSULTA: " + consultaDeleted.getId() + " DO TUTOR: "+ consultaDeleted.getTutor() + " COM ANIMAL: " + consultaDeleted.getAnimal().getNome() + " DELETADA POR: " + usuario.getNome() + " ID: " + usuario.getId());
     }
     public List<ConsultaDTO>getAnimalByName(String nome){
         List<ConsultaDTO> retorno = repository.findConsultaByAnimalName(nome)
