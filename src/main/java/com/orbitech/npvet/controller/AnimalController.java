@@ -99,20 +99,20 @@ public class AnimalController {
 
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'ADMINISTRADOR')")
-    public ResponseEntity<AnimalDTO> update(@AuthenticationPrincipal @PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
-        return ResponseEntity.ok(service.update(id, animalDTO));
+    public ResponseEntity<AnimalDTO> update(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id, @RequestBody @Validated AnimalDTO animalDTO){
+        return ResponseEntity.ok(service.update(id, animalDTO, usuario));
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<AnimalDTO> delete(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.delete(id));
+    public ResponseEntity<AnimalDTO> delete(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id, usuario));
     }
 
     @PostMapping("/activate/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<AnimalDTO> activate(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.activate(id));
+    public ResponseEntity<AnimalDTO> activate(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id, usuario));
     }
 
 }
