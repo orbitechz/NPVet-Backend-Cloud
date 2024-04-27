@@ -60,7 +60,7 @@ public class VacinaService {
         getById(id);
         animalService.getById(vacinaDTO.getAnimal().getId());
         VacinaDTO vacinaDT = toVacinaDTO(repository.save(toVacina(vacinaDTO)));
-        log.info("VACINA:" + vacinaDT.getId() + "Nome:" + vacinaDT.getNome()+ "Descrição:" + vacinaDT.getDescricao() + "| CADASTRADO POR:" + usuarioAutenticado.getId() + "Nome:" +usuarioAutenticado.getNome() +
+        log.info("VACINA:" + vacinaDT.getId() + "Nome:" + vacinaDT.getNome()+ "Descrição:" + vacinaDT.getDescricao() + "| ATUALIZADO POR:" + usuarioAutenticado.getId() + "Nome:" +usuarioAutenticado.getNome() +
                 "-" +usuarioAutenticado.getUsername());
         return vacinaDTO;
     }
@@ -69,7 +69,7 @@ public class VacinaService {
         getById(id);
         repository.deleteById(id);
         VacinaDTO vacinaDT = toVacinaDTO(repository.save(toVacina(vacinaDTO)));
-        log.info("VACINA:" + vacinaDT.getId() + "Nome:" + vacinaDT.getNome()+ "Descrição:" + vacinaDT.getDescricao() + "| CADASTRADO POR:" + usuarioAutenticado.getId() + "Nome:" +usuarioAutenticado.getNome() +
+        log.info("VACINA:" + vacinaDT.getId() + "Nome:" + vacinaDT.getNome()+ "Descrição:" + vacinaDT.getDescricao() + "| DELETADO POR:" + usuarioAutenticado.getId() + "Nome:" +usuarioAutenticado.getNome() +
                 "-" +usuarioAutenticado.getUsername());
         return vacinaDTO;
     }

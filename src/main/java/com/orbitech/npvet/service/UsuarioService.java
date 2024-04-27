@@ -118,7 +118,7 @@ public class UsuarioService {
         UsuarioDTO userById = getById(id);
         userById.activate();
         UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
-        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
+        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| ATIVADO por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
         return usuarioDTO;
     }
 }
