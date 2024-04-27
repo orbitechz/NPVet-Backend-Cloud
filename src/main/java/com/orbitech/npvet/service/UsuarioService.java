@@ -4,6 +4,8 @@ import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 @Service
+@Slf4j
 public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
@@ -35,16 +38,19 @@ public class UsuarioService {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
     }
     @Transactional
-    public UsuarioDTO create(UsuarioDTO usuarioDTO) {
+    public UsuarioDTO create(UsuarioDTO usuarioDTO, Usuario usuarioAutenticado) {
         Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioDTO.getCpf());
 
         Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioDTO.getCpf()));
-
-       return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Criado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
+       return usuarioDT;
     }
     @Transactional
-    public UsuarioDTO update(long id, UsuarioDTO usuarioDTO) {
-        return toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+    public UsuarioDTO update(long id, UsuarioDTO usuarioDTO, Usuario usuarioAutenticado) {
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Atualizado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
+        return usuarioDT;
     }
 
     public List<UsuarioDTO>getUsuarioByName(String nome){
@@ -99,16 +105,20 @@ public class UsuarioService {
     }
 
     @Transactional
-    public UsuarioDTO delete(String id){
+    public UsuarioDTO delete(String id, Usuario usuarioAutenticado, UsuarioDTO usuarioDTO){
         UsuarioDTO userById = getById(id);
         userById.delete();
-        return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
+        return usuarioDTO;
     }
 
     @Transactional
-    public UsuarioDTO activate(String id){
+    public UsuarioDTO activate(String id, Usuario usuarioAutenticado, UsuarioDTO usuarioDTO) {
         UsuarioDTO userById = getById(id);
         userById.activate();
-        return toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
+        return usuarioDTO;
     }
 }
