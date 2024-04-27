@@ -140,7 +140,7 @@ public class AnamneseService {
 
         // Save associated entities
         consulta.setAnamnese(toAnamneseDTO(savedAnamnese));
-        consultaService.update(consulta.getId(), consulta);
+        consultaService.update(consulta.getId(), consulta, usuario);
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
 
