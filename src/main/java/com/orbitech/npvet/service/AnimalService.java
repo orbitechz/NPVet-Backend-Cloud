@@ -89,7 +89,7 @@ public class AnimalService {
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
         Animal animalSaved = repository.save(toAnimal(animalDTO));
-        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | ATUALIZADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
         return toAnimalDTO(animalSaved);
     }
 
@@ -99,7 +99,7 @@ public class AnimalService {
 
         animalDTO.delete();
         Animal animalSaved = repository.save(toAnimal(animalDTO));
-        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | DELETADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
 
         return toAnimalDTO(animalSaved);
     }
