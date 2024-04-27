@@ -84,25 +84,32 @@ public class AnimalService {
     }
 
     @Transactional
-    public AnimalDTO update(Long id, AnimalDTO animalDTO){
+    public AnimalDTO update(Long id, AnimalDTO animalDTO, Usuario usuario){
         Animal animalById = repository.findById(id).orElse(null);
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return toAnimalDTO(animalSaved);
     }
 
     @Transactional
-    public AnimalDTO delete(Long id){
+    public AnimalDTO delete(Long id, Usuario usuario){
         AnimalDTO animalDTO = getById(id);
 
         animalDTO.delete();
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+
+        return toAnimalDTO(animalSaved);
     }
 
     @Transactional
-    public AnimalDTO activate(Long id){
+    public AnimalDTO activate(Long id, Usuario usuario){
         AnimalDTO animalDTO = getById(id);
         animalDTO.activate();
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return toAnimalDTO(animalSaved);
     }
 }
