@@ -144,7 +144,9 @@ public class AnamneseService {
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
 
-        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " CRIOU A ANAMNESE: ID:" + savedAnamnese.getId() );
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " CRIOU A ANAMNESE: ID:" + savedAnamnese.getId()
+        + " COM ANIMAL: " + savedAnamnese.getAnimal().getNome() + " TUTOR: " + savedAnamnese.getTutor().getNome()
+        );
         return toAnamneseDTO(savedAnamnese);
     }
 
@@ -156,7 +158,9 @@ public class AnamneseService {
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
         anamneseRepository.save(anamnese);
-        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATUALIZOU A ANAMNESE: ID:" + anamnese.getId() );
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATUALIZOU A ANAMNESE: ID:" + anamnese.getId()
+                + " COM ANIMAL: " + anamnese.getAnimal().getNome() + " TUTOR: " + anamnese.getTutor().getNome()
+        );
         return anamneseDTO;
     }
 
@@ -164,7 +168,9 @@ public class AnamneseService {
     public AnamneseDTO delete(Long id, Usuario usuario){
         AnamneseDTO anamneseById = getById(id);
         anamneseById.delete();
-        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " DELETOU A ANAMNESE: ID:" + anamneseById.getId() );
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " DELETOU A ANAMNESE: ID:" + anamneseById.getId()
+                + " COM ANIMAL: " + anamneseById.getAnimalDTO().getNome() + " TUTOR: " + anamneseById.getTutorDTO().getNome()
+        );
         return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 
@@ -172,7 +178,9 @@ public class AnamneseService {
     public AnamneseDTO activate(Long id, Usuario usuario){
         AnamneseDTO anamneseById = getById(id);
         anamneseById.activate();
-        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATIVOU A ANAMNESE: ID:" + anamneseById.getId() );
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATIVOU A ANAMNESE: ID:" + anamneseById.getId()
+                + " COM ANIMAL: " + anamneseById.getAnimalDTO().getNome() + " TUTOR: " + anamneseById.getTutorDTO().getNome()
+        );
         return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 
