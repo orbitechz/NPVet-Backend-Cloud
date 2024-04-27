@@ -2,9 +2,12 @@ package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.PerguntaDTO;
+import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Pergunta;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.PerguntaRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@Slf4j
 public class PerguntaService {
 
     private final PerguntaRepository perguntaRepository;
@@ -45,15 +49,18 @@ public class PerguntaService {
         return perguntaDTOS;
     }
 
-    public PerguntaDTO create(PerguntaDTO perguntaDTO) {
+    public PerguntaDTO create(PerguntaDTO perguntaDTO, Usuario usuarioAutenticado) {
 
         if (perguntaRepository.existsByEnunciado(perguntaDTO.getEnunciado())) {
             throw new DataIntegrityViolationException("O enunciado deve ser único.");
         }
-        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|CADASTRADO POR:" + usuarioAutenticado.getId()+
+        "-" + usuarioAutenticado.getNome());
+        return perguntaDTO;
     }
 
-    public PerguntaDTO update(Long id, PerguntaDTO perguntaDTO) {
+    public PerguntaDTO update(Long id, PerguntaDTO perguntaDTO, Usuario usuarioAutenticado ) {
 
         Pergunta existingPergunta = perguntaRepository.findById(id).orElse(null);
         Assert.notNull(existingPergunta, String.format("O ID = %s solicitado não foi encontrado no banco de dados.", id));
@@ -65,22 +72,30 @@ public class PerguntaService {
         if (perguntaRepository.existsByEnunciado(perguntaDTO.getEnunciado())) {
             throw new DataIntegrityViolationException("O enunciado deve ser único.");
         }
-
-        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|ATUALIZADO POR:" + usuarioAutenticado.getId()+
+                "-" + usuarioAutenticado.getNome());
+        return perguntaDTO;
     }
 
     @Transactional
-    public PerguntaDTO delete(Long id){
+    public PerguntaDTO delete(Long id, Usuario usuarioAutenticado, PerguntaDTO perguntaDTO){
         PerguntaDTO perguntaById = getById(id);
         perguntaById.delete();
-        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|DELETADO POR:" + usuarioAutenticado.getId()+
+                "-" + usuarioAutenticado.getNome());
+        return perguntaDTO;
     }
 
     @Transactional
-    public PerguntaDTO activate(Long id){
+    public PerguntaDTO activate(Long id, Usuario usuarioAutenticado, PerguntaDTO perguntaDTO){
         PerguntaDTO perguntaById = getById(id);
         perguntaById.activate();
-        return toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|ATIVADO POR:" + usuarioAutenticado.getId()+
+                "-" + usuarioAutenticado.getNome());
+        return perguntaDTO;
     }
 
     public PerguntaDTO toPerguntaDTO(Pergunta pergunta) {
