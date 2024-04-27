@@ -54,8 +54,8 @@ public class VacinaController {
     }
     @PostMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<String> delete(@AuthenticationPrincipal Usuario usuarioAutenticado,@PathVariable("id") Long id, VacinaDTO vacinaDTO){
-        service.delete(id,usuarioAutenticado, vacinaDTO);
+    public ResponseEntity<String> delete(@AuthenticationPrincipal Usuario usuarioAutenticado,@PathVariable("id") Long id){
+        service.delete(id,usuarioAutenticado);
         return ResponseEntity.ok(String.format("Vacina %s deletada com sucesso!", id));
     }
 
