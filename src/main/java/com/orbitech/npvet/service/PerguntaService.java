@@ -57,7 +57,7 @@ public class PerguntaService {
         PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
         log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|CADASTRADO POR:" + usuarioAutenticado.getId()+
         "-" + usuarioAutenticado.getNome());
-        return perguntaDTO;
+        return perguntaDT;
     }
 
     public PerguntaDTO update(Long id, PerguntaDTO perguntaDTO, Usuario usuarioAutenticado ) {
@@ -75,27 +75,27 @@ public class PerguntaService {
         PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
         log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|ATUALIZADO POR:" + usuarioAutenticado.getId()+
                 "-" + usuarioAutenticado.getNome());
-        return perguntaDTO;
+        return perguntaDT;
     }
 
     @Transactional
-    public PerguntaDTO delete(Long id, Usuario usuarioAutenticado, PerguntaDTO perguntaDTO){
+    public PerguntaDTO delete(Long id, Usuario usuarioAutenticado){
         PerguntaDTO perguntaById = getById(id);
         perguntaById.delete();
-        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
         log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|DELETADO POR:" + usuarioAutenticado.getId()+
                 "-" + usuarioAutenticado.getNome());
-        return perguntaDTO;
+        return perguntaDT;
     }
 
     @Transactional
-    public PerguntaDTO activate(Long id, Usuario usuarioAutenticado, PerguntaDTO perguntaDTO){
+    public PerguntaDTO activate(Long id, Usuario usuarioAutenticado){
         PerguntaDTO perguntaById = getById(id);
         perguntaById.activate();
-        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaDTO)));
+        PerguntaDTO perguntaDT = toPerguntaDTO(perguntaRepository.save(toPergunta(perguntaById)));
         log.info("PERGUNTA:" + perguntaDT.getId()  + "Enunciado:" + perguntaDT.getEnunciado()+  "|ATIVADO POR:" + usuarioAutenticado.getId()+
                 "-" + usuarioAutenticado.getNome());
-        return perguntaDTO;
+        return perguntaDT;
     }
 
     public PerguntaDTO toPerguntaDTO(Pergunta pergunta) {

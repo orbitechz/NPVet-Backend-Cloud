@@ -41,10 +41,10 @@ public class PerguntaController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<PerguntaDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id, PerguntaDTO perguntaDTO){
-        return ResponseEntity.ok(perguntaService.delete(id, usuarioAutenticado, perguntaDTO));
+        return ResponseEntity.ok(perguntaService.delete(id, usuarioAutenticado));
     }
     @PostMapping("/activate/{id}")
-    public ResponseEntity<PerguntaDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id, PerguntaDTO perguntaDTO){
-        return ResponseEntity.ok(perguntaService.activate(id, usuarioAutenticado, perguntaDTO));
+    public ResponseEntity<PerguntaDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id){
+        return ResponseEntity.ok(perguntaService.activate(id, usuarioAutenticado));
     }
 }
