@@ -81,13 +81,13 @@ public class UsuarioController {
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<UsuarioDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") String id, UsuarioDTO usuarioDTO){
-        return ResponseEntity.ok(service.delete(id, usuarioAutenticado, usuarioDTO));
+    public ResponseEntity<UsuarioDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") String id){
+        return ResponseEntity.ok(service.delete(id, usuarioAutenticado));
     }
     @PostMapping("/activate/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<UsuarioDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") String id, UsuarioDTO usuarioDTO){
-        return ResponseEntity.ok(service.activate(id, usuarioAutenticado, usuarioDTO));
+    public ResponseEntity<UsuarioDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") String id){
+        return ResponseEntity.ok(service.activate(id, usuarioAutenticado));
     }
 
 }

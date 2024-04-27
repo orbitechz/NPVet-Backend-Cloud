@@ -105,20 +105,20 @@ public class UsuarioService {
     }
 
     @Transactional
-    public UsuarioDTO delete(String id, Usuario usuarioAutenticado, UsuarioDTO usuarioDTO){
+    public UsuarioDTO delete(String id, Usuario usuarioAutenticado){
         UsuarioDTO userById = getById(id);
         userById.delete();
-        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
-        return usuarioDTO;
+        return usuarioDT;
     }
 
     @Transactional
-    public UsuarioDTO activate(String id, Usuario usuarioAutenticado, UsuarioDTO usuarioDTO) {
+    public UsuarioDTO activate(String id, Usuario usuarioAutenticado) {
         UsuarioDTO userById = getById(id);
         userById.activate();
-        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| ATIVADO por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
-        return usuarioDTO;
+        return usuarioDT;
     }
 }
