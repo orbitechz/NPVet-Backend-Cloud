@@ -1,8 +1,11 @@
 package com.orbitech.npvet.service;
 
 import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.dto.VacinaDTO;
 import com.orbitech.npvet.entity.Tutor;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.TutorRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 @Service
+@Slf4j
 public class TutorService {
     @Autowired
     private TutorRepository repository;
@@ -65,7 +69,7 @@ public class TutorService {
     }
 
     @Transactional
-    public TutorDTO create(TutorDTO tutorDTO){
+    public TutorDTO create(TutorDTO tutorDTO, Usuario usuario){
         Assert.isTrue(!cpfExiste(tutorDTO.getCpf()), String.format("O CPF %s já existe!", tutorDTO.getCpf()));
         Assert.isTrue(!rgExiste(tutorDTO.getRg()), String.format("O RG %s já existe!", tutorDTO.getRg()));
         Assert.notNull(tutorDTO.getEnderecos(), "Pelo menos um endereço deve ser informado!");
@@ -75,11 +79,15 @@ public class TutorService {
 
         Assert.isTrue(tutorDTO.getEnderecos().get(0).getCep() != null, "Pelo menos um endereço deve ser informado!");
         Assert.isTrue(tutorDTO.getTelefones().get(0).getTelefone() != null, "Pelo menos um telefone deve ser informado!");
-        return toTutorDTO(repository.save(toTutor(tutorDTO)));
+
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
+    log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  CADASTRADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
+    + "-" + usuario.getUsername());
+        return tutorDT;
     }
 
     @Transactional
-    public TutorDTO update(Long id, TutorDTO tutorDTO){
+    public TutorDTO update(Long id, TutorDTO tutorDTO, Usuario usuario){
         getById(id);
         Assert.isTrue(id.equals(tutorDTO.getId()), "O Tutor informado não é o mesmo a ser atualizado!");
         String cpf = tutorDTO.getCpf();
@@ -91,20 +99,30 @@ public class TutorService {
         if(rgExiste(rg)){
             Assert.isTrue(getByRg(rg).getId().equals(id), String.format("RG %s já existe!", tutorDTO.getRg()));
         }
-        return toTutorDTO(repository.save(toTutor(tutorDTO)));
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorDTO)));
+        log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  ATUALIZADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
+                + "-" + usuario.getUsername());
+        return tutorDT;
     }
 
     @Transactional
-    public TutorDTO delete(Long id){
+    public TutorDTO delete(Long id, Usuario usuario){
         TutorDTO tutorById = getById(id);
         tutorById.delete();
-        return toTutorDTO(repository.save(toTutor(tutorById)));
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorById)));
+        log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  DELETADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
+                + "-" + usuario.getUsername());
+        return tutorDT;
     }
 
     @Transactional
-    public TutorDTO activate(Long id){
+    public TutorDTO activate(Long id, Usuario usuario){
         TutorDTO tutorById = getById(id);
         tutorById.activate();
-        return toTutorDTO(repository.save(toTutor(tutorById)));
+        TutorDTO tutorDT = toTutorDTO(repository.save(toTutor(tutorById)));
+        log.info("TUTOR:" + tutorDT.getId()+ "Nome:" +tutorDT.getNome()+ " "+ tutorDT.getCpf() + "|  ATIVADO POR:" + usuario.getId() + "NOME:"+ usuario.getNome()
+                + "-" + usuario.getUsername());
+        return tutorDT;
+
     }
 }

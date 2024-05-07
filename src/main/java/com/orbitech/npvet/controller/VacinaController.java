@@ -2,10 +2,12 @@ package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.VacinaDTO;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.VacinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,18 +44,18 @@ public class VacinaController {
     }
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<VacinaDTO> create(@RequestBody @Validated VacinaDTO vacinaDTO){
-        return ResponseEntity.ok(service.create(vacinaDTO));
+    public ResponseEntity<VacinaDTO> create(@AuthenticationPrincipal Usuario usuarioAutenticado, @RequestBody @Validated VacinaDTO vacinaDTO){
+        return ResponseEntity.ok(service.create(vacinaDTO, usuarioAutenticado));
     }
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<VacinaDTO> update(@PathVariable("id") Long id, @RequestBody @Validated VacinaDTO vacinaDTO){
-        return ResponseEntity.ok(service.update(id, vacinaDTO));
+    public ResponseEntity<VacinaDTO> update(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id, @RequestBody @Validated VacinaDTO vacinaDTO){
+        return ResponseEntity.ok(service.update(id, vacinaDTO, usuarioAutenticado));
     }
     @PostMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
+    public ResponseEntity<String> delete(@AuthenticationPrincipal Usuario usuarioAutenticado,@PathVariable("id") Long id){
+        service.delete(id,usuarioAutenticado);
         return ResponseEntity.ok(String.format("Vacina %s deletada com sucesso!", id));
     }
 

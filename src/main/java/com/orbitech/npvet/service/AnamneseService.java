@@ -3,6 +3,7 @@ import com.orbitech.npvet.dto.*;
 import com.orbitech.npvet.entity.*;
 import com.orbitech.npvet.repository.*;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AnamneseService {
 
     private final AnamneseRepository anamneseRepository;
@@ -126,7 +128,7 @@ public class AnamneseService {
     }
 
     @Transactional
-    public AnamneseDTO create(AnamneseDTO anamneseDTO) {
+    public AnamneseDTO create(AnamneseDTO anamneseDTO, Usuario usuario) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
         ConsultaDTO consulta = consultaService.getById(anamneseDTO.getConsulta().getId());
 
@@ -138,38 +140,47 @@ public class AnamneseService {
 
         // Save associated entities
         consulta.setAnamnese(toAnamneseDTO(savedAnamnese));
-        consultaService.update(consulta.getId(), consulta);
+        consultaService.update(consulta.getId(), consulta, usuario);
         anamneseHistoricoRepository.saveAll(anamnese.getHistoricoProgressoMedico());
         anamnesePerguntaRepository.saveAll(anamnese.getAnamnesePerguntas());
 
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " CRIOU A ANAMNESE: ID:" + savedAnamnese.getId()
+        + " COM ANIMAL: " + savedAnamnese.getAnimal().getNome() + " TUTOR: " + savedAnamnese.getTutor().getNome()
+        );
         return toAnamneseDTO(savedAnamnese);
     }
 
 
 
     @Transactional
-    public AnamneseDTO update(Long id, AnamneseDTO anamneseDTO) {
-
+    public AnamneseDTO update(Long id, AnamneseDTO anamneseDTO, Usuario usuario) {
         Anamnese anamnese = toAnamnese(anamneseDTO);
-
         Anamnese existingAnamnese = anamneseRepository.findById(id).orElse(null);
         Assert.notNull(existingAnamnese, String.format(NOT_FOUND_MESSAGE, id));
-
         anamneseRepository.save(anamnese);
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATUALIZOU A ANAMNESE: ID:" + anamnese.getId()
+                + " COM ANIMAL: " + anamnese.getAnimal().getNome() + " TUTOR: " + anamnese.getTutor().getNome()
+        );
         return anamneseDTO;
     }
 
     @Transactional
-    public AnamneseDTO delete(Long id){
+    public AnamneseDTO delete(Long id, Usuario usuario){
         AnamneseDTO anamneseById = getById(id);
         anamneseById.delete();
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " DELETOU A ANAMNESE: ID:" + anamneseById.getId()
+                + " COM ANIMAL: " + anamneseById.getAnimalDTO().getNome() + " TUTOR: " + anamneseById.getTutorDTO().getNome()
+        );
         return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 
     @Transactional
-    public AnamneseDTO activate(Long id){
+    public AnamneseDTO activate(Long id, Usuario usuario){
         AnamneseDTO anamneseById = getById(id);
         anamneseById.activate();
+        log.info("USUÁRIO: " + usuario.getNome() + "ID: " + usuario.getId() + " ATIVOU A ANAMNESE: ID:" + anamneseById.getId()
+                + " COM ANIMAL: " + anamneseById.getAnimalDTO().getNome() + " TUTOR: " + anamneseById.getTutorDTO().getNome()
+        );
         return toAnamneseDTO(anamneseRepository.save(toAnamnese(anamneseById)));
     }
 

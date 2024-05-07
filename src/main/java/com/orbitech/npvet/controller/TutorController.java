@@ -1,10 +1,12 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.TutorDTO;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,22 +55,22 @@ public class TutorController {
     }
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> create(@RequestBody @Validated TutorDTO tutorDTO){
-        return ResponseEntity.ok(service.create(tutorDTO));
+    public ResponseEntity<TutorDTO> create(@AuthenticationPrincipal Usuario usuarioAutenticado, @RequestBody @Validated TutorDTO tutorDTO){
+        return ResponseEntity.ok(service.create(tutorDTO, usuarioAutenticado));
     }
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> update(@PathVariable("id") Long id, @RequestBody @Validated TutorDTO tutorDTO){
-        return ResponseEntity.ok(service.update(id, tutorDTO));
+    public ResponseEntity<TutorDTO> update(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id, @RequestBody @Validated TutorDTO tutorDTO){
+        return ResponseEntity.ok(service.update(id, tutorDTO, usuario));
     }
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> delete(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.delete(id));
+    public ResponseEntity<TutorDTO> delete(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.delete(id, usuarioAutenticado));
     }
     @PostMapping("/activate/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<TutorDTO> activate(@PathVariable("id") Long id){
-        return ResponseEntity.ok(service.activate(id));
+    public ResponseEntity<TutorDTO> activate(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") Long id){
+        return ResponseEntity.ok(service.activate(id, usuarioAutenticado));
     }
 }
