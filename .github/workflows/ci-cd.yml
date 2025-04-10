@@ -50,29 +50,6 @@ jobs:
           push: true
           tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:develop
 
-  deploy-develop:
-    needs: build-and-push-develop
-    if: github.ref == 'refs/heads/develop'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Autenticar com Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      - name: Configurar o SDK do Google Cloud
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          install_components: "beta"
-
-      - name: Deploy no Cloud Run
-        run: |
-          gcloud run deploy npvet-backend \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:develop \
-            --region us-central1 \
-            --platform managed \
-
   build-and-push-main:
     needs: testes
     if: github.ref == 'refs/heads/main'
