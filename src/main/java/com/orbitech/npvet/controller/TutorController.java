@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tutor")
+@RequestMapping("/npvet-api/tutor")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class TutorController {
     @Autowired

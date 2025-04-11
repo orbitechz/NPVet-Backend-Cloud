@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/anamnese")
+@RequestMapping("/npvet-api/anamnese")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class AnamneseController {
 
