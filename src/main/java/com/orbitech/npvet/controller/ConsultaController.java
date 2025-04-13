@@ -2,10 +2,13 @@ package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.ConsultaDTO;
 import com.orbitech.npvet.entity.Status;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.ConsultaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,18 +49,18 @@ public class ConsultaController {
     }
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<ConsultaDTO>create(@RequestBody @Validated ConsultaDTO consultaDTO){
-        return ResponseEntity.ok(service.create(consultaDTO));
+    public ResponseEntity<ConsultaDTO>create(@AuthenticationPrincipal Usuario usuario, @RequestBody @Validated ConsultaDTO consultaDTO){
+        return ResponseEntity.ok(service.create(consultaDTO, usuario));
     }
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('SECRETARIA', 'MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<ConsultaDTO>update(@PathVariable("id") final long id,@RequestBody @Validated ConsultaDTO consultaDTO){
-        return ResponseEntity.ok(service.update(id, consultaDTO));
+    public ResponseEntity<ConsultaDTO>update(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") final long id,@RequestBody @Validated ConsultaDTO consultaDTO){
+        return ResponseEntity.ok(service.update(id, consultaDTO, usuario));
     }
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<String>delete(@PathVariable("id") final long id){
-        service.delete(id);
+    public ResponseEntity<String>delete(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") final long id){
+        service.delete(id, usuario);
         return ResponseEntity.ok(String.format("Consulta com id [%s] deletada com sucesso.",id));
     }
 

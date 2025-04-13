@@ -4,8 +4,10 @@ import com.orbitech.npvet.dto.AnimalDTO;
 import com.orbitech.npvet.dto.TutorDTO;
 import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.entity.Tutor;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.AnimalRepository;
 import com.orbitech.npvet.repository.TutorRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AnimalService {
 
     private final ModelMapper mapper = new ModelMapper();
@@ -72,33 +75,41 @@ public class AnimalService {
     }
 
     @Transactional
-    public AnimalDTO create(AnimalDTO animalDTO){
+    public AnimalDTO create(AnimalDTO animalDTO, Usuario usuario){
         Tutor tutorBanco = tutorRepository.findById(animalDTO.getTutorId().getId()).orElse(null);
         Assert.notNull(tutorBanco, "O tutor informado não existe!");
-
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        AnimalDTO animal = toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        log.info("ANIMAL: " + animal.getId() + " RAÇA: " + animal.getRaca() + " NOME: " + animal.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return animal;
     }
 
     @Transactional
-    public AnimalDTO update(Long id, AnimalDTO animalDTO){
+    public AnimalDTO update(Long id, AnimalDTO animalDTO, Usuario usuario){
         Animal animalById = repository.findById(id).orElse(null);
         Assert.notNull(animalById, String.format("Animal com ID %s não existe!", id));
         Assert.isTrue(id.equals(animalDTO.getId()), "O ID da URL não é igual ao ID do body");
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | ATUALIZADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return toAnimalDTO(animalSaved);
     }
 
     @Transactional
-    public AnimalDTO delete(Long id){
+    public AnimalDTO delete(Long id, Usuario usuario){
         AnimalDTO animalDTO = getById(id);
 
         animalDTO.delete();
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | DELETADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+
+        return toAnimalDTO(animalSaved);
     }
 
     @Transactional
-    public AnimalDTO activate(Long id){
+    public AnimalDTO activate(Long id, Usuario usuario){
         AnimalDTO animalDTO = getById(id);
         animalDTO.activate();
-        return toAnimalDTO(repository.save(toAnimal(animalDTO)));
+        Animal animalSaved = repository.save(toAnimal(animalDTO));
+        log.info("ANIMAL: " + animalSaved.getId() + " RAÇA: " + animalSaved.getRaca() + " NOME: " + animalSaved.getNome() + " | CADASTRADO POR: " + usuario.getId() + " NOME: " + usuario.getNome());
+        return toAnimalDTO(animalSaved);
     }
 }

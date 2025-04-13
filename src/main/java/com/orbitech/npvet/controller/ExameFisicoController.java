@@ -1,10 +1,12 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.ExameFisicoDTO;
+import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.ExameFisicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,20 +44,20 @@ public class ExameFisicoController {
 
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<ExameFisicoDTO> create(@RequestBody @Validated ExameFisicoDTO exameFisicoDTO) {
-        return ResponseEntity.ok(service.create(exameFisicoDTO));
+    public ResponseEntity<ExameFisicoDTO> create(@AuthenticationPrincipal Usuario usuario,  @RequestBody @Validated ExameFisicoDTO exameFisicoDTO) {
+        return ResponseEntity.ok(service.create(exameFisicoDTO, usuario));
     }
 
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('MEDICO', 'ADMINISTRADOR')")
-    public ResponseEntity<ExameFisicoDTO> update(@PathVariable("id") Long id, @RequestBody @Validated ExameFisicoDTO exameFisicoDTO){
-        return ResponseEntity.ok(service.update(id, exameFisicoDTO));
+    public ResponseEntity<ExameFisicoDTO> update(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id, @RequestBody @Validated ExameFisicoDTO exameFisicoDTO){
+        return ResponseEntity.ok(service.update(id, exameFisicoDTO, usuario));
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
+    public ResponseEntity<String> delete(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id){
+        service.delete(id, usuario);
         return ResponseEntity.ok(String.format("Exame %s desativado com sucesso!", id));
     }
 
