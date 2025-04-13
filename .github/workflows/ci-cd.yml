@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop
+      - staging
   pull_request:
     branches: ["*"]
 
@@ -72,6 +73,28 @@ jobs:
           push: true
           tags: ghcr.io/orbitechz/npvet-backend-cloud:latest
 
+  build-and-push-staging:
+    needs: testes
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout de código
+        uses: actions/checkout@v3
+
+      - name: Login no ghcr
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build e Push da imagem Docker
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/orbitechz/npvet-backend-cloud:staging
+
   deploy-main:
     needs: build-and-push-main
     if: github.ref == 'refs/heads/main'
@@ -91,6 +114,29 @@ jobs:
       - name: Deploy no Cloud Run
         run: |
           gcloud run deploy npvet-backend \
-            --image ghcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:latest \
+            --image ghcr.io/orbitechz/npvet-backend-cloud:latest \
             --region us-central1 \
-            --platform managed \
+            --platform managed
+
+  deploy-staging:
+    needs: build-and-push-staging
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Autenticar com Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Configurar o SDK do Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          install_components: "beta"
+
+      - name: Deploy no Cloud Run
+        run: |
+          gcloud run deploy npvet-backend \
+            --image ghcr.io/orbitechz/npvet-backend-cloud:staging \
+            --region us-central1 \
+            --platform managed
