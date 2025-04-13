@@ -37,19 +37,25 @@ jobs:
       - name: Checkout de código
         uses: actions/checkout@v3
 
-      - name: Login no ghcr
-        uses: docker/login-action@v2
+      - name: Autenticar com Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Configurar o SDK do Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Configurar Docker para usar credenciais do gcloud
+        run: gcloud auth configure-docker
 
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ghcr.io/orbitechz/npvet-backend-cloud:develop
+          tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:develop
 
   build-and-push-main:
     needs: testes
@@ -59,19 +65,25 @@ jobs:
       - name: Checkout de código
         uses: actions/checkout@v3
 
-      - name: Login no ghcr
-        uses: docker/login-action@v2
+      - name: Autenticar com Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Configurar o SDK do Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Configurar Docker para usar credenciais do gcloud
+        run: gcloud auth configure-docker
 
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ghcr.io/orbitechz/npvet-backend-cloud:latest
+          tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:latest
 
   build-and-push-staging:
     needs: testes
@@ -81,19 +93,25 @@ jobs:
       - name: Checkout de código
         uses: actions/checkout@v3
 
-      - name: Login no ghcr
-        uses: docker/login-action@v2
+      - name: Autenticar com Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Configurar o SDK do Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Configurar Docker para usar credenciais do gcloud
+        run: gcloud auth configure-docker
 
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ghcr.io/orbitechz/npvet-backend-cloud:staging
+          tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:staging
 
   deploy-main:
     needs: build-and-push-main
@@ -114,7 +132,7 @@ jobs:
       - name: Deploy no Cloud Run
         run: |
           gcloud run deploy npvet-backend \
-            --image ghcr.io/orbitechz/npvet-backend-cloud:latest \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:latest \
             --region us-central1 \
             --platform managed
 
@@ -137,6 +155,6 @@ jobs:
       - name: Deploy no Cloud Run
         run: |
           gcloud run deploy npvet-backend \
-            --image ghcr.io/orbitechz/npvet-backend-cloud:staging \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:staging \
             --region us-central1 \
             --platform managed
