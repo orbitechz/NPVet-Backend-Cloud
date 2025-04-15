@@ -136,7 +136,7 @@ jobs:
 
       - name: Deploy no Cloud Run
         run: |
-          gcloud run deploy npvet-backend \
+          gcloud run deploy npvet-backend-staging \
             --image ghcr.io/orbitechz/npvet-backend-cloud:staging \
             --region us-central1 \
             --platform managed
