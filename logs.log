@@ -1,0 +1,393 @@
+2025-04-15T17:25:02.847-03:00  INFO 7044 --- [main] com.orbitech.npvet.NpvetApplication      : Starting NpvetApplication using Java 23.0.2 with PID 7044 (C:\Users\gusta\OneDrive\Documentos\projects\NPVet-Backend-Cloud\target\classes started by gusta in C:\Users\gusta\OneDrive\Documentos\projects\NPVet-Backend-Cloud)
+2025-04-15T17:25:02.850-03:00  INFO 7044 --- [main] com.orbitech.npvet.NpvetApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-04-15T17:25:04.513-03:00  INFO 7044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T17:25:04.613-03:00  INFO 7044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 11 JPA repository interfaces.
+2025-04-15T17:25:05.322-03:00  INFO 7044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-04-15T17:25:05.333-03:00  INFO 7044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-15T17:25:05.333-03:00  INFO 7044 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2025-04-15T17:25:05.427-03:00  INFO 7044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-15T17:25:05.428-03:00  INFO 7044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2514 ms
+2025-04-15T17:25:05.595-03:00  INFO 7044 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T17:25:05.669-03:00  INFO 7044 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2025-04-15T17:25:05.672-03:00  INFO 7044 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-15T17:25:05.864-03:00  INFO 7044 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T17:25:06.045-03:00  INFO 7044 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T17:25:06.067-03:00  INFO 7044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T17:25:06.424-03:00  INFO 7044 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49190ed6
+2025-04-15T17:25:06.427-03:00  INFO 7044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T17:25:06.944-03:00  INFO 7044 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T17:25:08.009-03:00  INFO 7044 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15T17:25:08.083-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.084-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkryqhlmk35ogpp3jxx4rh68yk6 em tabela anamneses_anamnese_perguntas
+2025-04-15T17:25:08.088-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.088-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkj180gtcsb792u2fk8bv1ritss em tabela anamneses_historico_progresso_medico
+2025-04-15T17:25:08.095-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.095-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:25:08.103-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.104-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkooe7ghmjfibiiiaeumgu4lrr9 em tabela usuario_consultas
+2025-04-15T17:25:08.109-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.109-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkp9adf0r99ppueo26leonkk3dj em tabela tutor_contato
+2025-04-15T17:25:08.113-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.114-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkntx5ttgu7xkuccjc0upkfxvbg em tabela tutor_endereco
+2025-04-15T17:25:08.127-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.127-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:25:08.136-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.136-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:25:08.142-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.142-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkryqhlmk35ogpp3jxx4rh68yk6" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:25:08.144-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.144-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkn181obfnf7s68nnoj6r159a67" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:25:08.145-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.145-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkj180gtcsb792u2fk8bv1ritss" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:25:08.146-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.146-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk2wdtp4d1fp3plwa1irevgxxth" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:25:08.147-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.147-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk5kj7c5g7y3kfcrm7bx8e30qod" da relação "token" não existe, ignorando
+2025-04-15T17:25:08.148-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.148-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkp9adf0r99ppueo26leonkk3dj" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:25:08.149-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.149-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpkk8cikgtskg8dasw3tshtg02" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:25:08.149-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.149-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkntx5ttgu7xkuccjc0upkfxvbg" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:25:08.150-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.150-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpuwl7gfirj9402n0g37q50v98" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:25:08.151-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.151-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkooe7ghmjfibiiiaeumgu4lrr9" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:25:08.152-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:25:08.152-03:00  WARN 7044 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkbfa7h15o0v6bdi8cfhediah0i" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:25:08.455-03:00  INFO 7044 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T17:25:08.819-03:00  INFO 7044 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-15T17:25:09.897-03:00  WARN 7044 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T17:25:10.156-03:00  INFO 7044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4ca87dbe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2eeee108, org.springframework.security.web.context.SecurityContextHolderFilter@632f505b, org.springframework.security.web.header.HeaderWriterFilter@2c969f, org.springframework.security.web.authentication.logout.LogoutFilter@54214c34, com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter@61d1315b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19b656b0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c6d908b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c1aed5a, org.springframework.security.web.access.ExceptionTranslationFilter@10f535a6, org.springframework.security.web.access.intercept.AuthorizationFilter@32c3102]
+2025-04-15T17:25:10.418-03:00  INFO 7044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-15T17:25:10.424-03:00  INFO 7044 --- [main] com.orbitech.npvet.NpvetApplication      : Started NpvetApplication in 8.074 seconds (process running for 10.241)
+2025-04-15T17:25:23.644-03:00  INFO 7044 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-15T17:25:23.644-03:00  INFO 7044 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-15T17:25:23.646-03:00  INFO 7044 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-15T17:25:52.545-03:00  WARN 7044 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 22001
+2025-04-15T17:25:52.545-03:00 ERROR 7044 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERRO: valor é muito longo para tipo character varying(11)
+2025-04-15T17:25:52.555-03:00 ERROR 7044 --- [http-nio-8080-exec-7] c.o.npvet.config.GlobalErrorHandler      : OCORREU UM ERRO Exception: could not execute statement [ERRO: valor é muito longo para tipo character varying(11)] [insert into public.usuario (cpf,created_at,deleted_at,nome,password,role,updated_at,username) values (?,?,?,?,?,?,?,?)]; SQL [insert into public.usuario (cpf,created_at,deleted_at,nome,password,role,updated_at,username) values (?,?,?,?,?,?,?,?)]
+2025-04-15T17:26:04.422-03:00  INFO 7044 --- [http-nio-8080-exec-10] c.orbitech.npvet.service.UsuarioService  : USUÁRIO:teteNOME:teteUSERNAME:teteCPF:16076125004| Criado por:test2e 1
+2025-04-15T17:26:26.396-03:00  INFO 7044 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T17:26:26.418-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.418-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkryqhlmk35ogpp3jxx4rh68yk6 em tabela anamneses_anamnese_perguntas
+2025-04-15T17:26:26.422-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.423-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkj180gtcsb792u2fk8bv1ritss em tabela anamneses_historico_progresso_medico
+2025-04-15T17:26:26.430-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.430-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:26:26.440-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.442-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkooe7ghmjfibiiiaeumgu4lrr9 em tabela usuario_consultas
+2025-04-15T17:26:26.446-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.446-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkp9adf0r99ppueo26leonkk3dj em tabela tutor_contato
+2025-04-15T17:26:26.452-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.452-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkntx5ttgu7xkuccjc0upkfxvbg em tabela tutor_endereco
+2025-04-15T17:26:26.476-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.476-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:26:26.486-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.487-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:26:26.492-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.492-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkryqhlmk35ogpp3jxx4rh68yk6" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:26:26.494-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.494-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkn181obfnf7s68nnoj6r159a67" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:26:26.495-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.496-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkj180gtcsb792u2fk8bv1ritss" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:26:26.497-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.497-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk2wdtp4d1fp3plwa1irevgxxth" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:26:26.498-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.499-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk5kj7c5g7y3kfcrm7bx8e30qod" da relação "token" não existe, ignorando
+2025-04-15T17:26:26.500-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.500-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkp9adf0r99ppueo26leonkk3dj" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:26:26.501-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.501-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpkk8cikgtskg8dasw3tshtg02" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:26:26.503-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.503-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkntx5ttgu7xkuccjc0upkfxvbg" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:26:26.504-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.505-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpuwl7gfirj9402n0g37q50v98" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:26:26.506-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.506-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkooe7ghmjfibiiiaeumgu4lrr9" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:26:26.508-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:26.508-03:00  WARN 7044 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkbfa7h15o0v6bdi8cfhediah0i" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:26:26.530-03:00  INFO 7044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T17:26:26.532-03:00  INFO 7044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-15T17:26:38.647-03:00  INFO 14724 --- [main] com.orbitech.npvet.NpvetApplication      : Starting NpvetApplication using Java 23.0.2 with PID 14724 (C:\Users\gusta\OneDrive\Documentos\projects\NPVet-Backend-Cloud\target\classes started by gusta in C:\Users\gusta\OneDrive\Documentos\projects\NPVet-Backend-Cloud)
+2025-04-15T17:26:38.649-03:00  INFO 14724 --- [main] com.orbitech.npvet.NpvetApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-04-15T17:26:39.587-03:00  INFO 14724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T17:26:39.672-03:00  INFO 14724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 11 JPA repository interfaces.
+2025-04-15T17:26:40.263-03:00  INFO 14724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-04-15T17:26:40.271-03:00  INFO 14724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-15T17:26:40.271-03:00  INFO 14724 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2025-04-15T17:26:40.354-03:00  INFO 14724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-15T17:26:40.355-03:00  INFO 14724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1642 ms
+2025-04-15T17:26:40.475-03:00  INFO 14724 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T17:26:40.531-03:00  INFO 14724 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2025-04-15T17:26:40.534-03:00  INFO 14724 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-15T17:26:40.649-03:00  INFO 14724 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T17:26:40.781-03:00  INFO 14724 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T17:26:40.796-03:00  INFO 14724 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T17:26:40.968-03:00  INFO 14724 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3303e89e
+2025-04-15T17:26:40.970-03:00  INFO 14724 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T17:26:41.367-03:00  INFO 14724 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T17:26:42.271-03:00  INFO 14724 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15T17:26:42.287-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.287-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses" não existe, ignorando
+2025-04-15T17:26:42.288-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.288-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses" não existe, ignorando
+2025-04-15T17:26:42.289-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.289-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses" não existe, ignorando
+2025-04-15T17:26:42.290-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.290-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "animal" não existe, ignorando
+2025-04-15T17:26:42.290-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.290-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "consulta" não existe, ignorando
+2025-04-15T17:26:42.291-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.291-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "consulta" não existe, ignorando
+2025-04-15T17:26:42.292-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.292-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "consulta" não existe, ignorando
+2025-04-15T17:26:42.294-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.294-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "consulta" não existe, ignorando
+2025-04-15T17:26:42.294-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.295-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "exame_fisico" não existe, ignorando
+2025-04-15T17:26:42.296-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.296-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "exame_fisico" não existe, ignorando
+2025-04-15T17:26:42.297-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.297-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "vacina" não existe, ignorando
+2025-04-15T17:26:42.298-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.299-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "anamnese-pergunta" não existe, ignorando
+2025-04-15T17:26:42.300-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.300-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "anamnese_historico" não existe, ignorando
+2025-04-15T17:26:42.301-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.301-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "anamneses" não existe, ignorando
+2025-04-15T17:26:42.302-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.302-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "animal" não existe, ignorando
+2025-04-15T17:26:42.302-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.302-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "consulta" não existe, ignorando
+2025-04-15T17:26:42.303-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.303-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "contato" não existe, ignorando
+2025-04-15T17:26:42.303-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.303-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "endereco" não existe, ignorando
+2025-04-15T17:26:42.304-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.304-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "exame_fisico" não existe, ignorando
+2025-04-15T17:26:42.304-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.304-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "perguntas" não existe, ignorando
+2025-04-15T17:26:42.304-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.305-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "tutor" não existe, ignorando
+2025-04-15T17:26:42.305-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.305-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "usuario" não existe, ignorando
+2025-04-15T17:26:42.306-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.306-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "vacina" não existe, ignorando
+2025-04-15T17:26:42.307-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.307-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:26:42.307-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.307-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:26:42.308-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.308-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:26:42.309-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.309-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:26:42.309-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.309-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "token" não existe, ignorando
+2025-04-15T17:26:42.310-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.310-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "tutor_contato" não existe, ignorando
+2025-04-15T17:26:42.311-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.311-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "tutor_contato" não existe, ignorando
+2025-04-15T17:26:42.311-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.311-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:26:42.312-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.312-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:26:42.312-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.312-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:26:42.313-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.314-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:26:42.314-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.314-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:26:42.315-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.316-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:26:42.317-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.317-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "token" não existe, ignorando
+2025-04-15T17:26:42.318-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.318-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "tutor_contato" não existe, ignorando
+2025-04-15T17:26:42.318-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.319-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "tutor_endereco" não existe, ignorando
+2025-04-15T17:26:42.319-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.319-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : tabela "usuario_consultas" não existe, ignorando
+2025-04-15T17:26:42.320-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:26:42.321-03:00  WARN 14724 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequência "token_seq" não existe, ignorando
+2025-04-15T17:26:42.535-03:00  INFO 14724 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T17:26:42.862-03:00  INFO 14724 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-15T17:26:43.929-03:00  WARN 14724 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T17:26:44.210-03:00  INFO 14724 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e78953e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78e8594a, org.springframework.security.web.context.SecurityContextHolderFilter@2fc2305a, org.springframework.security.web.header.HeaderWriterFilter@5d40034e, org.springframework.security.web.authentication.logout.LogoutFilter@7aab77f, com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter@60a3a0fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e5e680b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45cee4d2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51b274ce, org.springframework.security.web.access.ExceptionTranslationFilter@b359d2d, org.springframework.security.web.access.intercept.AuthorizationFilter@4b39b5fe]
+2025-04-15T17:26:44.488-03:00  INFO 14724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-15T17:26:44.496-03:00  INFO 14724 --- [main] com.orbitech.npvet.NpvetApplication      : Started NpvetApplication in 6.268 seconds (process running for 7.829)
+2025-04-15T17:26:48.477-03:00  INFO 14724 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-15T17:26:48.478-03:00  INFO 14724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-15T17:26:48.480-03:00  INFO 14724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-04-15T17:26:48.765-03:00 ERROR 14724 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+org.springframework.security.core.userdetails.UsernameNotFoundException: User not found
+	at com.orbitech.npvet.oauth.security.ApplicationConfig.lambda$userDetailsService$0(ApplicationConfig.java:25) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.orbitech.npvet.oauth.security.ApplicationConfig.lambda$userDetailsService$1(ApplicationConfig.java:25) ~[classes/:na]
+	at com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:48) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-04-15T17:27:02.338-03:00 ERROR 14724 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+org.springframework.security.core.userdetails.UsernameNotFoundException: User not found
+	at com.orbitech.npvet.oauth.security.ApplicationConfig.lambda$userDetailsService$0(ApplicationConfig.java:25) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.orbitech.npvet.oauth.security.ApplicationConfig.lambda$userDetailsService$1(ApplicationConfig.java:25) ~[classes/:na]
+	at com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:48) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-04-15T17:27:28.871-03:00  INFO 14724 --- [http-nio-8080-exec-9] c.orbitech.npvet.service.UsuarioService  : USUÁRIO:teteNOME:teteUSERNAME:teteCPF:160.761.250-04| Criado por:test2e 1
+2025-04-15T17:27:32.570-03:00  INFO 14724 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T17:27:32.598-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.598-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkryqhlmk35ogpp3jxx4rh68yk6 em tabela anamneses_anamnese_perguntas
+2025-04-15T17:27:32.602-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.602-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkj180gtcsb792u2fk8bv1ritss em tabela anamneses_historico_progresso_medico
+2025-04-15T17:27:32.608-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.608-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:27:32.618-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.618-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkooe7ghmjfibiiiaeumgu4lrr9 em tabela usuario_consultas
+2025-04-15T17:27:32.622-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.622-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkp9adf0r99ppueo26leonkk3dj em tabela tutor_contato
+2025-04-15T17:27:32.628-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.628-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata restrição fkntx5ttgu7xkuccjc0upkfxvbg em tabela tutor_endereco
+2025-04-15T17:27:32.646-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.646-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:27:32.657-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.658-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : removendo em cascata outros 2 objetos
+2025-04-15T17:27:32.664-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.664-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkryqhlmk35ogpp3jxx4rh68yk6" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:27:32.665-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.665-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkn181obfnf7s68nnoj6r159a67" da relação "anamneses_anamnese_perguntas" não existe, ignorando
+2025-04-15T17:27:32.666-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.666-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkj180gtcsb792u2fk8bv1ritss" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:27:32.667-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.667-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk2wdtp4d1fp3plwa1irevgxxth" da relação "anamneses_historico_progresso_medico" não existe, ignorando
+2025-04-15T17:27:32.668-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.668-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fk5kj7c5g7y3kfcrm7bx8e30qod" da relação "token" não existe, ignorando
+2025-04-15T17:27:32.669-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.669-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkp9adf0r99ppueo26leonkk3dj" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:27:32.670-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.670-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpkk8cikgtskg8dasw3tshtg02" da relação "tutor_contato" não existe, ignorando
+2025-04-15T17:27:32.671-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.671-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkntx5ttgu7xkuccjc0upkfxvbg" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:27:32.672-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.672-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkpuwl7gfirj9402n0g37q50v98" da relação "tutor_endereco" não existe, ignorando
+2025-04-15T17:27:32.672-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.674-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkooe7ghmjfibiiiaeumgu4lrr9" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:27:32.676-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T17:27:32.676-03:00  WARN 14724 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "fkbfa7h15o0v6bdi8cfhediah0i" da relação "usuario_consultas" não existe, ignorando
+2025-04-15T17:27:32.701-03:00  INFO 14724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T17:27:32.706-03:00  INFO 14724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
