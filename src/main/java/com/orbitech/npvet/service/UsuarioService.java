@@ -1,5 +1,6 @@
 package com.orbitech.npvet.service;
 
+import com.orbitech.npvet.dto.UsuarioCadastrarDTO;
 import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
@@ -30,7 +31,12 @@ public class UsuarioService {
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
-   public UsuarioDTO getById(String id){
+    public Usuario toUsuarioEntidade(UsuarioCadastrarDTO usuarioDTO){
+        return mapper.map(usuarioDTO, Usuario.class);
+    }
+
+
+    public UsuarioDTO getById(String id){
         return toUsuarioDTO(repository.findById(id).orElse(null));
    }
 
@@ -38,17 +44,17 @@ public class UsuarioService {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
     }
     @Transactional
-    public UsuarioDTO create(UsuarioDTO usuarioDTO, Usuario usuarioAutenticado) {
-        Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioDTO.getCpf());
+    public UsuarioDTO create(UsuarioCadastrarDTO usuarioCadastrarDTO, Usuario usuarioAutenticado) {
+        Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioCadastrarDTO.getCpf());
 
-        Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioDTO.getCpf()));
-        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioCadastrarDTO.getCpf()));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioCadastrarDTO)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Criado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
        return usuarioDT;
     }
     @Transactional
-    public UsuarioDTO update(long id, UsuarioDTO usuarioDTO, Usuario usuarioAutenticado) {
-        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+    public UsuarioDTO update(long id, UsuarioCadastrarDTO UsuarioCadastrarDTO, Usuario usuarioAutenticado) {
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(UsuarioCadastrarDTO)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Atualizado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
         return usuarioDT;
     }
