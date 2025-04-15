@@ -27,6 +27,10 @@ public class UsuarioService {
         return mapper.map(usuarioEntidade, UsuarioDTO.class);
     }
 
+    public UsuarioCadastrarDTO toUsuarioCadastrarDTO(Usuario usuarioEntidade){
+        return mapper.map(usuarioEntidade, UsuarioCadastrarDTO.class);
+    }
+
     public Usuario toUsuarioEntidade(UsuarioDTO usuarioDTO){
         return mapper.map(usuarioDTO, Usuario.class);
     }
@@ -39,6 +43,10 @@ public class UsuarioService {
     public UsuarioDTO getById(String id){
         return toUsuarioDTO(repository.findById(id).orElse(null));
    }
+
+    public UsuarioCadastrarDTO getByIdForDelete(String id){
+        return toUsuarioCadastrarDTO(repository.findById(id).orElse(null));
+    }
 
     public List<UsuarioDTO> getAll() {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
@@ -112,7 +120,7 @@ public class UsuarioService {
 
     @Transactional
     public UsuarioDTO delete(String id, Usuario usuarioAutenticado){
-        UsuarioDTO userById = getById(id);
+        UsuarioCadastrarDTO userById = getByIdForDelete(id);
         userById.delete();
         UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
