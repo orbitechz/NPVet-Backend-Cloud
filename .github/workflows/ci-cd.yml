@@ -154,7 +154,7 @@ jobs:
 
       - name: Deploy no Cloud Run
         run: |
-          gcloud run deploy npvet-backend \
+          gcloud run deploy npvet-backend-staging \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/npvet-backend:staging \
             --region us-central1 \
             --platform managed
