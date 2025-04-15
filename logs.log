@@ -1,0 +1,528 @@
+2025-04-15T19:29:26.485-03:00  INFO 6067 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Starting PerguntaTest using Java 17.0.14 with PID 6067 (started by gustavo_parquetec in /home/gustavo_parquetec/Documentos/faculdade/NPVet-Backend-Cloud)
+2025-04-15T19:29:26.486-03:00  INFO 6067 --- [main] c.o.npvet.EntityTest.PerguntaTest        : No active profile set, falling back to 1 default profile: "default"
+2025-04-15T19:29:26.803-03:00  INFO 6067 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T19:29:26.839-03:00  INFO 6067 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 11 JPA repository interfaces.
+2025-04-15T19:29:27.128-03:00  INFO 6067 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T19:29:27.156-03:00  INFO 6067 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2025-04-15T19:29:27.158-03:00  INFO 6067 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-15T19:29:27.224-03:00  INFO 6067 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:29:27.293-03:00  INFO 6067 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T19:29:27.302-03:00  INFO 6067 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T19:29:27.406-03:00  INFO 6067 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@e4ca109
+2025-04-15T19:29:27.408-03:00  INFO 6067 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T19:29:27.603-03:00  INFO 6067 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:29:28.127-03:00  INFO 6067 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15T19:29:28.137-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.137-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:29:28.137-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.137-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:29:28.138-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.138-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:29:28.138-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.138-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "animal" does not exist, skipping
+2025-04-15T19:29:28.138-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.139-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:29:28.139-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.139-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:29:28.139-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.139-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.140-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:29:28.141-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.141-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "vacina" does not exist, skipping
+2025-04-15T19:29:28.141-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.141-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese-pergunta" does not exist, skipping
+2025-04-15T19:29:28.141-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese_historico" does not exist, skipping
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses" does not exist, skipping
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "animal" does not exist, skipping
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.142-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "consulta" does not exist, skipping
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "contato" does not exist, skipping
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "endereco" does not exist, skipping
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "exame_fisico" does not exist, skipping
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "perguntas" does not exist, skipping
+2025-04-15T19:29:28.143-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor" does not exist, skipping
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario" does not exist, skipping
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vacina" does not exist, skipping
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:29:28.144-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.145-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "token" does not exist, skipping
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.146-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.147-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "token" does not exist, skipping
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_contato" does not exist, skipping
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_endereco" does not exist, skipping
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.148-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario_consultas" does not exist, skipping
+2025-04-15T19:29:28.149-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:28.149-03:00  WARN 6067 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "token_seq" does not exist, skipping
+2025-04-15T19:29:28.272-03:00  INFO 6067 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:29:28.513-03:00  INFO 6067 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-15T19:29:29.271-03:00  WARN 6067 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T19:29:29.330-03:00  INFO 6067 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77f3bb3f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42b2a977, org.springframework.security.web.context.SecurityContextHolderFilter@5901caf8, org.springframework.security.web.header.HeaderWriterFilter@75c858e6, org.springframework.security.web.authentication.logout.LogoutFilter@55aa97df, com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter@1fb029e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18b378a2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4a5f435b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e646b14, org.springframework.security.web.access.ExceptionTranslationFilter@53b83e49, org.springframework.security.web.access.intercept.AuthorizationFilter@21b298de]
+2025-04-15T19:29:29.736-03:00  INFO 6067 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Started PerguntaTest in 3.396 seconds (process running for 4.15)
+2025-04-15T19:29:29.991-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ExameFisicoTest]: ExameFisicoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:29.992-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ExameFisicoTest
+2025-04-15T19:29:30.046-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.AnimalDTOTest]: AnimalDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.051-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.AnimalDTOTest
+2025-04-15T19:29:30.067-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.VacinaDTOTest]: VacinaDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.067-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.VacinaDTOTest
+2025-04-15T19:29:30.109-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.VacinaTest]: VacinaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.109-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.VacinaTest
+2025-04-15T19:29:30.123-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseTest]: AnamneseTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.124-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseTest
+2025-04-15T19:29:30.133-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.UsuarioTest]: UsuarioTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.134-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.UsuarioTest
+2025-04-15T19:29:30.147-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.NpvetApplicationTests]: NpvetApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.150-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.NpvetApplicationTests
+2025-04-15T19:29:30.156-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.UsuarioDtoTest]: UsuarioDtoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.156-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.UsuarioDtoTest
+2025-04-15T19:29:30.164-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.TutorTest]: TutorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.165-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.TutorTest
+2025-04-15T19:29:30.176-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseHistoricoTest]: AnamneseHistoricoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.177-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseHistoricoTest
+2025-04-15T19:29:30.181-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ExameFisicoDTOTest]: ExameFisicoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.181-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ExameFisicoDTOTest
+2025-04-15T19:29:30.194-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ContatoTest]: ContatoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.195-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ContatoTest
+2025-04-15T19:29:30.201-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnimalTest]: AnimalTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.202-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnimalTest
+2025-04-15T19:29:30.215-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ContatoDTOTest]: ContatoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.217-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ContatoDTOTest
+2025-04-15T19:29:30.227-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.EnderecoTest]: EnderecoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.230-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.EnderecoTest
+2025-04-15T19:29:30.247-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.EnderecoDTOTest]: EnderecoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.248-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.EnderecoDTOTest
+2025-04-15T19:29:30.262-03:00  INFO 6067 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.TutorDTOTest]: TutorDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:29:30.263-03:00  INFO 6067 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.TutorDTOTest
+2025-04-15T19:29:30.279-03:00  INFO 6067 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:29:30.294-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.294-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkryqhlmk35ogpp3jxx4rh68yk6 on table anamneses_anamnese_perguntas
+2025-04-15T19:29:30.295-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.296-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkj180gtcsb792u2fk8bv1ritss on table anamneses_historico_progresso_medico
+2025-04-15T19:29:30.300-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.300-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:29:30.303-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.303-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkooe7ghmjfibiiiaeumgu4lrr9 on table usuario_consultas
+2025-04-15T19:29:30.305-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.305-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkp9adf0r99ppueo26leonkk3dj on table tutor_contato
+2025-04-15T19:29:30.306-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.306-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkntx5ttgu7xkuccjc0upkfxvbg on table tutor_endereco
+2025-04-15T19:29:30.310-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.311-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:29:30.312-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.312-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:29:30.314-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.314-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkryqhlmk35ogpp3jxx4rh68yk6" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:29:30.315-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.315-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkn181obfnf7s68nnoj6r159a67" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:29:30.316-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.316-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkj180gtcsb792u2fk8bv1ritss" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:29:30.317-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.317-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk2wdtp4d1fp3plwa1irevgxxth" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:29:30.318-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.318-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk5kj7c5g7y3kfcrm7bx8e30qod" of relation "token" does not exist, skipping
+2025-04-15T19:29:30.319-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.319-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkp9adf0r99ppueo26leonkk3dj" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:29:30.320-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.320-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpkk8cikgtskg8dasw3tshtg02" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:29:30.321-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.321-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkntx5ttgu7xkuccjc0upkfxvbg" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:29:30.322-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.322-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpuwl7gfirj9402n0g37q50v98" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:29:30.322-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.322-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkooe7ghmjfibiiiaeumgu4lrr9" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:29:30.323-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:29:30.323-03:00  WARN 6067 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkbfa7h15o0v6bdi8cfhediah0i" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:29:30.333-03:00  INFO 6067 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T19:29:30.334-03:00  INFO 6067 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-15T19:30:06.817-03:00  INFO 6347 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Starting PerguntaTest using Java 17.0.14 with PID 6347 (started by gustavo_parquetec in /home/gustavo_parquetec/Documentos/faculdade/NPVet-Backend-Cloud)
+2025-04-15T19:30:06.818-03:00  INFO 6347 --- [main] c.o.npvet.EntityTest.PerguntaTest        : No active profile set, falling back to 1 default profile: "default"
+2025-04-15T19:30:07.160-03:00  INFO 6347 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T19:30:07.200-03:00  INFO 6347 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 11 JPA repository interfaces.
+2025-04-15T19:30:07.479-03:00  INFO 6347 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T19:30:07.505-03:00  INFO 6347 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2025-04-15T19:30:07.506-03:00  INFO 6347 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-15T19:30:07.577-03:00  INFO 6347 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:30:07.668-03:00  INFO 6347 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T19:30:07.686-03:00  INFO 6347 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T19:30:07.797-03:00  INFO 6347 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4efb13f1
+2025-04-15T19:30:07.799-03:00  INFO 6347 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T19:30:08.020-03:00  INFO 6347 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:30:08.591-03:00  INFO 6347 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15T19:30:08.601-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.601-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:08.602-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.602-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:08.602-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.602-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:08.603-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.603-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "animal" does not exist, skipping
+2025-04-15T19:30:08.603-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.603-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:08.603-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.604-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "vacina" does not exist, skipping
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.605-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese-pergunta" does not exist, skipping
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese_historico" does not exist, skipping
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses" does not exist, skipping
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.606-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "animal" does not exist, skipping
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "consulta" does not exist, skipping
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "contato" does not exist, skipping
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "endereco" does not exist, skipping
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.607-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "exame_fisico" does not exist, skipping
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "perguntas" does not exist, skipping
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor" does not exist, skipping
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario" does not exist, skipping
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.608-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vacina" does not exist, skipping
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.609-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "token" does not exist, skipping
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.610-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.611-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:08.612-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "token" does not exist, skipping
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_contato" does not exist, skipping
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:08.613-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:08.614-03:00  WARN 6347 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "token_seq" does not exist, skipping
+2025-04-15T19:30:08.731-03:00  INFO 6347 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:30:09.028-03:00  INFO 6347 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-15T19:30:09.760-03:00  WARN 6347 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T19:30:09.827-03:00  INFO 6347 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a987a5d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13180cc9, org.springframework.security.web.context.SecurityContextHolderFilter@e646b14, org.springframework.security.web.header.HeaderWriterFilter@46a6c3be, org.springframework.security.web.authentication.logout.LogoutFilter@3918a9f9, com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter@669bb57, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@14ef94ec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74cca90, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58211c07, org.springframework.security.web.access.ExceptionTranslationFilter@21b298de, org.springframework.security.web.access.intercept.AuthorizationFilter@74a9a20d]
+2025-04-15T19:30:10.216-03:00  INFO 6347 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Started PerguntaTest in 3.534 seconds (process running for 4.175)
+2025-04-15T19:30:10.477-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ExameFisicoTest]: ExameFisicoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.479-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ExameFisicoTest
+2025-04-15T19:30:10.553-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.AnimalDTOTest]: AnimalDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.559-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.AnimalDTOTest
+2025-04-15T19:30:10.579-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.VacinaDTOTest]: VacinaDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.580-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.VacinaDTOTest
+2025-04-15T19:30:10.626-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.VacinaTest]: VacinaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.628-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.VacinaTest
+2025-04-15T19:30:10.643-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseTest]: AnamneseTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.644-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseTest
+2025-04-15T19:30:10.654-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.UsuarioTest]: UsuarioTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.655-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.UsuarioTest
+2025-04-15T19:30:10.669-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.NpvetApplicationTests]: NpvetApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.671-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.NpvetApplicationTests
+2025-04-15T19:30:10.676-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.UsuarioDtoTest]: UsuarioDtoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.676-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.UsuarioDtoTest
+2025-04-15T19:30:10.688-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.TutorTest]: TutorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.689-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.TutorTest
+2025-04-15T19:30:10.698-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseHistoricoTest]: AnamneseHistoricoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.699-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseHistoricoTest
+2025-04-15T19:30:10.702-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ExameFisicoDTOTest]: ExameFisicoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.703-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ExameFisicoDTOTest
+2025-04-15T19:30:10.716-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ContatoTest]: ContatoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.717-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ContatoTest
+2025-04-15T19:30:10.723-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnimalTest]: AnimalTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.724-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnimalTest
+2025-04-15T19:30:10.736-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ContatoDTOTest]: ContatoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.737-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ContatoDTOTest
+2025-04-15T19:30:10.744-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.EnderecoTest]: EnderecoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.746-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.EnderecoTest
+2025-04-15T19:30:10.757-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.EnderecoDTOTest]: EnderecoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.758-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.EnderecoDTOTest
+2025-04-15T19:30:10.770-03:00  INFO 6347 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.TutorDTOTest]: TutorDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:10.770-03:00  INFO 6347 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.TutorDTOTest
+2025-04-15T19:30:10.783-03:00  INFO 6347 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:30:10.801-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.802-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkryqhlmk35ogpp3jxx4rh68yk6 on table anamneses_anamnese_perguntas
+2025-04-15T19:30:10.803-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.803-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkj180gtcsb792u2fk8bv1ritss on table anamneses_historico_progresso_medico
+2025-04-15T19:30:10.806-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.806-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:10.809-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.809-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkooe7ghmjfibiiiaeumgu4lrr9 on table usuario_consultas
+2025-04-15T19:30:10.810-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.811-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkp9adf0r99ppueo26leonkk3dj on table tutor_contato
+2025-04-15T19:30:10.812-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.812-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkntx5ttgu7xkuccjc0upkfxvbg on table tutor_endereco
+2025-04-15T19:30:10.816-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.816-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:10.819-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.819-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:10.822-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.822-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkryqhlmk35ogpp3jxx4rh68yk6" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:10.823-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.823-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkn181obfnf7s68nnoj6r159a67" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:10.823-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.824-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkj180gtcsb792u2fk8bv1ritss" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:10.824-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.824-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk2wdtp4d1fp3plwa1irevgxxth" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:10.825-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.825-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk5kj7c5g7y3kfcrm7bx8e30qod" of relation "token" does not exist, skipping
+2025-04-15T19:30:10.826-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.826-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkp9adf0r99ppueo26leonkk3dj" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:10.827-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.827-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpkk8cikgtskg8dasw3tshtg02" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:10.828-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.828-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkntx5ttgu7xkuccjc0upkfxvbg" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:10.829-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.829-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpuwl7gfirj9402n0g37q50v98" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:10.830-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.830-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkooe7ghmjfibiiiaeumgu4lrr9" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:10.831-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:10.831-03:00  WARN 6347 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkbfa7h15o0v6bdi8cfhediah0i" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:10.840-03:00  INFO 6347 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T19:30:10.841-03:00  INFO 6347 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-15T19:30:26.583-03:00  INFO 6517 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Starting PerguntaTest using Java 17.0.14 with PID 6517 (started by gustavo_parquetec in /home/gustavo_parquetec/Documentos/faculdade/NPVet-Backend-Cloud)
+2025-04-15T19:30:26.584-03:00  INFO 6517 --- [main] c.o.npvet.EntityTest.PerguntaTest        : No active profile set, falling back to 1 default profile: "default"
+2025-04-15T19:30:26.916-03:00  INFO 6517 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T19:30:26.953-03:00  INFO 6517 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 11 JPA repository interfaces.
+2025-04-15T19:30:27.235-03:00  INFO 6517 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T19:30:27.261-03:00  INFO 6517 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2025-04-15T19:30:27.263-03:00  INFO 6517 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-15T19:30:27.327-03:00  INFO 6517 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:30:27.395-03:00  INFO 6517 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T19:30:27.404-03:00  INFO 6517 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T19:30:27.506-03:00  INFO 6517 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ee6dc82
+2025-04-15T19:30:27.508-03:00  INFO 6517 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T19:30:27.684-03:00  INFO 6517 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-15T19:30:28.204-03:00  INFO 6517 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15T19:30:28.214-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.214-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses" does not exist, skipping
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.215-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "animal" does not exist, skipping
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.216-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "consulta" does not exist, skipping
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "exame_fisico" does not exist, skipping
+2025-04-15T19:30:28.217-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.218-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "vacina" does not exist, skipping
+2025-04-15T19:30:28.218-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.218-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese-pergunta" does not exist, skipping
+2025-04-15T19:30:28.218-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamnese_historico" does not exist, skipping
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses" does not exist, skipping
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "animal" does not exist, skipping
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.219-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "consulta" does not exist, skipping
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "contato" does not exist, skipping
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "endereco" does not exist, skipping
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "exame_fisico" does not exist, skipping
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.220-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "perguntas" does not exist, skipping
+2025-04-15T19:30:28.221-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.221-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor" does not exist, skipping
+2025-04-15T19:30:28.221-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.221-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario" does not exist, skipping
+2025-04-15T19:30:28.221-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.222-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vacina" does not exist, skipping
+2025-04-15T19:30:28.222-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.222-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:28.222-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.223-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:28.223-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.223-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:28.223-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.223-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "token" does not exist, skipping
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.224-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:28.225-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.225-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:28.225-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.225-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.226-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "token" does not exist, skipping
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_contato" does not exist, skipping
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.227-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:28.228-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.228-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:28.228-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:28.228-03:00  WARN 6517 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "token_seq" does not exist, skipping
+2025-04-15T19:30:28.355-03:00  INFO 6517 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:30:28.575-03:00  INFO 6517 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-15T19:30:29.279-03:00  WARN 6517 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T19:30:29.348-03:00  INFO 6517 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2674c88f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@b213994, org.springframework.security.web.context.SecurityContextHolderFilter@358260b6, org.springframework.security.web.header.HeaderWriterFilter@44c6e366, org.springframework.security.web.authentication.logout.LogoutFilter@2d34a88a, com.orbitech.npvet.oauth.jwt.JwtAuthenticationFilter@381c78ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53b83e49, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@425cf933, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70d2a981, org.springframework.security.web.access.ExceptionTranslationFilter@57e6fd09, org.springframework.security.web.access.intercept.AuthorizationFilter@3b92dd48]
+2025-04-15T19:30:29.817-03:00  INFO 6517 --- [main] c.o.npvet.EntityTest.PerguntaTest        : Started PerguntaTest in 3.366 seconds (process running for 4.09)
+2025-04-15T19:30:30.062-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ExameFisicoTest]: ExameFisicoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.063-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ExameFisicoTest
+2025-04-15T19:30:30.101-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.AnimalDTOTest]: AnimalDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.106-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.AnimalDTOTest
+2025-04-15T19:30:30.125-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.VacinaDTOTest]: VacinaDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.126-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.VacinaDTOTest
+2025-04-15T19:30:30.169-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.VacinaTest]: VacinaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.170-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.VacinaTest
+2025-04-15T19:30:30.185-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseTest]: AnamneseTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.186-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseTest
+2025-04-15T19:30:30.196-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.UsuarioTest]: UsuarioTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.197-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.UsuarioTest
+2025-04-15T19:30:30.204-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.NpvetApplicationTests]: NpvetApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.206-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.NpvetApplicationTests
+2025-04-15T19:30:30.211-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.UsuarioDtoTest]: UsuarioDtoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.212-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.UsuarioDtoTest
+2025-04-15T19:30:30.220-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.TutorTest]: TutorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.221-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.TutorTest
+2025-04-15T19:30:30.231-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnamneseHistoricoTest]: AnamneseHistoricoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.232-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnamneseHistoricoTest
+2025-04-15T19:30:30.236-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ExameFisicoDTOTest]: ExameFisicoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.236-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ExameFisicoDTOTest
+2025-04-15T19:30:30.254-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.ContatoTest]: ContatoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.255-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.ContatoTest
+2025-04-15T19:30:30.262-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.AnimalTest]: AnimalTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.263-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.AnimalTest
+2025-04-15T19:30:30.274-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.ContatoDTOTest]: ContatoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.274-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.ContatoDTOTest
+2025-04-15T19:30:30.282-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.EntityTest.EnderecoTest]: EnderecoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.284-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.EntityTest.EnderecoTest
+2025-04-15T19:30:30.296-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.EnderecoDTOTest]: EnderecoDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.297-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.EnderecoDTOTest
+2025-04-15T19:30:30.308-03:00  INFO 6517 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.orbitech.npvet.DTOTest.TutorDTOTest]: TutorDTOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-15T19:30:30.309-03:00  INFO 6517 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.orbitech.npvet.NpvetApplication for test class com.orbitech.npvet.DTOTest.TutorDTOTest
+2025-04-15T19:30:30.323-03:00  INFO 6517 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T19:30:30.338-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.338-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkryqhlmk35ogpp3jxx4rh68yk6 on table anamneses_anamnese_perguntas
+2025-04-15T19:30:30.340-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.340-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkj180gtcsb792u2fk8bv1ritss on table anamneses_historico_progresso_medico
+2025-04-15T19:30:30.343-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.343-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:30.346-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.346-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkooe7ghmjfibiiiaeumgu4lrr9 on table usuario_consultas
+2025-04-15T19:30:30.348-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.348-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkp9adf0r99ppueo26leonkk3dj on table tutor_contato
+2025-04-15T19:30:30.350-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.350-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to constraint fkntx5ttgu7xkuccjc0upkfxvbg on table tutor_endereco
+2025-04-15T19:30:30.354-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.354-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:30.356-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.356-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : drop cascades to 2 other objects
+2025-04-15T19:30:30.358-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.359-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkryqhlmk35ogpp3jxx4rh68yk6" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:30.359-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.360-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkn181obfnf7s68nnoj6r159a67" of relation "anamneses_anamnese_perguntas" does not exist, skipping
+2025-04-15T19:30:30.361-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.361-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkj180gtcsb792u2fk8bv1ritss" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:30.361-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.361-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk2wdtp4d1fp3plwa1irevgxxth" of relation "anamneses_historico_progresso_medico" does not exist, skipping
+2025-04-15T19:30:30.362-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.362-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fk5kj7c5g7y3kfcrm7bx8e30qod" of relation "token" does not exist, skipping
+2025-04-15T19:30:30.363-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.363-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkp9adf0r99ppueo26leonkk3dj" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:30.364-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.364-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpkk8cikgtskg8dasw3tshtg02" of relation "tutor_contato" does not exist, skipping
+2025-04-15T19:30:30.365-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.365-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkntx5ttgu7xkuccjc0upkfxvbg" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:30.366-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.366-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkpuwl7gfirj9402n0g37q50v98" of relation "tutor_endereco" does not exist, skipping
+2025-04-15T19:30:30.367-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.367-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkooe7ghmjfibiiiaeumgu4lrr9" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:30.367-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-04-15T19:30:30.368-03:00  WARN 6517 --- [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "fkbfa7h15o0v6bdi8cfhediah0i" of relation "usuario_consultas" does not exist, skipping
+2025-04-15T19:30:30.377-03:00  INFO 6517 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T19:30:30.379-03:00  INFO 6517 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
