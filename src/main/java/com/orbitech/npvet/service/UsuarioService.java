@@ -5,6 +5,8 @@ import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -18,11 +20,12 @@ import java.util.List;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     private final ModelMapper mapper = new ModelMapper();
@@ -60,7 +63,7 @@ public class UsuarioService {
 
         String encodedPassword = passwordEncoder.encode(usuarioCadastrarDTO.getPassword());
 
-        usuarioAutenticado.setPassword(encodedPassword);
+        usuarioCadastrarDTO.setPassword(encodedPassword);
 
         Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioCadastrarDTO.getCpf());
 
