@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -20,6 +21,9 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
+
+    private PasswordEncoder passwordEncoder;
+
 
     private final ModelMapper mapper = new ModelMapper();
 
@@ -53,6 +57,11 @@ public class UsuarioService {
     }
     @Transactional
     public UsuarioDTO create(UsuarioCadastrarDTO usuarioCadastrarDTO, Usuario usuarioAutenticado) {
+
+        String encodedPassword = passwordEncoder.encode(usuarioCadastrarDTO.getPassword());
+
+        usuarioAutenticado.setPassword(encodedPassword);
+
         Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioCadastrarDTO.getCpf());
 
         Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioCadastrarDTO.getCpf()));
