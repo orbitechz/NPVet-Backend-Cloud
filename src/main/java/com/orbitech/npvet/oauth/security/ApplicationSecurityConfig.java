@@ -25,10 +25,6 @@ import java.util.Arrays;
 @EnableWebSecurity
 @AllArgsConstructor
 public class ApplicationSecurityConfig {
-
-    private static final String[] WHITE_LIST_URL = {
-            "/npvet/api/auth/**"
-    };
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
@@ -38,6 +34,7 @@ public class ApplicationSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/npvet-api/health").permitAll()
                         .requestMatchers("/npvet-api/auth/**").permitAll()
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider)
