@@ -6,10 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
-public class ApplicationSecurityConfig {
+public class ApplicationSecurityConfig implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -19,6 +21,12 @@ public class ApplicationSecurityConfig {
                 .anyRequest().permitAll());
         
         return http.build();
+    }
+
+      @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // Permite todas as origens para todas as rotas
+        registry.addMapping("/**").allowedOrigins("*");
     }
 }
 
