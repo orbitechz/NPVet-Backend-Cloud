@@ -49,7 +49,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:develop
+          tags: ghcr.io/orbitechz/npvet-backend-cloud:develop
 
   build-and-push-main:
     needs: testes
@@ -72,8 +72,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/orbitechz/npvet-backend-cloud:latest
+            ghcr.io/orbitechz/npvet-backend-cloud:${{ github.sha }}
 
   build-and-push-staging:
     needs: testes
@@ -95,4 +95,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:staging
+          tags: ghcr.io/orbitechz/npvet-backend-cloud:staging
