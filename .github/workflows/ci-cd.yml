@@ -113,7 +113,7 @@ jobs:
         with:
           cluster_name: npvet-cluster
           location: us-central1  # ou zona do seu cluster
-          project_id: ${{ secrets.PROJECT_ID }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Reiniciar o deployment
         run: |
