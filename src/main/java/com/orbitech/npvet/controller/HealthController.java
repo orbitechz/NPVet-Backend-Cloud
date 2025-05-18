@@ -1,5 +1,7 @@
 package com.orbitech.npvet.controller;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,18 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/npvet-api/health")
 public class HealthController {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
     @GetMapping
     public ResponseEntity<String> healthCheck() {
         try {
             log.info("Health check iniciado");
             log.debug("Verificando status da aplicação");
-            
+
+            entityManager.createNativeQuery("SELECT 1").getSingleResult();
+
             String message = "Aplicação está funcionando normalmente";
             log.info("Health check finalizado com sucesso");
             
