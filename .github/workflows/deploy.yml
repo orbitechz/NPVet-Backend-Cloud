@@ -99,7 +99,7 @@ jobs:
 
       - name: Configurar kubectl
         run: |
-          gcloud container clusters get-credentials npvet-cluster \
+          gcloud container clusters get-credentials npvet-staging \
             --zone=us-central1-a \
             --project=${{ secrets.GCP_PROJECT_ID_STAGING }}
 
@@ -118,7 +118,7 @@ jobs:
 
       - name: Configurar kubectl
         run: |
-          gcloud container clusters get-credentials npvet-cluster \
+          gcloud container clusters get-credentials npvet-prod \
             --zone=us-central1-a \
             --project=${{ secrets.GCP_PROJECT_ID_PRODUCTION }}
 
