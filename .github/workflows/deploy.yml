@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline Backend
 
 on:
   push:
@@ -15,7 +15,6 @@ permissions:
   id-token: write
 
 jobs:
-  # Job de testes permanece o mesmo
   testes:
     runs-on: ubuntu-latest
     steps:
@@ -35,49 +34,61 @@ jobs:
       - name: Executar Testes e Build
         run: ./mvnw clean verify
 
-  # Job de build consolidado e refatorado
-  build-and-push-to-gcr:
+  # Job de Build e Push para o ambiente de STAGING
+  build-and-push-staging:
+    name: Build e Push da Imagem (Staging)
     needs: testes
-    # Executa para qualquer uma das três branches
-    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout de código
         uses: actions/checkout@v4
 
-      # Autentica no Google Cloud para poder interagir com o Artifact Registry
-      - name: Autenticar no Google Cloud
+      - name: Autenticar no Google Cloud (Staging)
         uses: google-github-actions/auth@v2
         with:
-          # Usa o segredo de staging para as branches develop e staging
-          credentials_json: ${{ (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging') && secrets.GCP_SA_KEY_STAGING || secrets.GCP_SA_KEY_PRODUCTION }}
+          credentials_json: ${{ secrets.GCP_SA_KEY_STAGING }}
 
-      # Configura o Docker para se autenticar no Artifact Registry usando as credenciais do gcloud
       - name: Configurar Docker para o Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev
 
-      # Determina a tag da imagem dinamicamente com base na branch
-      - name: Determinar Tag da Imagem
-        id: image_tag
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "tag=latest" >> $GITHUB_OUTPUT
-          else
-            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Build e Push para o Artifact Registry
+      - name: Build e Push para o Artifact Registry (Staging)
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          # Monta o nome completo da imagem no formato do Artifact Registry
-          tags: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/npvet-repo/npvet-backend-cloud:${{ steps.image_tag.outputs.tag }}
+          # Constrói a tag usando o PROJECT_ID de staging e a tag da branch
+          tags: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID_STAGING }}/npvet-repo/npvet-backend-cloud:${{ github.ref_name }}
 
-  # Jobs de deploy permanecem os mesmos, mas agora dependem do novo job de build
+  # Job de Build e Push para o ambiente de PRODUÇÃO
+  build-and-push-production:
+    name: Build e Push da Imagem (Produção)
+    needs: testes
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout de código
+        uses: actions/checkout@v4
+
+      - name: Autenticar no Google Cloud (Produção)
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY_PRODUCTION }}
+
+      - name: Configurar Docker para o Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: Build e Push para o Artifact Registry (Produção)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          # Constrói a tag usando o PROJECT_ID de produção e a tag 'latest'
+          tags: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID_PRODUCTION }}/npvet-repo/npvet-backend-cloud:latest
+
+  # Jobs de deploy agora dependem dos seus respectivos jobs de build
   deploy-to-staging:
-    needs: build-and-push-to-gcr
+    needs: build-and-push-staging # Depende do build de staging
     if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     steps:
@@ -96,7 +107,7 @@ jobs:
         run: kubectl -n npvet-staging rollout restart deployment npvet-backend-deployment
 
   deploy-to-production:
-    needs: build-and-push-to-gcr
+    needs: build-and-push-production # Depende do build de produção
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
